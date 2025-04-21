@@ -17,8 +17,10 @@ const router = createRouter({
         {
           path: "/",
           name: "beranda",
-          component: () =>
-            import("@/views/beranda/Beranda.vue"),
+          component: () => import("@/views/beranda/Beranda.vue"),
+          meta: {
+            pageTitle: "Beranda",
+          },
         },
       ]
     },
