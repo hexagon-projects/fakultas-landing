@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+    --color-netral : #444444;
+    --color-desc : #A9A9A9;
+}
+
+:root {
+    font-family: "Sora", sans-serif;
+    color : var(--color-netral);
+}
+
+.btn-primary {
+    @apply bg-[#AA2132] rounded-full py-2 px-10 text-white cursor-pointer;
+}
+
+.btn-secondary {
+    @apply border border-[#AA2132] rounded-full py-2 px-10 text-[#AA2132] hover:bg-[#AA2132] hover:text-white transition cursor-pointer;
+}

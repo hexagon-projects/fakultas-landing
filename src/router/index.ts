@@ -22,6 +22,14 @@ const router = createRouter({
             pageTitle: "Beranda",
           },
         },
+        {
+          path: "/tentang-fakultas",
+          name: "tentang-fakultas",
+          component: () => import("@/views/tentang-fakultas/TentangFakultas.vue"),
+          meta: {
+            pageTitle: "Tentang Fakultas",
+          },
+        },
       ]
     },
   ],
