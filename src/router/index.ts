@@ -1,3 +1,4 @@
+import Berita from '@/views/Berita.vue'
 import Dashboard from '@/views/Dashboard.vue'
 import Prodi from '@/views/Prodi.vue'
 import ProdiDetail from '@/views/ProdiDetail.vue'
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/prodi/detail',
       name: 'prodiDetail',
       component: ProdiDetail,
+    },
+    {
+      path: '/berita',
+      name: 'berita',
+      component: Berita,
     },
   ],
 })
