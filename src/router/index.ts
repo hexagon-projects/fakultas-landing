@@ -1,4 +1,6 @@
 import Dashboard from '@/views/Dashboard.vue'
+import Prodi from '@/views/Prodi.vue'
+import ProdiDetail from '@/views/ProdiDetail.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -8,6 +10,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Dashboard,
+    },
+    {
+      path: '/prodi',
+      name: 'prodi',
+      component: Prodi,
+    },
+    {
+      path: '/prodi/detail',
+      name: 'prodiDetail',
+      component: ProdiDetail,
     },
   ],
 })
