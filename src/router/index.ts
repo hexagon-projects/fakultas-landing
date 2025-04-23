@@ -1,6 +1,7 @@
 import Berita from '@/views/Berita.vue'
 import BeritaDetail from '@/views/BeritaDetail.vue'
 import Dashboard from '@/views/Dashboard.vue'
+import Kontak from '@/views/Kontak.vue'
 import Prodi from '@/views/Prodi.vue'
 import ProdiDetail from '@/views/ProdiDetail.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/berita/detail',
       name: 'beritaDetail',
       component: BeritaDetail,
+    },
+    {
+      path: '/kontak',
+      name: 'kontak',
+      component: Kontak,
     },
   ],
 })
