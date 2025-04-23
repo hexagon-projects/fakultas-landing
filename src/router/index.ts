@@ -5,6 +5,7 @@ import Kontak from '@/views/Kontak.vue'
 import Prodi from '@/views/Prodi.vue'
 import ProdiDetail from '@/views/ProdiDetail.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import Agenda from '@/views/Agenda.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/kontak',
       name: 'kontak',
       component: Kontak,
+    },
+    {
+      path: '/agenda',
+      name: 'agenda',
+      component: Agenda,
     },
   ],
 })
