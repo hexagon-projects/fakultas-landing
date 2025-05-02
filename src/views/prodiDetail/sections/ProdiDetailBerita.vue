@@ -1,0 +1,63 @@
+<script setup lang="ts">
+import ArticleCard from '@/components/ArticleCard.vue';
+import SectionLayout from '@/layouts/SectionLayout.vue';
+import TitleSection from '@/components/TitleSection.vue';
+import ButtonSection from '@/components/ButtonSection.vue';
+import type { Post } from '@/core/types/post';
+import router from '@/router';
+import type { Departement } from '@/core/types/departement';
+import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+
+const props = defineProps<{
+  berita: Post[];
+  prodiDetail: Departement
+}>();
+
+const baseUrl = import.meta.env.VITE_APP_IMG_URL
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return 'https://placehold.co/600x400';
+  return `${baseUrl}/${imagePath}`;
+};
+
+const goToBerita = () => {
+  router.push('/berita');
+};
+
+const titleHTML = `Berita Seputar <span class="text-fakultas font-bold">Program Studi ${props.prodiDetail?.name}</span>`;
+</script>
+
+<template>
+  <SectionLayout>
+    <div class="space-y-4">
+      <div class="w-fit py-2 px-5 border-[3px] border-fakultas rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+        <p class="text-fakultas text-sm lg:text-base font-bold">Berita</p>
+      </div>
+      <div class="w-full flex flex-col md:flex-row justify-start items-start md:justify-between md:items-center gap-4">
+        <div class="w-fit md:w-fit">
+          <TitleSection
+            :text="titleHTML"
+            :html="true"
+            :delay="60"
+          />
+        </div>
+        <div class="w-fit">
+          <!-- <ButtonSection @click="goToBerita">Selengkapnya</ButtonSection> -->
+          <InteractiveHoverButton @click="goToBerita" :text="'Selengkapnya'"></InteractiveHoverButton>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-16">
+      <ArticleCard
+        v-for="(beritaItem, index) in berita"
+        :key="index"
+        :kategori="'Berita'"
+        :judul="beritaItem.title"
+        :tanggal="beritaItem.publish"
+        :gambar="getImageUrl(beritaItem.image)"
+        :slug="beritaItem.slug"
+      />
+    </div>
+  </SectionLayout>
+</template>

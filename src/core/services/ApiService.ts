@@ -1,7 +1,7 @@
 // ApiService.ts
 import axios from "axios";
 import type { AxiosError, AxiosResponse } from "axios";
-import JwtService, { destroyToken, destroyExpDt } from "@/services/JwtService";
+import JwtService, { destroyToken, destroyExpDt } from "@/core/services/JwtService";
 import router from "@/router";
 import Swal from "sweetalert2";
 
