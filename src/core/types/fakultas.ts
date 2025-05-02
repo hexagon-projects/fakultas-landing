@@ -1,0 +1,38 @@
+export interface Faculty {
+  id: number;
+  name: string;
+  akreditasi: string;
+  tagline: string;
+  yt_id: string;
+  instagram: string;
+  tiktok: string;
+  youtube: string;
+  facebook: string;
+  statistik1: string | null;
+  statistik2: string | null;
+  statistik3: string | null;
+  statistik4: string | null;
+  title1: string | null;
+  title2: string | null;
+  title3: string | null;
+  title4: string | null;
+  description1: string | null;
+  description2: string | null;
+  description3: string | null;
+  description4: string | null;
+  image1: string | null;
+  image2: string | null;
+  image3: string | null;
+  image4: string | null;
+  color1: string;
+  color2: string;
+  address: string | null;
+  map: string | null;
+  link1: string | null;
+  link2: string | null;
+  link3: string | null;
+  link4: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
