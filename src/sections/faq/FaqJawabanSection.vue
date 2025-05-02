@@ -25,57 +25,49 @@
       </div>
 
       <!-- Right Section -->
-      <div class="flex flex-col gap-4">
-        <Disclosure v-for="(item, index) in faqData" :key="index" as="div" class="w-full">
-          <template #default="{ open }">
-            <DisclosureButton
-              class="w-full flex justify-between items-center py-4 px-2 border-b border-gray-200 group hover:bg-gray-100 transition"
+      <div class="flex flex-col gap-2 w-full">
+        <Accordion type="single" collapsible class="w-full space-y-1">
+          <AccordionItem
+            v-for="(item, index) in faqData"
+            :key="index"
+            :value="`item-${index}`"
+            class="overflow-hidden rounded-lg transition-all duration-200 ease-in-out hover:bg-gray-50/50"
+          >
+            <AccordionTrigger
+              class="hover:no-underline hover:bg-gray-50/70 w-full py-4 px-4 md:px-6 transition-colors duration-150 ease-out [&[data-state=open]]:bg-gray-50/30"
             >
-              <span class="text-base md:text-lg font-bold text-Color-Scheme-1-Text font-['Roboto']">
-                {{ item.question }}
-              </span>
-              <svg
-                :class="{ 'rotate-180': open }"
-                class="w-5 h-5 text-Color-Scheme-1-Text transform transition-transform duration-300 group-hover:text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </DisclosureButton>
+              <div class="flex items-center justify-between w-full gap-4">
+                <span
+                  class="text-base md:text-[17px] font-semibold text-gray-900 font-['Roboto'] text-left tracking-tight leading-snug"
+                >
+                  {{ item.question }}
+                </span>
+              </div>
+            </AccordionTrigger>
 
-            <Transition
-              enter-active-class="transition-all duration-300 ease-out"
-              leave-active-class="transition-all duration-200 ease-in"
-              enter-from-class="max-h-0 opacity-0"
-              enter-to-class="max-h-[500px] opacity-100"
-              leave-from-class="max-h-[500px] opacity-100"
-              leave-to-class="max-h-0 opacity-0"
+            <AccordionContent
+              class="overflow-hidden text-sm md:text-[15px] text-gray-600 font-normal font-['Roboto'] leading-relaxed transition-all duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)]"
             >
-              <DisclosurePanel
-                class="px-2 pt-2 pb-4 text-sm md:text-base text-Color-Scheme-1-Text font-normal font-['Roboto']"
-              >
+              <div class="px-4 md:px-6 pb-5 pt-1">
                 {{ item.answer }}
-              </DisclosurePanel>
-            </Transition>
-          </template>
-        </Disclosure>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/vue'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 
-const faqData = ref([
+const faqData = [
   {
     question: 'Apa syarat pendaftaran?',
     answer:
@@ -91,5 +83,5 @@ const faqData = ref([
     answer:
       'Pendaftaran dapat dilakukan secara online melalui portal pendaftaran kami. Ikuti langkah-langkah yang terdapat pada halaman pendaftaran.',
   },
-])
+]
 </script>
