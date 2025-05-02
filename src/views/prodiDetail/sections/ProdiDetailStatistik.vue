@@ -11,7 +11,7 @@ const props = defineProps<{
   prodiData: Departement;
 }>();
 
-const titleHTML = `Statistik Program <span class="text-fakultas">Studi ${props?.prodiData?.name}</span> Unpas`;
+const titleHTML = `Statistik Program <span class="text-colorPrimary">Studi ${props?.prodiData?.name}</span> Unpas`;
 </script>
 
 <template>
@@ -29,25 +29,25 @@ const titleHTML = `Statistik Program <span class="text-fakultas">Studi ${props?.
 
     <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
-        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-fakultas">
+        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
           <NumberTicker :value="prodiData.statistik1 || 1000" />
         </h2>
         <p class="text-base lg:text-xl font-bold">Mahasiswa</p>
       </div>
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
-        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-fakultas">
+        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
           <NumberTicker :value="prodiData.statistik2 || 1000" />
         </h2>
         <p class="text-base lg:text-xl font-bold">Lulusan</p>
       </div>
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
-        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-fakultas">
+        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
           <NumberTicker :value="prodiData.statistik3 || 1000" />
         </h2>
         <p class="text-base lg:text-xl font-bold">Prestasi</p>
       </div>
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
-        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-fakultas">
+        <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
           <NumberTicker :value="prodiData.statistik4 || 1000" />
         </h2>
         <p class="text-base lg:text-xl font-bold">Karya Ilmiah</p>

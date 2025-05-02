@@ -21,7 +21,7 @@ const props = defineProps<{
   fakultas: Faculty;
 }>();
 
-const titleHTML =  `Kenapa Harus Memilih <span class="text-fakultas font-bold">${props?.fakultas?.name || ''}</span> Unpas`;
+const titleHTML =  `Kenapa Harus Memilih <span class="text-colorPrimary font-bold">${props?.fakultas?.name || ''}</span> Unpas`;
 </script>
 
 <template>

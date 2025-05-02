@@ -13,7 +13,7 @@ defineProps<{
 <template>
   <SectionLayout>
       <div class="w-full flex justify-center items-center">
-        <TitleSection class="text-[#AA2132]" :text="'Kurikulum Terintegrasi'"></TitleSection>
+        <TitleSection class="text-colorPrimary" :text="'Kurikulum Terintegrasi'"></TitleSection>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           <KurikulumCard

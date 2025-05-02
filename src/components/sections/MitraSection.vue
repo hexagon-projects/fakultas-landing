@@ -20,7 +20,7 @@ defineProps<{
 }>();
 
 const modules = [Pagination, Autoplay];
-const titleHTML = 'Mitra <span class="text-fakultas">Kerjasama</span>';
+const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
 </script>
 
 <template>

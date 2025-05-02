@@ -18,6 +18,6 @@ defineProps<{
       <TextBody>{{ location.address }}</TextBody>
       <!-- <TextBody>{{ location.tagline }}</TextBody> -->
     </div>
-    <TextBody class="hover:text-fakultas cursor-pointer transition duration-500">Dapatkan Arah &gt;</TextBody>
+    <TextBody class="hover:text-colorPrimary cursor-pointer transition duration-500">Dapatkan Arah &gt;</TextBody>
   </div>
 </template>

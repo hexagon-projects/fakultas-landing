@@ -56,15 +56,7 @@ const navigateToDetail = (slug: string) => {
         <h2 class="text-base md:text-lg lg:text-xl font-medium">{{ item.name }}</h2>
         <div class="space-x-3">
           <InteractiveHoverButton :padding="'py-2 px-4 lg:py-3 lg:px-6'" :text="'Daftar'"></InteractiveHoverButton>
-          <InteractiveHoverButton :padding="'py-2 px-4 lg:py-3 lg:px-6'" :bg-color="'bg-transparent'" :bg-hover="'bg-fakultas'" :border-color="'border-fakultas'" :text="'Selengkapnya'" :text-color="'text-fakultas'" :text-hover="'group-hover:text-white'"/>
-          <!-- <button
-            class="py-2 px-4 lg:py-3 lg:px-8 text-xs lg:text-sm font-bold rounded-full cursor-pointer bg-fakultas text-netral">
-            Daftar
-          </button>
-          <button @click="navigateToDetail(item.slug)"
-            class="py-2 px-4 lg:py-3 lg:px-8 text-xs lg:text-sm font-bold rounded-full cursor-pointer bg-transparent border-[3px] border-fakultas text-fakultas">
-            Selengkapnya
-          </button> -->
+          <InteractiveHoverButton @click="navigateToDetail(item.slug)" :padding="'py-2 px-4 lg:py-3 lg:px-6'" :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'" :text="'Selengkapnya'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'"/>
         </div>
       </div>
     </div>

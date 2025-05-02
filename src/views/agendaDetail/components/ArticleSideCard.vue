@@ -41,7 +41,7 @@ defineProps<{
 
       <div class="w-full md:w-[60%] space-y-2">
         <div class="w-fit px-2 py-1 bg-white rounded-full">
-          <p class="text-[12px] text-fakultas">Edukasi</p>
+          <p class="text-[12px] text-colorPrimary">Edukasi</p>
         </div>
 
         <h4 class="text-[10px] md:text-[12px] lg:text-[16px] font-bold line-clamp-2">{{ post.title }}</h4>

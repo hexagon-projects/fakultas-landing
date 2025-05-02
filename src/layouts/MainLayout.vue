@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 const showContent = ref(false);
 
@@ -11,11 +13,13 @@ onMounted(async () => {
 
 <template>
   <div class="w-full overflow-hidden bg-netral">
+    <Header />
     <Transition name="fade-up">
       <div v-if="showContent" class="slot-container lg:mt-28">
         <slot></slot>
       </div>
     </Transition>
+    <Footer />
   </div>
 </template>
 

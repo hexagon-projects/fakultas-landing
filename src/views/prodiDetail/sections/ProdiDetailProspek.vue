@@ -11,7 +11,7 @@ const props = defineProps<{
   prodiDetail: Departement
 }>();
 
-const titleHTML = `Prospek Karir Program Studi <span class="text-fakultas font-bold">${props?.prodiDetail?.name}</span>`;
+const titleHTML = `Prospek Karir Program Studi <span class="text-colorPrimary font-bold">${props?.prodiDetail?.name}</span>`;
 
 const leftCards = props?.prospek?.slice(0, 1)
 const rightCards = props?.prospek?.slice(1, 2)

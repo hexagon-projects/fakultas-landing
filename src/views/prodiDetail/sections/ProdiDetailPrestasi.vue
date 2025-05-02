@@ -20,8 +20,8 @@ defineProps<{
 <template>
   <SectionLayout>
     <div class="w-full flex h-[60vh] md:h-[80vh]">
-      <div class="w-full h-full flex flex-col lg:flex-row lg:justify-between items-start gap-4 md:gap-5 lg:gap-6">
-        <div class="w-full lg:w-1/2 flex flex-col justify-center lg:h-full">
+      <div class="w-full h-full flex flex-col lg:flex-row lg:justify-between items-start gap-4 md:gap-5 lg:gap-6 relative">
+        <div class="w-full lg:w-1/2 flex flex-col justify-center lg:h-full lg:sticky">
           <div class="w-full space-y-2 lg:h-[80%]">
             <TitleSection :text="'Prestasi'"></TitleSection>
             <TextSection>Mahasiswa Universitas Pasundan terus mengukir prestasi

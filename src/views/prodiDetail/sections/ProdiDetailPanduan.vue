@@ -33,7 +33,7 @@ const panduanData = [
   <SectionLayout>
     <div class="w-full flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 lg:gap-6">
       <div class="w-full lg:max-w-3xl flex flex-col justify-center items-center gap-2 lg:gap-4 text-center">
-        <p class="text-base text-fakultas font-semibold">Pendaftaran</p>
+        <p class="text-base text-colorPrimary font-semibold">Pendaftaran</p>
         <TitleSection :text="'Panduan Pendaftaran dan Seleksi Program Studi'"></TitleSection>
         <TextSection>Proses pendaftaran program studi kami dirancang untuk
           memberikan kemudahan bagi calon mahasiswa. Pastikan Anda memenuhi semua persyaratan yang ditetapkan

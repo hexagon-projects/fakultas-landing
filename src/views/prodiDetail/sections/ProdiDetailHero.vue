@@ -36,7 +36,7 @@ defineProps<{
           </TextSection>
           <div class="w-full flex gap-4 md:gap-5 lg:gap-6 justify-center items-center md:justify-end md:items-end">
             <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-white'" :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'" :text-hover="'group-hover:text-fakultas'"/>
+            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-white'" :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'" :text-hover="'group-hover:text-colorPrimary'"/>
           </div>
         </div>
       </div>

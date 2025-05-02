@@ -14,7 +14,7 @@ defineProps<Props>();
   <button
     :class="[
       'p-3 lg:p-4 text-xs lg:text-sm font-bold rounded-full cursor-pointer',
-      bgColor || 'bg-fakultas',
+      bgColor || 'bg-colorPrimary',
       border || 'border-[3px]',
       borderColor || 'border-outline/50',
       textColor || 'text-netral'

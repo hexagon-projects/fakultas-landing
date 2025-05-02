@@ -50,7 +50,7 @@ const navigateToDetail = () => {
 
     <div class="w-[60%] md:w-full space-y-4 lg:space-y-4">
       <div class="w-fit py-2 px-5 bg-[#F5F2FF] rounded-[6px] md:rounded-[12px] lg:rounded-[24px]">
-        <p class="text-fakultas text-sm font-bold">{{ kategori || 'Berita' }}</p>
+        <p class="text-colorPrimary text-sm font-bold">{{ kategori || 'Berita' }}</p>
       </div>
       <div>
         <p class="text-sm md:text-base lg:text-lg font-bold">{{ judul }}</p>

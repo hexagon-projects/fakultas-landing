@@ -33,20 +33,23 @@ interface BorderBeamProps {
   startPositionSecond?: number;
 }
 
+// Default color menggunakan colorPrimary dari Tailwind
+const defaultColor = 'rgb(var(--color-primary-r), var(--color-primary-g), var(--color-primary-b))';
+
 const props = withDefaults(defineProps<BorderBeamProps>(), {
   size: 300,
   duration: 15000,
   anchor: 90,
   borderWidth: 1.5,
-  colorFrom: '#AA2132',
-  colorTo: '#AA2132',
+  colorFrom: defaultColor,
+  colorTo: defaultColor,
   delay: 0,
   // Default untuk border kedua
   sizeSecond: 180,
   durationSecond: 15000,
   anchorSecond: 75,
-  colorFromSecond: '#AA2132',
-  colorToSecond: '#AA2132',
+  colorFromSecond: defaultColor,
+  colorToSecond: defaultColor,
   delaySecond: 0,
   enableSecondBorder: true,
   startPositionSecond: 50

@@ -106,7 +106,7 @@ const goToDetail = (post: any) => {
           </div>
 
           <button @click="goToDetail(post)" class="text-left">
-            <TextBody class="hover:text-fakultas transition-colors">Selengkapnya ></TextBody>
+            <TextBody class="hover:text-colorPrimary transition-colors">Selengkapnya ></TextBody>
           </button>
         </div>
       </div>

@@ -27,17 +27,19 @@ const fakultas = ref([
 ])
 const navigasiLinks = [
   { label: 'Beranda', href: '/' },
-  { label: 'Fakultas & Prodi', href: '/fakultas' },
-  { label: 'Jalur & Jadwal', href: '/jalur' },
+  { label: 'Fakultas', href: '/fakultas' },
+  { label: 'Prodi', href: '/prodi' },
   { label: 'Fasilitas', href: '/fasilitas' },
-  { label: 'Mahasiswa & Alumni', href: '/mahasiswa-dan-alumni' },
-  { label: 'Prestasi', href: '/prestasi' },
-  { label: 'Dukungan', href: '/dukungan' },
-  { label: 'Artikel', href: '/artikel' },
-  { label: 'Mitra', href: '/mitra' },
+  { label: 'Tenaga Pengajar', href: '/tenaga-pengajar' },
   { label: 'Testimoni', href: '/testimoni' },
+  { label: 'Penelitian & Inovasi', href: '/riset-inovasi' },
+  { label: 'Berita', href: '/berita' },
+  { label: 'Kerjasama & Mitra', href: '/mitra' },
+  { label: 'Agenda', href: '/agenda' },
   { label: 'FAQ & Bantuan', href: '/faq' },
   { label: 'Kontak', href: '/kontak' },
+  { label: 'Prestasi', href: '/prestasi' },
+  { label: 'Kegiatan', href: '/kegiatan' },
 ]
 
 const lokasi = [
@@ -95,7 +97,7 @@ const lokasi = [
           </div>
         </div>
 
-        <div class="space-y-4 hidden lg:block">
+        <!-- <div class="space-y-4 hidden lg:block">
           <Text sizeMobile="text-sm" :text="'Fakultas'" weight="font-semibold" color="text-white" />
           <div class="flex flex-col gap-4 items-start">
             <a
@@ -107,7 +109,7 @@ const lokasi = [
               {{ item.name }}
             </a>
           </div>
-        </div>
+        </div> -->
 
         <div class="justify-around md:flex-col gap-4 flex flex-col">
           <Text sizeMobile="text-sm" :text="'Lokasi'" weight="font-semibold" color="text-white" />

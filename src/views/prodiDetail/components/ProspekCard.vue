@@ -35,7 +35,7 @@ defineProps({
       <p class="text-xs lg:text-sm"><span v-html="sanitizeHtml(description)"></span></p>
     </div>
 
-    <div class="w-6 h-6 lg:w-12 lg:h-12 bg-fakultas rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
+    <div class="w-6 h-6 lg:w-12 lg:h-12 bg-colorPrimary rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
       <img :src="icon" alt="" class="w-full h-full object-cover" v-if="icon">
     </div>
   </div>

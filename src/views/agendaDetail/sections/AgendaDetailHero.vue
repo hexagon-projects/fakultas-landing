@@ -37,12 +37,9 @@ defineProps<{
             <TextSection><span v-html="sanitizeHtml(agenda.description)"></span></TextSection>
           </div>
           <div class="flex flex-row items-start gap-3 md:gap-4">
-            <!-- <ButtonSection>Daftar</ButtonSection>
-            <ButtonSection :border-color="'border-fakultas'" :bg-color="'bg-transparent'" :text-color="'text-fakultas'">
-              Lihat Acara</ButtonSection> -->
             <InteractiveHoverButton :text="'Daftar'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-fakultas'"
-              :border-color="'border-fakultas'" :text="'Lihat Acara'" :text-color="'text-fakultas'"
+            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
+              :border-color="'border-colorPrimary'" :text="'Lihat Acara'" :text-color="'text-colorPrimary'"
               :text-hover="'group-hover:text-white'" />
           </div>
         </div>

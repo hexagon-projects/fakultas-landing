@@ -60,8 +60,8 @@ const menuItems = [
 { name: 'Beranda', path: '/', icon: 'pi pi-home' },
 { name: 'Tentang', path: '/tentang-fakultas', icon: 'pi pi-book' },
 { name: isMobile.value ? 'Riset' : 'Riset & Inovasi', path: '/riset-dan-inovasi', icon: 'pi pi-calendar' },
-{ name: isMobile.value ? 'Prodi' : 'Program Studi', path: '/program-studi', icon: 'pi pi-map-marker' },
-{ name: isMobile.value ? 'Kegiatan' : 'Kegiatan Mahasiswa', path: '/mahasiswa-dan-alumni', icon: 'pi pi-users' },
+{ name: isMobile.value ? 'Prodi' : 'Program Studi', path: '/prodi', icon: 'pi pi-map-marker' },
+{ name: isMobile.value ? 'Kegiatan' : 'Kegiatan Mahasiswa', path: '/kegiatan', icon: 'pi pi-users' },
 ]
 
 const handleClick = () => {

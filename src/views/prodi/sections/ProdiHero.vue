@@ -19,7 +19,7 @@ import InteractiveHoverButton from '@/components/ui/interactive-hover-button/Int
             cintai.</TextSection>
           <div class="w-full space-x-4 lg:space-x-6">
             <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-fakultas'" :border-color="'border-fakultas'" :text="'Hubungi Admin'" :text-color="'text-fakultas'" :text-hover="'group-hover:text-white'"/>
+            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'" :text="'Hubungi Admin'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'"/>
           </div>
         </div>
       </div>

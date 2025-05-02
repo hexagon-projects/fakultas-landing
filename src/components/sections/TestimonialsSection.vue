@@ -70,8 +70,8 @@ const swiperOptions = {
 <template>
   <SectionLayout>
     <div class="w-full text-center flex flex-col justify-center items-center gap-4">
-      <div class="w-fit py-2 px-5 bg-fakultas/10 rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
-        <p class="text-fakultas text-sm lg:text-base">Testimonials</p>
+      <div class="w-fit py-2 px-5 bg-colorPrimary/10 rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+        <p class="text-colorPrimary text-sm lg:text-base">Testimonials</p>
       </div>
       <TitleSection :text="'Apa Kata Mereka'"></TitleSection>
       <TextSection class="lg:max-w-2xl">Customers trust Chainex for secure automation and smart analytics. See
@@ -100,8 +100,7 @@ const swiperOptions = {
             </div>
           </CardSpotlight>
           <BorderBeam v-if="activeIndex === index" :size="250" :duration="10" :delay="0" :border-width="3"
-            :size-second="250" :duration-second="6" :delay-second="0" :color-from-second="'#AA2132'"
-            :color-to-second="'#AA2132'" :anchor-second="75" :enable-second-border="true" :start-position-second="50" />
+            :size-second="250" :duration-second="6" :delay-second="0" :anchor-second="75" :enable-second-border="true" :start-position-second="50" />
         </div>
       </swiper-slide>
     </swiper>

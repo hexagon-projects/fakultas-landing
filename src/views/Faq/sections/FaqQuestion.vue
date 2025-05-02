@@ -22,11 +22,9 @@ const backgroundImageUrl = 'https://images.unsplash.com/photo-1507525428034-b723
       </div>
 
       <div class="flex flex-wrap justify-center gap-4 md:gap-6 lg:-mt-10">
-        <!-- <ButtonSection>Daftar Sekarang</ButtonSection>
-        <ButtonSection :border-color="'border-fakultas'" :bg-color="'bg-transparent'" :text-color="'text-fakultas'">Hubungi Kami</ButtonSection> -->
         <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
-        <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-fakultas'" :border-color="'border-fakultas'"
-          :text="'Hubungi Kami'" :text-color="'text-fakultas'" :text-hover="'group-hover:text-white'" />
+        <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'"
+          :text="'Hubungi Kami'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'" />
       </div>
     </div>
   </SectionLayout>

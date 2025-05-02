@@ -66,7 +66,7 @@ const sendWhatsAppMessage = () => {
       </div>
       <button
         @click="sendWhatsAppMessage"
-        class="w-full py-3 bg-fakultas rounded-full text-white font-bold tetxt-sm md:text-base lg:text-lg hover:bg-opacity-90 transition"
+        class="w-full py-3 bg-colorPrimary rounded-full text-white font-bold tetxt-sm md:text-base lg:text-lg hover:bg-opacity-90 transition"
         :disabled="!formData.name || !formData.email || !formData.message"
       >
         Kirim
