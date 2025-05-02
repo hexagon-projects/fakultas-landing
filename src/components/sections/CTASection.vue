@@ -2,7 +2,6 @@
 import SectionLayout from '@/layouts/SectionLayout.vue'
 import ctaBackground from '@/assets/ctaBackground.png'
 import ctaOrang from '@/assets/ctaOrang.png'
-import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHoverButton.vue';
 </script>
 
 <template>
@@ -25,18 +24,37 @@ import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHo
           </div>
 
           <div class="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-0">
-            <InteractiveHoverButton :bg-color="'bg-white'" :text-color="'text-fakultas'" :text="'Daftar Sekarang'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-white'" :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'" :text-hover="'group-hover:text-fakultas'"/>
+            <button
+              class="flex justify-center items-center px-4 sm:px-5 py-2 sm:py-3 rounded-full border-2 border-white/50 bg-[#f3f4f4] text-[#aa2132] text-xs sm:text-sm font-bold hover:bg-[#e0e0e0] transition-colors whitespace-nowrap"
+            >
+              Daftar Sekarang
+            </button>
+            <button
+              class="flex justify-center items-center px-4 sm:px-5 py-2 sm:py-3 rounded-full border-2 border-white/50 text-[#f3f4f4] text-xs sm:text-sm font-bold hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              Hubungi Kami
+            </button>
           </div>
         </div>
 
-        <!-- Image Section -->
-        <div class="order-1 md:order-2 w-full h-full relative">
-          <!-- Container untuk masking bagian bawah -->
+        <!-- Image Section - Optimized for mobile -->
+        <div class="order-1 md:order-2 w-full h-full relative -mt-3 md:mt-0 lg:mt-0">
+          <!-- Mobile version (centered and larger) -->
+          <div class="md:hidden absolute inset-0 flex items-center justify-center">
+            <div class="h-[200px] w-full flex items-center justify-center overflow-visible">
+              <img
+                :src="ctaOrang"
+                alt="Gambar Kanan"
+                class="z-10 object-contain"
+                style="height: 100%; max-height: 250px; width: auto"
+              />
+            </div>
+          </div>
+
+          <!-- Desktop version (original effect) -->
           <div
-            class="absolute bottom-0 right-0 h-[85%] w-full md:h-[90%] lg:h-[95%] overflow-hidden"
+            class="hidden md:block absolute bottom-0 right-0 md:h-[120%] lg:h-[120%] w-full overflow-hidden"
           >
-            <!-- Gambar dengan z-10 dan keluar di atas -->
             <img
               :src="ctaOrang"
               alt="Gambar Kanan"

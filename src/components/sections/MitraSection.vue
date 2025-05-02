@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import SectionLayout from '@/layouts/SectionLayout.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper';
 
@@ -26,13 +25,13 @@ const titleHTML = 'Mitra <span class="text-fakultas">Kerjasama</span>';
 
 <template>
   <div>
-    <SectionLayout>
+    <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
       <div class="w-full flex justify-center items-center">
         <TitleSection :text="titleHTML" :html="true" :delay="60" />
       </div>
-    </SectionLayout>
+    </div>
 
-    <div class="mb-5 lg:mb-10 px-4">
+    <div class="lg:mb-10 px-4">
       <swiper :modules="modules" :slides-per-view="3" :space-between="30" :autoplay="{
         delay: 2000,
         disableOnInteraction: false,
@@ -59,8 +58,8 @@ const titleHTML = 'Mitra <span class="text-fakultas">Kerjasama</span>';
         }">
         <swiper-slide v-for="partner in partners" :key="partner?.id">
           <div
-            class="h-24 lg:h-40 flex items-center justify-center mb-5 lg:mb-10">
-            <img :src="getImageUrl(partner?.image || '')" :alt="partner?.name" class="max-h-full max-w-full object-contain rounded-[6px] md:rounded-[12px] lg:rounded-[24px]" />
+            class="h-24 lg:h-40 flex items-center justify-center lg:mb-10">
+            <img :src="getImageUrl(partner?.image || '')" :alt="partner?.name" class="w-full h-full object-cover rounded-[6px] md:rounded-[12px] lg:rounded-[24px]" />
           </div>
         </swiper-slide>
       </swiper>

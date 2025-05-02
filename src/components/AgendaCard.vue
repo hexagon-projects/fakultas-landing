@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useSanitize } from '@/composables/useSanitize';
-import ButtonSection from './ButtonSection.vue';
 import TextBody from './TextBody.vue';
 import { ref, onMounted } from 'vue';
 import router from '@/router';
@@ -35,7 +34,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="agenda-card w-full max-h-fit flex flex-col md:flex-row p-3 md:p-0 gap-4 lg:gap-6 rounded-[6px] md:rounded-[12px] lg:rounded-[24px] transition-all duration-500 cursor-pointer"
+    class="agenda-card w-full max-h-fit flex flex-col md:flex-row p-3 md:p-0 gap-4 lg:gap-6 rounded-[6px] md:rounded-[12px] lg:rounded-[24px] transition-all duration-500 cursor-pointer shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)]"
     :class="[isVisible ? 'card-visible' : 'card-hidden', `delay-${(index || 0) % 9}`]" @click="navigateToDetail(slug)">
     <div
       class="w-full md:w-[30%] lg:w-[20%] h-40 md:h-full rounded-[4px] md:rounded-l-[8px] lg:rounded-l-[16px] overflow-hidden">
@@ -60,12 +59,8 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.agenda-card {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-}
 
 .agenda-card:hover {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
 }
 
