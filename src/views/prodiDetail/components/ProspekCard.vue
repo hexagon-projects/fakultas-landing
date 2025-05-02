@@ -29,7 +29,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="['bg-white md:bg-transparent p-2 rounded-[6px] md:rounded-[12px] lg:rounded-[24px] flex gap-4 md:gap-5 lg:gap-6 justify-center items-center', flexDirection]">
+  <div :class="['bg-white md:bg-transparent p-2 rounded-[6px] md:rounded-[12px] lg:rounded-[24px] flex gap-4 md:gap-5 lg:gap-6 justify-end md:justify-center items-center', flexDirection]">
     <div :class="['space-y-2', alignText]">
       <p class="text-sm lg:text-base font-medium">{{ title }}</p>
       <p class="text-xs lg:text-sm"><span v-html="sanitizeHtml(description)"></span></p>

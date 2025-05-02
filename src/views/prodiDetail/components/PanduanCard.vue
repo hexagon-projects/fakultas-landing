@@ -8,14 +8,16 @@ defineProps<{
 </script>
 
 <template>
-  <div class="space-y-4 lg:space-y-6 transition-all duration-500 hover:-translate-y-2">
+  <div class="space-y-4 lg:space-y-6 group transition-all duration-500 hover:-translate-y-2">
     <div class="w-full h-40 md:h-50 lg:h-60 relative rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
       <div class="w-full h-full icon-container">
-        <img
-          :src="image || 'https://via.placeholder.com/300'"
-          :alt="title || 'Panduan'"
-          class="w-full h-full object-cover rounded-[4px] md:rounded-[8px] lg:rounded-[16px] icon-box"
-        >
+        <div class="w-full h-full overflow-hidden rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
+          <img
+            :src="image || 'https://via.placeholder.com/300'"
+            :alt="title || 'Panduan'"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500 icon-box"
+          >
+        </div>
         <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
               xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs>

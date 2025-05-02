@@ -18,7 +18,7 @@ import ProdiDetailPoster from './sections/ProdiDetailPoster.vue';
 import CTASection from '@/components/sections/CTASection.vue';
 import { useRoute } from 'vue-router';
 import { useDepartementStore } from '@/stores/departement';
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import { useAgendaStore } from '@/stores/agenda';
 import { usePartnerStore } from '@/stores/partner';
 import { usePrestasiStore } from '@/stores/prestasi';
@@ -44,7 +44,6 @@ const postStore = usePostStore();
 const prospekStore = useProspekStore();
 const kurikulumStore = useKurikulumStore();
 const sliderStore = useSliderStore();
-const isLoading = ref(true);
 
 onMounted(async () => {
   const slug = route.params.slug as string;
@@ -62,20 +61,16 @@ onMounted(async () => {
       await kurikulumStore.fetchKurikulumbyId(departementId) // id
       await sliderStore.fetchSliderbyId(departementId) // id
     }
-    isLoading.value = false;
+    await agendaStore.fetchAgendas();
+    await postStore.fetchPosts()
   }
-  await agendaStore.fetchAgendas();
-  await postStore.fetchPosts()
 });
 
 </script>
 
 <template>
   <MainLayout>
-    <template v-if="isLoading">
-      <div class="w-full h-[90vh] flex justify-center items-center text-center py-10">Memuat data...</div>
-    </template>
-    <template v-else-if="departementStore.currentDepartement">
+    <template v-if="departementStore.currentDepartement">
       <HeroSection :prodi-detail="departementStore.currentDepartement" />
       <AboutSection :prodi-detail="departementStore.currentDepartement" />
       <ProdiDetailPoster :slider="sliderStore.currentSlider" />

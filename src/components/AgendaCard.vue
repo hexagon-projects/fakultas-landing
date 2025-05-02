@@ -52,7 +52,9 @@ onMounted(() => {
         <TextBody class="line-clamp-2 md:line-clamp-3 lg:line-clamp-4"><span
             v-html="sanitizeHtml(deskripsi || 'Deskripsi Acara')"></span></TextBody>
       </div>
-      <InteractiveHoverButton @click="navigateToDetail(slug)" :text="'Selengkapnya'"></InteractiveHoverButton>
+      <div class="w-fit md:w-1/2 lg:w-1/3 xl:w-1/4">
+        <InteractiveHoverButton @click="navigateToDetail(slug)" class="w-fit md:w-full" :padding="'py-3 px-6 lg:py-4 lg:px-6'" :text="'Selengkapnya'"></InteractiveHoverButton>
+      </div>
     </div>
   </div>
 </template>
