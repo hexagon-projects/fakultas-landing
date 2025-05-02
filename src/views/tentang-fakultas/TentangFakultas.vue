@@ -1,185 +1,182 @@
 <script setup lang="ts">
+import Button from '@/components/Button.vue'
+import InteractiveHoverButton from '@/components/insipra-ui/InteractiveHoverButton.vue'
+import Timeline from '@/components/insipra-ui/Timeline.vue'
+import Mitra from '@/components/MitraSection.vue'
+import Testimonial from '@/components/Testimonial.vue'
+import Title from '@/components/Title.vue'
+import { berandaStore, tentangStore } from '@/stores'
+import { onMounted } from 'vue'
+
+const data = [
+  {
+    id: "1",
+    label: "Sejarah Fakultas Hukum Unpas",
+  },
+  {
+    id: "2",
+    label: "Perioderisasi",
+  },
+  {
+    id: "3",
+    label: "Akreditasi",
+  },
+];
+
+onMounted(() => {
+  tentangStore.getInitialData()
+})
 </script>
 <template>
-    <div>
-        <!-- Hero Section -->
-        <div class="px-[5%] py-24">
-            <div class="text-center w-1/2 mx-auto">
-                <h1 class="text-5xl font-semibold">Sejarah, Visi, Misi, dan Pencapaian Fakultas Kami</h1>
-                <p class="mt-8">Fakultas kami didirikan pada tahun 1990 dengan tujuan memberikan pendidikan berkualitas tinggi. Kami berkomitmen untuk menciptakan lingkungan belajar yang inovatif dan inklusif, serta menghasilkan lulusan yang siap bersaing di dunia profesional.</p>
-            </div>
-        </div>
-
-        <!-- Sejarah Fakultas -->
-        <div class="flex px-[5%] py-24 gap-20">
-            <div class="w-1/2">
-                <div>
-                    <h1 class="text-5xl font-semibold mt-7">Sejarah Fakultas Hukum Unpas</h1>
-                    <p class="text-gray-500 mt-7">Fakultas Hukum Universitas Pasundan (FH UNPAS) didirikan pada 14 November 1960 oleh Yayasan Universitas Pasundan dengan nama awal Fakultas Hukum dan Pengetahuan Masyarakat. Tokoh-tokoh perintisnya antara lain Mr. Oesadi, R. Abas Soeriaatmadja, R. Sunarja, dan Prof. Dr. Mr. Moechtar Kusumaatmadja, LL.M. Sejak awal berdirinya, fakultas ini menunjukkan perkembangan signifikan, dimulai dengan perolehan status “Terdaftar” dari Departemen Pendidikan dan Kebudayaan RI pada 11 September 1962, kemudian status “Diakui” pada 15 Maret 1964. Pada tahun 1986, program Sarjana Muda memperoleh status “Diakui” dan program Sarjana memperoleh status “Terdaftar.” Fakultas ini terus berkembang dan berhasil memperoleh akreditasi "A" (Baik Sekali) pada 11 Agustus 1998, yang terus diperpanjang hingga akhirnya meraih peringkat "Unggul" pada 28 November 2023 berdasarkan SK BAN-PT No. 4912/SK/BAN-PT/Ak.KP/S/XI/2023. Dengan sejarah panjang dan reputasi akademik yang kuat, FH UNPAS terus berkomitmen mencetak lulusan hukum yang unggul, berintegritas, dan mampu menjawab tantangan zaman.</p>
-                </div>
-            </div>
-            <div class="w-1/2">
-                <div class="w-full h-full bg-gray-200"></div>
-            </div>
-        </div>
-
-        <!-- Visi Misi Fakultas -->
-        <div class="flex px-[5%] py-24 gap-20">
-            <div class="w-1/2">
-                <div class="w-full h-full bg-gray-200"></div>
-            </div>
-            <div class="w-1/2">
-                <div>
-                    <h1 class="text-5xl font-semibold mt-7">Visi & Misi <span class="text-[#AA2132]">Fakultas Hukum</span> Unpas</h1>
-                    <h6 class="mt-5 font-semibold">Visi</h6>
-                    <p>“Menjadi fakultas hukum unggulan di tingkat nasional dan internasional yang berlandaskan nilai-nilai keilmuan, keislaman, dan kesundaan dalam mengembangkan ilmu hukum yang berkeadilan, berintegritas, dan responsif terhadap dinamika global.”</p>
-                    <h6 class="mt-5 font-semibold">Misi</h6>
-                    <p>“Menjadi fakultas hukum unggulan di tingkat nasional dan internasional yang berlandaskan nilai-nilai keilmuan, keislaman, dan kesundaan dalam mengembangkan ilmu hukum yang berkeadilan, berintegritas, dan responsif terhadap dinamika global.”</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Statistik Fakultas -->
-        <div class="flex gap-20 py-24 px-[5%]">
-            <div class="w-1/2">
-                <div class="grid gap-5">
-                    <h1 class="text-5xl font-semibold">Statistik Fakultas: Mengetahui Lebih Dalam Tentang Kami</h1>
-                    <p>Fakultas kami memiliki lebih dari 1.000 mahasiswa aktif yang terdaftar. Dengan dukungan 100 dosen berpengalaman, kami menawarkan 10 program studi yang berkualitas. Kami berkomitmen untuk memberikan pendidikan terbaik dan mendukung pengembangan karir mahasiswa.</p>
-                </div>
-                <div class="flex gap-10 mt-10">
-                    <button class="cursor-pointer border-black border py-2 px-4">Button</button>
-                    <button class="cursor-pointer">Button</button>
-                </div>
-            </div>
-
-            <div class="w-1/2">
-                <div class="grid grid-cols-2 gap-10">
-                    <div class="pl-5 border-l">
-                        <div class="text-5xl font-semibold text-[#AA2132] w-fit">
-                            2K+
-                        </div>
-                        <div class="text-black mt-2 font-semibold">
-                            Mahasiswa
-                        </div>
-                    </div>
-                    <div class="pl-5 border-l">
-                        <div class="text-5xl font-semibold text-[#AA2132] w-fit">
-                            2K+
-                        </div>
-                        <div class="text-black mt-2 font-semibold">
-                            Mahasiswa
-                        </div>
-                    </div>
-                    <div class="pl-5 border-l">
-                        <div class="text-5xl font-semibold text-[#AA2132] w-fit">
-                            2K+
-                        </div>
-                        <div class="text-black mt-2 font-semibold">
-                            Mahasiswa
-                        </div>
-                    </div>
-                    <div class="pl-5 border-l">
-                        <div class="text-5xl font-semibold text-[#AA2132] w-fit">
-                            2K+
-                        </div>
-                        <div class="text-black mt-2 font-semibold">
-                            Mahasiswa
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tim Dosen -->
-        <div class="py-24 px-[5%]">
-            <div class="grid gap-5">
-                <h6 class="font-semibold text-lg">Tim</h6>
-                <h1 class="text-5xl font-semibold">Dosen Akademisi</h1>
-                <p>Dosen-dosen unggulan dengan pengalaman dan keahlian tinggi.</p>
-            </div>
-
-            <!-- Card Dosen -->
-            <div class="w-full mt-10 grid grid-cols-4 gap-10">
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-                <div class="grid gap-5">
-                    <img src="" alt="" class="w-full h-80 object-cover rounded-[32px] bg-gray-200">
-                    <div>
-                        <h2 class="font-semibold text-lg">Dr. Andi</h2>
-                        <h3 class="text-lg">Dosen Senior</h3>
-                    </div>
-                    <p>Spesialis dalam penelitian teknologi informasi dan pengembangan perangkat lunak.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mitra -->
-        <div class="py-24 px-[5%]">
-            <h5 class="text-xl font-semibold text-center">Digunakan oleh perusahaan-perusahaan terkemuka dunia</h5>
-            <div class="w-full h-120 bg-gray-200 mt-10">
-    
-            </div>
-        </div>
-
-        <!-- Testimoni -->
-        <div class="py-24 px-[5%]">
-            <div class="w-full h-120 bg-gray-200 mt-10">
-    
-            </div>
-        </div>
+  <!-- Hero Section -->
+  <div
+    class="lg:mt-48 mt-10 px-[5%] lg:px-0 flex lg:gap-20 gap-5 lg:flex-row flex-col items-center"
+  >
+    <div class="text-center lg:w-1/2 w-full mx-auto">
+      <Title>Sejarah, Visi, Misi, dan Pencapaian Fakultas Kami</Title>
+      <p class="mt-8 text-sm lg:text-base">
+        Fakultas kami didirikan pada tahun 1990 dengan tujuan memberikan pendidikan berkualitas
+        tinggi. Kami berkomitmen untuk menciptakan lingkungan belajar yang inovatif dan inklusif,
+        serta menghasilkan lulusan yang siap bersaing di dunia profesional.
+      </p>
     </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0">
+    <div class="lg:w-1/2 w-full h-80 bg-gray-200"></div>
+    <div class="lg:w-1/2 w-full">
+      <Timeline :items="data"/>
+    </div>
+  </div>
+
+  <!-- Sejarah Fakultas -->
+  <div class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10">
+    <div class="lg:w-1/2 w-full">
+      <div>
+        <Title class="mt-7">
+          Tentang <span class="text-colorPrimary">Fakultas Hukum</span> Unpas
+        </Title>
+        <p class="text-gray-500 mt-7 text-sm lg:text-base">
+          Fakultas Hukum Universitas Pasundan (FH UNPAS) merupakan salah satu fakultas tertua dan
+          institusi pendidikan hukum yang memiliki reputasi unggul di lingkungan Universitas
+          Pasundan. Berdiri sejak tanggal 14 November 1960, FH UNPAS telah mengukir sejarah panjang
+          dalam kontribusinya bagi pengembangan ilmu hukum dan pencetakan sumber daya manusia unggul
+          di Indonesia.
+        </p>
+        <div class="flex gap-5 lg:mt-10 mt-5">
+          <!-- <Button>Daftar Sekarang</Button>
+          <Button className="btn-outline-primary">Selengkapnya</Button> -->
+          <InteractiveHoverButton
+            text="Daftar Sekarang"
+          />
+          <InteractiveHoverButton
+            text="Selengkapnya"
+            background="bg-transparent"
+            color="text-colorPrimary"
+            borderCustom="border-colorPrimary"
+          />  
+        </div>
+      </div>
+    </div>
+    <div class="lg:w-1/2 w-full">
+      <div class="w-full h-80 bg-gray-200"></div>
+    </div>
+  </div>
+
+  <!-- Visi Misi Fakultas -->
+  <div class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10">
+    <div class="lg:w-1/2 w-full">
+      <div class="w-full h-full bg-gray-200"></div>
+    </div>
+    <div class="lg:w-1/2 w-full">
+      <div>
+        <Title class="mt-7">Visi & Misi</Title>
+        <p class="mt-5 text-sm lg:text-base">
+          “Menjadi fakultas hukum unggulan di tingkat nasional dan internasional yang berlandaskan
+          nilai-nilai keilmuan, keislaman, dan kesundaan dalam mengembangkan ilmu hukum yang
+          berkeadilan, berintegritas, dan responsif terhadap dinamika global.”
+        </p>
+        <!-- <h6 class="mt-5 font-semibold">Visi</h6>
+                <p>“Menjadi fakultas hukum unggulan di tingkat nasional dan internasional yang berlandaskan nilai-nilai keilmuan, keislaman, dan kesundaan dalam mengembangkan ilmu hukum yang berkeadilan, berintegritas, dan responsif terhadap dinamika global.”</p>
+                <h6 class="mt-5 font-semibold">Misi</h6>
+                <p>“Menjadi fakultas hukum unggulan di tingkat nasional dan internasional yang berlandaskan nilai-nilai keilmuan, keislaman, dan kesundaan dalam mengembangkan ilmu hukum yang berkeadilan, berintegritas, dan responsif terhadap dinamika global.”</p> -->
+        <div class="flex gap-5 lg:mt-10 mt-5">
+          <!-- <Button>Daftar Sekarang</Button>
+          <Button className="btn-outline-primary">Selengkapnya</Button> -->
+          <InteractiveHoverButton
+            text="Daftar Sekarang"
+          />
+          <InteractiveHoverButton
+            text="Selengkapnya"
+            background="bg-transparent"
+            color="text-colorPrimary"
+            borderCustom="border-colorPrimary"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistik Fakultas -->
+  <div class="flex flex-col gap-10 lg:mt-48 mt-32 px-[5%] lg:px-0">
+    <div class="w-full">
+      <div class="grid gap-5">
+        <Title> Statistik Fakultas: Mengetahui Lebih Dalam Tentang Kami </Title>
+        <p class="text-sm lg:text-base">
+          Fakultas kami memiliki lebih dari 1.000 mahasiswa aktif yang terdaftar. Dengan dukungan
+          100 dosen berpengalaman, kami menawarkan 10 program studi yang berkualitas. Kami
+          berkomitmen untuk memberikan pendidikan terbaik dan mendukung pengembangan karir
+          mahasiswa.
+        </p>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <div class="grid grid-cols-2 md:grid-cols-4 w-full gap-10">
+        <div class="pl-5 border-l border-[#444444]">
+          <div class="text-5xl font-semibold text-colorPrimary w-fit">{{ berandaStore.fakultasData.statistik1 }}+</div>
+          <div class="text-black mt-2 font-semibold">Mahasiswa</div>
+        </div>
+        <div class="pl-5 border-l border-[#444444]">
+          <div class="text-5xl font-semibold text-colorPrimary w-fit">{{ berandaStore.fakultasData.statistik2 }}+</div>
+          <div class="text-black mt-2 font-semibold">Lulusan</div>
+        </div>
+        <div class="pl-5 border-l border-[#444444]">
+          <div class="text-5xl font-semibold text-colorPrimary w-fit">{{ berandaStore.fakultasData.statistik3 }}+</div>
+          <div class="text-black mt-2 font-semibold">Prestasi</div>
+        </div>
+        <div class="pl-5 border-l border-[#444444]">
+          <div class="text-5xl font-semibold text-colorPrimary w-fit">{{ berandaStore.fakultasData.statistik4 }}+</div>
+          <div class="text-black mt-2 font-semibold">Karya Ilmiah</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mitra -->
+  <Mitra />
+
+  <!-- Tim Dosen -->
+  <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
+    <div class="grid gap-5">
+      <h6 class="font-bold text-2xl">Tim</h6>
+      <Title> <span class="text-colorPrimary">Fakultas Hukum</span> Unpas </Title>
+    </div>
+
+    <!-- Card Dosen -->
+    <div class="w-full mt-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
+      <div class="grid gap-5" v-for="(data, index) in tentangStore.dosenData" :key="index">
+        <img src="" alt="" class="w-full h-64 object-cover rounded-[32px] bg-gray-200" />
+        <div>
+          <h2 class="font-semibold text-lg">{{ data.name }}</h2>
+          <h3 class="text-lg">{{ data.title }}</h3>
+        </div>
+        <p class="text-sm md:text-base" v-html="data.description"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimoni -->
+  <Testimonial />
 </template>

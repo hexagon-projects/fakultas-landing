@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Inter', sans-serif;
+    color: black;
+    background-color: #f3f4f4;
+    --background: 357.8 61.8% 40.8%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 54.3 94.1% 64.9%;
+    --primary-foreground: black;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    --text: 0 0% 100%;
+    --text-muted: 215.4 16.3% 46.9%;
+    --text-placeholder: 215.4 16.3% 46.9%;
+    --text-inverted: 222.2 84% 4.9%;
+
+    --color-primary: #aa2132;
+    --color-primary-r: #aa2132;
+    --color-primary-g: #aa2132;
+    --color-primary-b: #aa2132;
+  }
+
+  .dark {
+    --background: 357.8 61.8% 40.8%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 54.3 94.1% 64.9%;
+    --primary-foreground: black;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    --text: 0 0% 100%;
+    --text-muted: 215.4 16.3% 46.9%;
+    --text-placeholder: 215.4 16.3% 46.9%;
+    --text-inverted: 222.2 84% 4.9%;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-colorPrimary rounded-full text-white cursor-pointer font-semibold text-xs md:text-sm lg:text-base;
+  }
+
+  .btn-outline-primary {
+    @apply border font-semibold border-colorPrimary rounded-full text-colorPrimary hover:bg-colorPrimary hover:text-white transition cursor-pointer text-xs md:text-sm lg:text-base;
+  }
+
+  .btn-outline-light {
+    @apply border font-semibold border-white rounded-full py-2 px-5 text-white hover:bg-colorPrimary hover:text-white  cursor-pointer text-xs md:text-sm lg:text-base;
+  }
+
+  .btn-neutral {
+    @apply bg-[#44444450] rounded-full text-white cursor-pointer font-semibold text-xs md:text-sm lg:text-base;
+  }
+}

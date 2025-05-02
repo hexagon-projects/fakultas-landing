@@ -30,7 +30,51 @@ const router = createRouter({
             pageTitle: "Tentang Fakultas",
           },
         },
+        {
+          path: "/testimoni",
+          name: "testimoni",
+          component: () => import("@/views/testimoni/Testimoni.vue"),
+          meta: {
+            pageTitle: "Testimoni",
+          },
+        },
+        {
+          path: "/kerjasama",
+          name: "kerjasama",
+          component: () => import("@/views/kerjasama/Kerjasama.vue"),
+          meta: {
+            pageTitle: "Kerjasama",
+          },
+        },
+        {
+          path: "/riset-dan-inovasi",
+          name: "riset-dan-inovasi",
+          component: () => import("@/views/riset-dan-inovasi/RisetDanInovasi.vue"),
+          meta: {
+            pageTitle: "Riset dan Inovasi",
+          },
+        },
+        {
+          path: "/fasilitas",
+          name: "fasilitas",
+          component: () => import("@/views/fasilitas/Fasilitas.vue"),
+          meta: {
+            pageTitle: "Fasilitas",
+          },
+        },
+        {
+          path: "/prestasi",
+          name: "prestasi",
+          component: () => import("@/views/prestasi/Prestasi.vue"),
+          meta: {
+            pageTitle: "Prestasi",
+          },
+        },
       ]
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/",
     },
   ],
 })
