@@ -7,7 +7,7 @@ import ctaOrang from '@/assets/ctaOrang.png'
 <template>
   <SectionLayout>
     <div
-      class="relative max-w-[160vh] h-[300px] sm:h-[350px] md:h-[297px] lg:h-[365px] rounded-3xl bg-cover bg-center mx-auto"
+      class="relative max-w-[160vh] h-[300px] sm:h-[350px] md:h-[297px] lg:h-[361px] rounded-3xl bg-cover bg-center mx-auto"
       :style="`background-image: url(${ctaBackground})`"
     >
       <div
@@ -38,15 +38,19 @@ import ctaOrang from '@/assets/ctaOrang.png'
         </div>
 
         <!-- Image Section -->
-        <div
-          class="order-1 md:order-2 w-full h-[180px] sm:h-[220px] md:h-full flex items-center justify-center md:justify-end -mt-13 md: -mt-15 lg:-mt-19"
-        >
-          <img
-            :src="ctaOrang"
-            alt="Gambar Kanan"
-            class="h-full object-contain object-center md:object-right scale-118"
-            style="max-height: 100%"
-          />
+        <div class="order-1 md:order-2 w-full h-full relative">
+          <!-- Container untuk masking bagian bawah -->
+          <div
+            class="absolute bottom-0 right-0 h-[85%] w-full md:h-[90%] lg:h-[95%] overflow-hidden"
+          >
+            <!-- Gambar dengan z-10 dan keluar di atas -->
+            <img
+              :src="ctaOrang"
+              alt="Gambar Kanan"
+              class="absolute z-10 object-contain object-bottom"
+              style="height: 110%; bottom: 0; right: 0; max-width: 100%"
+            />
+          </div>
         </div>
       </div>
     </div>
