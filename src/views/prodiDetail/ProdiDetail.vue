@@ -18,7 +18,7 @@ import ProdiDetailPoster from './sections/ProdiDetailPoster.vue';
 import CTASection from '@/components/sections/CTASection.vue';
 import { useRoute } from 'vue-router';
 import { useDepartementStore } from '@/stores/departement';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useAgendaStore } from '@/stores/agenda';
 import { usePartnerStore } from '@/stores/partner';
 import { usePrestasiStore } from '@/stores/prestasi';
@@ -47,11 +47,18 @@ const sliderStore = useSliderStore();
 
 const isLoading = ref(true);
 
+const updateTitle = () => {
+  if (departementStore.currentDepartement?.name) {
+    document.title = `${departementStore.currentDepartement.name} - ${import.meta.env.VITE_APP_NAME}`;
+  }
+};
+
 onMounted(async () => {
   try {
     const slug = route.params.slug as string;
     if (slug) {
       await departementStore.fetchDepartementBySlug(slug);
+      updateTitle();
       const departementId = departementStore.currentDepartement?.id;
       if (departementId) {
         await Promise.all([
@@ -77,6 +84,8 @@ onMounted(async () => {
     isLoading.value = false;
   }
 });
+
+watch(() => departementStore.currentDepartement, updateTitle);
 </script>
 
 <template>

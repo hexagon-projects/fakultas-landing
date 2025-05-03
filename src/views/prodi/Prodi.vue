@@ -11,6 +11,7 @@ import ProdiProgramList from './sections/ProdiProgramList.vue';
 import ProdiTestimonials from '../../components/sections/TestimonialsSection.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import ProdiAlasan from './sections/ProdiAlasan.vue';
+import CTASection from '@/components/sections/CTASection.vue';
 
 const prodiStore = useDepartementStore();
 const uspStore = useUnggulanStore();
@@ -46,5 +47,6 @@ const testimoni = computed(() => testimoniStore.testimoni);
     <ProdiAlasan :unggulan="usp" :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiProgramList :prodiData="prodi" :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiTestimonials :fakultas="fakultas" :testimoni="testimoni" :is-loading="isLoading" />
+    <CTASection />
   </MainLayout>
 </template>

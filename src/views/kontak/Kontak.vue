@@ -5,6 +5,7 @@ import KontakForm from './sections/KontakForm.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import { useIdentityStore } from '@/stores/identity';
 import { onMounted, ref } from 'vue';
+import CTASection from '@/components/sections/CTASection.vue';
 
 const identityStore = useIdentityStore();
 const isLoading = ref(true);
@@ -25,6 +26,7 @@ onMounted(async () => {
     <HeroSection :identity="identityStore.identity" :is-loading="isLoading" />
     <LokasiSection :is-loading="isLoading" />
     <KontakForm :is-loading="isLoading" />
+    <CTASection />
   </MainLayout>
 </template>
 

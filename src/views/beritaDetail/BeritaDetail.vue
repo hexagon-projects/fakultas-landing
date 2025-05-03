@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { usePostStore } from '@/stores/post';
@@ -13,10 +13,19 @@ const route = useRoute();
 const postStore = usePostStore();
 const { currentPost: post, loading, error } = storeToRefs(postStore);
 
+const updateTitle = () => {
+  if (postStore.currentPost?.title) {
+    document.title = `${postStore.currentPost.title} - ${import.meta.env.VITE_APP_NAME}`;
+  }
+};
+
 onMounted(() => {
   const slug = route.params.slug as string;
   postStore.fetchPostBySlug(slug);
+  updateTitle();
 });
+
+watch(() => postStore.currentPost, updateTitle);
 </script>
 
 <template>

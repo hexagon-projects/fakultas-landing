@@ -4,6 +4,7 @@ import KegiatanHero from './sections/KegiatanHero.vue';
 import ProdiDetailKegiatan from '../prodiDetail/sections/ProdiDetailKegiatan.vue';
 import { onMounted, ref } from 'vue';
 import { useOrganisasiStore } from '@/stores/organisasi';
+import CTASection from '@/components/sections/CTASection.vue';
 
 const organisasiStore = useOrganisasiStore();
 const isLoading = ref(true);
@@ -23,6 +24,7 @@ onMounted(async () => {
   <MainLayout>
     <KegiatanHero :is-loading="isLoading" />
     <ProdiDetailKegiatan :organisasi="organisasiStore.organizations" :is-loading="isLoading" />
+    <CTASection />
   </MainLayout>
 </template>
 
