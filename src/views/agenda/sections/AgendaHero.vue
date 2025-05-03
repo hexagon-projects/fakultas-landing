@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ButtonSection from '@/components/ButtonSection.vue';
 import TextBody from '@/components/TextBody.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleMain from '@/components/TitleMain.vue';
@@ -36,51 +35,76 @@ const formatDate = (dateString: string) => {
 };
 
 defineProps<{
-  agenda: Agenda[]
+  agenda: Agenda[];
+  isLoading?: boolean;
 }>();
 </script>
 
 <template>
   <SectionLayout>
     <div class="w-full flex flex-col gap-4 md:gap-6 lg:gap-8">
-      <TextSection>Acara</TextSection>
-      <TitleMain :text="'Agenda'"></TitleMain>
-      <TextSection>Temukan agenda agenda menarik disini</TextSection>
+      <template v-if="isLoading">
+        <div class="h-4 w-24 bg-gray-300 animate-pulse rounded"></div>
+        <div class="h-10 w-64 bg-gray-300 animate-pulse rounded-lg"></div>
+        <div class="h-4 w-96 bg-gray-300 animate-pulse rounded"></div>
+      </template>
+      <template v-else>
+        <TextSection>Acara</TextSection>
+        <TitleMain :text="'Agenda'"></TitleMain>
+        <TextSection>Temukan agenda agenda menarik disini</TextSection>
+      </template>
     </div>
 
     <div class="w-full flex flex-col md:flex-row gap-6 lg:gap-12 justify-between items-center">
-      <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug)">
-        <img :src="getImageUrl(agenda[0]?.image)" :alt="agenda[0]?.title || 'Gambar acara'"
-          class="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-105">
-        <div v-if="agenda[0]?.end_date"
-          class="absolute top-4 left-4 rounded-[4px] md:rounded-[8px] lg:rounded-[16px] bg-white py-3 px-6 text-center">
-          <p class="text-xs lg:text-sm">{{ formatDate(agenda[0]?.end_date).dayName }}</p>
-          <p class="text-2xl lg:text-[32px] font-bold">{{ formatDate(agenda[0]?.end_date).day }}</p>
-          <p class="text-xs lg:text-sm">{{ formatDate(agenda[0]?.end_date).month }} {{
-            formatDate(agenda[0]?.end_date).year }}</p>
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col md:justify-start md:items-start gap-4 md:gap-5 lg:gap-6">
-        <div class="px-2 py-1 bg-[#EEEEEE] w-fit">
-          <TextBody :weighText="'font-bold'">Agenda</TextBody>
-        </div>
+      <template v-if="isLoading">
+        <!-- Image Skeleton -->
+        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] bg-gray-300 animate-pulse rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"></div>
 
-        <div class="space-y-2">
-          <div>
-            <h3 class="text-[18px] md:text-[20px] lg:text-[24px] font-bold">{{ agenda[0]?.title }}</h3>
-            <TextBody>{{ agenda[0]?.location }}</TextBody>
+        <!-- Content Skeleton -->
+        <div class="w-full md:w-1/2 flex flex-col gap-4 md:gap-5 lg:gap-6">
+          <div class="h-8 w-24 bg-gray-300 animate-pulse rounded"></div>
+          <div class="space-y-2">
+            <div class="h-6 w-full bg-gray-300 animate-pulse rounded"></div>
+            <div class="h-4 w-3/4 bg-gray-300 animate-pulse rounded"></div>
+          </div>
+          <div class="h-4 w-full bg-gray-300 animate-pulse rounded"></div>
+          <div class="h-4 w-5/6 bg-gray-300 animate-pulse rounded"></div>
+          <div class="h-12 w-40 bg-gray-300 animate-pulse rounded-lg"></div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug)">
+          <img :src="getImageUrl(agenda[0]?.image)" :alt="agenda[0]?.title || 'Gambar acara'"
+            class="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-105">
+          <div v-if="agenda[0]?.end_date"
+            class="absolute top-4 left-4 rounded-[4px] md:rounded-[8px] lg:rounded-[16px] bg-white py-3 px-6 text-center">
+            <p class="text-xs lg:text-sm">{{ formatDate(agenda[0]?.end_date).dayName }}</p>
+            <p class="text-2xl lg:text-[32px] font-bold">{{ formatDate(agenda[0]?.end_date).day }}</p>
+            <p class="text-xs lg:text-sm">{{ formatDate(agenda[0]?.end_date).month }} {{
+              formatDate(agenda[0]?.end_date).year }}</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 flex flex-col md:justify-start md:items-start gap-4 md:gap-5 lg:gap-6">
+          <div class="px-2 py-1 bg-[#EEEEEE] w-fit">
+            <TextBody :weighText="'font-bold'">Agenda</TextBody>
           </div>
 
-          <TextBody><span v-html="sanitizeHtml(agenda[0]?.description)"></span></TextBody>
-        </div>
+          <div class="space-y-2">
+            <div>
+              <h3 class="text-[18px] md:text-[20px] lg:text-[24px] font-bold">{{ agenda[0]?.title }}</h3>
+              <TextBody>{{ agenda[0]?.location }}</TextBody>
+            </div>
 
-        <div class="w-fit">
-          <a :href="agenda[0]?.register_link" class="your-button-styles">
-            <!-- <ButtonSection>Daftar Sekarang</ButtonSection> -->
-            <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
-          </a>
+            <TextBody><span v-html="sanitizeHtml(agenda[0]?.description)"></span></TextBody>
+          </div>
+
+          <div class="w-fit">
+            <a :href="agenda[0]?.register_link" class="your-button-styles">
+              <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
+            </a>
+          </div>
         </div>
-      </div>
+      </template>
     </div>
   </SectionLayout>
 </template>

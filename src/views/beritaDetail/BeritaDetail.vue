@@ -21,14 +21,28 @@ onMounted(() => {
 
 <template>
   <MainLayout>
-    <div v-if="loading">Loading...</div>
-    <div v-else-if="error">{{ error }}</div>
+    <template v-if="loading">
+      <HeroSection :loading="true" />
+      <BodySection :loading="true" />
+      <div class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4 text-center">
+          <div class="h-8 w-1/2 mx-auto bg-gray-300 animate-pulse rounded mb-6"></div>
+          <div class="h-12 w-48 mx-auto bg-gray-300 animate-pulse rounded"></div>
+        </div>
+      </div>
+    </template>
+
+    <div v-else-if="error" class="container mx-auto px-4 py-16 text-center">
+      <div class="text-red-500">{{ error }}</div>
+    </div>
+
     <template v-else-if="post">
       <HeroSection :post="post" />
       <BodySection :post="post" />
       <CTASection />
     </template>
-    <div v-else>
+
+    <div v-else class="container mx-auto px-4 py-16 text-center">
       <p>Berita tidak ditemukan.</p>
     </div>
   </MainLayout>

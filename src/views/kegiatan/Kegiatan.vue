@@ -2,19 +2,40 @@
 import MainLayout from '@/layouts/MainLayout.vue';
 import KegiatanHero from './sections/KegiatanHero.vue';
 import ProdiDetailKegiatan from '../prodiDetail/sections/ProdiDetailKegiatan.vue';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useOrganisasiStore } from '@/stores/organisasi';
 
 const organisasiStore = useOrganisasiStore();
+const isLoading = ref(true);
 
 onMounted(async () => {
-  await organisasiStore.fetchOrganisasi();
+  try {
+    await organisasiStore.fetchOrganisasi();
+  } catch (error) {
+    console.error('Error loading organisasi:', error);
+  } finally {
+    isLoading.value = false;
+  }
 });
 </script>
 
 <template>
   <MainLayout>
-    <KegiatanHero />
-    <ProdiDetailKegiatan :organisasi="organisasiStore.organizations"/>
+    <KegiatanHero :is-loading="isLoading" />
+    <ProdiDetailKegiatan :organisasi="organisasiStore.organizations" :is-loading="isLoading" />
   </MainLayout>
 </template>
+
+<style scoped>
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+</style>
