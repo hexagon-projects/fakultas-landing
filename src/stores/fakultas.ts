@@ -15,6 +15,15 @@ export const useFakultasStore = defineStore("fakultas", {
   }),
 
   actions: {
+    async fetchFakultas() {
+      try {
+        const response = await FakultasService.getDetail();
+        this.fakultas = response.data;
+      } catch (error: any) {
+        console.error("Error fetching fakultas:", error);
+      }
+    },
+
     async getFacultyColor() {
       if (this.currentFacultyColor) {
         return this.currentFacultyColor;
