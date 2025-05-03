@@ -1,16 +1,16 @@
 <template>
   <div class="w-full h-screen flex justify-center items-center">
     <div class="loader">
-      <div class="circle" v-for="n in 4" :key="n" :class="`circle-${n}`">
-        <div class="dot" :class="`dot-${n}`"></div>
-        <div class="outline" :class="`outline-${n}`"></div>
+      <div class="circle" v-for="n in 4" :key="n">
+        <div class="dot"></div>
+        <div class="outline"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// No TS logic for now
+// Tidak ada logic JS untuk loader ini
 </script>
 
 <style scoped>
@@ -54,49 +54,49 @@
   height: 20px;
   border-radius: 50%;
   z-index: 1;
-  animation: outline-keys var(--animation);
 }
 
-/* Individual animation delays */
-.circle-1 {
+/* Animasi Delay */
+.circle:nth-child(1) {
   animation-delay: 0s;
 }
-.circle-2 {
+.circle:nth-child(2) {
   animation-delay: 0.2s;
 }
-.circle-3 {
+.circle:nth-child(3) {
   animation-delay: 0.4s;
 }
-.circle-4 {
+.circle:nth-child(4) {
   animation-delay: 0.6s;
 }
 
-.dot-1 {
+.circle:nth-child(1) .dot {
   animation-delay: 0s;
 }
-.dot-2 {
+.circle:nth-child(2) .dot {
   animation-delay: 0.2s;
 }
-.dot-3 {
+.circle:nth-child(3) .dot {
   animation-delay: 0.4s;
 }
-.dot-4 {
+.circle:nth-child(4) .dot {
   animation-delay: 0.6s;
 }
 
-.outline-1 {
+.circle:nth-child(1) .outline {
   animation-delay: 0.2s;
 }
-.outline-2 {
+.circle:nth-child(2) .outline {
   animation-delay: 0.4s;
 }
-.outline-3 {
+.circle:nth-child(3) .outline {
   animation-delay: 0.6s;
 }
-.outline-4 {
+.circle:nth-child(4) .outline {
   animation-delay: 0.8s;
 }
 
+/* Keyframes */
 @keyframes circle-keys {
   0% {
     transform: scale(1);
@@ -121,19 +121,6 @@
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes outline-keys {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    box-shadow: 0 0 0 0 var(--color);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 0 0 20px transparent;
-    opacity: 0;
   }
 }
 </style>
