@@ -10,18 +10,32 @@ const getImageUrl = (imagePath: string | null) => {
 };
 
 defineProps<{
-  agenda: Agenda[]
+  agenda: Agenda[];
+  isLoading?: boolean;
 }>();
-
 </script>
 
 <template>
-  <div
-    class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
-    <div class="w-full grid grid-cols-1 gap-4 md:gap-6 lg:gap-8">
-      <AgendaCard v-for="(agenda, index) in agenda" :key="`${agenda.id}`" :judul="agenda.title"
-        :tanggal="agenda.end_date" :lokasi="agenda.location" :gambar="getImageUrl(agenda.image)"
-        :deskripsi="agenda.description" :index="index" :slug="agenda.slug"/>
-    </div>
+  <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
+    <template v-if="isLoading">
+      <div class="w-full grid grid-cols-1 gap-4 md:gap-6 lg:gap-8">
+        <div v-for="i in 3" :key="i" class="w-full h-[200px] md:h-[250px] lg:h-[300px] bg-gray-300 animate-pulse rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"></div>
+      </div>
+    </template>
+    <template v-else>
+      <div class="w-full grid grid-cols-1 gap-4 md:gap-6 lg:gap-8">
+        <AgendaCard
+          v-for="(agenda, index) in agenda"
+          :key="`${agenda.id}`"
+          :judul="agenda.title"
+          :tanggal="agenda.end_date"
+          :lokasi="agenda.location"
+          :gambar="getImageUrl(agenda.image)"
+          :deskripsi="agenda.description"
+          :index="index"
+          :slug="agenda.slug"
+        />
+      </div>
+    </template>
   </div>
 </template>

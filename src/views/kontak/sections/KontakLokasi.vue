@@ -12,6 +12,10 @@ import Guru from "@/assets/gedung/kedokteran.webp"
 import Ekonomi from "@/assets/gedung/ekonomi.webp"
 import Dokter from "@/assets/gedung/kedokteran.webp"
 
+defineProps<{
+  isLoading?: boolean;
+}>();
+
 const locations = [
   {
     id: 1,
@@ -47,13 +51,25 @@ const locations = [
 <template>
   <SectionLayout>
     <div class="flex flex-col gap-4 md:gap-5 lg:gap-6">
-      <TextSection>Lokasi</TextSection>
-      <TitleSection :text="'Lokasi'"></TitleSection>
-      <TextSection>Temukan kampus kami dengan mudah di peta.</TextSection>
+      <template v-if="isLoading">
+        <div class="h-4 w-24 bg-gray-300 animate-pulse rounded"></div>
+        <div class="h-8 w-32 bg-gray-300 animate-pulse rounded-lg"></div>
+        <div class="h-4 w-96 bg-gray-300 animate-pulse rounded"></div>
+      </template>
+      <template v-else>
+        <TextSection>Lokasi</TextSection>
+        <TitleSection :text="'Lokasi'"></TitleSection>
+        <TextSection>Temukan kampus kami dengan mudah di peta.</TextSection>
+      </template>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      <LokasiCard v-for="location in locations" :key="location.id" :location="location" />
+      <template v-if="isLoading">
+        <div v-for="i in 4" :key="i" class="h-64 bg-gray-300 animate-pulse rounded-lg"></div>
+      </template>
+      <template v-else>
+        <LokasiCard v-for="location in locations" :key="location.id" :location="location" />
+      </template>
     </div>
   </SectionLayout>
 </template>

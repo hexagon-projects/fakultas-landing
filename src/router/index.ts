@@ -89,53 +89,84 @@ const router = createRouter({
       path: '/prodi',
       name: 'prodi',
       component: Prodi,
+      meta: {
+        pageTitle: "Program Studi",
+      },
     },
     {
       path: '/prodi/:slug',
       name: 'prodiDetail',
       component: ProdiDetail,
+      meta: {
+        pageTitle: "Prodi Detail",
+      },
     },
     {
       path: '/berita',
       name: 'berita',
       component: Berita,
+      meta: {
+        pageTitle: "Berita",
+      },
     },
     {
       path: '/berita/:slug',
       name: 'beritaDetail',
       component: BeritaDetail,
+      meta: {
+        pageTitle: "Berita Detail",
+      },
     },
     {
       path: '/kontak',
       name: 'kontak',
       component: Kontak,
+      meta: {
+        pageTitle: "Kontak",
+      },
     },
     {
       path: '/agenda',
       name: 'agenda',
       component: Agenda,
+      meta: {
+        pageTitle: "Agenda",
+      },
     },
     {
       path: '/agenda/:slug',
       name: 'agendaDetail',
       component: AgendaDetail,
+      meta: {
+        pageTitle: "Agenda Detail",
+      },
     },
     {
       path: '/faq',
       name: 'faq',
       component: Faq,
+      meta: {
+        pageTitle: "FAQ",
+      },
     },
     {
       path: '/kegiatan',
       name: 'kegiatan',
       component: Kegiatan,
+      meta: {
+        pageTitle: "Kegiatan Mahasiswa",
+      },
     },
   ],
 })
 
 router.beforeEach((to, from, next) => {
   // current page view title
-  document.title = `${to.meta.pageTitle} - ${import.meta.env.VITE_APP_NAME}`;
+  const baseTitle = to.meta.pageTitle
+    ? `${to.meta.pageTitle} - ${import.meta.env.VITE_APP_NAME}`
+    : import.meta.env.VITE_APP_NAME;
+
+  document.title = baseTitle;
 
   // verify auth token before each page change
   ApiService.setHeader();
@@ -167,7 +198,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-    
+
   } else {
     next();
   }

@@ -67,15 +67,39 @@ const goToDetail = (post: any) => {
 </script>
 
 <template>
-  <div
-    class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
+  <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
     <div class="flex flex-col gap-4 md:gap-5 lg:gap-6 justify-center items-center">
-      <TitleSection :text="'Berita Terbaru Fakultas'"></TitleSection>
-      <TextSection>Ikuti perkembangan terbaru dari fakultas kami.</TextSection>
+      <template v-if="loading">
+        <div class="h-10 w-64 bg-gray-300 animate-pulse rounded-lg"></div>
+        <div class="h-4 w-96 bg-gray-300 animate-pulse rounded"></div>
+      </template>
+      <template v-else>
+        <TitleSection :text="'Berita Terbaru Fakultas'"></TitleSection>
+        <TextSection>Ikuti perkembangan terbaru dari fakultas kami.</TextSection>
+      </template>
     </div>
 
-    <div v-if="loading" class="w-full text-center py-12">
-      <TextBody>Memuat berita...</TextBody>
+    <div v-if="loading" class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+      <div v-for="i in 4" :key="i" class="flex flex-col md:flex-row gap-4 md:gap-5 lg:gap-6">
+        <!-- Image Skeleton -->
+        <div class="w-full md:w-1/2 h-[220px] md:h-[230px] lg:h-[250px] bg-gray-300 animate-pulse rounded-lg"></div>
+
+        <!-- Content Skeleton -->
+        <div class="w-full md:w-1/2 space-y-4">
+          <div class="flex gap-2 md:gap-4 items-center">
+            <div class="h-6 w-16 bg-gray-300 animate-pulse rounded"></div>
+            <div class="h-4 w-32 bg-gray-300 animate-pulse rounded"></div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="h-6 w-full bg-gray-300 animate-pulse rounded"></div>
+            <div class="h-4 w-full bg-gray-300 animate-pulse rounded"></div>
+            <div class="h-4 w-5/6 bg-gray-300 animate-pulse rounded"></div>
+          </div>
+
+          <div class="h-4 w-24 bg-gray-300 animate-pulse rounded"></div>
+        </div>
+      </div>
     </div>
 
     <div v-else-if="error" class="w-full text-center py-12">

@@ -29,17 +29,17 @@ const navigasiLinks = [
   { label: 'Beranda', href: '/' },
   { label: 'Fakultas', href: '/fakultas' },
   { label: 'Prodi', href: '/prodi' },
+  { label: 'Prestasi', href: '/prestasi' },
+  { label: 'Kegiatan', href: '/kegiatan' },
   { label: 'Fasilitas', href: '/fasilitas' },
   { label: 'Tenaga Pengajar', href: '/tenaga-pengajar' },
-  { label: 'Testimoni', href: '/testimoni' },
   { label: 'Penelitian & Inovasi', href: '/riset-inovasi' },
-  { label: 'Berita', href: '/berita' },
+  { label: 'Testimoni', href: '/testimoni' },
   { label: 'Kerjasama & Mitra', href: '/mitra' },
+  { label: 'Berita', href: '/berita' },
   { label: 'Agenda', href: '/agenda' },
   { label: 'FAQ & Bantuan', href: '/faq' },
   { label: 'Kontak', href: '/kontak' },
-  { label: 'Prestasi', href: '/prestasi' },
-  { label: 'Kegiatan', href: '/kegiatan' },
 ]
 
 const lokasi = [

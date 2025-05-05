@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useDepartementStore } from '@/stores/departement';
 import { useUnggulanStore } from '@/stores/unggulan';
 import { useFakultasStore } from '@/stores/fakultas';
@@ -11,17 +11,27 @@ import ProdiProgramList from './sections/ProdiProgramList.vue';
 import ProdiTestimonials from '../../components/sections/TestimonialsSection.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import ProdiAlasan from './sections/ProdiAlasan.vue';
+import CTASection from '@/components/sections/CTASection.vue';
 
 const prodiStore = useDepartementStore();
 const uspStore = useUnggulanStore();
 const fakultasStore = useFakultasStore();
 const testimoniStore = useTestimoniStore();
+const isLoading = ref(true);
 
 onMounted(async () => {
-  await prodiStore.fetchDepartements();
-  await uspStore.fetchUnggulans();
-  await fakultasStore.fetchFakultas();
-  await testimoniStore.fetchTestimoni();
+  try {
+    await Promise.all([
+      prodiStore.fetchDepartements(),
+      uspStore.fetchUnggulans(),
+      fakultasStore.fetchFakultas(),
+      testimoniStore.fetchTestimoni()
+    ]);
+  } catch (error) {
+    console.error('Error loading data:', error);
+  } finally {
+    isLoading.value = false;
+  }
 });
 
 const prodi = computed(() => prodiStore.departements);
@@ -32,10 +42,11 @@ const testimoni = computed(() => testimoniStore.testimoni);
 
 <template>
   <MainLayout>
-    <ProdiHero />
-    <ImageSection :fakultas="fakultas" />
-    <ProdiAlasan :unggulan="usp" :fakultas="fakultas" />
-    <ProdiProgramList :prodiData="prodi" :fakultas="fakultas" />
-    <ProdiTestimonials :fakultas="fakultas" :testimoni="testimoni" />
+    <ProdiHero :is-loading="isLoading" />
+    <ImageSection :fakultas="fakultas" :is-loading="isLoading" />
+    <ProdiAlasan :unggulan="usp" :fakultas="fakultas" :is-loading="isLoading" />
+    <ProdiProgramList :prodiData="prodi" :fakultas="fakultas" :is-loading="isLoading" />
+    <ProdiTestimonials :fakultas="fakultas" :testimoni="testimoni" :is-loading="isLoading" />
+    <CTASection />
   </MainLayout>
 </template>

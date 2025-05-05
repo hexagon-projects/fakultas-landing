@@ -15,24 +15,46 @@ const getImageUrl = (imagePath: string | null) => {
 };
 
 defineProps<{
-  prodiDetail: Departement
+  prodiDetail: Departement | null;
+  isLoading?: boolean;
 }>();
 </script>
 
 <template>
   <SectionLayout>
     <div class="flex flex-col-reverse lg:flex-row-reverse gap-6 lg:gap-20 lg:justify-center lg:items-center">
+      <!-- Video Section -->
       <div class="w-full lg:w-[40%]">
-        <HeroVideoDialog :size="'w-full h-full lg:h-[60vh]'" :video-src="`https://www.youtube.com/embed/${prodiDetail.yt_id}`"
-          :thumbnail-src="getImageUrl(prodiDetail.image1)"
-          thumbnail-alt="Video tentang program studi" animation-style="from-center" />
+        <template v-if="isLoading">
+          <div class="w-full h-[60vh] bg-gray-300 animate-pulse rounded-[16px]"></div>
+        </template>
+        <template v-else-if="prodiDetail">
+          <HeroVideoDialog
+            :size="'w-full h-full lg:h-[60vh]'"
+            :video-src="`https://www.youtube.com/embed/${prodiDetail.yt_id}`"
+            :thumbnail-src="getImageUrl(prodiDetail.image1)"
+            thumbnail-alt="Video tentang program studi"
+            animation-style="from-center"
+          />
+        </template>
       </div>
 
+      <!-- Content Section -->
       <div class="w-full lg:w-[70%] space-y-4 lg:space-y-6">
-        <div class="w-full">
-          <TitleSection :text="prodiDetail?.title1 || ''" />
-        </div>
-        <TextSection><span v-html="sanitizeHtml(prodiDetail?.description1 || '')"></span></TextSection>
+        <template v-if="isLoading">
+          <div class="w-3/4 h-8 bg-gray-300 animate-pulse rounded"></div>
+          <div class="space-y-2">
+            <div class="w-full h-4 bg-gray-300 animate-pulse rounded"></div>
+            <div class="w-full h-4 bg-gray-300 animate-pulse rounded"></div>
+            <div class="w-5/6 h-4 bg-gray-300 animate-pulse rounded"></div>
+          </div>
+        </template>
+        <template v-else-if="prodiDetail">
+          <div class="w-full">
+            <TitleSection :text="prodiDetail?.title1 || ''" />
+          </div>
+          <TextSection><span v-html="sanitizeHtml(prodiDetail?.description1 || '')"></span></TextSection>
+        </template>
       </div>
     </div>
   </SectionLayout>

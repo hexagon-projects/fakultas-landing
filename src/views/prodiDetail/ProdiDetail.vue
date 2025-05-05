@@ -18,7 +18,7 @@ import ProdiDetailPoster from './sections/ProdiDetailPoster.vue';
 import CTASection from '@/components/sections/CTASection.vue';
 import { useRoute } from 'vue-router';
 import { useDepartementStore } from '@/stores/departement';
-import { onMounted } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useAgendaStore } from '@/stores/agenda';
 import { usePartnerStore } from '@/stores/partner';
 import { usePrestasiStore } from '@/stores/prestasi';
@@ -45,48 +45,103 @@ const prospekStore = useProspekStore();
 const kurikulumStore = useKurikulumStore();
 const sliderStore = useSliderStore();
 
+const isLoading = ref(true);
+
+const updateTitle = () => {
+  if (departementStore.currentDepartement?.name) {
+    document.title = `${departementStore.currentDepartement.name} - ${import.meta.env.VITE_APP_NAME}`;
+  }
+};
+
 onMounted(async () => {
-  const slug = route.params.slug as string;
-  if (slug) {
-    await departementStore.fetchDepartementBySlug(slug);
-    const departementId = departementStore.currentDepartement?.id;
-    if (departementId) {
-      await partnerStore.fetchPartnerbyId(departementId); // id
-      await prestasiStore.fetchPrestasibyId(departementId); // id
-      await fasilitasStore.fetchFasilitasbyId(departementId); // id
-      await teamStore.fetchTeambyId(departementId); // id
-      await organisasiStore.fetchOrganisasibyId(departementId) // id
-      await testimoniStore.fetchTestimonibyId(departementId) // id
-      await prospekStore.fetchProspekbyId(departementId) //id
-      await kurikulumStore.fetchKurikulumbyId(departementId) // id
-      await sliderStore.fetchSliderbyId(departementId) // id
+  try {
+    const slug = route.params.slug as string;
+    if (slug) {
+      await departementStore.fetchDepartementBySlug(slug);
+      updateTitle();
+      const departementId = departementStore.currentDepartement?.id;
+      if (departementId) {
+        await Promise.all([
+          partnerStore.fetchPartnerbyId(departementId),
+          prestasiStore.fetchPrestasibyId(departementId),
+          fasilitasStore.fetchFasilitasbyId(departementId),
+          teamStore.fetchTeambyId(departementId),
+          organisasiStore.fetchOrganisasibyId(departementId),
+          testimoniStore.fetchTestimonibyId(departementId),
+          prospekStore.fetchProspekbyId(departementId),
+          kurikulumStore.fetchKurikulumbyId(departementId),
+          sliderStore.fetchSliderbyId(departementId)
+        ]);
+      }
+      await Promise.all([
+        agendaStore.fetchAgendas(),
+        postStore.fetchPosts()
+      ]);
     }
-    await agendaStore.fetchAgendas();
-    await postStore.fetchPosts()
+  } catch (error) {
+    console.error('Error loading data:', error);
+  } finally {
+    isLoading.value = false;
   }
 });
 
+watch(() => departementStore.currentDepartement, updateTitle);
 </script>
 
 <template>
   <MainLayout>
-    <template v-if="departementStore.currentDepartement">
-      <HeroSection :prodi-detail="departementStore.currentDepartement" />
-      <AboutSection :prodi-detail="departementStore.currentDepartement" />
-      <ProdiDetailPoster :slider="sliderStore.currentSlider" />
-      <StatistikSection :prodi-data="departementStore.currentDepartement" />
-      <ProdiDetailProspek :prodi-detail="departementStore.currentDepartement" :prospek="prospekStore.currentProspek" />
-      <ProdiDetailKurikulum :kurikulum="kurikulumStore.currentKurikulum" />
-      <ProdiDetailMitra :partners="partnerStore.currentPartner" />
-      <ProdiDetailPrestasi :prestasi="prestasiStore.currentPrestasi" />
-      <GaleriSection :fasilitas="fasilitasStore.currentFasilitas" />
-      <DosenSection :team="teamStore.currentTeams" />
-      <ProdiDetailKegiatan :organisasi="organisasiStore.currentOrganizations" />
-      <ProdiDetailAgenda :agenda="agendaStore.agendas" />
-      <PanduanSection /> <!-- Statis -->
-      <TestimonialsSection :testimoni="testimoniStore.currentTestimoni" />
-      <ProdiDetailBerita :prodi-detail="departementStore.currentDepartement" :berita="postStore.posts?.slice(0, 3)" />
-      <CTASection />
+    <template v-if="isLoading">
+      <HeroSection :is-loading="true" :prodi-detail="null" />
+      <AboutSection :is-loading="true" :prodi-detail="null" />
+    </template>
+
+    <template v-else-if="departementStore.currentDepartement">
+      <HeroSection :prodi-detail="departementStore.currentDepartement" :is-loading="false" />
+      <AboutSection :prodi-detail="departementStore.currentDepartement" :is-loading="false" />
+      <ProdiDetailPoster :slider="sliderStore.currentSlider" :is-loading="false" />
+      <StatistikSection :prodi-data="departementStore.currentDepartement" :is-loading="false" />
+      <ProdiDetailProspek
+        :prodi-detail="departementStore.currentDepartement"
+        :prospek="prospekStore.currentProspek"
+        :is-loading="false"
+      />
+      <ProdiDetailKurikulum :kurikulum="kurikulumStore.currentKurikulum" :is-loading="false" />
+      <ProdiDetailMitra :partners="partnerStore.currentPartner" :is-loading="false" />
+      <ProdiDetailPrestasi :prestasi="prestasiStore.currentPrestasi" :is-loading="false" />
+      <GaleriSection :fasilitas="fasilitasStore.currentFasilitas" :is-loading="false" />
+      <DosenSection :team="teamStore.currentTeams" :is-loading="false" />
+      <ProdiDetailKegiatan :organisasi="organisasiStore.currentOrganizations" :is-loading="false" />
+      <ProdiDetailAgenda :agenda="agendaStore.agendas" :is-loading="false" />
+      <PanduanSection :is-loading="false" />
+      <TestimonialsSection :testimoni="testimoniStore.currentTestimoni" :is-loading="false" />
+      <ProdiDetailBerita
+        :prodi-detail="departementStore.currentDepartement"
+        :berita="postStore.posts?.slice(0, 3)"
+        :is-loading="false"
+      />
+      <CTASection :is-loading="false" />
+    </template>
+
+    <template v-else>
+      <div class="flex justify-center items-center min-h-screen">
+        <div class="text-center">
+          <p class="text-lg font-medium">Program studi tidak ditemukan</p>
+        </div>
+      </div>
     </template>
   </MainLayout>
 </template>
+
+<style scoped>
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+</style>
