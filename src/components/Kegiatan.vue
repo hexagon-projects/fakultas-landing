@@ -1,12 +1,37 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import InteractiveHoverButton from './ui/interactive-hover-button/InteractiveHoverButton.vue';
-import Button from './Button.vue';
-import Title from './Title.vue';
 import { berandaStore } from '@/stores';
 import { getImageUrl } from '@/core/helpers/helper';
 import TitleMain from './TitleMain.vue';
 import KegiatanCard from '@/views/prodiDetail/components/KegiatanCard.vue';
+
+const activeFilter = ref("semua");
+const visibleItems = ref(6);
+const itemsPerLoad = 3;
+const refreshKey = ref(0);
+
+const setFilter = async (filter: string) => {
+  if (activeFilter.value === filter) return;
+
+  activeFilter.value = filter;
+  visibleItems.value = 6;
+
+  refreshKey.value++;
+};
+
+const visibleFilteredOrganisasi = computed(() => {
+  return filteredOrganisasi.value.slice(0, visibleItems.value);
+});
+
+const filteredOrganisasi = computed(() => {
+  if (activeFilter.value === "semua") {
+    return berandaStore.organisasiData;
+  } else {
+    return berandaStore.organisasiData.filter(org => org.category.toLowerCase() === activeFilter.value.toLowerCase());
+  }
+});
+
 
 const kegiatanIndex = ref(0)
 
@@ -26,13 +51,29 @@ const currentKegiatan = computed(() => {
         dan keterampilan.
       </p>
       <div class="flex gap-5 justify-center flex-wrap">
-        <Button className="btn-primary" padding="px-4 py-2">All</Button>
-        <Button className="btn-neutral" padding="px-4 py-2">UKM</Button>
+        <div class="w-fit flex gap-2 lg:gap-4">
+          <div @click="setFilter('semua')"
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            <TextSection class="text-white">Semua</TextSection>
+          </div>
+          <div @click="setFilter('kegiatan')"
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'kegiatan' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            <TextSection class="text-white">Kegiatan</TextSection>
+          </div>
+          <div @click="setFilter('organisasi')"
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            <TextSection class="text-white">Organisasi</TextSection>
+          </div>
+          <div @click="setFilter('komunitas')"
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            <TextSection class="text-white">Komunitas</TextSection>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Desktop -->
     <div class="w-full mt-10 hidden lg:grid lg:grid-cols-3 md:grid-cols-2 gap-10 lg:px-20">
-      <template v-for="(item,index) in berandaStore.organisasiData" :key="item.id">
+      <template v-for="(item,index) in visibleFilteredOrganisasi" :key="item.id">
         <!-- <div
           class="w-full h-64 flex flex-col justify-end p-5 rounded-[20px] cursor-pointer hover:scale-105 transition bg-cover relative"
           :style="{ backgroundImage: `url('${getImageUrl(item.image)}')` }"

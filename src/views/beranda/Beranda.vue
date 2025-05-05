@@ -15,6 +15,7 @@ import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
 import ArticleCard from '@/components/ArticleCard.vue'
 import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
+import ProdiDetailKegiatan from '../prodiDetail/sections/ProdiDetailKegiatan.vue'
 
 const fasilitasImages = computed(() => {
   return berandaStore.fasilitasData.map((item) => getImageUrl(item.image1))
@@ -29,7 +30,7 @@ onMounted(async () => {
 <template>
   <!-- Hero Section -->
   <ScrollTransition>
-    <div class="mt-0 lg:mt-32">
+    <div class="mt-0 lg:mt-32 img-container">
       <div
         class="w-full rounded-b-[40px] lg:rounded-[32px] lg:py-40 py-60 lg:px-32 md:px-20 px-10 text-center lg:text-left bg-cover relative img-box"
         style="
@@ -38,6 +39,17 @@ onMounted(async () => {
             url('/src/assets/images/hero.jpg');
         "
       >
+        <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
+          xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                result="goo" />
+              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
         <div class="lg:w-3/4 w-full grid gap-5 justify-center items-start">
           <TitleMain
             v-if="berandaStore.fakultasData.name"
@@ -242,7 +254,9 @@ onMounted(async () => {
 
   <!-- Kegiatan Mahasiswa -->
   <div class="lg:mt-48 mt-32 lg:px-0 px-[5%]">
-    <Kegiatan />
+    <ProdiDetailKegiatan
+      :organisasi="berandaStore.organisasiData"
+    />
   </div>
 
   <!-- Agenda -->
@@ -461,6 +475,44 @@ onMounted(async () => {
   </div>
 </template>
 <style scoped>
+/* .img-box {
+  clip-path: polygon(65% 100%, 65% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+} */
+
+@media (min-width: 1024px) {
+  .img-box {
+    clip-path: polygon(55% 100%, 55% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 1124px) {
+  .img-box {
+    clip-path: polygon(59% 100%, 59% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 1224px) {
+  .img-box {
+    clip-path: polygon(62% 100%, 62% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 1324px) {
+  .img-box {
+    clip-path: polygon(65% 100%, 65% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 1400px) {
+  .img-box {
+    clip-path: polygon(65% 100%, 65% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+.img-container {
+  filter: url("#goo") drop-shadow(0px -2px 0px transparent)
+}
+
 .hoverAnimation:hover {
   transform: scale(1.02) translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);

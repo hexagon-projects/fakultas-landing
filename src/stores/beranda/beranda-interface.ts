@@ -91,8 +91,9 @@ export interface IOrganisasiData {
     id: number;
     id_departement: number;
     name: string;
+    category: string;
     description: string;
-    home?: null | string;
+    home: string;
     image: string;
     created_at: string;
     updated_at: string;
