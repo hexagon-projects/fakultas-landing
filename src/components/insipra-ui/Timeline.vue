@@ -30,7 +30,7 @@
             >
               {{ item.label }}
             </h3>
-            <p class="hidden md:block md:pl-20 mt-2">akultas Hukum Universitas Pasundan (FH UNPAS) didirikan pada 14 November 1960 oleh Yayasan Universitas Pasundan dengan nama awal Fakultas Hukum dan Pengetahuan Masyarakat. Tokoh-tokoh perintisnya antara lain Mr. Oesadi, R. Abas Soeriaatmadja, R. Sunarja, dan Prof. Dr. Mr. Moechtar Kusumaatmadja, LL.M.</p>
+            <p class="hidden md:block md:pl-20 mt-2" v-html="item.description"></p>
           </div>
         </div>
         <slot :name="item.id"></slot>
@@ -67,6 +67,7 @@ interface Props {
   items?: {
     id: string
     label: string
+    description: string
   }[]
   title?: string
   description?: string

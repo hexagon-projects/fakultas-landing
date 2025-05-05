@@ -3,32 +3,24 @@ import InteractiveHoverButton from '@/components/ui/interactive-hover-button/Int
 import Timeline from '@/components/insipra-ui/Timeline.vue'
 import Mitra from '@/components/MitraSection.vue'
 import Testimonial from '@/components/Testimonial.vue'
-import Title from '@/components/Title.vue'
 import NumberTicker from '@/components/ui/number-ticker/NumberTicker.vue'
 import { berandaStore, tentangStore } from '@/stores'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import { getImageUrl } from '@/core/helpers/helper'
 import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
 
-const data = [
-  {
-    id: '1',
-    label: 'Sejarah Fakultas Hukum Unpas',
-  },
-  {
-    id: '2',
-    label: 'Perioderisasi',
-  },
-  {
-    id: '3',
-    label: 'Akreditasi',
-  },
-]
+const historyTimeline = computed(() => {
+  return tentangStore.timelineData.map((item) => ({
+    id: String(item.id),
+    label: item.title,
+    description: item.description,
+  }));
+});
 
-onMounted(() => {
-  tentangStore.getInitialData()
+onMounted(async() => {
+  await tentangStore.getInitialData()
 })
 </script>
 <template>
@@ -56,7 +48,7 @@ onMounted(() => {
     <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0 relative">
       <div class="lg:w-1/2 w-full h-40 bg-gray-200 sticky top-40"></div>
       <div class="lg:w-1/2 w-full">
-        <Timeline :items="data" />
+        <Timeline :items="historyTimeline" />
       </div>
     </div>
   </ScrollTransition>

@@ -13,9 +13,11 @@ import ExpandableGallery from '@/components/insipra-ui/ExpandableGallery.vue'
 import { formatDate, getImageUrl } from '@/core/helpers/helper'
 import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
+import ArticleCard from '@/components/ArticleCard.vue'
+import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
 
 const fasilitasImages = computed(() => {
-  return berandaStore.fasilitasData.map((item) => getImageUrl(item.image))
+  return berandaStore.fasilitasData.map((item) => getImageUrl(item.image1))
 })
 
 const imageBaseUrl = import.meta.env.VITE_IMAGES_URL
@@ -126,10 +128,10 @@ onMounted(async () => {
         <!-- <Button className="btn-outline-primary">Selengkapnya</Button> -->
       </div>
     </div>
-    <div class="w-[90%] lg:w-1/2">
+    <div class="w-[90%] lg:w-1/2" v-if="berandaStore.dosenData && berandaStore.dosenData.length > 0">
       <div
         class="relative mx-auto w-full lg:w-8/12 h-[600px] bg-no-repeat bg-cover rounded-[32px] overflow-hidden"
-        style="background-image: url('/src/assets/images/dummy.jpg')"
+        :style="{ backgroundImage: `url(${getImageUrl(berandaStore.dosenData[0].image)})` }"
       >
         <div
           class="absolute bottom-0 left-0 w-full h-3/4 z-10"
@@ -148,8 +150,8 @@ onMounted(async () => {
         ></div>
 
         <div class="relative z-20 flex flex-col gap-2 justify-end h-full text-white py-10 px-10">
-          <h6 class="text-xl">Dekan Fakultas Hukum</h6>
-          <h6 class="text-xl font-bold">Prof. Dr. Anthon F Susanto, S.H., M.Hum.</h6>
+          <h6 class="text-xl">{{ berandaStore.dosenData[0].title }}</h6>
+          <h6 class="text-xl font-bold">{{ berandaStore.dosenData[0].name }}</h6>
         </div>
       </div>
     </div>
@@ -318,9 +320,9 @@ onMounted(async () => {
     >
       <div class="w-1/5 flex justify-center items-center">
         <img
-          v-if="berandaStore.fasilitasData[0]?.image"
+          v-if="berandaStore.fasilitasData[0]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[0].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[0].image1)"
           class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
@@ -328,16 +330,16 @@ onMounted(async () => {
 
       <div class="w-1/5 flex flex-col gap-2 justify-center items-center py-5">
         <img
-          v-if="berandaStore.fasilitasData[1]?.image"
+          v-if="berandaStore.fasilitasData[1]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[1].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[1].image1)"
           class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
         <img
-          v-if="berandaStore.fasilitasData[2]?.image"
+          v-if="berandaStore.fasilitasData[2]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[2].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[2].image1)"
           class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
@@ -345,9 +347,9 @@ onMounted(async () => {
 
       <div class="w-1/5 flex justify-center items-center">
         <img
-          v-if="berandaStore.fasilitasData[3]?.image"
+          v-if="berandaStore.fasilitasData[3]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[3].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[3].image1)"
           class="w-full h-full bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-full bg-gray-200 rounded-[20px]"></div>
@@ -355,16 +357,16 @@ onMounted(async () => {
 
       <div class="w-1/5 flex flex-col gap-2 justify-center items-center py-5">
         <img
-          v-if="berandaStore.fasilitasData[4]?.image"
+          v-if="berandaStore.fasilitasData[4]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[4].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[4].image1)"
           class="w-full h-full bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
         <img
-          v-if="berandaStore.fasilitasData[5]?.image"
+          v-if="berandaStore.fasilitasData[5]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[5].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[5].image1)"
           class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
@@ -372,9 +374,9 @@ onMounted(async () => {
 
       <div class="w-1/5 flex justify-center items-center">
         <img
-          v-if="berandaStore.fasilitasData[6]?.image"
+          v-if="berandaStore.fasilitasData[6]?.image1"
           onerror="this.style.display='none'"
-          :src="getImageUrl(berandaStore.fasilitasData[6].image)"
+          :src="getImageUrl(berandaStore.fasilitasData[6].image1)"
           class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
         />
         <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
@@ -385,7 +387,7 @@ onMounted(async () => {
   </div>
 
   <!-- Testimoni -->
-  <Testimonial />
+  <TestimonialsSection :testimoni="berandaStore.testimoniData" :is-loading="false" />
 
   <!-- Berita Terbaru -->
   <div class="lg:mt-48 mt-32 lg:px-[0%] px-[5%]">
@@ -403,7 +405,6 @@ onMounted(async () => {
           class="text-black"
         ></TitleSection>
       </div>
-      <!-- <Button className="btn-primary" class="w-fit mt-5 lg:mt-0">Selengkapnya</Button> -->
       <InteractiveHoverButton
         text="Selengkapnya"
         class="w-fit mt-5 lg:mt-0"
@@ -411,7 +412,7 @@ onMounted(async () => {
     </div>
 
     <!-- Card Berita container -->
-    <div class="w-full mt-10 flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center">
+    <!-- <div class="w-full mt-10 flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center">
       <div
         v-for="(data, index) in berandaStore.beritaData"
         class="p-5 bg-white rounded-[32px] flex flex-col gap-5 h-full cursor-pointer transition-all duration-300 relative overflow-hidden group hoverAnimation"
@@ -440,12 +441,20 @@ onMounted(async () => {
           <span>{{ formatDate(data.created_at) }}</span> | <span>4 min read</span>
         </h6>
 
-        <!-- Optional subtle shadow effect -->
         <div
           class="absolute inset-0 rounded-[32px] shadow-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
         ></div>
       </div>
-    </div>
+    </div> -->
+    <ArticleCard
+        v-for="(beritaItem, index) in berandaStore.beritaData"
+        :key="index"
+        :kategori="'Berita'"
+        :judul="beritaItem.title"
+        :tanggal="beritaItem.publish"
+        :gambar="getImageUrl(beritaItem.image)"
+        :slug="beritaItem.slug"
+      />
   </div>
 </template>
 <style scoped>

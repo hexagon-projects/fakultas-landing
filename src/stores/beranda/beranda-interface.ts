@@ -74,14 +74,13 @@ export interface IAgendaData {
     created_at: string;
     updated_at: string;
 }
-
 export interface ITestimoniData {
     id: number;
-    id_departement: number;
+    id_departement: number | null;
     name: string;
     title: string;
     description: string;
-    home?: null | string;
+    home: string | null;
     yt: string;
     image: string;
     created_at: string;
@@ -121,7 +120,10 @@ export interface IFasilitasData {
     subtitle: string;
     description: string;
     home?: null | string;
-    image: string;
+    image1: string;
+    image2: string;
+    image3?: null | string;
+    image4?: null | string;
     yt: string;
     created_at: string;
     updated_at: string;
@@ -151,6 +153,39 @@ export interface IPortofolioData {
     image2: string;
     image3: string;
     yt: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface IDosenData {
+    id: number;
+    id_departement: number;
+    name: string;
+    title: string;
+    email: string;
+    phone: string;
+    ig: string;
+    fb: string;
+    yt: string;
+    tiktok: string;
+    image: string;
+    home?: null | string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface IJurnalData {
+    id: number;
+    id_departement: number;
+    id_team: number;
+    title: string;
+    name: string;
+    slug: string;
+    description: string;
+    home?: null | string;
+    image1: string;
+    image2: string;
+    image3: string;
     created_at: string;
     updated_at: string;
 }

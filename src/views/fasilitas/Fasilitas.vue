@@ -67,8 +67,8 @@ onMounted(async () => {
           <!-- Left Image -->
           <div class="w-1/2 h-40 rounded-[20px] bg-gray-300 relative overflow-hidden">
             <img
-              v-if="berandaStore.fasilitasData[0]?.image"
-              :src="getImageUrl(berandaStore.fasilitasData[0].image)"
+              v-if="berandaStore.fasilitasData[0]?.image1"
+              :src="getImageUrl(berandaStore.fasilitasData[0].image1)"
               class="absolute inset-0 w-full h-full object-cover"
               alt="Facility image"
             />
@@ -77,8 +77,8 @@ onMounted(async () => {
           <!-- Right Image -->
           <div class="w-1/2 h-40 rounded-[20px] bg-gray-300 relative overflow-hidden">
             <img
-              v-if="berandaStore.fasilitasData[1]?.image"
-              :src="getImageUrl(berandaStore.fasilitasData[1].image)"
+              v-if="berandaStore.fasilitasData[1]?.image1"
+              :src="getImageUrl(berandaStore.fasilitasData[1].image1)"
               class="absolute inset-0 w-full h-full object-cover"
               alt="Facility image"
             />
@@ -99,8 +99,8 @@ onMounted(async () => {
           <!-- Small Image Cell -->
           <div class="w-full h-40 rounded-[20px] bg-gray-300 relative overflow-hidden">
             <img
-              v-if="berandaStore.fasilitasData[2]?.image"
-              :src="getImageUrl(berandaStore.fasilitasData[2].image)"
+              v-if="berandaStore.fasilitasData[2]?.image1"
+              :src="getImageUrl(berandaStore.fasilitasData[2].image1)"
               class="absolute inset-0 w-full h-full object-cover"
               alt="Facility image"
             />
@@ -109,8 +109,8 @@ onMounted(async () => {
           <!-- Tall Image Cell (spanning 2 rows) -->
           <div class="row-span-2 w-full h-full rounded-[20px] bg-gray-300 relative overflow-hidden">
             <img
-              v-if="berandaStore.fasilitasData[3]?.image"
-              :src="getImageUrl(berandaStore.fasilitasData[3].image)"
+              v-if="berandaStore.fasilitasData[3]?.image1"
+              :src="getImageUrl(berandaStore.fasilitasData[3].image1)"
               class="absolute inset-0 w-full h-full object-cover"
               alt="Facility image"
             />
@@ -119,8 +119,8 @@ onMounted(async () => {
           <!-- Bottom Row Images -->
           <div class="w-full h-40 rounded-[20px] bg-gray-300 relative overflow-hidden">
             <img
-              v-if="berandaStore.fasilitasData[4]?.image"
-              :src="getImageUrl(berandaStore.fasilitasData[4].image)"
+              v-if="berandaStore.fasilitasData[4]?.image1"
+              :src="getImageUrl(berandaStore.fasilitasData[4].image1)"
               class="absolute inset-0 w-full h-full object-cover"
               alt="Facility image"
             />
@@ -128,8 +128,8 @@ onMounted(async () => {
 
           <div class="w-full h-40 rounded-[20px] bg-gray-300 relative overflow-hidden">
             <img
-              v-if="berandaStore.fasilitasData[5]?.image"
-              :src="getImageUrl(berandaStore.fasilitasData[5].image)"
+              v-if="berandaStore.fasilitasData[5]?.image1"
+              :src="getImageUrl(berandaStore.fasilitasData[5].image1)"
               class="absolute inset-0 w-full h-full object-cover"
               alt="Facility image"
             />

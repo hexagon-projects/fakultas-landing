@@ -1,6 +1,6 @@
 import ApiService from "@/core/services/ApiService";
 import { defineStore } from "pinia";
-import type { IFakultasData, IDataUngulan, IPrestasiData, IAgendaData, ITestimoniData, IOrganisasiData, IBeritaData, IFasilitasData, IMitraData, IPortofolioData } from "./beranda-interface";
+import type { IFakultasData, IDataUngulan, IPrestasiData, IAgendaData, ITestimoniData, IOrganisasiData, IBeritaData, IFasilitasData, IMitraData, IPortofolioData, IDosenData, IJurnalData } from "./beranda-interface";
 import { hexToCssHsl, hexToRgb } from "@/core/helpers/helper";
 
 export const useBerandaStore = defineStore("beranda", {
@@ -15,6 +15,8 @@ export const useBerandaStore = defineStore("beranda", {
         fasilitasData: [] as IFasilitasData[],
         mitraData: [] as IMitraData[],
         portofolioData: [] as IPortofolioData[],
+        dosenData: [] as IDosenData[],
+        jurnalData: [] as IJurnalData[],
         isLoading: false as boolean,
         isLoaded: false as boolean,
     }),
@@ -29,6 +31,7 @@ export const useBerandaStore = defineStore("beranda", {
                     this.getDataBerita(),
                     this.getDataFasilitas(true),
                     this.getDataPortofolio(true),
+                    this.getDataDosen(true),
                 ]);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -119,6 +122,16 @@ export const useBerandaStore = defineStore("beranda", {
         async getDataPortofolio(isHome: boolean = false) {
             const data = await this.fetchData("/portofolio", isHome);
             this.portofolioData = data || [] as IPortofolioData[];
+        },
+
+        async getDataDosen(isHome: boolean = false) {
+            const data = await this.fetchData("/team", isHome);
+            this.dosenData = data || [] as IDosenData[];
+        },
+
+        async getDataJurnal(isHome: boolean = false) {
+            const data = await this.fetchData("/jurnal", isHome);
+            this.jurnalData = data || [] as IJurnalData[];
         },
     },
 });

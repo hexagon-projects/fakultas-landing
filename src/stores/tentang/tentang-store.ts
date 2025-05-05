@@ -1,10 +1,11 @@
 import ApiService from "@/core/services/ApiService";
 import { defineStore } from "pinia";
-import type { IDosenData } from "./tentang-interface";
+import type { IDosenData, ITimelineData } from "./tentang-interface";
 
 export const useTentangStore = defineStore("tentang", {
     state: () => ({
         dosenData: [] as IDosenData[],
+        timelineData: [] as ITimelineData[],
     }),
     getters: {
     },
@@ -13,6 +14,7 @@ export const useTentangStore = defineStore("tentang", {
             try {
                 Promise.all([
                     this.getDosenData(),
+                    this.getTimelineData(),
                 ]).then(() => {
                     console.log("All data fetched successfully");
                 });
@@ -31,6 +33,19 @@ export const useTentangStore = defineStore("tentang", {
                 }
             } catch (error) {
                 console.error("Error fetching dosen data:", error);
+            }
+        },
+        async getTimelineData() {
+            try {
+                const response = await ApiService.get("/timeline");
+                if (response.status === 200) {
+                    this.timelineData = response.data;
+                } else {
+                    this.timelineData = [] as ITimelineData[];
+                    console.error("Error fetching timeline data:", response.status, response.statusText);
+                }
+            } catch (error) {
+                console.error("Error fetching timeline data:", error);
             }
         },
     },

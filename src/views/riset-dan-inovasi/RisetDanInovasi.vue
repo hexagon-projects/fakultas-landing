@@ -10,6 +10,7 @@ import TitleSection from '@/components/TitleSection.vue'
 
 onMounted(async () => {
   await berandaStore.getDataPortofolio()
+  await berandaStore.getDataJurnal()
 })
 </script>
 <template>
@@ -125,13 +126,13 @@ onMounted(async () => {
 
       <!-- Card Berita -->
       <div class="flex flex-col lg:flex-row lg:gap-20 md:gap-10 gap-5 lg:px-40 md:px-20 px-0 mt-10">
-        <template v-for="(item, index) in 3" :key="index">
+        <template v-for="(item, index) in berandaStore.jurnalData" :key="index">
           <div
             class="text-center grid gap-5 transition-all duration-300 group cursor-pointer p-5 rounded-[20px] hover:shadow-lg hoverAnimation"
           >
             <div class="rounded-[20px] overflow-hidden">
               <img
-                :src="''"
+                :src="getImageUrl(item.image1)"
                 alt=""
                 class="w-full h-48 rounded-[20px] bg-gray-200 object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -139,11 +140,9 @@ onMounted(async () => {
             <h5
               class="font-bold text-xl transition-colors duration-300"
             >
-              Inisiatif Kolaborasi untuk Meningkatkan Kualitas Pendidikan dan Penelitian
+              {{ item.title }}
             </h5>
-            <p class="transition-colors duration-300 group-hover:text-gray-700">
-              Fakultas kami aktif menjalin kerjasama dengan berbagai institusi untuk meningkatkan
-              pengalaman belajar.
+            <p class="transition-colors duration-300 group-hover:text-gray-700" v-html="item.description">
             </p>
           </div>
         </template>

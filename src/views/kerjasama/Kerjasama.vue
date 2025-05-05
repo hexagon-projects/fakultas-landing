@@ -116,7 +116,7 @@ onMounted(() => {
     </div>
   </ScrollTransition>
 
-  <ScrollTransition>
+  <!-- <ScrollTransition>
     <div class="py-24 px-[5%] lg:px-0">
       <TitleSection
         text="Program dan Proyek Kerjasama Fakultas yang Sedang Berjalan"
@@ -162,7 +162,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </ScrollTransition>
+  </ScrollTransition> -->
 
   <!-- Mitra Strategis -->
     <div class="my-24 px-[5%] lg:px-0">
