@@ -5,6 +5,7 @@ import TestimoniCarousel from '@/components/TestimoniCarousel.vue'
 import Title from '@/components/Title.vue'
 import { berandaStore } from '@/stores'
 import ScrollTransition from '@/components/ScrollTransition.vue'
+import TitleMain from '@/components/TitleMain.vue'
 
 const currentPage = ref(1)
 const itemsPerPage = ref(3)
@@ -83,9 +84,7 @@ onMounted(async () => {
       class="lg:mt-48 mt-10 flex lg:gap-20 gap-5 lg:px-0 px-[5%] items-center flex-col lg:flex-row"
     >
       <div class="lg:w-1/2 w-full">
-        <Title
-          >Testimonial Alumni <span class="text-colorPrimary">Fakultas Hukum</span> Unpas</Title
-        >
+        <TitleMain v-if="berandaStore.fakultasData.name" :text="`Testimonial Alumni ${berandaStore.fakultasData.name} Unpas`"></TitleMain>
       </div>
       <div class="lg:w-1/2 w-full">
         <p class="text-gray-500">
@@ -111,7 +110,7 @@ onMounted(async () => {
         <div class="px-5 py-2 rounded-full mx-auto mb-5 w-fit bg-colorPrimary/20">
           <h6 class="font-semibold text-colorPrimary">Testimonials</h6>
         </div>
-        <Title>Apa Yang Dikatakan Alumni</Title>
+        <TitleMain text="Apa Yang Dikatakan Alumni"></TitleMain>
         <p class="text-gray-500 mt-5">
           Customers trust Chainex for secure automation and smart analytics. See how AI enhances
           their blockchain experience

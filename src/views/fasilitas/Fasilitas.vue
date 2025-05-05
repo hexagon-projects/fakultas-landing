@@ -6,6 +6,7 @@ import { berandaStore } from '@/stores'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import ScrollTransition from '@/components/ScrollTransition.vue'
+import TitleMain from '@/components/TitleMain.vue'
 
 const router = useRouter()
 
@@ -24,7 +25,7 @@ onMounted(async () => {
       class="lg:mt-48 mt-10 flex lg:gap-20 gap-5 lg:px-0 px-[5%] items-center flex-col lg:flex-row text-center lg:text-left"
     >
       <div class="lg:w-1/2 w-full">
-        <Title>Fasilitas Unggulan</Title>
+        <TitleMain text="Fasilitas Unggulan"></TitleMain>
       </div>
       <div class="lg:w-1/2 w-full">
         <p class="text-sm md:text-base">
@@ -50,7 +51,7 @@ onMounted(async () => {
   <ScrollTransition>
     <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
       <div class="grid gap-5 text-center w-full lg:w-1/2 mx-auto">
-        <Title>Fasilitas</Title>
+        <TitleMain text="Fasilitas"></TitleMain>
         <p class="text-sm md:text-base">
           Scenes that unfold like a movie, with each image telling a cinematic story.
         </p>

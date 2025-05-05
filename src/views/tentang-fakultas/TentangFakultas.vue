@@ -9,6 +9,7 @@ import { berandaStore, tentangStore } from '@/stores'
 import { onMounted } from 'vue'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import { getImageUrl } from '@/core/helpers/helper'
+import TitleMain from '@/components/TitleMain.vue'
 
 const data = [
   {
@@ -36,7 +37,10 @@ onMounted(() => {
       class="lg:mt-48 mt-10 px-[5%] lg:px-0 flex lg:gap-20 gap-5 lg:flex-row flex-col items-center"
     >
       <div class="text-center lg:w-1/2 w-full mx-auto">
-        <Title>Sejarah, Visi, Misi, dan Pencapaian Fakultas Kami</Title>
+        <TitleMain
+          text="Sejarah, Visi, Misi, dan Pencapaian Fakultas Kami"
+          class="text-center"
+        ></TitleMain>
         <p class="mt-8 text-sm lg:text-base">
           Fakultas kami didirikan pada tahun 1990 dengan tujuan memberikan pendidikan berkualitas
           tinggi. Kami berkomitmen untuk menciptakan lingkungan belajar yang inovatif dan inklusif,
@@ -61,11 +65,15 @@ onMounted(() => {
     <div class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10">
       <div class="lg:w-1/2 w-full">
         <div>
-          <Title class="mt-7">
-            {{ berandaStore.fakultasData.title2 }}
-          </Title>
-          <p class="text-gray-500 mt-7 text-sm lg:text-base" v-html="berandaStore.fakultasData.description2">
-          </p>
+          <TitleMain
+            v-if="berandaStore.fakultasData.title2"
+            class="mt-7"
+            :text="`Sejarah ${berandaStore.fakultasData.title2}`"
+          ></TitleMain>
+          <p
+            class="text-gray-500 mt-7 text-sm lg:text-base"
+            v-html="berandaStore.fakultasData.description2"
+          ></p>
           <div class="flex gap-5 lg:mt-10 mt-5">
             <!-- <Button>Daftar Sekarang</Button>
             <Button className="btn-outline-primary">Selengkapnya</Button> -->
@@ -83,7 +91,11 @@ onMounted(() => {
       </div>
       <div class="lg:w-1/2 w-full">
         <div class="w-full h-80 bg-gray-200 rounded-[32px]">
-          <img :src="berandaStore.fakultasData.image2" alt="" class="w-full h-full object-cover rounded-[32px]" />
+          <img
+            :src="berandaStore.fakultasData.image2"
+            alt=""
+            class="w-full h-full object-cover rounded-[32px]"
+          />
         </div>
       </div>
     </div>
@@ -91,15 +103,17 @@ onMounted(() => {
 
   <!-- Visi Misi Fakultas -->
   <ScrollTransition>
-    <div class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10" v-if="berandaStore.fakultasData.title4 && berandaStore.fakultasData.description4">
+    <div
+      class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10"
+      v-if="berandaStore.fakultasData.title4 && berandaStore.fakultasData.description4"
+    >
       <div class="lg:w-1/2 w-full">
         <div class="w-full h-full bg-gray-200"></div>
       </div>
       <div class="lg:w-1/2 w-full">
         <div>
           <Title class="mt-7">{{ berandaStore.fakultasData.title4 }}</Title>
-          <p class="mt-5 text-sm lg:text-base" v-html="berandaStore.fakultasData.description4">
-          </p>
+          <p class="mt-5 text-sm lg:text-base" v-html="berandaStore.fakultasData.description4"></p>
           <!-- <h6 class="mt-5 font-semibold">Visi</h6>
                 <p>“Menjadi fakultas hukum unggulan di tingkat nasional dan internasional yang berlandaskan nilai-nilai keilmuan, keislaman, dan kesundaan dalam mengembangkan ilmu hukum yang berkeadilan, berintegritas, dan responsif terhadap dinamika global.”</p>
                 <h6 class="mt-5 font-semibold">Misi</h6>
@@ -127,7 +141,7 @@ onMounted(() => {
     <div class="flex flex-col gap-10 lg:mt-48 mt-32 px-[5%] lg:px-0">
       <div class="w-full">
         <div class="grid gap-5">
-          <Title> Statistik Fakultas: Mengetahui Lebih Dalam Tentang Kami </Title>
+          <TitleMain text="Statistik Fakultas: Mengetahui Lebih Dalam Tentang Kami"></TitleMain>
           <p class="text-sm lg:text-base">
             Fakultas kami memiliki lebih dari 1.000 mahasiswa aktif yang terdaftar. Dengan dukungan
             100 dosen berpengalaman, kami menawarkan 10 program studi yang berkualitas. Kami
@@ -183,13 +197,33 @@ onMounted(() => {
 
       <!-- Card Dosen -->
       <div class="w-full mt-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
-        <div class="grid gap-5" v-for="(data, index) in tentangStore.dosenData" :key="index">
-          <img :src="getImageUrl(data.image)" alt="" class="w-full h-64 object-cover rounded-[32px] bg-gray-200" />
-          <div>
-            <h2 class="font-semibold text-lg">{{ data.name }}</h2>
-            <h3 class="text-lg">{{ data.title }}</h3>
+        <div
+          class="grid gap-5 transition-all duration-300 group cursor-pointer hover:bg-[#FAFAFA] p-5 rounded-[32px]"
+          v-for="(data, index) in tentangStore.dosenData"
+          :key="index"
+          :class="[`delay-${index % 9}`]"
+        >
+          <div class="rounded-[32px] overflow-hidden">
+            <img
+              :src="getImageUrl(data.image)"
+              alt=""
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
           </div>
-          <p class="text-sm md:text-base" v-html="data.description"></p>
+          <div class="space-y-1">
+            <h2
+              class="font-semibold text-lg transition-colors duration-300 group-hover:text-colorPrimary"
+            >
+              {{ data.name }}
+            </h2>
+            <h3 class="text-lg transition-colors duration-300 group-hover:text-gray-700">
+              {{ data.title }}
+            </h3>
+          </div>
+          <p
+            class="text-sm md:text-base transition-colors duration-300 group-hover:text-gray-800"
+            v-html="data.description"
+          ></p>
         </div>
       </div>
     </div>
@@ -200,3 +234,17 @@ onMounted(() => {
     <Testimonial />
   </ScrollTransition>
 </template>
+
+<style scoped>
+
+/* Enhanced hover effect */
+.group:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Optional: Add a subtle border on hover */
+.group:hover {
+  @apply border border-gray-200;
+}
+</style>

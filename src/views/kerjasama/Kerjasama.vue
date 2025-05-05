@@ -7,6 +7,7 @@ import { berandaStore, kerjasamaStore } from '@/stores'
 import { onMounted } from 'vue'
 import { getImageUrl } from '@/core/helpers/helper'
 import ScrollTransition from '@/components/ScrollTransition.vue'
+import TitleMain from '@/components/TitleMain.vue'
 
 const currentPage = ref(1)
 const itemsPerPage = ref(6)
@@ -87,7 +88,7 @@ onMounted(() => {
     >
       <div class="lg:w-1/2 w-full">
         <h5 class="md:text-xl text-base font-semibold">Kolaborasi</h5>
-        <Title class="mt-5">Mitra Strategis Kami</Title>
+        <TitleMain text="Mitra Strategis Kami" class="mt-5"></TitleMain>
       </div>
       <div class="lg:w-1/2 w-full">
         <p class="mt-5 lg:mt-0">
@@ -115,23 +116,46 @@ onMounted(() => {
 
   <ScrollTransition>
     <div class="py-24 px-[5%] lg:px-0">
-      <Title class="mt-5 text-center lg:w-1/2 w-full mx-auto">
-        Program dan Proyek Kerjasama Fakultas yang Sedang Berjalan
-      </Title>
+      <TitleMain
+        text="Program dan Proyek Kerjasama Fakultas yang Sedang Berjalan"
+        class="mt-5 text-center"
+      >
+      </TitleMain>
       <div
         class="mt-10 grid lg:gap-20 md:gap-10 lg:px-40 md:px-20 px-0 grid-cols-1 md:grid-cols-2 gap-10 lg:flex"
       >
-        <div class="text-center grid gap-5" v-for="data in 3">
-          <img src="" alt="" class="w-full h-48 rounded-[20px] bg-gray-200" />
-          <h5 class="font-bold text-xl">
+        <div
+          class="text-center grid gap-5 p-5 rounded-[20px] transition-all duration-300 group cursor-pointer hover:bg-white hover:shadow-lg"
+          v-for="(data, index) in 3"
+          :key="index"
+          :class="`delay-${index % 9}`"
+        >
+          <div class="rounded-[20px] overflow-hidden">
+            <img
+              src=""
+              alt=""
+              class="w-full h-48 rounded-[20px] bg-gray-200 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+
+          <h5
+            class="font-bold text-xl transition-colors duration-300 group-hover:text-colorPrimary"
+          >
             Inisiatif Kolaborasi untuk Meningkatkan Kualitas Pendidikan dan Penelitian
           </h5>
-          <p class="">
+
+          <p class="transition-colors duration-300 group-hover:text-gray-700">
             Fakultas kami aktif menjalin kerjasama dengan berbagai institusi untuk meningkatkan
             pengalaman belajar.
           </p>
-          <button class="flex items-center justify-center">
-            selengkapnya <i class="pi pi-chevron-right"></i>
+
+          <button
+            class="flex items-center justify-center gap-2 text-colorPrimary transition-all duration-300 group-hover:gap-3 group-hover:font-semibold"
+          >
+            selengkapnya
+            <i
+              class="pi pi-chevron-right transition-transform duration-300 group-hover:translate-x-1"
+            ></i>
           </button>
         </div>
       </div>
@@ -142,7 +166,7 @@ onMounted(() => {
   <ScrollTransition>
     <div class="my-24 px-[5%] lg:px-0">
       <div class="text-center w-full lg:w-1/2 mx-auto">
-        <Title>Mitra Strategis Kami</Title>
+        <TitleMain text="Mitra Strategis Kami"></TitleMain>
         <p class="mt-8 text-sm lg:text-base">
           This grid captures the delicate interplay of light and shadow, creating moments of
           brilliance in each image.
@@ -211,3 +235,13 @@ onMounted(() => {
     <Mitra />
   </ScrollTransition>
 </template>
+<style scoped>
+.group:hover {
+  transform: translateY(-5px);
+  border: 1px solid #e5e7eb;
+}
+
+button:hover {
+  transform: translateX(2px);
+}
+</style>

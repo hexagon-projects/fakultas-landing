@@ -6,6 +6,8 @@ import { getImageUrl } from '@/core/helpers/helper'
 import { berandaStore } from '@/stores'
 import { onMounted } from 'vue'
 import ScrollTransition from '@/components/ScrollTransition.vue'
+import TitleMain from '@/components/TitleMain.vue'
+import KegiatanCard from '../prodiDetail/components/KegiatanCard.vue'
 
 onMounted(async () => {
   await berandaStore.getDataPrestasi()
@@ -18,7 +20,7 @@ onMounted(async () => {
       class="lg:py-48 mt-10 px-[5%] lg:px-0 flex lg:gap-20 gap-5 lg:flex-row flex-col items-center relative custom-gradient"
     >
       <div class="text-center w-full md:w-3/4 lg:w-1/2 mx-auto">
-        <Title>Setiap Prestasi Adalah Langkah Menuju Perubahan</Title>
+        <TitleMain text="Setiap Prestasi Adalah Langkah Menuju Perubahan"></TitleMain>
         <p class="mt-8">
           Mahasiswa Universitas Pasundan terus mengukir prestasi membanggakan di berbagai bidang
           baik di tingkat nasional maupun internasional.
@@ -35,7 +37,7 @@ onMounted(async () => {
   <ScrollTransition>
     <div class="lg:mt-0 mt-32 px-[5%] lg:px-0">
       <div class="grid gap-5 text-center w-full lg:w-1/2 md:w-3/4 mx-auto">
-        <Title>Prestasi Mahasiswa</Title>
+        <TitleMain text="Prestasi Mahasiswa"></TitleMain>
         <p class="text-gray-500">
           This grid captures the delicate interplay of light and shadow, creating moments of
           brilliance in each image.
@@ -46,22 +48,15 @@ onMounted(async () => {
         </div>
       </div>
       <div class="w-full mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:px-20">
-        <div
-          class="w-full h-64 bg-gray-200 flex flex-col justify-end p-5 rounded-[20px] cursor-pointer hover:scale-105 transition relative"
-          v-for="data in berandaStore.prestasiData"
-          :key="data.id"
-          :style="{
-            backgroundImage: `url(${getImageUrl(data.image)})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }"
-        >
-          <div
-            class="bg-gradient-to-t from-black/80 via-transparent to-transparent absolute inset-0 rounded-[20px]"
-          ></div>
-          <h6 class="text-white font-semibold z-10">{{ data.name }}</h6>
-          <p class="text-white/40 z-10" v-html="data.description"></p>
-        </div>
+        <KegiatanCard
+          v-for="(item, index) in berandaStore.prestasiData"
+          :key="index"
+          :title="item.name"
+          :description="item.description"
+          :image="getImageUrl(item.image)"
+          :index="index"
+          class="cursor-pointer"
+        />
       </div>
       <div class="flex justify-center mt-10">
         <InteractiveHoverButton text="Lihat Semua" />

@@ -4,7 +4,7 @@ import Title from './Title.vue'
 import { berandaStore } from '@/stores'
 import { getImageUrl } from '@/core/helpers/helper'
 import { useRouter } from 'vue-router'
-
+import TitleMain from './TitleMain.vue'
 
 const router = useRouter()
 const currentIndex = ref(0)
@@ -47,9 +47,10 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="lg:mt-48 mt-32">
-    <Title class="text-center px-[5%]">
+    <TitleMain :text="`Lebih Dari <span class='text-colorPrimary'>1000+</span> Mitra Kerjasama`" :html="true" class="text-center px-[5%]"></TitleMain>
+    <!-- <Title class="text-center px-[5%]">
       Lebih Dari <span class="text-colorPrimary">1000+</span> Mitra Kerjasama
-    </Title>
+    </Title> -->
 
     <div class="w-full overflow-hidden bg-gray-100">
       <!-- Carousel track -->

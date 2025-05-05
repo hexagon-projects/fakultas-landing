@@ -5,6 +5,8 @@ import Button from './Button.vue';
 import Title from './Title.vue';
 import { berandaStore } from '@/stores';
 import { getImageUrl } from '@/core/helpers/helper';
+import TitleMain from './TitleMain.vue';
+import KegiatanCard from '@/views/prodiDetail/components/KegiatanCard.vue';
 
 const kegiatanIndex = ref(0)
 
@@ -18,7 +20,7 @@ const currentKegiatan = computed(() => {
 </script>
 <template>
     <div class="grid gap-5 text-center lg:w-1/2 w-full mx-auto">
-      <Title>Kegiatan Mahasiswa</Title>
+      <TitleMain text="Kegiatan Mahasiswa" class="text-center"></TitleMain>
       <p class="text-gray-500">
         Fakultas Hukum Unpas memiliki berbagai kegiatan mahasiswa yang mendukung pengembangan diri
         dan keterampilan.
@@ -30,15 +32,21 @@ const currentKegiatan = computed(() => {
     </div>
     <!-- Desktop -->
     <div class="w-full mt-10 hidden lg:grid lg:grid-cols-3 md:grid-cols-2 gap-10 lg:px-20">
-      <template v-for="item in berandaStore.organisasiData" :key="item.id">
-        <div
+      <template v-for="(item,index) in berandaStore.organisasiData" :key="item.id">
+        <!-- <div
           class="w-full h-64 flex flex-col justify-end p-5 rounded-[20px] cursor-pointer hover:scale-105 transition bg-cover relative"
           :style="{ backgroundImage: `url('${getImageUrl(item.image)}')` }"
         >
           <div class="bg-gradient-to-t from-black/80 via-transparent absolute inset-0 rounded-[20px]"></div>
           <h6 class="text-white font-semibold z-10">{{ item.name }}</h6>
           <p class="text-white/40 z-10" v-html="item. description"></p>
-        </div>
+        </div> -->
+        <KegiatanCard
+          :title="item.name"
+          :description="item.description"
+          :image="getImageUrl(item.image)"
+          :index="index"
+        />
       </template>
     </div>``
 
