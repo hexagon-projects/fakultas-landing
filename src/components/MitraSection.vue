@@ -4,7 +4,7 @@ import Title from './Title.vue'
 import { berandaStore } from '@/stores'
 import { getImageUrl } from '@/core/helpers/helper'
 import { useRouter } from 'vue-router'
-import TitleMain from './TitleMain.vue'
+import TitleSection from './TitleSection.vue'
 
 const router = useRouter()
 const currentIndex = ref(0)
@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="lg:mt-48 mt-32">
-    <TitleMain :text="`Lebih Dari <span class='text-colorPrimary'>1000+</span> Mitra Kerjasama`" :html="true" class="text-center px-[5%]"></TitleMain>
+    <TitleSection :text="`Lebih Dari <span class='text-colorPrimary'>1000+</span> Mitra Kerjasama`" :html="true" class="text-center px-[5%]"></TitleSection>
     <!-- <Title class="text-center px-[5%]">
       Lebih Dari <span class="text-colorPrimary">1000+</span> Mitra Kerjasama
     </Title> -->

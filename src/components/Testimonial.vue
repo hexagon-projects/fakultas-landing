@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { berandaStore } from '@/stores'
-import Title from './Title.vue'
 import { computed, onMounted, ref } from 'vue'
 import InteractiveHoverButton from './ui/interactive-hover-button/InteractiveHoverButton.vue'
 import { useRouter } from 'vue-router'
 import { getImageUrl } from '@/core/helpers/helper'
-import TitleMain from './TitleMain.vue'
+import TitleSection from './TitleSection.vue'
 
 const router = useRouter()
 const testimonialIndex = ref(0)
@@ -26,7 +25,7 @@ onMounted(async () => {
       <div class="px-5 py-2 rounded-full mx-auto mb-5 w-fit bg-colorPrimary/20">
         <h6 class="font-semibold text-colorPrimary">Testimonials</h6>
       </div>
-      <TitleMain text="Apa Kata Mereka" class="text-center"></TitleMain>
+      <TitleSection text="Apa Kata Mereka" class="text-center"></TitleSection>
       <p class="text-gray-500 mt-5">
         Customers trust Chainex for secure automation and smart analytics. See how AI enhances their
         blockchain experience

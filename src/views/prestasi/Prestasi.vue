@@ -8,6 +8,7 @@ import { onMounted } from 'vue'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import TitleMain from '@/components/TitleMain.vue'
 import KegiatanCard from '../prodiDetail/components/KegiatanCard.vue'
+import TitleSection from '@/components/TitleSection.vue'
 
 onMounted(async () => {
   await berandaStore.getDataPrestasi()
@@ -37,7 +38,7 @@ onMounted(async () => {
   <ScrollTransition>
     <div class="lg:mt-0 mt-32 px-[5%] lg:px-0">
       <div class="grid gap-5 text-center w-full lg:w-1/2 md:w-3/4 mx-auto">
-        <TitleMain text="Prestasi Mahasiswa"></TitleMain>
+        <TitleSection text="Prestasi Mahasiswa"></TitleSection>
         <p class="text-gray-500">
           This grid captures the delicate interplay of light and shadow, creating moments of
           brilliance in each image.

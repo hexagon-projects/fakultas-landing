@@ -8,6 +8,7 @@ import { onMounted } from 'vue'
 import { getImageUrl } from '@/core/helpers/helper'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import TitleMain from '@/components/TitleMain.vue'
+import TitleSection from '@/components/TitleSection.vue'
 
 const currentPage = ref(1)
 const itemsPerPage = ref(6)
@@ -116,11 +117,11 @@ onMounted(() => {
 
   <ScrollTransition>
     <div class="py-24 px-[5%] lg:px-0">
-      <TitleMain
+      <TitleSection
         text="Program dan Proyek Kerjasama Fakultas yang Sedang Berjalan"
         class="mt-5 text-center"
       >
-      </TitleMain>
+      </TitleSection>
       <div
         class="mt-10 grid lg:gap-20 md:gap-10 lg:px-40 md:px-20 px-0 grid-cols-1 md:grid-cols-2 gap-10 lg:flex"
       >
@@ -163,10 +164,9 @@ onMounted(() => {
   </ScrollTransition>
 
   <!-- Mitra Strategis -->
-  <ScrollTransition>
     <div class="my-24 px-[5%] lg:px-0">
       <div class="text-center w-full lg:w-1/2 mx-auto">
-        <TitleMain text="Mitra Strategis Kami"></TitleMain>
+        <TitleSection text="Mitra Strategis Kami"></TitleSection>
         <p class="mt-8 text-sm lg:text-base">
           This grid captures the delicate interplay of light and shadow, creating moments of
           brilliance in each image.
@@ -228,12 +228,9 @@ onMounted(() => {
         </button>
       </div>
     </div>
-  </ScrollTransition>
 
   <!-- Mitra -->
-  <ScrollTransition>
     <Mitra />
-  </ScrollTransition>
 </template>
 <style scoped>
 .group:hover {

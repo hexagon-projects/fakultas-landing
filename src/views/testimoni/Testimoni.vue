@@ -6,6 +6,7 @@ import Title from '@/components/Title.vue'
 import { berandaStore } from '@/stores'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import TitleMain from '@/components/TitleMain.vue'
+import TitleSection from '@/components/TitleSection.vue'
 
 const currentPage = ref(1)
 const itemsPerPage = ref(3)
@@ -84,7 +85,10 @@ onMounted(async () => {
       class="lg:mt-48 mt-10 flex lg:gap-20 gap-5 lg:px-0 px-[5%] items-center flex-col lg:flex-row"
     >
       <div class="lg:w-1/2 w-full">
-        <TitleMain v-if="berandaStore.fakultasData.name" :text="`Testimonial Alumni ${berandaStore.fakultasData.name} Unpas`"></TitleMain>
+        <TitleMain
+          v-if="berandaStore.fakultasData.name"
+          :text="`Testimonial Alumni ${berandaStore.fakultasData.name} Unpas`"
+        ></TitleMain>
       </div>
       <div class="lg:w-1/2 w-full">
         <p class="text-gray-500">
@@ -104,80 +108,78 @@ onMounted(async () => {
   </ScrollTransition>
 
   <!-- Testimonial Mahasiswa -->
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
-      <div class="text-center lg:w-1/2 w-full mx-auto">
-        <div class="px-5 py-2 rounded-full mx-auto mb-5 w-fit bg-colorPrimary/20">
-          <h6 class="font-semibold text-colorPrimary">Testimonials</h6>
-        </div>
-        <TitleMain text="Apa Yang Dikatakan Alumni"></TitleMain>
-        <p class="text-gray-500 mt-5">
-          Customers trust Chainex for secure automation and smart analytics. See how AI enhances
-          their blockchain experience
-        </p>
+  <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
+    <div class="text-center lg:w-1/2 w-full mx-auto">
+      <div class="px-5 py-2 rounded-full mx-auto mb-5 w-fit bg-colorPrimary/20">
+        <h6 class="font-semibold text-colorPrimary">Testimonials</h6>
       </div>
-      <div class="mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <template v-for="data in paginatedTestimonials" :key="data.id">
-          <div class="p-8 bg-[#00000005] rounded-[32px] flex-col flex">
-            <div class="flex items-center gap-5">
-              <img src="" alt="" class="rounded-full w-16 h-16 bg-gray-200" />
-              <div>
-                <h1 class="text-xl font-semibold">{{ data.name }}</h1>
-                <h6 class="text-gray-500">{{ data.title }}</h6>
-              </div>
-            </div>
-            <p class="mt-5 grow" v-html="data.description"></p>
-            <div class="flex gap-5 mt-5">
-              <InteractiveHoverButton text="Selengkapnya" padding="px-6 py-2" />
-              <InteractiveHoverButton
-                text="Play"
-                padding="px-6 py-2"
-                bg-color="bg-none"
-                text-color="text-colorPrimary"
-                border-color="border-colorPrimary"
-                bg-hover="bg-colorPrimary"
-                text-hover="text-white"
-              />
+      <TitleSection text="Apa Yang Dikatakan Alumni"></TitleSection>
+      <p class="text-gray-500 mt-5">
+        Customers trust Chainex for secure automation and smart analytics. See how AI enhances their
+        blockchain experience
+      </p>
+    </div>
+    <div class="mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <template v-for="data in paginatedTestimonials" :key="data.id">
+        <div class="p-8 bg-[#00000005] rounded-[32px] flex-col flex">
+          <div class="flex items-center gap-5">
+            <img src="" alt="" class="rounded-full w-16 h-16 bg-gray-200" />
+            <div>
+              <h1 class="text-xl font-semibold">{{ data.name }}</h1>
+              <h6 class="text-gray-500">{{ data.title }}</h6>
             </div>
           </div>
-        </template>
-      </div>
-
-      <!-- Pagination -->
-      <div class="flex justify-center items-center mt-10 gap-2">
-        <!-- Previous button -->
-        <button
-          class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-200 text-gray-500 hover:bg-gray-300"
-          :disabled="currentPage === 1"
-          @click="prevPage"
-        >
-          <i class="pi pi-chevron-left"></i>
-        </button>
-
-        <!-- Page buttons -->
-        <button
-          v-for="page in displayedPages"
-          :key="page"
-          @click="goToPage(page)"
-          :class="[
-            'w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium',
-            currentPage === page
-              ? 'bg-colorPrimary text-white border border-colorPrimary'
-              : 'text-gray-700 hover:bg-gray-100',
-          ]"
-        >
-          {{ page === 'ellipsis' ? '...' : page }}
-        </button>
-
-        <!-- Next button -->
-        <button
-          class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-200 text-gray-500 hover:bg-gray-300"
-          :disabled="currentPage === totalPages"
-          @click="nextPage"
-        >
-          <i class="pi pi-chevron-right"></i>
-        </button>
-      </div>
+          <p class="mt-5 grow" v-html="data.description"></p>
+          <div class="flex gap-5 mt-5">
+            <InteractiveHoverButton text="Selengkapnya" padding="px-6 py-2" />
+            <InteractiveHoverButton
+              text="Play"
+              padding="px-6 py-2"
+              bg-color="bg-none"
+              text-color="text-colorPrimary"
+              border-color="border-colorPrimary"
+              bg-hover="bg-colorPrimary"
+              text-hover="text-white"
+            />
+          </div>
+        </div>
+      </template>
     </div>
-  </ScrollTransition>
+
+    <!-- Pagination -->
+    <div class="flex justify-center items-center mt-10 gap-2">
+      <!-- Previous button -->
+      <button
+        class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-200 text-gray-500 hover:bg-gray-300"
+        :disabled="currentPage === 1"
+        @click="prevPage"
+      >
+        <i class="pi pi-chevron-left"></i>
+      </button>
+
+      <!-- Page buttons -->
+      <button
+        v-for="page in displayedPages"
+        :key="page"
+        @click="goToPage(page)"
+        :class="[
+          'w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium',
+          currentPage === page
+            ? 'bg-colorPrimary text-white border border-colorPrimary'
+            : 'text-gray-700 hover:bg-gray-100',
+        ]"
+      >
+        {{ page === 'ellipsis' ? '...' : page }}
+      </button>
+
+      <!-- Next button -->
+      <button
+        class="w-10 h-10 flex items-center justify-center rounded-md bg-gray-200 text-gray-500 hover:bg-gray-300"
+        :disabled="currentPage === totalPages"
+        @click="nextPage"
+      >
+        <i class="pi pi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
 </template>

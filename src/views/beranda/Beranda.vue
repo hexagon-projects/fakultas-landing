@@ -12,6 +12,7 @@ import InteractiveHoverButton from '@/components/ui/interactive-hover-button/Int
 import ExpandableGallery from '@/components/insipra-ui/ExpandableGallery.vue'
 import { formatDate, getImageUrl } from '@/core/helpers/helper'
 import TitleMain from '@/components/TitleMain.vue'
+import TitleSection from '@/components/TitleSection.vue'
 
 const fasilitasImages = computed(() => {
   return berandaStore.fasilitasData.map((item) => getImageUrl(item.image))
@@ -100,10 +101,10 @@ onMounted(async () => {
             </h5>
             <hr class="w-1/5 border-t-2 border-colorPrimary hidden lg:block" />
           </div>
-          <TitleMain
+          <TitleSection
             v-if="berandaStore.fakultasData.title1"
             :text="`${berandaStore.fakultasData.title1}`"
-          ></TitleMain>
+          ></TitleSection>
           <p
             class="md:mt-7 mt-3 text-sm lg:text-base"
             v-html="berandaStore.fakultasData.description1"
@@ -155,321 +156,297 @@ onMounted(async () => {
   </div>
 
   <!-- Sub Tentang fakultas -->
-  <ScrollTransition>
-    <div class="flex lg:mt-48 mt-32 lg:gap-20 gap-5 lg:px-[0%] px-[5%] flex-col lg:flex-row">
-      <div class="lg:w-1/2 w-full">
-        <TitleMain
-          v-if="berandaStore.fakultasData.title2"
-          :text="`${berandaStore.fakultasData.title2}`"
-        ></TitleMain>
-      </div>
-      <div class="lg:w-1/2 w-full">
-        <p
-          class="font-medium text-sm md:text-base"
-          v-html="berandaStore.fakultasData.description2"
-        ></p>
-
-        <!-- <Button class="mt-10">Selengkapnya</Button> -->
-        <InteractiveHoverButton text="Selengkapnya" class="mt-10"></InteractiveHoverButton>
-      </div>
+  <div class="flex lg:mt-48 mt-32 lg:gap-20 gap-5 lg:px-[0%] px-[5%] flex-col lg:flex-row">
+    <div class="lg:w-1/2 w-full">
+      <TitleSection
+        v-if="berandaStore.fakultasData.title2"
+        :text="`${berandaStore.fakultasData.title2}`"
+      ></TitleSection>
     </div>
+    <div class="lg:w-1/2 w-full">
+      <p
+        class="font-medium text-sm md:text-base"
+        v-html="berandaStore.fakultasData.description2"
+      ></p>
 
-    <div class="lg:mt-20 mt-10 lg:px-[0%] px-[5%] rounded-[32px]">
-      <img
-        :src="`${imageBaseUrl}${berandaStore.fakultasData.image2}`"
-        alt=""
-        class="rounded-[32px] lg:w-3/4 mx-auto max-h-[600px]"
-      />
+      <!-- <Button class="mt-10">Selengkapnya</Button> -->
+      <InteractiveHoverButton text="Selengkapnya" class="mt-10"></InteractiveHoverButton>
     </div>
-  </ScrollTransition>
+  </div>
+
+  <div class="lg:mt-20 mt-10 lg:px-[0%] px-[5%] rounded-[32px]">
+    <img
+      :src="`${imageBaseUrl}${berandaStore.fakultasData.image2}`"
+      alt=""
+      class="rounded-[32px] lg:w-3/4 mx-auto max-h-[600px]"
+    />
+  </div>
 
   <!-- Kenapa Harus Memilih -->
-  <ScrollTransition>
-    <KenapaHarusFakultas />
-  </ScrollTransition>
+  <KenapaHarusFakultas />
 
   <!-- inovasi -->
-  <ScrollTransition>
-    <div
-      class="lg:mt-48 mt-32 flex md:gap-20 gap-5 flex-col lg:flex-row justify-center items-center"
-    >
-      <div class="lg:w-1/2 w-[90%]">
-        <div class="w-full h-80 bg-gray-200"></div>
+  <div class="lg:mt-48 mt-32 flex md:gap-20 gap-5 flex-col lg:flex-row justify-center items-center">
+    <div class="lg:w-1/2 w-[90%]">
+      <div class="w-full h-80 bg-gray-200"></div>
+    </div>
+    <div class="lg:w-1/2 w-[90%] text-black">
+      <h6 class="font-semibold md:text-lg">Inovasi</h6>
+      <TitleSection text="Penelitian Unggulan dan Publikasi Terbaru" class="mt-5"></TitleSection>
+      <p class="mt-5">
+        Fakultas kami berkomitmen untuk menghasilkan penelitian yang berdampak. Temukan karya-karya
+        inovatif yang dihasilkan oleh para akademisi kami.
+      </p>
+      <div class="flex gap-5 mt-5 flex-col md:flex-row">
+        <div class="md:w-1/2 w-full">
+          <h3 class="text-xl font-semibold">Penelitian Terkini</h3>
+          <p>Kami bangga dengan penelitian yang diakui secara internasional.</p>
+        </div>
+        <div class="md:w-1/2 w-full">
+          <h3 class="text-xl font-semibold">Publikasi Kami</h3>
+          <p>
+            Jurnal kami diterbitkan secara berkala dengan kontribusi dari berbagai disiplin ilmu.
+          </p>
+        </div>
       </div>
-      <div class="lg:w-1/2 w-[90%] text-black">
-        <h6 class="font-semibold md:text-lg">Inovasi</h6>
-        <TitleMain text="Penelitian Unggulan dan Publikasi Terbaru" class="mt-5"></TitleMain>
-        <p class="mt-5">
-          Fakultas kami berkomitmen untuk menghasilkan penelitian yang berdampak. Temukan
-          karya-karya inovatif yang dihasilkan oleh para akademisi kami.
-        </p>
-        <div class="flex gap-5 mt-5 flex-col md:flex-row">
-          <div class="md:w-1/2 w-full">
-            <h3 class="text-xl font-semibold">Penelitian Terkini</h3>
-            <p>Kami bangga dengan penelitian yang diakui secara internasional.</p>
-          </div>
-          <div class="md:w-1/2 w-full">
-            <h3 class="text-xl font-semibold">Publikasi Kami</h3>
-            <p>
-              Jurnal kami diterbitkan secara berkala dengan kontribusi dari berbagai disiplin ilmu.
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-10 mt-10">
-          <!-- <Button>Selengkapnya</Button> -->
-          <InteractiveHoverButton text="Selengkapnya"></InteractiveHoverButton>
-        </div>
+      <div class="flex gap-10 mt-10">
+        <!-- <Button>Selengkapnya</Button> -->
+        <InteractiveHoverButton text="Selengkapnya"></InteractiveHoverButton>
       </div>
     </div>
-  </ScrollTransition>
+  </div>
 
   <!-- Mitra -->
-  <ScrollTransition>
-    <Mitra />
-  </ScrollTransition>
+  <Mitra />
 
   <!-- Prestasi -->
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 flex relative flex-col lg:flex-row gap-10 lg:gap-0">
-      <div class="w-[90%] lg:w-1/2 mx-auto lg:sticky top-40 z-10 h-fit">
-        <TitleMain text="Prestasi" class="text-center"></TitleMain>
-        <p class="text-gray-500 mt-5 text-sm md:text-base">
-          Mahasiswa Universitas Pasundan terus mengukir prestasi membanggakan di berbagai bidang
-          baik di tingkat nasional maupun internasional.
-        </p>
-        <!-- <Button class="mt-5">Selengkapnya</Button> -->
-        <InteractiveHoverButton text="Selengkapnya" class="mt-5"></InteractiveHoverButton>
-      </div>
-      <div class="lg:w-1/2 w-full">
-        <Prestasi />
-      </div>
+  <div class="lg:mt-48 mt-32 flex relative flex-col lg:flex-row gap-10 lg:gap-0">
+    <div class="w-[90%] lg:w-1/2 mx-auto lg:sticky top-40 z-10 h-fit">
+      <TitleSection text="Prestasi" class="text-center"></TitleSection>
+      <p class="text-gray-500 mt-5 text-sm md:text-base">
+        Mahasiswa Universitas Pasundan terus mengukir prestasi membanggakan di berbagai bidang baik
+        di tingkat nasional maupun internasional.
+      </p>
+      <!-- <Button class="mt-5">Selengkapnya</Button> -->
+      <InteractiveHoverButton text="Selengkapnya" class="mt-5"></InteractiveHoverButton>
     </div>
-  </ScrollTransition>
+    <div class="lg:w-1/2 w-full">
+      <Prestasi />
+    </div>
+  </div>
 
   <!-- Kegiatan Mahasiswa -->
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 lg:px-0 px-[5%]">
-      <Kegiatan />
-    </div>
-  </ScrollTransition>
+  <div class="lg:mt-48 mt-32 lg:px-0 px-[5%]">
+    <Kegiatan />
+  </div>
 
   <!-- Agenda -->
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 lg:px-[0%] px-[5%]">
-      <div class="text-center lg:w-1/2 w-full mx-auto">
-        <TitleMain text="Agenda" class="text-center"></TitleMain>
-        <p class="text-gray-500 mt-5">Dapatkan informasi lebih lanjut tentang acara kami.</p>
-        <div class="flex gap-5 justify-center flex-wrap mt-5">
-          <Button
-            className="text-black rounded-full"
-            borderName="border border-colorPrimary"
-            padding="py-2 px-4"
-            >View All</Button
-          >
-          <Button className="" padding="py-2 px-4">Category One</Button>
-        </div>
-      </div>
-      <div class="lg:w-1/2 w-full grid mt-10 mx-auto gap-10">
-        <template v-for="(data, index) in berandaStore.agendaData" :key="item">
-          <div
-            class="flex bg-[#FAFAFA80] rounded-[32px] p-5 gap-5 flex-col md:flex-row transition-all duration-300 group cursor-pointer hover:bg-white hover:shadow-lg"
-            :class="[`delay-${index % 9}`]"
-          >
-            <div class="rounded-[32px] md:w-40 w-full h-40 bg-gray-200 overflow-hidden">
-              <img
-                :src="getImageUrl(data.image)"
-                alt=""
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-            <div class="flex flex-col justify-center grow">
-              <h2
-                class="md:text-3xl text-2xl font-semibold transition-colors duration-300 group-hover:text-colorPrimary"
-              >
-                {{ data.title }}
-              </h2>
-              <h6
-                class="text-sm md:text-base transition-colors duration-300 group-hover:text-gray-700"
-              >
-                <span>{{ formatDate(data.created_at) }}</span> •
-                <span>{{ data.location }}</span>
-              </h6>
-              <p
-                class="mt-3 text-sm md:text-base transition-colors duration-300 group-hover:text-gray-800"
-                v-html="data.description"
-              ></p>
-            </div>
-            <div
-              class="w-fit flex flex-col md:justify-center md:items-center justify-start items-start"
-            >
-              <InteractiveHoverButton
-                text="Save My Spot"
-                bg-color="bg-none"
-                border-color="border-colorPrimary"
-                text-color="text-black"
-                bg-hover="bg-colorPrimary"
-                text-hover="text-white"
-                padding="py-2 px-6"
-                class="transition-all duration-300 group-hover:scale-105"
-              ></InteractiveHoverButton>
-            </div>
-          </div>
-        </template>
+  <div class="lg:mt-48 mt-32 lg:px-[0%] px-[5%]">
+    <div class="text-center lg:w-1/2 w-full mx-auto">
+      <TitleSection text="Agenda" class="text-center"></TitleSection>
+      <p class="text-gray-500 mt-5">Dapatkan informasi lebih lanjut tentang acara kami.</p>
+      <div class="flex gap-5 justify-center flex-wrap mt-5">
+        <Button
+          className="text-black rounded-full"
+          borderName="border border-colorPrimary"
+          padding="py-2 px-4"
+          >View All</Button
+        >
+        <Button className="" padding="py-2 px-4">Category One</Button>
       </div>
     </div>
-  </ScrollTransition>
-
-  <!-- Galeri Fasilitas -->
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
-      <div class="text-center lg:w-1/2 w-full mx-auto">
-        <TitleMain text="Galeri Fasilitas" class="text-center"></TitleMain>
-        <p class="text-gray-500 mt-5">
-          Fakultas Hukum Unpas memiliki berbagai fasilitas yang mendukung proses belajar mengajar.
-        </p>
-      </div>
-      <div
-        class="w-full mt-10 gap-2 hidden md:flex h-[400px]"
-        v-if="berandaStore.fasilitasData.length > 0"
-      >
-        <div class="w-1/5 flex justify-center items-center">
-          <img
-            v-if="berandaStore.fasilitasData[0]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[0].image)"
-            class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
-        </div>
-
-        <div class="w-1/5 flex flex-col gap-2 justify-center items-center py-5">
-          <img
-            v-if="berandaStore.fasilitasData[1]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[1].image)"
-            class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
-          <img
-            v-if="berandaStore.fasilitasData[2]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[2].image)"
-            class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
-        </div>
-
-        <div class="w-1/5 flex justify-center items-center">
-          <img
-            v-if="berandaStore.fasilitasData[3]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[3].image)"
-            class="w-full h-full bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-full bg-gray-200 rounded-[20px]"></div>
-        </div>
-
-        <div class="w-1/5 flex flex-col gap-2 justify-center items-center py-5">
-          <img
-            v-if="berandaStore.fasilitasData[4]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[4].image)"
-            class="w-full h-full bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
-          <img
-            v-if="berandaStore.fasilitasData[5]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[5].image)"
-            class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
-        </div>
-
-        <div class="w-1/5 flex justify-center items-center">
-          <img
-            v-if="berandaStore.fasilitasData[6]?.image"
-            onerror="this.style.display='none'"
-            :src="getImageUrl(berandaStore.fasilitasData[6].image)"
-            class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
-          />
-          <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
-        </div>
-      </div>
-
-      <ExpandableGallery :images="fasilitasImages" class="mt-5 md:hidden" />
-    </div>
-  </ScrollTransition>
-
-  <!-- Testimoni -->
-  <ScrollTransition>
-    <Testimonial />
-  </ScrollTransition>
-
-  <!-- Berita Terbaru -->
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 lg:px-[0%] px-[5%]">
-      <div class="flex justify-between lg:items-end flex-col lg:flex-row">
-        <div class="grid gap-5">
-          <h6
-            class="md:px-6 md:py-2 px-4 py-1 border-2 border-colorPrimary rounded-full w-fit text-colorPrimary font-semibold text-sm md:text-base"
-          >
-            Latest Insight
-          </h6>
-          <TitleMain
-            v-if="berandaStore.fakultasData.name"
-            :text="`Seputar Berita <span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span>`"
-            :html="true"
-            class="text-black"
-          ></TitleMain>
-        </div>
-        <!-- <Button className="btn-primary" class="w-fit mt-5 lg:mt-0">Selengkapnya</Button> -->
-        <InteractiveHoverButton
-          text="Selengkapnya"
-          class="w-fit mt-5 lg:mt-0"
-        ></InteractiveHoverButton>
-      </div>
-
-      <!-- Card Berita container -->
-      <div
-        class="w-full mt-10 flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center"
-      >
+    <div class="lg:w-1/2 w-full grid mt-10 mx-auto gap-10">
+      <template v-for="(data, index) in berandaStore.agendaData" :key="item">
         <div
-          v-for="(data, index) in berandaStore.beritaData"
-          class="p-5 bg-white rounded-[32px] flex flex-col gap-5 h-full cursor-pointer transition-all duration-300 relative overflow-hidden group"
+          class="flex bg-[#FAFAFA80] rounded-[32px] p-5 gap-5 flex-col md:flex-row transition-all duration-300 group cursor-pointer hover:bg-white hover:shadow-lg"
           :class="[`delay-${index % 9}`]"
         >
-          <div class="rounded-[32px] w-full md:h-64 h-48 bg-gray-200 overflow-hidden">
+          <div class="rounded-[32px] md:w-40 w-full h-40 bg-gray-200 overflow-hidden">
             <img
               :src="getImageUrl(data.image)"
               alt=""
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          <h6
-            class="text-sm font-semibold px-6 py-2 bg-[#F5F2FF] rounded-full w-fit text-colorPrimary transition-colors duration-300 group-hover:bg-colorPrimary group-hover:text-white"
-          >
-            {{ data.title }}
-          </h6>
-          <h1
-            class="md:text-xl text-lg font-semibold transition-colors duration-300 group-hover:text-colorPrimary"
-            v-html="data.resume"
-          ></h1>
-          <hr class="transition-colors duration-300 group-hover:border-colorPrimary" />
-          <h6
-            class="text-gray-500 text-sm md:text-base transition-colors duration-300 group-hover:text-gray-700"
-          >
-            <span>{{ formatDate(data.created_at) }}</span> | <span>4 min read</span>
-          </h6>
-
-          <!-- Optional subtle shadow effect -->
+          <div class="flex flex-col justify-center grow">
+            <h2
+              class="md:text-3xl text-2xl font-semibold transition-colors duration-300 group-hover:text-colorPrimary"
+            >
+              {{ data.title }}
+            </h2>
+            <h6
+              class="text-sm md:text-base transition-colors duration-300 group-hover:text-gray-700"
+            >
+              <span>{{ formatDate(data.created_at) }}</span> •
+              <span>{{ data.location }}</span>
+            </h6>
+            <p
+              class="mt-3 text-sm md:text-base transition-colors duration-300 group-hover:text-gray-800"
+              v-html="data.description"
+            ></p>
+          </div>
           <div
-            class="absolute inset-0 rounded-[32px] shadow-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
-          ></div>
+            class="w-fit flex flex-col md:justify-center md:items-center justify-start items-start"
+          >
+            <InteractiveHoverButton
+              text="Save My Spot"
+              bg-color="bg-none"
+              border-color="border-colorPrimary"
+              text-color="text-black"
+              bg-hover="bg-colorPrimary"
+              text-hover="text-white"
+              padding="py-2 px-6"
+              class="transition-all duration-300 group-hover:scale-105"
+            ></InteractiveHoverButton>
+          </div>
         </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- Galeri Fasilitas -->
+  <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
+    <div class="text-center lg:w-1/2 w-full mx-auto">
+      <TitleSection text="Galeri Fasilitas" class="text-center"></TitleSection>
+      <p class="text-gray-500 mt-5">
+        Fakultas Hukum Unpas memiliki berbagai fasilitas yang mendukung proses belajar mengajar.
+      </p>
+    </div>
+    <div
+      class="w-full mt-10 gap-2 hidden md:flex h-[400px]"
+      v-if="berandaStore.fasilitasData.length > 0"
+    >
+      <div class="w-1/5 flex justify-center items-center">
+        <img
+          v-if="berandaStore.fasilitasData[0]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[0].image)"
+          class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
+      </div>
+
+      <div class="w-1/5 flex flex-col gap-2 justify-center items-center py-5">
+        <img
+          v-if="berandaStore.fasilitasData[1]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[1].image)"
+          class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
+        <img
+          v-if="berandaStore.fasilitasData[2]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[2].image)"
+          class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
+      </div>
+
+      <div class="w-1/5 flex justify-center items-center">
+        <img
+          v-if="berandaStore.fasilitasData[3]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[3].image)"
+          class="w-full h-full bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-full bg-gray-200 rounded-[20px]"></div>
+      </div>
+
+      <div class="w-1/5 flex flex-col gap-2 justify-center items-center py-5">
+        <img
+          v-if="berandaStore.fasilitasData[4]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[4].image)"
+          class="w-full h-full bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
+        <img
+          v-if="berandaStore.fasilitasData[5]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[5].image)"
+          class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
+      </div>
+
+      <div class="w-1/5 flex justify-center items-center">
+        <img
+          v-if="berandaStore.fasilitasData[6]?.image"
+          onerror="this.style.display='none'"
+          :src="getImageUrl(berandaStore.fasilitasData[6].image)"
+          class="w-full h-1/2 bg-gray-200 rounded-[20px] object-cover"
+        />
+        <div v-else class="w-full h-1/2 bg-gray-200 rounded-[20px]"></div>
       </div>
     </div>
-  </ScrollTransition>
+
+    <ExpandableGallery :images="fasilitasImages" class="mt-5 md:hidden" />
+  </div>
+
+  <!-- Testimoni -->
+  <Testimonial />
+
+  <!-- Berita Terbaru -->
+  <div class="lg:mt-48 mt-32 lg:px-[0%] px-[5%]">
+    <div class="flex justify-between lg:items-end flex-col lg:flex-row">
+      <div class="grid gap-5">
+        <h6
+          class="md:px-6 md:py-2 px-4 py-1 border-2 border-colorPrimary rounded-full w-fit text-colorPrimary font-semibold text-sm md:text-base"
+        >
+          Latest Insight
+        </h6>
+        <TitleSection
+          v-if="berandaStore.fakultasData.name"
+          :text="`Seputar Berita <span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span>`"
+          :html="true"
+          class="text-black"
+        ></TitleSection>
+      </div>
+      <!-- <Button className="btn-primary" class="w-fit mt-5 lg:mt-0">Selengkapnya</Button> -->
+      <InteractiveHoverButton
+        text="Selengkapnya"
+        class="w-fit mt-5 lg:mt-0"
+      ></InteractiveHoverButton>
+    </div>
+
+    <!-- Card Berita container -->
+    <div class="w-full mt-10 flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center">
+      <div
+        v-for="(data, index) in berandaStore.beritaData"
+        class="p-5 bg-white rounded-[32px] flex flex-col gap-5 h-full cursor-pointer transition-all duration-300 relative overflow-hidden group"
+        :class="[`delay-${index % 9}`]"
+      >
+        <div class="rounded-[32px] w-full md:h-64 h-48 bg-gray-200 overflow-hidden">
+          <img
+            :src="getImageUrl(data.image)"
+            alt=""
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <h6
+          class="text-sm font-semibold px-6 py-2 bg-[#F5F2FF] rounded-full w-fit text-colorPrimary transition-colors duration-300 group-hover:bg-colorPrimary group-hover:text-white"
+        >
+          {{ data.title }}
+        </h6>
+        <h1
+          class="md:text-xl text-lg font-semibold transition-colors duration-300 group-hover:text-colorPrimary"
+          v-html="data.resume"
+        ></h1>
+        <hr class="transition-colors duration-300 group-hover:border-colorPrimary" />
+        <h6
+          class="text-gray-500 text-sm md:text-base transition-colors duration-300 group-hover:text-gray-700"
+        >
+          <span>{{ formatDate(data.created_at) }}</span> | <span>4 min read</span>
+        </h6>
+
+        <!-- Optional subtle shadow effect -->
+        <div
+          class="absolute inset-0 rounded-[32px] shadow-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+        ></div>
+      </div>
+    </div>
+  </div>
 </template>
 <style>
 .group:hover {

@@ -6,6 +6,7 @@ import { berandaStore } from '@/stores'
 import { onMounted } from 'vue'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import TitleMain from '@/components/TitleMain.vue'
+import TitleSection from '@/components/TitleSection.vue'
 
 onMounted(async () => {
   await berandaStore.getDataPortofolio()
@@ -51,14 +52,13 @@ onMounted(async () => {
   </ScrollTransition>
 
   <!-- Inovasi terkini -->
-  <ScrollTransition>
     <div class="lg:mt-48 mt-32 gap-20 px-[5%] lg:px-0">
       <div class="mx-auto text-center lg:w-1/2 w-full">
         <div>
-          <TitleMain
+          <TitleSection
             text="Inovasi Terkini: Penelitian Unggulan dari Fakultas Kami"
             class="mt-7"
-          ></TitleMain>
+          ></TitleSection>
           <p class="text-gray-500 mt-7 text-sm md:text-base">
             Fakultas kami bangga mempersembahkan penelitian terbaru yang memberikan dampak
             signifikan di bidangnya. Temukan lebih lanjut tentang proyek-proyek inovatif yang
@@ -109,15 +109,13 @@ onMounted(async () => {
         <InteractiveHoverButton text="Selengkapnya" />
       </div>
     </div>
-  </ScrollTransition>
 
   <!-- Berita Terbaru -->
-  <ScrollTransition>
     <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
       <div class="lg:w-1/2 w-full mx-auto text-center">
         <div class="grid gap-5">
           <h6 class="font-semibold text-lg">Publikasi</h6>
-          <TitleMain text="Jurnal dan Publikasi Terbaru Fakultas"></TitleMain>
+          <TitleSection text="Jurnal dan Publikasi Terbaru Fakultas"></TitleSection>
           <p>
             Fakultas kami berkomitmen untuk menghasilkan penelitian berkualitas tinggi. Berikut
             adalah daftar jurnal dan publikasi terbaru yang telah diterbitkan.
@@ -152,7 +150,6 @@ onMounted(async () => {
         </template>
       </div>
     </div>
-  </ScrollTransition>
 </template>
 <style scoped>
 .group:hover {
