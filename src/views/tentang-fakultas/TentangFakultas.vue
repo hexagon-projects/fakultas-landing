@@ -190,10 +190,9 @@ onMounted(() => {
     <!-- Card Dosen -->
     <div class="w-full mt-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
       <div
-        class="grid gap-5 transition-all duration-300 group cursor-pointer hover:bg-[#FAFAFA] p-5 rounded-[32px]"
+        class="grid gap-5 transition-all duration-300 group cursor-pointer p-5 rounded-[32px] hoverAnimation"
         v-for="(data, index) in tentangStore.dosenData"
         :key="index"
-        :class="[`delay-${index % 9}`]"
       >
         <div class="rounded-[32px] overflow-hidden">
           <img
@@ -204,7 +203,7 @@ onMounted(() => {
         </div>
         <div class="space-y-1">
           <h2
-            class="font-semibold text-lg transition-colors duration-300 group-hover:text-colorPrimary"
+            class="font-semibold text-lg transition-colors duration-300"
           >
             {{ data.name }}
           </h2>
@@ -226,13 +225,8 @@ onMounted(() => {
 
 <style scoped>
 /* Enhanced hover effect */
-.group:hover {
+.hoverAnimation:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Optional: Add a subtle border on hover */
-.group:hover {
-  @apply border border-gray-200;
 }
 </style>

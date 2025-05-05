@@ -9,6 +9,7 @@ import { getImageUrl } from '@/core/helpers/helper'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
+import KegiatanCard from '../prodiDetail/components/KegiatanCard.vue'
 
 const currentPage = ref(1)
 const itemsPerPage = ref(6)
@@ -126,7 +127,7 @@ onMounted(() => {
         class="mt-10 grid lg:gap-20 md:gap-10 lg:px-40 md:px-20 px-0 grid-cols-1 md:grid-cols-2 gap-10 lg:flex"
       >
         <div
-          class="text-center grid gap-5 p-5 rounded-[20px] transition-all duration-300 group cursor-pointer hover:bg-white hover:shadow-lg"
+          class="text-center grid gap-5 p-5 rounded-[20px] transition-all duration-300 group cursor-pointer hover:shadow-lg hoverAnimation"
           v-for="(data, index) in 3"
           :key="index"
           :class="`delay-${index % 9}`"
@@ -140,7 +141,7 @@ onMounted(() => {
           </div>
 
           <h5
-            class="font-bold text-xl transition-colors duration-300 group-hover:text-colorPrimary"
+            class="font-bold text-xl transition-colors duration-300"
           >
             Inisiatif Kolaborasi untuk Meningkatkan Kualitas Pendidikan dan Penelitian
           </h5>
@@ -151,7 +152,7 @@ onMounted(() => {
           </p>
 
           <button
-            class="flex items-center justify-center gap-2 text-colorPrimary transition-all duration-300 group-hover:gap-3 group-hover:font-semibold"
+            class="flex items-center justify-center gap-2 text-colorPrimary transition-all duration-300 group-hover:gap-3 "
           >
             selengkapnya
             <i
@@ -175,7 +176,7 @@ onMounted(() => {
 
       <div class="w-full mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:px-20">
         <template v-for="data in paginatedPartners" :key="data.id">
-          <div
+          <!-- <div
             class="w-full h-64 bg-gray-200 flex flex-col justify-end p-5 rounded-[20px] cursor-pointer hover:scale-105 transition relative"
             :style="{
               backgroundImage: `url(${getImageUrl(data.image)})`,
@@ -188,7 +189,12 @@ onMounted(() => {
             ></div>
             <h6 class="text-white font-semibold z-10">{{ data.name }}</h6>
             <p class="text-white/40 z-10" v-html="data.description"></p>
-          </div>
+          </div> -->
+          <KegiatanCard
+            :title="data.name"
+            :description="data.description"
+            :image="getImageUrl(data.image)"
+          />
         </template>
       </div>
 
@@ -233,12 +239,8 @@ onMounted(() => {
     <Mitra />
 </template>
 <style scoped>
-.group:hover {
+.hoverAnimation:hover {
   transform: translateY(-5px);
   border: 1px solid #e5e7eb;
-}
-
-button:hover {
-  transform: translateX(2px);
 }
 </style>

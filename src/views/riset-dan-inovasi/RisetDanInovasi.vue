@@ -69,8 +69,8 @@ onMounted(async () => {
       <div class="mt-10 flex flex-col justify-center items-center gap-10">
         <template v-for="(data, index) in berandaStore.portofolioData" :key="index">
           <div
-            class="p-5 flex lg:gap-10 gap-5 w-4/5 bg-[#F0F0F0] rounded-[20px] flex-col transition-all duration-300 group cursor-pointer hover:bg-white hover:shadow-xl"
-            :class="[index % 2 == 0 ? 'lg:flex-row-reverse' : 'lg:flex-row', `delay-${index % 9}`]"
+            class="p-5 flex lg:gap-10 gap-5 w-4/5 bg-[#F0F0F0] rounded-[20px] flex-col transition-all duration-300 group cursor-pointer hoverAnimation hover:shadow-xl"
+            :class="[index % 2 == 0 ? 'lg:flex-row-reverse' : 'lg:flex-row']"
           >
             <div class="rounded-[20px] bg-gray-300 lg:w-5/12 w-full h-40 overflow-hidden">
               <img
@@ -81,7 +81,7 @@ onMounted(async () => {
             </div>
             <div class="lg:w-7/12 w-full grid gap-5">
               <h4
-                class="text-base md:text-lg font-bold transition-colors duration-300 group-hover:text-colorPrimary"
+                class="text-base md:text-lg font-bold transition-colors duration-300 "
               >
                 {{ data.title }}
               </h4>
@@ -127,8 +127,7 @@ onMounted(async () => {
       <div class="flex flex-col lg:flex-row lg:gap-20 md:gap-10 gap-5 lg:px-40 md:px-20 px-0 mt-10">
         <template v-for="(item, index) in 3" :key="index">
           <div
-            class="text-center grid gap-5 transition-all duration-300 group cursor-pointer p-5 rounded-[20px] hover:bg-[#FAFAFA] hover:shadow-lg"
-            :class="`delay-${index % 9}`"
+            class="text-center grid gap-5 transition-all duration-300 group cursor-pointer p-5 rounded-[20px] hover:shadow-lg hoverAnimation"
           >
             <div class="rounded-[20px] overflow-hidden">
               <img
@@ -138,7 +137,7 @@ onMounted(async () => {
               />
             </div>
             <h5
-              class="font-bold text-xl transition-colors duration-300 group-hover:text-colorPrimary"
+              class="font-bold text-xl transition-colors duration-300"
             >
               Inisiatif Kolaborasi untuk Meningkatkan Kualitas Pendidikan dan Penelitian
             </h5>
@@ -152,12 +151,8 @@ onMounted(async () => {
     </div>
 </template>
 <style scoped>
-.group:hover {
+.hoverAnimation:hover {
   transform: translateY(-5px);
   border: 1px solid #e5e7eb;
-}
-
-.group:hover img {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 </style>

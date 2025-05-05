@@ -222,7 +222,7 @@ onMounted(async () => {
   <!-- Prestasi -->
   <div class="lg:mt-48 mt-32 flex relative flex-col lg:flex-row gap-10 lg:gap-0">
     <div class="w-[90%] lg:w-1/2 mx-auto lg:sticky top-40 z-10 h-fit">
-      <TitleSection text="Prestasi" class="text-center"></TitleSection>
+      <TitleSection text="Prestasi"></TitleSection>
       <p class="text-gray-500 mt-5 text-sm md:text-base">
         Mahasiswa Universitas Pasundan terus mengukir prestasi membanggakan di berbagai bidang baik
         di tingkat nasional maupun internasional.
@@ -258,7 +258,7 @@ onMounted(async () => {
     <div class="lg:w-1/2 w-full grid mt-10 mx-auto gap-10">
       <template v-for="(data, index) in berandaStore.agendaData" :key="item">
         <div
-          class="flex bg-[#FAFAFA80] rounded-[32px] p-5 gap-5 flex-col md:flex-row transition-all duration-300 group cursor-pointer hover:bg-white hover:shadow-lg"
+          class="flex bg-[#FAFAFA80] rounded-[32px] p-5 gap-5 flex-col md:flex-row transition-all duration-300 group cursor-pointer hover:shadow-lg hoverAnimation"
           :class="[`delay-${index % 9}`]"
         >
           <div class="rounded-[32px] md:w-40 w-full h-40 bg-gray-200 overflow-hidden">
@@ -270,7 +270,7 @@ onMounted(async () => {
           </div>
           <div class="flex flex-col justify-center grow">
             <h2
-              class="md:text-3xl text-2xl font-semibold transition-colors duration-300 group-hover:text-colorPrimary"
+              class="md:text-3xl text-2xl font-semibold transition-colors duration-300"
             >
               {{ data.title }}
             </h2>
@@ -414,7 +414,7 @@ onMounted(async () => {
     <div class="w-full mt-10 flex flex-col lg:flex-row gap-10 lg:px-20 justify-center items-center">
       <div
         v-for="(data, index) in berandaStore.beritaData"
-        class="p-5 bg-white rounded-[32px] flex flex-col gap-5 h-full cursor-pointer transition-all duration-300 relative overflow-hidden group"
+        class="p-5 bg-white rounded-[32px] flex flex-col gap-5 h-full cursor-pointer transition-all duration-300 relative overflow-hidden group hoverAnimation"
         :class="[`delay-${index % 9}`]"
       >
         <div class="rounded-[32px] w-full md:h-64 h-48 bg-gray-200 overflow-hidden">
@@ -425,7 +425,7 @@ onMounted(async () => {
           />
         </div>
         <h6
-          class="text-sm font-semibold px-6 py-2 bg-[#F5F2FF] rounded-full w-fit text-colorPrimary transition-colors duration-300 group-hover:bg-colorPrimary group-hover:text-white"
+          class="text-sm font-semibold px-6 py-2 bg-[#F5F2FF] rounded-full w-fit text-colorPrimary transition-colors duration-300"
         >
           {{ data.title }}
         </h6>
@@ -448,8 +448,8 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-<style>
-.group:hover {
+<style scoped>
+.hoverAnimation:hover {
   transform: scale(1.02) translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
