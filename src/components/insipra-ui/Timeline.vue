@@ -26,11 +26,11 @@
           </div>
           <div>
             <h3
-              class="hidden font-bold text-xl md:block md:pl-20"
+              class="mt-14 md:mt-0 font-bold text-xl md:block md:pl-20"
             >
               {{ item.label }}
             </h3>
-            <p class="hidden md:block md:pl-20 mt-2" v-html="item.description"></p>
+            <p class="md:block md:pl-20 mt-2" v-html="item.description"></p>
           </div>
         </div>
         <slot :name="item.id"></slot>

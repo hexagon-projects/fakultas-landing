@@ -10,6 +10,7 @@ import ScrollTransition from '@/components/ScrollTransition.vue'
 import { getImageUrl } from '@/core/helpers/helper'
 import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
+import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
 
 const historyTimeline = computed(() => {
   return tentangStore.timelineData.map((item) => ({
@@ -21,6 +22,7 @@ const historyTimeline = computed(() => {
 
 onMounted(async() => {
   await tentangStore.getInitialData()
+  await berandaStore.getDataTestimoni()
 })
 </script>
 <template>
@@ -46,8 +48,8 @@ onMounted(async() => {
   <!-- Timeline -->
   <ScrollTransition>
     <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0 relative">
-      <div class="lg:w-1/2 w-full h-40 bg-gray-200 sticky top-40"></div>
-      <div class="lg:w-1/2 w-full">
+      <div class="lg:w-1/2 w-full h-40 bg-gray-200 lg:sticky top-40"></div>
+      <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
         <Timeline :items="historyTimeline" />
       </div>
     </div>
@@ -212,7 +214,7 @@ onMounted(async() => {
   </div>
 
   <!-- Testimoni -->
-  <Testimonial />
+  <TestimonialsSection :testimoni="berandaStore.testimoniData" :is-loading="false" />
 </template>
 
 <style scoped>

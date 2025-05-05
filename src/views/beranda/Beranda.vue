@@ -128,7 +128,10 @@ onMounted(async () => {
         <!-- <Button className="btn-outline-primary">Selengkapnya</Button> -->
       </div>
     </div>
-    <div class="w-[90%] lg:w-1/2" v-if="berandaStore.dosenData && berandaStore.dosenData.length > 0">
+    <div
+      class="w-[90%] lg:w-1/2"
+      v-if="berandaStore.dosenData && berandaStore.dosenData.length > 0"
+    >
       <div
         class="relative mx-auto w-full lg:w-8/12 h-[600px] bg-no-repeat bg-cover rounded-[32px] overflow-hidden"
         :style="{ backgroundImage: `url(${getImageUrl(berandaStore.dosenData[0].image)})` }"
@@ -271,9 +274,7 @@ onMounted(async () => {
             />
           </div>
           <div class="flex flex-col justify-center grow">
-            <h2
-              class="md:text-3xl text-2xl font-semibold transition-colors duration-300"
-            >
+            <h2 class="md:text-3xl text-2xl font-semibold transition-colors duration-300">
               {{ data.title }}
             </h2>
             <h6
@@ -446,7 +447,8 @@ onMounted(async () => {
         ></div>
       </div>
     </div> -->
-    <ArticleCard
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-16 mt-10">
+      <ArticleCard
         v-for="(beritaItem, index) in berandaStore.beritaData"
         :key="index"
         :kategori="'Berita'"
@@ -455,6 +457,7 @@ onMounted(async () => {
         :gambar="getImageUrl(beritaItem.image)"
         :slug="beritaItem.slug"
       />
+    </div>
   </div>
 </template>
 <style scoped>

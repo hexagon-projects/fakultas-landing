@@ -15,9 +15,7 @@ export const useTentangStore = defineStore("tentang", {
                 Promise.all([
                     this.getDosenData(),
                     this.getTimelineData(),
-                ]).then(() => {
-                    console.log("All data fetched successfully");
-                });
+                ])
             } catch (error) {
                 console.error("Error fetching initial data:", error);
             }
