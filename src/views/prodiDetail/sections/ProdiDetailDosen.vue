@@ -29,7 +29,7 @@ defineProps<{
         v-for="dosen in team"
         :key="dosen.id"
         :name="dosen.name"
-        :position="dosen.title"
+        :title="dosen.title"
         :image="getImageUrl(dosen.image)"
         :facebook="dosen.fb"
         :instagram="dosen.ig"

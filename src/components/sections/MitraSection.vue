@@ -1,26 +1,59 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import TextSection from '../TextSection.vue';
 import TitleSection from '../TitleSection.vue';
 import type { Partner } from '@/core/types/partner';
+import { computed, ref, onMounted } from 'vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
-
 const getImageUrl = (imagePath: string | null) => {
   if (!imagePath) return '';
   return `${baseUrl}/${imagePath}`;
 };
 
-defineProps<{
-  partners: Partner
+const props = defineProps<{
+  partners: Partner[]
 }>();
 
 const modules = [Pagination, Autoplay];
 const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
+const swiperInstance = ref(null);
+
+const partnerGroups = computed(() => {
+  const partners = props.partners || [];
+  const totalPartners = partners.length;
+  const groupSize = Math.ceil(totalPartners / 3);
+
+  const groups = [];
+  for (let i = 0; i < 3; i++) {
+    const start = i * groupSize;
+    const end = Math.min(start + groupSize, totalPartners);
+    if (start < totalPartners) {
+      groups.push(partners.slice(start, end));
+    }
+  }
+
+  return groups;
+});
+
+const onSwiperInit = (swiper) => {
+  swiperInstance.value = swiper;
+
+  swiper.on('beforeLoopFix', () => {
+    const slides = swiper.slides;
+    slides.forEach(slide => {
+      slide.style.transition = 'opacity 650ms ease, transform 650ms ease';
+    });
+  });
+
+  swiper.on('slideChangeTransitionStart', () => {
+    const wrapper = swiper.wrapperEl;
+    wrapper.style.transitionTimingFunction = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
+  });
+};
 </script>
 
 <template>
@@ -30,41 +63,46 @@ const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
         <TitleSection :text="titleHTML" :html="true" :delay="60" />
       </div>
     </div>
-
     <div class="lg:mb-10 px-4">
-      <swiper :modules="modules" :slides-per-view="3" :space-between="30" :autoplay="{
-        delay: 2000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-      }" :pagination="{
+      <swiper
+        :modules="modules"
+        :slides-per-view="1"
+        :space-between="30"
+        :speed="650"
+        :loop="true"
+        :observer="true"
+        :observe-parents="true"
+        :observer-slide-children="true"
+        :autoplay="{
+          delay: 2800,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        }"
+        :pagination="{
           clickable: true,
           bulletClass: 'custom-bullet',
           bulletActiveClass: 'custom-bullet-active',
-          dynamicBullets: true,
+          dynamicBullets: false,
           dynamicMainBullets: 3
-        }" :breakpoints="{
-          640: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 6,
-            spaceBetween: 40,
-          },
-        }">
-        <swiper-slide v-for="partner in partners" :key="partner?.id">
-          <div
-            class="h-24 lg:h-40 flex items-center justify-center lg:mb-10">
-            <img :src="getImageUrl(partner?.image || '')" :alt="partner?.name" class="w-full h-full object-cover rounded-[6px] md:rounded-[12px] lg:rounded-[24px]" />
+        }"
+        @swiper="onSwiperInit">
+        <swiper-slide v-for="(group, groupIndex) in partnerGroups" :key="groupIndex">
+          <div class="grid grid-cols-3 gap-4 md:grid-cols-5 lg:grid-cols-6 w-full">
+            <div
+              v-for="partner in group"
+              :key="partner?.id"
+              class="h-24 lg:h-40 flex items-center justify-center lg:mb-10">
+              <img
+                :src="getImageUrl(partner?.image || '')"
+                :alt="partner?.name"
+                class="w-full h-full object-contain rounded-[6px] md:rounded-[12px] lg:rounded-[24px]"
+                loading="lazy"
+              />
+            </div>
           </div>
         </swiper-slide>
       </swiper>
     </div>
-
     <div class="w-full flex justify-center items-center px-[30px] md:px-[60px] lg:px-[120px]">
       <TextSection class="mb-12 md:mb-16 lg:mb-20 lg:max-w-xl text-center">Highlighting our successful collaborations
         with top-tier clients and their transformative projects.</TextSection>
@@ -73,6 +111,12 @@ const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
 </template>
 
 <style>
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  align-items: center;
+  will-change: transform;
+}
+
 .swiper-pagination {
   position: relative;
   margin-top: 2rem;
@@ -84,6 +128,29 @@ const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
   padding: 0 1rem;
 }
 
+.swiper-slide {
+  transition: all 0.65s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: scale(0.98);
+  opacity: 0.7;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+.swiper-slide img {
+  transition: transform 0.65s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.swiper-slide-active img {
+  transform: scale(1.03);
+}
+
 .custom-bullet {
   width: 40px;
   height: 6px;
@@ -92,7 +159,7 @@ const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
   background: #DDD;
   opacity: 1;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .custom-bullet-active {
@@ -106,7 +173,6 @@ const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
     width: 50px;
     height: 8px;
   }
-
   .custom-bullet-active {
     width: 50px;
     height: 8px;
@@ -124,15 +190,21 @@ const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
   .swiper-pagination {
     margin-top: 4rem;
   }
-
   .custom-bullet {
     width: 70px;
     height: 10px;
   }
-
   .custom-bullet-active {
     width: 70px;
     height: 10px;
   }
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.swiper-wrapper.no-transition {
+  transition: none !important;
 }
 </style>

@@ -86,9 +86,9 @@ const selectedAnimation = animationVariants[props.animationStyle]
         :class="['object-cover rounded-[8px] md:rounded-[16px] lg:rounded-[32px] shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]', size]"
       />
       <div class="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
-        <div class="flex size-28 items-center justify-center rounded-full bg-primary/10 backdrop-blur-md">
+        <div class="flex size-28 items-center justify-center rounded-full bg-black/10 backdrop-blur-md">
           <div
-            class="relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b from-primary/30 to-primary shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]"
+            class="relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b from-black/30 to-black shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]"
           >
             <Play
               class="size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105"

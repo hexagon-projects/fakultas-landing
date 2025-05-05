@@ -32,10 +32,10 @@ const backgroundImageUrl = 'https://images.unsplash.com/photo-1507525428034-b723
       </template>
       <template v-else>
         <div class="w-full max-w-[768px] flex flex-col items-center gap-6 md:gap-8 text-center text-white">
-          <TextSection class="font-bold">FAQ</TextSection>
+          <TextSection class="font-bold text-white">FAQ</TextSection>
           <div class="flex flex-col gap-2 md:gap-6">
             <TitleMain :text="'Pertanyaan Umum'"></TitleMain>
-            <TextSection>Halaman ini membantu Anda menemukan jawaban atas pertanyaan yang sering diajukan.</TextSection>
+            <TextSection class="text-white">Halaman ini membantu Anda menemukan jawaban atas pertanyaan yang sering diajukan.</TextSection>
           </div>
         </div>
 
