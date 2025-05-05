@@ -42,7 +42,7 @@ const testimoni = computed(() => testimoniStore.testimoni);
 
 <template>
   <MainLayout>
-    <ProdiHero :is-loading="isLoading" />
+    <ProdiHero />
     <ImageSection :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiAlasan :unggulan="usp" :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiProgramList :prodiData="prodi" :fakultas="fakultas" :is-loading="isLoading" />

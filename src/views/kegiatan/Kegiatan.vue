@@ -22,7 +22,7 @@ onMounted(async () => {
 
 <template>
   <MainLayout>
-    <KegiatanHero :is-loading="isLoading" />
+    <KegiatanHero :organisasi="organisasiStore.organizations" :is-loading="isLoading" />
     <ProdiDetailKegiatan :organisasi="organisasiStore.organizations" :is-loading="isLoading" />
     <CTASection />
   </MainLayout>

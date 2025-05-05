@@ -25,6 +25,7 @@ const characters = ref([]);
 const htmlCharacters = ref([]);
 const words = ref([]);
 const htmlWords = ref([]);
+const isVisible = ref(false);
 
 const parseHTML = (htmlString) => {
   const parser = new DOMParser();
@@ -153,10 +154,25 @@ onMounted(() => {
     }
   }
 
-  // Start animation automatically
-  if (container.value) {
-    container.value.classList.add('start-animation');
-  }
+  // Set up Intersection Observer to detect when the title is visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        isVisible.value = true;
+        observer.disconnect(); // Stop observing once animation is triggered
+      }
+    });
+  }, {
+    threshold: 0.01, // Lower threshold to detect even minimal visibility
+    rootMargin: "0px 0px -10% 0px" // Trigger slightly before the element is fully in view
+  });
+
+  // Wait a short time to ensure the component is fully rendered
+  setTimeout(() => {
+    if (container.value) {
+      observer.observe(container.value);
+    }
+  }, 100);
 });
 
 const renderCharWithTags = (charObj) => {
@@ -184,7 +200,10 @@ const renderCharWithTags = (charObj) => {
   <h2
     ref="container"
     class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight transform translate-x-full opacity-0 transition-all duration-700 ease-out whitespace-normal"
-    :class="{ 'word-based-container': wordBased }"
+    :class="{
+      'word-based-container': wordBased,
+      'start-animation': isVisible
+    }"
   >
     <template v-if="!html">
       <template v-if="wordBased">
@@ -198,6 +217,7 @@ const renderCharWithTags = (charObj) => {
             :key="`char-${wordIndex}-${charIndex}`"
             :style="item.style"
             class="inline-block opacity-0 character-animation"
+            :class="{ 'animate-character': isVisible }"
           >{{ item.char }}</span>
         </span>
       </template>
@@ -207,6 +227,7 @@ const renderCharWithTags = (charObj) => {
           :key="`char-${index}`"
           :style="item.style"
           class="inline-block opacity-0 character-animation"
+          :class="{ 'animate-character': isVisible }"
         >{{ item.char }}</span>
       </template>
     </template>
@@ -223,6 +244,7 @@ const renderCharWithTags = (charObj) => {
             :key="`html-char-${wordIndex}-${charIndex}`"
             :style="item.style"
             class="inline-block opacity-0 character-animation"
+            :class="{ 'animate-character': isVisible }"
             v-html="renderCharWithTags(item)"
           ></span>
         </span>
@@ -233,6 +255,7 @@ const renderCharWithTags = (charObj) => {
           :key="`html-char-${index}`"
           :style="item.style"
           class="inline-block opacity-0 character-animation"
+          :class="{ 'animate-character': isVisible }"
           v-html="renderCharWithTags(item)"
         ></span>
       </template>
@@ -247,6 +270,11 @@ const renderCharWithTags = (charObj) => {
 }
 
 .character-animation {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.animate-character {
   animation: fadeInChar 0.5s forwards;
 }
 

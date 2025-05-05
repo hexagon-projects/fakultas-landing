@@ -9,7 +9,7 @@ import TitleSection from '@/components/TitleSection.vue';
 import TextSection from '@/components/TextSection.vue';
 import ButtonSection from '@/components/ButtonSection.vue';
 import BorderBeam from '@/components/ui/border-beam/BorderBeam.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import type { Swiper as SwiperType } from 'swiper/types';
 import type { Testimonial } from '@/core/types/testimoni';
 import Gedung from '@/assets/gedung.jpg'
@@ -65,6 +65,10 @@ const swiperOptions = {
     },
   }
 };
+
+const primaryColorWithOpacity = computed(() => {
+  return `rgba(var(--color-primary-r), var(--color-primary-g), var(--color-primary-b), 0.2)`;
+});
 </script>
 
 <template>
@@ -88,7 +92,7 @@ const swiperOptions = {
         <div class="relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px] mx-[30px] md:mx-0">
           <CardSpotlight
             class="w-full cursor-pointer flex flex-col justify-center items-center text-center p-5 lg:p-10 rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"
-            :gradient-color="isDark ? 'rgba(170, 33, 50, 0.2)' : 'rgba(170, 33, 50, 0.2)'">
+            :gradient-color="primaryColorWithOpacity">
             <div class="w-full flex justify-center items-center mb-4 md:mb-6">
               <img :src="getImageUrl(testimonial.image)" :alt="testimonial.name"
                 class="w-10 h-10 lg:w-20 lg:h-20 rounded-full object-cover">

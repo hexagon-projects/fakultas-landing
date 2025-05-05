@@ -55,7 +55,7 @@ const titleHTML =  `Kenapa Harus Memilih <span class="text-colorPrimary font-bol
           </div>
 
           <div class="space-y-2">
-            <p class="text-[18px] md:text-[22px] lg:text-[26px] font-bold">{{ feature.title }}</p>
+            <h5 class="text-[18px] md:text-[22px] lg:text-[26px] font-bold">{{ feature.title }}</h5>
             <TextSection class="text-text"><span v-html="sanitizeHtml(feature.description)"></span></TextSection>
           </div>
         </div>

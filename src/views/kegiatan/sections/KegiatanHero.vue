@@ -2,12 +2,29 @@
 import TextBody from '@/components/TextBody.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleMain from '@/components/TitleMain.vue';
-import TitleSection from '@/components/TitleSection.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import Piala from '@/assets/piala.png'
 import Sertif from '@/assets/dokumen.png'
 import NumberTicker from '@/components/ui/number-ticker/NumberTicker.vue';
+import type { Organization } from '@/core/types/organisasi';
+import { computed } from 'vue';
 
+const props = defineProps<{
+  organisasi: Organization[]
+}>();
+
+// Computed properties for each category count
+const kegiatanCount = computed(() => {
+  return props.organisasi.filter(org => org.category === 'Kegiatan').length;
+});
+
+const organisasiCount = computed(() => {
+  return props.organisasi.filter(org => org.category === 'Organisasi').length;
+});
+
+const komunitasCount = computed(() => {
+  return props.organisasi.filter(org => org.category === 'Komunitas').length;
+});
 </script>
 
 <template>
@@ -42,20 +59,25 @@ import NumberTicker from '@/components/ui/number-ticker/NumberTicker.vue';
       <div
         class="w-[80%] flex justify-evenly items-center bg-[#FAFAFA] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] p-5 lg:p-10 relative z-10">
         <div class="text-center">
-          <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight"><NumberTicker class="text-black" :value="26" /></h3>
+          <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight">
+            <NumberTicker class="text-black" :value="kegiatanCount" :duration="3000" />
+          </h3>
           <TextBody>Kegiatan</TextBody>
         </div>
 
         <div class="text-center">
-          <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight"><NumberTicker class="text-black" :value="26" /></h3>
+          <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight">
+            <NumberTicker class="text-black" :value="organisasiCount" :duration="3000" />
+          </h3>
           <TextBody>Organisasi</TextBody>
         </div>
 
         <div class="text-center">
-          <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight"><NumberTicker class="text-black" :value="26" /></h3>
+          <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight">
+            <NumberTicker class="text-black" :value="komunitasCount" :duration="3000" />
+          </h3>
           <TextBody>Komunitas</TextBody>
         </div>
-
       </div>
       <InteractiveHoverButton :text="'Daftar Sekarang'" class="md:hidden"></InteractiveHoverButton>
     </div>

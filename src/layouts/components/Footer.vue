@@ -65,20 +65,20 @@ const lokasi = [
     <div
       class="w-full flex flex-col md:flex-row justify-start items-start gap-4 md:gap-6 lg:gap-8 bg-cover bg-no-repeat overflow-hidden"
     >
-      <div class="w-full md:w-fit space-y-4 text-white mb-4 md:mb-0">
+      <div class="w-full md:w-fit space-y-4 md:space-y-6 text-white mb-4 md:mb-0">
         <img
           :src="Logo"
           alt="Logo Universitas Pasundan"
           class="w-14 h-14 md:w-16 md:h-16"
           loading="lazy"
         />
-        <Title class="text-white lg:text-4xl">Terhubung Dengan Kami</Title>
-        <div class="flex justify-start gap-3">
-          <i class="pi pi-instagram text-3xl" style="color: white;"></i>
-          <i class="pi pi-facebook text-3xl" style="color: white;"></i>
-          <i class="pi pi-twitter text-3xl" style="color: white;"></i>
-          <i class="pi pi-tiktok text-3xl" style="color: white;"></i>
-          <i class="pi pi-youtube text-3xl" style="color: white;"></i>
+        <Title class="text-white text-[16px] lg:text-[32px]">Terhubung Dengan Kami</Title>
+        <div class="flex justify-start gap-3 md:gap-5">
+          <i class="pi pi-instagram text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
+          <i class="pi pi-facebook text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
+          <i class="pi pi-twitter text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
+          <i class="pi pi-tiktok text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
+          <i class="pi pi-youtube text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
         </div>
       </div>
 

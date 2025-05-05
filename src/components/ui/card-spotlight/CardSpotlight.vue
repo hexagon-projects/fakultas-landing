@@ -36,7 +36,7 @@ const props = withDefaults(
     class: '',
     slotClass: '',
     gradientSize: 200,
-    gradientColor: '#262626',
+    gradientColor: 'rgba(var(--color-primary-r), var(--color-primary-g), var(--color-primary-b), 0.2)',
     gradientOpacity: 0.8,
   },
 );

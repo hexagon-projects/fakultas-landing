@@ -23,119 +23,44 @@ const props = defineProps<{
   organisasi: Organization[]
 }>();
 
-// const kegiatanData = [
-//   {
-//     id: 1,
-//     title: "Pelatihan Robotik",
-//     description: "Pelatihan dasar-dasar robotik untuk mahasiswa teknik",
-//     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "ukm",
-//     date: "15 Jan 2024"
-//   },
-//   {
-//     id: 2,
-//     title: "Seminar Kewirausahaan",
-//     description: "Belajar membangun bisnis dari founder startup sukses",
-//     image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "organisasi",
-//     date: "22 Feb 2024"
-//   },
-//   {
-//     id: 3,
-//     title: "HIMA Tech Week",
-//     description: "Serangkaian acara teknologi dari HIMA Teknik",
-//     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "hima",
-//     date: "5 Mar 2024"
-//   },
-//   {
-//     id: 4,
-//     title: "Komunitas Programming",
-//     description: "Pertemuan rutin komunitas programming kampus",
-//     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "komunitas",
-//     date: "12 Apr 2024"
-//   },
-//   {
-//     id: 5,
-//     title: "UKM Olahraga",
-//     description: "Turnamen olahraga antar fakultas",
-//     image: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "ukm",
-//     date: "18 Mei 2024"
-//   },
-//   {
-//     id: 6,
-//     title: "BEM Leadership Camp",
-//     description: "Pelatihan kepemimpinan untuk pengurus BEM",
-//     image: "https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "organisasi",
-//     date: "25 Jun 2024"
-//   },
-//   {
-//     id: 7,
-//     title: "Workshop Desain Grafis",
-//     description: "Belajar dasar-dasar desain grafis untuk pemula",
-//     image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "komunitas",
-//     date: "3 Jul 2024"
-//   },
-//   {
-//     id: 8,
-//     title: "UKM Musik Pentas Seni",
-//     description: "Pentas seni tahunan UKM Musik kampus",
-//     image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "ukm",
-//     date: "10 Agu 2024"
-//   },
-//   {
-//     id: 9,
-//     title: "HIMA Engineering Competition",
-//     description: "Kompetisi teknik tingkat nasional",
-//     image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     category: "hima",
-//     date: "17 Sep 2024"
-//   }
-// ];
-
-// const activeFilter = ref("semua");
+const activeFilter = ref("semua");
 const visibleItems = ref(6);
-// const itemsPerLoad = 3;
+const itemsPerLoad = 3;
 const refreshKey = ref(0);
 
 const swiperModules = [Pagination, Navigation];
 
-// const filteredKegiatan = computed(() => {
-//   if (activeFilter.value === "semua") {
-//     return kegiatanData;
-//   } else {
-//     return kegiatanData.filter(kegiatan => kegiatan.category === activeFilter.value);
-//   }
-// });
+const filteredOrganisasi = computed(() => {
+  if (activeFilter.value === "semua") {
+    return props.organisasi;
+  } else {
+    return props.organisasi.filter(org => org.category.toLowerCase() === activeFilter.value.toLowerCase());
+  }
+});
 
-// const visibleFilteredKegiatan = computed(() => {
-//   return filteredKegiatan.value.slice(0, visibleItems.value);
-// });
+const visibleFilteredOrganisasi = computed(() => {
+  return filteredOrganisasi.value.slice(0, visibleItems.value);
+});
 
-// const setFilter = async (filter: string) => {
-//   if (activeFilter.value === filter) return;
+const setFilter = async (filter: string) => {
+  if (activeFilter.value === filter) return;
 
-//   activeFilter.value = filter;
-//   visibleItems.value = 6;
+  activeFilter.value = filter;
+  visibleItems.value = 6;
 
-//   refreshKey.value++;
-// };
+  refreshKey.value++;
+};
 
-// const loadMore = async () => {
-//   const previousCount = visibleItems.value;
-//   visibleItems.value += itemsPerLoad;
+const loadMore = async () => {
+  const previousCount = visibleItems.value;
+  visibleItems.value += itemsPerLoad;
 
-//   await nextTick();
-//   refreshKey.value++;
-// };
+  await nextTick();
+  refreshKey.value++;
+};
 
 const showLoadMore = computed(() => {
-  return visibleItems.value < props?.organisasi?.values.length;
+  return visibleItems.value < filteredOrganisasi.value.length;
 });
 </script>
 
@@ -147,36 +72,32 @@ const showLoadMore = computed(() => {
         <TextSection class="text-black/40">Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.</TextSection>
       </div>
 
-      <!-- <div class="w-full flex justify-center items-center overflow-x-auto pb-2">
+      <div class="w-full flex justify-center items-center overflow-x-auto pb-2">
         <div class="w-fit flex gap-2 lg:gap-4">
           <div @click="setFilter('semua')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-fakultas' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <TextSection class="text-white">Semua</TextSection>
           </div>
-          <div @click="setFilter('ukm')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'ukm' ? 'bg-fakultas' : 'bg-text/50 hover:bg-text/70']">
-            <TextSection class="text-white">Ukm</TextSection>
+          <div @click="setFilter('kegiatan')"
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'kegiatan' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            <TextSection class="text-white">Kegiatan</TextSection>
           </div>
           <div @click="setFilter('organisasi')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-fakultas' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <TextSection class="text-white">Organisasi</TextSection>
           </div>
-          <div @click="setFilter('hima')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'hima' ? 'bg-fakultas' : 'bg-text/50 hover:bg-text/70']">
-            <TextSection class="text-white">HIMA</TextSection>
-          </div>
           <div @click="setFilter('komunitas')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-fakultas' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <TextSection class="text-white">Komunitas</TextSection>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
 
     <!-- Tablet & Desktop -->
     <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
       <KegiatanCard
-        v-for="(kegiatan, index) in organisasi"
+        v-for="(kegiatan, index) in visibleFilteredOrganisasi"
         :key="`${kegiatan.id}-${refreshKey}`"
         :title="kegiatan.name"
         :description="kegiatan.description"
@@ -194,7 +115,7 @@ const showLoadMore = computed(() => {
         dynamicBullets: true,
         dynamicMainBullets: 3
       }" :space-between="20" :slides-per-view="1.2" class="kegiatan-swiper">
-        <SwiperSlide v-for="(kegiatan, index) in organisasi" :key="`${kegiatan.id}-${refreshKey}`">
+        <SwiperSlide v-for="(kegiatan, index) in filteredOrganisasi" :key="`${kegiatan.id}-${refreshKey}`">
           <KegiatanCard
             :title="kegiatan.name"
             :description="kegiatan.description"
@@ -235,7 +156,7 @@ const showLoadMore = computed(() => {
 }
 
 .custom-bullet-org-active {
-  background: var(--fakultas-color, #AA2132);
+  background: rgb(var(--color-primary-r), var(--color-primary-g), var(--color-primary-b));
   width: 40px;
   height: 6px;
 }

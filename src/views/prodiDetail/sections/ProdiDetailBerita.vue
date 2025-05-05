@@ -2,7 +2,6 @@
 import ArticleCard from '@/components/ArticleCard.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import TitleSection from '@/components/TitleSection.vue';
-import ButtonSection from '@/components/ButtonSection.vue';
 import type { Post } from '@/core/types/post';
 import router from '@/router';
 import type { Departement } from '@/core/types/departement';
@@ -42,7 +41,6 @@ const titleHTML = `Berita Seputar <span class="text-colorPrimary font-bold">Prog
           />
         </div>
         <div class="w-fit">
-          <!-- <ButtonSection @click="goToBerita">Selengkapnya</ButtonSection> -->
           <InteractiveHoverButton @click="goToBerita" :text="'Selengkapnya'"></InteractiveHoverButton>
         </div>
       </div>
