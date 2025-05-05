@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import InteractiveHoverButton from './insipra-ui/InteractiveHoverButton.vue';
+import InteractiveHoverButton from './ui/interactive-hover-button/InteractiveHoverButton.vue';
 import Button from './Button.vue';
 import Title from './Title.vue';
 import { berandaStore } from '@/stores';

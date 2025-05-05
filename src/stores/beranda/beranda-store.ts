@@ -16,6 +16,7 @@ export const useBerandaStore = defineStore("beranda", {
         mitraData: [] as IMitraData[],
         portofolioData: [] as IPortofolioData[],
         isLoading: false as boolean,
+        isLoaded: false as boolean,
     }),
     actions: {
         async getInitialData() {
@@ -27,6 +28,7 @@ export const useBerandaStore = defineStore("beranda", {
                     this.getDataOrganisasi(true),
                     this.getDataBerita(),
                     this.getDataFasilitas(true),
+                    this.getDataPortofolio(true),
                 ]);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -55,6 +57,7 @@ export const useBerandaStore = defineStore("beranda", {
                 console.error("Error fetching data:", error);
             } finally {
                 this.isLoading = false;
+                this.isLoaded = true;
             }
         },
 

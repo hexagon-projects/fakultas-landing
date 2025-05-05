@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InteractiveHoverButton from '@/components/insipra-ui/InteractiveHoverButton.vue'
+import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue'
 import Title from '@/components/Title.vue'
 </script>
 <template>
@@ -15,16 +15,15 @@ import Title from '@/components/Title.vue'
           <div class="w-fit">
             <InteractiveHoverButton
               text="Daftar Sekarang"
-              background="bg-white"
-              color="text-colorPrimary"
+              bg-color="bg-white"
+              textColor="text-colorPrimary"
+              borderHover="border-white"
             />
           </div>
           <div class="w-fit">
             <InteractiveHoverButton
               text="Hubungi Kami"
-              background="bg-none"
-              color="text-white"
-              borderCustom="border-white"
+              borderHover="border-white"
             />
           </div>
         </div>

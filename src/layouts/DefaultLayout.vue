@@ -6,7 +6,9 @@ import { berandaStore } from '@/stores';
 import { onMounted } from 'vue';
 
 onMounted(async () => {
-    await berandaStore.getDataBeranda();
+    if(!berandaStore.isLoaded) {
+        await berandaStore.getDataBeranda();
+    }
 });
 </script>
 

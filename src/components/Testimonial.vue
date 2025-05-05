@@ -2,7 +2,7 @@
 import { berandaStore } from '@/stores'
 import Title from './Title.vue'
 import { computed, onMounted, ref } from 'vue'
-import InteractiveHoverButton from './insipra-ui/InteractiveHoverButton.vue'
+import InteractiveHoverButton from './ui/interactive-hover-button/InteractiveHoverButton.vue'
 import { useRouter } from 'vue-router'
 import { getImageUrl } from '@/core/helpers/helper'
 

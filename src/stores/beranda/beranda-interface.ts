@@ -20,10 +20,10 @@ export interface IFakultasData {
     description2: string;
     description3: string;
     description4?: null | string;
-    image1?: null | string;
-    image2?: null | string;
-    image3?: null | string;
-    image4?: null | string;
+    image1: string;
+    image2: string;
+    image3: string;
+    image4: string;
     color1: string;
     color2: string;
     address?: null | string;
