@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import TextSection from '../TextSection.vue';
 import TitleSection from '../TitleSection.vue';
 import type { Partner } from '@/core/types/partner';
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref } from 'vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 const getImageUrl = (imagePath: string | null) => {

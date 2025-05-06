@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import TextSection from '@/components/TextSection.vue';
-import TitleMain from '@/components/TitleMain.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import type { Departement } from '@/core/types/departement';
 

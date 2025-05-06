@@ -1,5 +1,4 @@
 <script setup>
-import { ref, onMounted, defineAsyncComponent } from 'vue'
 //   import Title from "./Title.vue";
 import Text from '@/components/Text.vue'
 import Logo from '@/assets/images/logo.webp'
@@ -15,27 +14,27 @@ import Title from '@/components/Title.vue'
 //   const AiFillTikTok = defineAsyncComponent(() => import("react-icons/ai").then(m => m.AiFillTikTok));
 
 // State
-const fakultas = ref([
-  { id: 1, name: 'Fakultas Ekonomi dan Bisnis', slug: 'feb' },
-  { id: 2, name: 'Fakultas Hukum', slug: 'fh' },
-  { id: 3, name: 'Fakultas Ilmu Komunikasi', slug: 'fikom' },
-  { id: 4, name: 'Fakultas Teknik', slug: 'ft' },
-  { id: 5, name: 'Fakultas Ilmu Sosial dan Ilmu Politik', slug: 'fisip' },
-  { id: 6, name: 'Fakultas Kesehatan', slug: 'fk' },
-  { id: 7, name: 'Fakultas Pertanian', slug: 'fp' },
-  { id: 8, name: 'Fakultas Psikologi', slug: 'fpsikologi' },
-])
+// const fakultas = ref([
+//   { id: 1, name: 'Fakultas Ekonomi dan Bisnis', slug: 'feb' },
+//   { id: 2, name: 'Fakultas Hukum', slug: 'fh' },
+//   { id: 3, name: 'Fakultas Ilmu Komunikasi', slug: 'fikom' },
+//   { id: 4, name: 'Fakultas Teknik', slug: 'ft' },
+//   { id: 5, name: 'Fakultas Ilmu Sosial dan Ilmu Politik', slug: 'fisip' },
+//   { id: 6, name: 'Fakultas Kesehatan', slug: 'fk' },
+//   { id: 7, name: 'Fakultas Pertanian', slug: 'fp' },
+//   { id: 8, name: 'Fakultas Psikologi', slug: 'fpsikologi' },
+// ])
 const navigasiLinks = [
   { label: 'Beranda', href: '/' },
-  { label: 'Fakultas', href: '/fakultas' },
+  { label: 'Tentang', href: '/tentang-fakultas' },
   { label: 'Prodi', href: '/prodi' },
   { label: 'Prestasi', href: '/prestasi' },
   { label: 'Kegiatan', href: '/kegiatan' },
   { label: 'Fasilitas', href: '/fasilitas' },
   { label: 'Tenaga Pengajar', href: '/tenaga-pengajar' },
-  { label: 'Penelitian & Inovasi', href: '/riset-inovasi' },
+  { label: 'Penelitian & Inovasi', href: '/riset-dan-inovasi' },
   { label: 'Testimoni', href: '/testimoni' },
-  { label: 'Kerjasama & Mitra', href: '/mitra' },
+  { label: 'Kerjasama & Mitra', href: '/kerjasama' },
   { label: 'Berita', href: '/berita' },
   { label: 'Agenda', href: '/agenda' },
   { label: 'FAQ & Bantuan', href: '/faq' },

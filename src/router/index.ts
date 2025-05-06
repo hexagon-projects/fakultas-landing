@@ -18,7 +18,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/layouts/DefaultLayout.vue'),
+      // component: () => import('@/layouts/DefaultLayout.vue'),
       // meta: {
       //   middleware: "auth",
       // },
@@ -77,6 +77,14 @@ const router = createRouter({
           component: () => import("@/views/prestasi/Prestasi.vue"),
           meta: {
             pageTitle: "Prestasi",
+          },
+        },
+        {
+          path: "/tenaga-pengajar",
+          name: "tenaga",
+          component: () => import("@/views/tenaga/Tenaga.vue"),
+          meta: {
+            pageTitle: "Tenaga & Pelajar",
           },
         },
       ]
