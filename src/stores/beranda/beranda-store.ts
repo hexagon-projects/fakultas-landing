@@ -1,6 +1,6 @@
 import ApiService from "@/core/services/ApiService";
 import { defineStore } from "pinia";
-import type { IFakultasData, IDataUngulan, IPrestasiData, IAgendaData, ITestimoniData, IOrganisasiData, IBeritaData, IFasilitasData, IMitraData, IPortofolioData, IDosenData, IJurnalData } from "./beranda-interface";
+import type { IFakultasData, IDataUngulan, IPrestasiData, IAgendaData, ITestimoniData, IOrganisasiData, IBeritaData, IFasilitasData, IMitraData, IPortofolioData, IDosenData, IJurnalData, ISliderData } from "./beranda-interface";
 import { hexToCssHsl, hexToRgb } from "@/core/helpers/helper";
 
 export const useBerandaStore = defineStore("beranda", {
@@ -17,6 +17,7 @@ export const useBerandaStore = defineStore("beranda", {
         portofolioData: [] as IPortofolioData[],
         dosenData: [] as IDosenData[],
         jurnalData: [] as IJurnalData[],
+        sliderData: [] as ISliderData[],
         isLoading: false as boolean,
         isLoaded: false as boolean,
     }),
@@ -32,6 +33,7 @@ export const useBerandaStore = defineStore("beranda", {
                     this.getDataFasilitas(true),
                     this.getDataPortofolio(true),
                     this.getDataDosen(true),
+                    this.getDataSlider(true),
                 ]);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -132,6 +134,11 @@ export const useBerandaStore = defineStore("beranda", {
         async getDataJurnal(isHome: boolean = false) {
             const data = await this.fetchData("/jurnal", isHome);
             this.jurnalData = data || [] as IJurnalData[];
+        },
+
+        async getDataSlider(isHome: boolean = false) {
+            const data = await this.fetchData("/slider", isHome);
+            this.sliderData = data || [] as ISliderData[];
         },
     },
 });

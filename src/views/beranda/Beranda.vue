@@ -2,15 +2,11 @@
 import Prestasi from '@/components/prestasi.vue'
 import Button from '@/components/Button.vue'
 import KenapaHarusFakultas from '@/components/KenapaHarusFakultas.vue'
-import Mitra from '@/components/MitraSection.vue'
-import Testimonial from '@/components/Testimonial.vue'
-import Kegiatan from '@/components/Kegiatan.vue'
 import ScrollTransition from '@/components/ScrollTransition.vue'
 import { computed, onMounted, ref } from 'vue'
 import { berandaStore } from '@/stores'
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue'
 import ExpandableGallery from '@/components/insipra-ui/ExpandableGallery.vue'
-import { formatDate } from '@/core/helpers/helper'
 import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
 import ArticleCard from '@/components/ArticleCard.vue'
@@ -20,6 +16,7 @@ import InovasiImg from '@/assets/inovasi.png'
 import MitraSection from '@/components/sections/MitraSection.vue'
 import { usePartnerStore } from '@/stores/partner'
 import AgendaCard from '@/components/AgendaCard.vue'
+import HomeSlider from '@/components/HomeSlider.vue'
 
 const partnerStore = usePartnerStore();
 
@@ -42,46 +39,11 @@ onMounted(async () => {
 <template>
   <!-- Hero Section -->
   <ScrollTransition>
-    <div class="mt-0 lg:mt-32 img-container">
-      <div
-        class="w-full rounded-b-[40px] lg:rounded-[32px] lg:py-40 py-60 lg:px-32 md:px-20 px-10 text-center lg:text-left bg-cover relative img-box"
-        style="
-          background-image:
-            linear-gradient(270deg, rgba(0, 0, 0, 0.375) 50%, rgba(0, 0, 0, 0.75) 100%),
-            url('/src/assets/images/hero.jpg');
-        ">
-        <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
-          xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                result="goo" />
-              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-            </filter>
-          </defs>
-        </svg>
-        <div class="lg:w-3/4 w-full grid gap-5 justify-center items-start">
-          <TitleMain v-if="berandaStore.fakultasData.name"
-            :text="`Selamat Datang di <span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span>`"
-            :html="true" class="text-white text-3xl lg:text-5xl font-bold"></TitleMain>
-          <!-- <h1 class="md:text-5xl text-3xl font-semibold text-white">
-            Selamat Datang di
-            <span class="text-colorPrimary">{{ berandaStore.fakultasData.name }}</span>
-          </h1> -->
-          <p class="text-white mt-3 md:w-full lg:w-3/4">
-            {{ berandaStore.fakultasData.tagline }}
-          </p>
-          <div class="flex mt-3 gap-5 justify-center items-center lg:justify-start">
-            <!-- <Button borderName="border border-white">Daftar Sekarang</Button>
-            <Button className="btn-outline-light">Hubungi Admin</Button> -->
-            <InteractiveHoverButton text="Daftar Sekarang"></InteractiveHoverButton>
-            <InteractiveHoverButton text="Hubungi Admin" bg-color="bg-none"></InteractiveHoverButton>
-          </div>
-        </div>
-      </div>
+    <div class="img-container">
+      <HomeSlider />
     </div>
   </ScrollTransition>
+
 
   <div class="relative">
     <div class="absolute bottom-6 right-6 bg-white rounded-xl p-6 shadow-lg max-w-sm hidden lg:block z-10">
@@ -431,8 +393,28 @@ onMounted(async () => {
   }
 }
 
-.img-container {
-  filter: url("#goo") drop-shadow(0px -2px 0px transparent)
+@media (min-width: 1500px) {
+  .img-box {
+    clip-path: polygon(68% 100%, 68% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 1600px) {
+  .img-box {
+    clip-path: polygon(70% 100%, 70% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 1700px) {
+  .img-box {
+    clip-path: polygon(72% 100%, 72% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .img-container {
+    filter: url("#goo") drop-shadow(0px -2px 0px transparent)
+  }
 }
 
 .hoverAnimation:hover {

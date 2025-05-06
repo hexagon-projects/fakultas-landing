@@ -190,3 +190,17 @@ export interface IJurnalData {
     created_at: string;
     updated_at: string;
 }
+
+export interface ISliderData {
+    id : number;
+    id_departement : number;
+    title : string;
+    description : string;
+    image1 : string;
+    image2 : string;
+    yt : string;
+    status : string;
+    home : string;
+    created_at : string;
+    updated_at : string;
+}
