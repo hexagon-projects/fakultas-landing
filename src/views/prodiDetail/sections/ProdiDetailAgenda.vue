@@ -126,17 +126,6 @@ defineProps<{
             :deskripsi="agenda.description"
             :index="index"
           />
-          <!-- <AgendaCard
-            v-for="(agenda, index) in agenda"
-            :key="`${agenda.id}-${refreshKey}`"
-            :kategori="agenda.kategori"
-            :judul="agenda.judul"
-            :tanggal="agenda.tanggal"
-            :lokasi="agenda.lokasi"
-            :gambar="agenda.gambar"
-            :deskripsi="agenda.deskripsi"
-            :index="index"
-          /> -->
         </div>
       </div>
     </div>

@@ -11,6 +11,20 @@ import { getImageUrl } from '@/core/helpers/helper'
 import TitleMain from '@/components/TitleMain.vue'
 import TitleSection from '@/components/TitleSection.vue'
 import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
+import MitraSection from '@/components/sections/MitraSection.vue'
+import { usePartnerStore } from '@/stores/partner'
+import DosenCard from '../prodi/components/DosenCard.vue'
+import { useTeamStore } from '@/stores/team'
+
+const partnerStore = usePartnerStore();
+const teamStore = useTeamStore();
+
+const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return 'https://placehold.co/600x400';
+  return `${baseUrl}/${imagePath}`;
+};
 
 const historyTimeline = computed(() => {
   return tentangStore.timelineData.map((item) => ({
@@ -20,22 +34,19 @@ const historyTimeline = computed(() => {
   }));
 });
 
-onMounted(async() => {
+onMounted(async () => {
   await tentangStore.getInitialData()
   await berandaStore.getDataTestimoni()
+  await partnerStore.fetchPartnersHome()
+  await teamStore.fetchTeam()
 })
 </script>
 <template>
   <!-- Hero Section -->
   <ScrollTransition>
-    <div
-      class="lg:mt-48 mt-10 px-[5%] lg:px-0 flex lg:gap-20 gap-5 lg:flex-row flex-col items-center"
-    >
+    <div class="lg:mt-48 mt-10 px-[5%] lg:px-0 flex lg:gap-20 gap-5 lg:flex-row flex-col items-center">
       <div class="text-center lg:w-1/2 w-full mx-auto">
-        <TitleMain
-          text="Sejarah, Visi, Misi, dan Pencapaian Fakultas Kami"
-          class="text-center"
-        ></TitleMain>
+        <TitleMain text="Sejarah, Visi, Misi, dan Pencapaian Fakultas Kami" class="text-center"></TitleMain>
         <p class="mt-8 text-sm lg:text-base">
           Fakultas kami didirikan pada tahun 1990 dengan tujuan memberikan pendidikan berkualitas
           tinggi. Kami berkomitmen untuk menciptakan lingkungan belajar yang inovatif dan inklusif,
@@ -59,46 +70,28 @@ onMounted(async() => {
   <div class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10">
     <div class="lg:w-1/2 w-full">
       <div>
-        <TitleSection
-          v-if="berandaStore.fakultasData.title2"
-          class="mt-7"
-          :text="`Sejarah ${berandaStore.fakultasData.title2}`"
-        ></TitleSection>
-        <p
-          class="text-gray-500 mt-7 text-sm lg:text-base"
-          v-html="berandaStore.fakultasData.description2"
-        ></p>
+        <TitleSection v-if="berandaStore.fakultasData.title2" class="mt-7"
+          :text="`Sejarah ${berandaStore.fakultasData.title2}`"></TitleSection>
+        <p class="text-gray-500 mt-7 text-sm lg:text-base" v-html="berandaStore.fakultasData.description2"></p>
         <div class="flex gap-5 lg:mt-10 mt-5">
           <!-- <Button>Daftar Sekarang</Button>
             <Button className="btn-outline-primary">Selengkapnya</Button> -->
           <InteractiveHoverButton text="Daftar Sekarang" />
-          <InteractiveHoverButton
-            text="Selengkapnya"
-            bg-color="bg-transparent"
-            textColor="text-colorPrimary"
-            borderColor="border-colorPrimary"
-            bgHover="bg-colorPrimary"
-            textHover="text-white"
-          />
+          <InteractiveHoverButton text="Selengkapnya" bg-color="bg-transparent" textColor="text-colorPrimary"
+            borderColor="border-colorPrimary" bgHover="bg-colorPrimary" textHover="text-white" />
         </div>
       </div>
     </div>
     <div class="lg:w-1/2 w-full">
       <div class="w-full h-80 bg-gray-200 rounded-[32px]">
-        <img
-          :src="berandaStore.fakultasData.image2"
-          alt=""
-          class="w-full h-full object-cover rounded-[32px]"
-        />
+        <img :src="berandaStore.fakultasData.image2" alt="" class="w-full h-full object-cover rounded-[32px]" />
       </div>
     </div>
   </div>
 
   <!-- Visi Misi Fakultas -->
-  <div
-    class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10"
-    v-if="berandaStore.fakultasData.title4 && berandaStore.fakultasData.description4"
-  >
+  <div class="lg:mt-48 mt-32 flex flex-col-reverse lg:flex-row px-[5%] lg:px-0 lg:gap-10"
+    v-if="berandaStore.fakultasData.title4 && berandaStore.fakultasData.description4">
     <div class="lg:w-1/2 w-full">
       <div class="w-full h-full bg-gray-200"></div>
     </div>
@@ -114,14 +107,8 @@ onMounted(async() => {
           <!-- <Button>Daftar Sekarang</Button>
           <Button className="btn-outline-primary">Selengkapnya</Button> -->
           <InteractiveHoverButton text="Daftar Sekarang" />
-          <InteractiveHoverButton
-            text="Selengkapnya"
-            bg-color="bg-transparent"
-            textColor="text-colorPrimary"
-            borderColor="border-colorPrimary"
-            bgHover="bg-colorPrimary"
-            textHover="text-white"
-          />
+          <InteractiveHoverButton text="Selengkapnya" bg-color="bg-transparent" textColor="text-colorPrimary"
+            borderColor="border-colorPrimary" bgHover="bg-colorPrimary" textHover="text-white" />
         </div>
       </div>
     </div>
@@ -172,17 +159,22 @@ onMounted(async() => {
   </div>
 
   <!-- Mitra -->
-  <Mitra />
+  <!-- <Mitra /> -->
+   <div class="lg:mt-48 mt-32">
+     <MitraSection :partners="partnerStore.partners" />
+   </div>
 
   <!-- Tim Dosen -->
   <div class="lg:mt-48 mt-32 px-[5%] lg:px-0">
     <div class="grid gap-5">
       <h6 class="font-bold text-2xl">Tim</h6>
-      <TitleSection v-if="berandaStore.fakultasData.name" :text="`<span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span> Unpas`" :html="true"></TitleSection>
+      <TitleSection v-if="berandaStore.fakultasData.name"
+        :text="`<span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span> Unpas`" :html="true">
+      </TitleSection>
     </div>
 
     <!-- Card Dosen -->
-    <div class="w-full mt-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
+    <!-- <div class="w-full mt-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
       <div
         class="grid gap-5 transition-all duration-300 group cursor-pointer p-5 rounded-[32px] hoverAnimation"
         v-for="(data, index) in tentangStore.dosenData"
@@ -210,6 +202,12 @@ onMounted(async() => {
           v-html="data.description"
         ></p>
       </div>
+    </div> -->
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 mt-12 md:mt-16 lg:mt-20">
+      <DosenCard v-for="dosen in teamStore.teams" :key="dosen.id" :name="dosen.name" :title="dosen.title"
+        :image="getImageUrl(dosen.image)" :facebook="dosen.fb" :instagram="dosen.ig" :youtube="dosen.yt"
+        :tiktok="dosen.tiktok" />
     </div>
   </div>
 

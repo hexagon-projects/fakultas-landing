@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import SectionLayout from '@/layouts/SectionLayout.vue'
 import ctaBackground from '@/assets/ctaBackground.png'
 import ctaOrang from '@/assets/ctaOrang.png'
 import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHoverButton.vue';
 </script>
 
 <template>
-  <SectionLayout>
+  <div class="w-full px-[20px] py-[64px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[80px] space-y-12 md:space-y-16 lg:space-y-20">
     <div
       class="relative max-w-[160vh] h-[300px] sm:h-[350px] md:h-[297px] lg:h-[361px] rounded-3xl bg-cover bg-center mx-auto"
       :style="`background-image: url(${ctaBackground})`">
@@ -46,5 +45,5 @@ import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHo
         </div>
       </div>
     </div>
-  </SectionLayout>
+  </div>
 </template>

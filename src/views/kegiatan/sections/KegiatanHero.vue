@@ -79,7 +79,7 @@ const komunitasCount = computed(() => {
           <TextBody>Komunitas</TextBody>
         </div>
       </div>
-      <InteractiveHoverButton :text="'Daftar Sekarang'" class="md:hidden"></InteractiveHoverButton>
+      <InteractiveHoverButton :text="'Daftar Sekarang'" class="mt-4 md:hidden"></InteractiveHoverButton>
     </div>
   </div>
 </template>
