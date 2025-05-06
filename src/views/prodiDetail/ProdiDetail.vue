@@ -64,7 +64,7 @@ onMounted(async () => {
         await Promise.all([
           partnerStore.fetchPartnerbyId(departementId),
           prestasiStore.fetchPrestasibyId(departementId),
-          fasilitasStore.fetchFasilitasbyId(departementId),
+          // fasilitasStore.fetchFasilitasbyId(departementId),
           teamStore.fetchTeambyId(departementId),
           organisasiStore.fetchOrganisasibyId(departementId),
           testimoniStore.fetchTestimonibyId(departementId),
@@ -74,6 +74,7 @@ onMounted(async () => {
         ]);
       }
       await Promise.all([
+        fasilitasStore.fetchFasilitas(),
         agendaStore.fetchAgendas(),
         postStore.fetchPosts()
       ]);
@@ -108,7 +109,7 @@ watch(() => departementStore.currentDepartement, updateTitle);
       <ProdiDetailKurikulum :kurikulum="kurikulumStore.currentKurikulum" :is-loading="false" />
       <ProdiDetailMitra :partners="partnerStore.currentPartner" :is-loading="false" />
       <ProdiDetailPrestasi :prestasi="prestasiStore.currentPrestasi" :is-loading="false" />
-      <GaleriSection :fasilitas="fasilitasStore.currentFasilitas" :is-loading="false" />
+      <GaleriSection :fasilitas="fasilitasStore.fasilitas" :is-loading="false" />
       <DosenSection :team="teamStore.currentTeams" :is-loading="false" />
       <ProdiDetailKegiatan :organisasi="organisasiStore.currentOrganizations" :is-loading="false" />
       <ProdiDetailAgenda :agenda="agendaStore.agendas" :is-loading="false" />

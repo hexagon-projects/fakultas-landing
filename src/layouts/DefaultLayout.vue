@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import CTASection from './components/CTASection.vue';
 import { berandaStore } from '@/stores';
 import { onMounted } from 'vue';
+import CTASection from '@/components/sections/CTASection.vue';
 
 onMounted(async () => {
     if(!berandaStore.isLoaded) {
@@ -21,9 +21,10 @@ onMounted(async () => {
         <div class="px-0 lg:px-[5%]">
             <router-view></router-view>
         </div>
-        <div class="mb-32 lg:mt-48 mt-32">
-            <CTASection/>
-        </div>
+        <CTASection/>
+        <!-- <div class="mb-32 lg:mt-48 mt-32">
+
+        </div> -->
         <Footer/>
     </div>
 </template>

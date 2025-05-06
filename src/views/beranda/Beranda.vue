@@ -21,7 +21,12 @@ const fasilitasImages = computed(() => {
   return berandaStore.fasilitasData.map((item) => getImageUrl(item.image1))
 })
 
-const imageBaseUrl = import.meta.env.VITE_IMAGES_URL
+const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return 'https://placehold.co/600x400';
+  return `${baseUrl}/${imagePath}`;
+};
 
 onMounted(async () => {
   await berandaStore.getInitialData()
@@ -193,9 +198,9 @@ onMounted(async () => {
 
   <div class="lg:mt-20 mt-10 lg:px-[0%] px-[5%] rounded-[32px]">
     <img
-      :src="`${imageBaseUrl}${berandaStore.fakultasData.image2}`"
+      :src="getImageUrl(berandaStore.fakultasData.image2)"
       alt=""
-      class="rounded-[32px] lg:w-3/4 mx-auto max-h-[600px]"
+      class="rounded-[32px] lg:w-full object-cover mx-auto max-h-[600px]"
     />
   </div>
 

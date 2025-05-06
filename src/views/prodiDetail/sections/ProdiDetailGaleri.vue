@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ExpandableGallery from '@/components/insipra-ui/ExpandableGallery.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import type { Fasilitas } from '@/core/types/fasilitas';
@@ -26,38 +27,38 @@ defineProps<{
     <!-- Tablet & Desktop -->
     <div v-if="fasilitas.length > 0" class="hidden md:flex w-full h-[40vh] lg:h-[60vh] justify-center items-center gap-4 md:gap-5 lg:gap-6">
       <div class="w-full h-[60%] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-        <img :src="getImageUrl(fasilitas[0]?.image)" :alt="fasilitas[0]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <img :src="getImageUrl(fasilitas[0]?.image1)" :alt="fasilitas[0]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
       </div>
 
       <div class="w-full flex flex-col justify-between gap-4 md:gap-5 lg:gap-6 h-[90%]">
         <div class="w-full h-[50%] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-          <img :src="getImageUrl(fasilitas[1]?.image)" :alt="fasilitas[1]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <img :src="getImageUrl(fasilitas[1]?.image1)" :alt="fasilitas[1]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         </div>
         <div class="w-full h-[50%] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-          <img :src="getImageUrl(fasilitas[2]?.image)" :alt="fasilitas[2]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <img :src="getImageUrl(fasilitas[2]?.image1)" :alt="fasilitas[2]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         </div>
       </div>
 
       <div class="w-full h-full rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-        <img :src="getImageUrl(fasilitas[3]?.image)" :alt="fasilitas[3]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <img :src="getImageUrl(fasilitas[3]?.image1)" :alt="fasilitas[3]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
       </div>
 
       <div class="w-full flex flex-col justify-between gap-4 md:gap-5 lg:gap-6 h-[90%]">
         <div class="w-full h-[50%] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-          <img :src="getImageUrl(fasilitas[4]?.image)" :alt="fasilitas[4]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <img :src="getImageUrl(fasilitas[4]?.image1)" :alt="fasilitas[4]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         </div>
         <div class="w-full h-[50%] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-          <img :src="getImageUrl(fasilitas[5]?.image)" :alt="fasilitas[5]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <img :src="getImageUrl(fasilitas[5]?.image1)" :alt="fasilitas[5]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         </div>
       </div>
 
       <div class="w-full h-[60%] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden relative group">
-        <img :src="getImageUrl(fasilitas[0]?.image)" :alt="fasilitas[0]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <img :src="getImageUrl(fasilitas[0]?.image1)" :alt="fasilitas[0]?.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
       </div>
     </div>
 
     <!-- Mobile -->
-    <div v-if="fasilitas.length > 0" class="w-full h-full flex md:hidden flex-col justify-center items-center gap-4 overflow-y-auto">
+    <!-- <div v-if="fasilitas.length > 0" class="w-full h-full flex md:hidden flex-col justify-center items-center gap-4 overflow-y-auto">
       <div
         v-for="(facility) in fasilitas.slice(0, 4)"
         :key="facility.id"
@@ -65,6 +66,12 @@ defineProps<{
       >
         <img :src="getImageUrl(facility.image)" :alt="facility.title" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
       </div>
-    </div>
+    </div> -->
+
+    <ExpandableGallery
+      v-if="fasilitas.length > 0"
+      :facilities="fasilitas"
+      class="mt-5 md:hidden"
+    />
   </div>
 </template>

@@ -87,7 +87,7 @@ const onSwiperInit = (swiper) => {
         }"
         @swiper="onSwiperInit">
         <swiper-slide v-for="(group, groupIndex) in partnerGroups" :key="groupIndex">
-          <div class="grid grid-cols-3 gap-4 md:grid-cols-5 lg:grid-cols-6 w-full">
+          <div class="grid grid-cols-5 gap-4 w-full">
             <div
               v-for="partner in group"
               :key="partner?.id"
@@ -103,7 +103,7 @@ const onSwiperInit = (swiper) => {
         </swiper-slide>
       </swiper>
     </div>
-    <div class="w-full flex justify-center items-center px-[30px] md:px-[60px] lg:px-[120px]">
+    <div class="w-full flex justify-center items-center px-[30px] md:px-[60px] lg:px-[120px] mt-6 lg:mt-0">
       <TextSection class="mb-12 md:mb-16 lg:mb-20 lg:max-w-xl text-center">Highlighting our successful collaborations
         with top-tier clients and their transformative projects.</TextSection>
     </div>
@@ -178,13 +178,13 @@ const onSwiperInit = (swiper) => {
     height: 8px;
   }
 }
-
+/*
 @media (max-width: 767px) {
   .custom-bullet,
   .custom-bullet-active {
     display: none;
   }
-}
+} */
 
 @media (min-width: 1024px) {
   .swiper-pagination {

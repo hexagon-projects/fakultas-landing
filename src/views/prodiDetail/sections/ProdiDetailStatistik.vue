@@ -35,25 +35,25 @@ const statistik4 = Number(props.prodiData.statistik4) || 1000;
     <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
         <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
-          <NumberTicker :value="statistik1" />
+          <NumberTicker :value="statistik1" :duration="5000"/>
         </h2>
         <p class="text-base lg:text-xl font-bold">Mahasiswa</p>
       </div>
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
         <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
-          <NumberTicker :value="statistik2" />
+          <NumberTicker :value="statistik2" :duration="5000"/>
         </h2>
         <p class="text-base lg:text-xl font-bold">Lulusan</p>
       </div>
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
         <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
-          <NumberTicker :value="statistik3" />
+          <NumberTicker :value="statistik3" :duration="5000"/>
         </h2>
         <p class="text-base lg:text-xl font-bold">Prestasi</p>
       </div>
       <div class="space-y-4 border-l-2 border-text px-4 md:px-8">
         <h2 class="text-[20px] md:text-[32px] lg:text-[46px] font-bold text-colorPrimary">
-          <NumberTicker :value="statistik4" />
+          <NumberTicker :value="statistik4" :duration="5000"/>
         </h2>
         <p class="text-base lg:text-xl font-bold">Karya Ilmiah</p>
       </div>
