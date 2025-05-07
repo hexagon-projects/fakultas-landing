@@ -6,9 +6,11 @@ import KegiatanCard from '../components/KegiatanCard.vue';
 import ButtonSection from '@/components/ButtonSection.vue';
 import { ref, computed, nextTick } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
+import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import type { Organization } from '@/core/types/organisasi';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
@@ -105,7 +107,7 @@ const showLoadMore = computed(() => {
 
     <!-- Mobile Swiper -->
     <div class="md:hidden">
-      <Swiper :pagination="{
+      <Swiper :modules="[Autoplay, Pagination]" :pagination="{
         clickable: true,
         bulletClass: 'custom-bullet-org',
         bulletActiveClass: 'custom-bullet-org-active',

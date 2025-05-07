@@ -26,6 +26,9 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+*{
+  overflow-x: clip;
+}
 .fade-up-enter-active,
 .fade-up-leave-active,
 .fade-up-appear-active {

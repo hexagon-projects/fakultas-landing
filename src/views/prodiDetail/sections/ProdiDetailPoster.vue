@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { ref } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import type { Slider } from '@/core/types/slider';
 import type { Swiper as SwiperClass } from 'swiper';
 
@@ -31,6 +33,7 @@ const onSwiper = (swiper: SwiperClass) => {
   <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
     <div class="w-full h-full relative">
       <Swiper
+      :modules="[Autoplay, Pagination]"
         :navigation="{ prevEl, nextEl }"
         :pagination="{
           el: paginationEl,

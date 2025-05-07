@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css/pagination';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/autoplay';
 import CardSpotlight from '@/components/ui/card-spotlight/CardSpotlight.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import TextSection from '@/components/TextSection.vue';
@@ -81,7 +84,7 @@ const primaryColorWithOpacity = computed(() => {
   </SectionLayout>
 
   <div class="w-full mb-12 md:mb-16 lg:mb-20">
-    <swiper :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
+    <swiper :modules="[Autoplay, Pagination]" :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
       :space-between="swiperOptions.spaceBetween" :centered-slides="swiperOptions.centeredSlides"
       :breakpoints="swiperOptions.breakpoints" @swiper="handleSwiper" @slide-change="handleSlideChange"
       class="testimonial-swiper">

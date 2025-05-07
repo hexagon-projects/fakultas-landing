@@ -1,28 +1,30 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, type Ref, type CSSProperties } from 'vue';
 
 // Definisi tipe untuk struktur data
+interface CharStyle extends CSSProperties {
+  animationDelay: string;
+}
+
 interface CharItem {
   char: string;
-  style: {
-    animationDelay: string;
-  };
+  style: CharStyle;
+}
+
+interface TagAttribute {
+  name: string;
+  value: string;
+}
+
+interface TagInfo {
+  name: string;
+  attributes: TagAttribute[];
 }
 
 interface HtmlChar {
   char: string;
   tags: TagInfo[];
-  style?: {
-    animationDelay: string;
-  };
-}
-
-interface TagInfo {
-  name: string;
-  attributes: {
-    name: string;
-    value: string;
-  }[];
+  style?: CharStyle;
 }
 
 interface WordItem {
@@ -30,6 +32,7 @@ interface WordItem {
   chars: HtmlChar[];
 }
 
+// Definisi props dengan TypeScript
 const props = defineProps({
   text: {
     type: String,
@@ -50,11 +53,11 @@ const props = defineProps({
 });
 
 // Definisi ref dengan tipe yang tepat
-const container = ref<HTMLElement | null>(null);
-const characters = ref<CharItem[]>([]);
-const htmlCharacters = ref<HtmlChar[]>([]);
-const words = ref<CharItem[][]>([]);
-const htmlWords = ref<HtmlChar[][]>([]);
+const container: Ref<HTMLElement | null> = ref(null);
+const characters: Ref<CharItem[]> = ref([]);
+const htmlCharacters: Ref<HtmlChar[]> = ref([]);
+const words: Ref<CharItem[][]> = ref([]);
+const htmlWords: Ref<HtmlChar[][]> = ref([]);
 const isVisible = ref(false);
 
 const parseHTML = (htmlString: string): HTMLElement => {
@@ -151,14 +154,16 @@ onMounted(() => {
         processNodeForAnimation(node, extractedWords, [], true);
       });
 
-      const charCount = 0;
+      let charCount = 0;
       htmlWords.value = extractedWords.map(wordObj => {
-        return wordObj.chars.map((charObj, charIndex) => ({
+        const wordChars = wordObj.chars.map((charObj, charIndex) => ({
           ...charObj,
           style: {
             animationDelay: `${(charCount + charIndex) * props.delay}ms`
           }
         }));
+        charCount += wordObj.chars.length;
+        return wordChars;
       });
     } else {
       const extractedChars: HtmlChar[] = [];
@@ -215,7 +220,6 @@ const renderCharWithTags = (charObj: HtmlChar): string => {
 };
 </script>
 
-<!-- Template dan style tetap sama seperti sebelumnya -->
 <template>
   <h2
     ref="container"
@@ -273,11 +277,11 @@ const renderCharWithTags = (charObj: HtmlChar): string => {
         <span
           v-for="(item, index) in htmlCharacters"
           :key="`html-char-${index}`"
-            :style="item.style"
-            class="inline-block opacity-0 character-animation"
-            :class="{ 'animate-character': isVisible }"
-            v-html="renderCharWithTags(item)"
-          ></span>
+          :style="item.style"
+          class="inline-block opacity-0 character-animation"
+          :class="{ 'animate-character': isVisible }"
+          v-html="renderCharWithTags(item)"
+        ></span>
       </template>
     </template>
   </h2>
