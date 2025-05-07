@@ -163,7 +163,7 @@ const onSwiperInit = (swiper) => {
 }
 
 .custom-bullet-active {
-  background: var(--fakultas-color, #AA2132);
+  background: rgb(var(--color-primary-r), var(--color-primary-g), var(--color-primary-b));
   width: 40px;
   height: 6px;
 }

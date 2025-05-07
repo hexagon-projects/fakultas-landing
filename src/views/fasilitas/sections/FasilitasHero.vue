@@ -17,6 +17,6 @@ import TitleMain from '@/components/TitleMain.vue';
       </div>
     </div>
 
-    <img src="/src/assets/images/fasilitas.jpg" alt="" class="rounded-[32px] w-full max-h-[600px]" />
+    <img src="/src/assets/images/fasilitas.jpg" alt="" class="rounded-[16px] md:rounded-[24px] lg:rounded-[32px] w-full max-h-[600px] object-cover" />
   </div>
 </template>

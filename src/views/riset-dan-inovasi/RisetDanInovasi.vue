@@ -6,6 +6,7 @@ import RisetHero from './sections/RisetHero.vue'
 import ImageSection from '../prodi/sections/ImageSection.vue'
 import RisetInovasi from './sections/RisetInovasi.vue'
 import RisetJurnal from './sections/RisetJurnal.vue'
+import CTASection from '@/components/sections/CTASection.vue'
 
 onMounted(async () => {
   await berandaStore.getDataPortofolio()
@@ -18,6 +19,7 @@ onMounted(async () => {
     <ImageSection />
     <RisetInovasi :inovasi="berandaStore.portofolioData"/>
     <RisetJurnal :jurnal="berandaStore.jurnalData"/>
+    <CTASection />
   </MainLayout>
 </template>
 <style scoped>

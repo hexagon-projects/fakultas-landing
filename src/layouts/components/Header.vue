@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
-//   import { FiHome, FiBook, FiCalendar, FiMapPin, FiUsers } from 'react-icons/fi'
+import { motion } from 'motion-v'
 import logo from '@/assets/images/logo.webp'
 import union from '@/assets/images/navbar.png'
-import { berandaStore } from '@/stores'
 
 const route = useRoute()
 const router = useRouter()
@@ -38,38 +37,38 @@ const props = defineProps({
 })
 
 const updateScroll = () => {
-isScrolled.value = window.scrollY > 50
-color.value = isScrolled.value ? 'text-gray-700' : props.titleColor
-navbarColors.value = isScrolled.value ? 'text-gray-700' : props.navbarColor
+    isScrolled.value = window.scrollY > 50
+    color.value = isScrolled.value ? 'text-gray-700' : props.titleColor
+    navbarColors.value = isScrolled.value ? 'text-gray-700' : props.navbarColor
 }
 
 const updateMobile = () => {
-isMobile.value = window.innerWidth <= 768
+    isMobile.value = window.innerWidth <= 768
 }
 
 onMounted(() => {
-window.addEventListener('scroll', updateScroll)
-window.addEventListener('resize', updateMobile)
+    window.addEventListener('scroll', updateScroll)
+    window.addEventListener('resize', updateMobile)
 })
 
 watch(() => route.path, () => {
-window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
 })
 
 const menuItems = [
-{ name: 'Beranda', path: '/', icon: 'pi pi-home' },
-{ name: 'Tentang', path: '/tentang-fakultas', icon: 'pi pi-book' },
-{ name: isMobile.value ? 'Riset' : 'Riset & Inovasi', path: '/riset-dan-inovasi', icon: 'pi pi-calendar' },
-{ name: isMobile.value ? 'Prodi' : 'Program Studi', path: '/prodi', icon: 'pi pi-map-marker' },
-{ name: isMobile.value ? 'Kegiatan' : 'Kegiatan Mahasiswa', path: '/kegiatan', icon: 'pi pi-users' },
+    { name: 'Beranda', path: '/', icon: 'pi pi-home' },
+    { name: 'Tentang', path: '/tentang-fakultas', icon: 'pi pi-book' },
+    { name: isMobile.value ? 'Riset' : 'Riset & Inovasi', path: '/riset-dan-inovasi', icon: 'pi pi-calendar' },
+    { name: isMobile.value ? 'Prodi' : 'Program Studi', path: '/prodi', icon: 'pi pi-map-marker' },
+    { name: isMobile.value ? 'Kegiatan' : 'Kegiatan Mahasiswa', path: '/kegiatan', icon: 'pi pi-users' },
 ]
 
 const handleClick = () => {
-window.location.href = 'https://registrasi.unpas.ac.id/register'
+    window.location.href = 'https://registrasi.unpas.ac.id/register'
 }
 
 const navigateToHome = () => {
-router.push('/')
+    router.push('/')
 }
 </script>
 
@@ -120,12 +119,29 @@ router.push('/')
                     class="relative p-4 text-center text-xs lg:text-base rounded-lg md:rounded-xl lg:rounded-2xl transition-colors duration-500 ease-in-out hover:font-semibold"
                     :class="{ 'text-[#444444]': route.path === item.path }"
                 >
-                {{ item.name }}
+                    {{ item.name }}
+                    <motion.div
+                        v-if="route.path === item.path"
+                        layoutId="activeNavItem"
+                        initial="{ scaleY: 0 }"
+                        animate="{ scaleY: 1 }"
+                        exit="{ scaleY: 0 }"
+                        class="absolute inset-0 h-full bg-[#D0D0D0] border-2 border-[#FAFAFA]/50 rounded-lg md:rounded-xl lg:rounded-2xl z-[-1]"
+                        :style="{
+                            originY: 'top',
+                            scaleY: 1.1,
+                        }"
+                        :transition="{
+                            type: 'spring',
+                            bounce: 0.2,
+                            duration: 0.6
+                        }"
+                    />
                 </RouterLink>
                 <button
                     class="pulsating-button flex gap-2 cursor-pointer items-center text-xs md:text-sm lg:text-sm px-8 py-4 md:px-8 md:py-4 font-bold border-2 border-transparent bg-primary text-gray-700 rounded-lg md:rounded-xl lg:rounded-2xl hover:border-2 hover:border-white/50 shadow-black/5 shadow-xl drop-shadow-[0px_20px_40px_rgba(254,242,81,0.5)] hover:shadow-black/5 transition-colors duration-500"
                     @click="handleClick"
-                    >
+                >
                     Daftar
                 </button>
             </div>

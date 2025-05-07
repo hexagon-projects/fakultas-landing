@@ -6,6 +6,7 @@ import KerjasamaHero from './sections/KerjasamaHero.vue'
 import KerjasamaMitra from './sections/KerjasamaList.vue'
 import MitraSection from '@/components/sections/MitraSection.vue'
 import KerjasamaProyek from './sections/KerjasamaProyek.vue'
+import CTASection from '@/components/sections/CTASection.vue'
 
 onMounted(() => {
   kerjasamaStore.getInitialData()
@@ -18,5 +19,6 @@ onMounted(() => {
     <KerjasamaProyek />
     <KerjasamaMitra :partner="berandaStore.mitraData"/>
     <MitraSection :partners="berandaStore.mitraData"/>
+    <CTASection />
   </MainLayout>
 </template>

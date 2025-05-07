@@ -97,7 +97,7 @@ const primaryColorWithOpacity = computed(() => {
               <img :src="getImageUrl(testimonial.image)" :alt="testimonial.name"
                 class="w-10 h-10 lg:w-20 lg:h-20 rounded-full object-cover">
             </div>
-            <TextSection class="text-black/60 mb-4 md:mb-6"><span v-html="sanitizeHtml(testimonial.description)"></span></TextSection>
+            <TextSection class="text-black/60 mb-4 md:mb-6 line-clamp-4 lg:line-clamp-5"><span v-html="sanitizeHtml(testimonial.description)"></span></TextSection>
             <div class="space-y-2">
               <TextSection :weightText="'font-bold'">{{ testimonial.name }}</TextSection>
               <!-- <TextSection class="text-black/60">{{ testimonial.role }}</TextSection> -->

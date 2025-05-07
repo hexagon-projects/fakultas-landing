@@ -20,54 +20,55 @@ defineProps<{
 
 <template>
   <SectionLayout>
-    <div class="w-full flex h-[60vh] md:h-[80vh]">
-      <div
-        class="w-full h-full flex flex-col lg:flex-row lg:justify-between items-start gap-4 md:gap-5 lg:gap-6 relative">
-        <div class="w-full lg:w-1/2 flex flex-col justify-center lg:h-full lg:sticky lg:top-28">
-          <div class="w-full space-y-2 lg:h-[80%]">
-            <TitleSection :text="'Prestasi'"></TitleSection>
-            <TextSection>Mahasiswa Universitas Pasundan terus mengukir prestasi
-              membanggakan di berbagai bidang baik di tingkat nasional maupun internasional.</TextSection>
-            <div class="pt-0 md:pt-6 lg:pt-8">
-              <InteractiveHoverButton @click="$router.push('/prestasi')" :text="'Selengkapnya'">
-              </InteractiveHoverButton>
+      <div class="w-full flex h-[60vh] md:h-[80vh]">
+        <div
+          class="w-full h-full flex flex-col lg:flex-row lg:justify-between items-start gap-4 md:gap-5 lg:gap-6 relative">
+          <div class="w-full lg:w-1/2 flex flex-col justify-start lg:h-full">
+            <div class="lg:sticky lg:top-28 z-10">
+              <div class="w-full space-y-2 lg:h-[80%]">
+                <TitleSection :text="'Prestasi'"></TitleSection>
+                <TextSection>Mahasiswa Universitas Pasundan terus mengukir prestasi
+                  membanggakan di berbagai bidang baik di tingkat nasional maupun internasional.</TextSection>
+                <div class="pt-0 md:pt-6 lg:pt-8">
+                  <InteractiveHoverButton @click="$router.push('/prestasi')" :text="'Selengkapnya'"></InteractiveHoverButton>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Tablet & Dekstop -->
-        <div id="prestasi-scroll" class="hidden md:flex w-full lg:w-1/2 h-full overflow-scroll cursor-pointer">
-          <div class="w-1/2">
-            <div class="w-full h-[22vh]"></div>
-            <template v-for="(item, index) in prestasi" :key="item.id">
-              <template v-if="index % 2 === 0">
-                <PrestasiCard :rounded="'rounded-l-[8px] md:rounded-l-[16px] lg:rounded-l-[32px]'"
-                  :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
-                <div class="w-full h-[16vh]"></div>
+          <!-- Tablet & Dekstop -->
+          <div id="prestasi-scroll" class="hidden md:flex w-full lg:w-1/2 h-full overflow-y-auto cursor-pointer">
+            <div class="w-1/2">
+              <div class="w-full h-[22vh]"></div>
+              <template v-for="(item, index) in prestasi" :key="item.id">
+                <template v-if="index % 2 === 0">
+                  <PrestasiCard :rounded="'rounded-l-[8px] md:rounded-l-[16px] lg:rounded-l-[32px]'"
+                    :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
+                  <div class="w-full h-[16vh]"></div>
+                </template>
               </template>
+            </div>
+            <div class="w-1/2">
+              <template v-for="(item, index) in prestasi" :key="item.id">
+                <template v-if="index % 2 !== 0">
+                  <PrestasiCard :rounded="'rounded-r-[8px] md:rounded-r-[16px] lg:rounded-r-[32px]'"
+                    :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
+                  <div class="w-full h-[16vh]"></div>
+                </template>
+              </template>
+            </div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="w-full grid grid-cols-1 overflow-y-scroll md:hidden gap-4 md:gap-5">
+            <template v-for="item in prestasi" :key="item.id">
+              <PrestasiCard :rounded="'rounded-[8px] md:rounded-[16px] lg:rounded-[32px]'"
+                :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
             </template>
           </div>
-          <div class="w-1/2">
-            <template v-for="(item, index) in prestasi" :key="item.id">
-              <template v-if="index % 2 !== 0">
-                <PrestasiCard :rounded="'rounded-r-[8px] md:rounded-r-[16px] lg:rounded-r-[32px]'"
-                  :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
-                <div class="w-full h-[16vh]"></div>
-              </template>
-            </template>
-          </div>
-        </div>
-
-        <!-- Mobile -->
-        <div class="w-full grid grid-cols-1 overflow-y-scroll md:hidden gap-4 md:gap-5">
-          <template v-for="item in prestasi" :key="item.id">
-            <PrestasiCard :rounded="'rounded-[8px] md:rounded-[16px] lg:rounded-[32px]'"
-              :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
-          </template>
         </div>
       </div>
-    </div>
-  </SectionLayout>
+    </SectionLayout>
 </template>
 
 <style>

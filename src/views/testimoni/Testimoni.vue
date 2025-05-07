@@ -7,6 +7,7 @@ import TestimoniHero from './sections/TestimoniHero.vue'
 import SectionLayout from '@/layouts/SectionLayout.vue'
 import TestimoniList from './sections/TestimoniList.vue'
 import { useFakultasStore } from '@/stores/fakultas'
+import CTASection from '@/components/sections/CTASection.vue'
 
 const fakultasStore = useFakultasStore()
 
@@ -22,5 +23,6 @@ onMounted(async () => {
       <TestimoniCarousel />
     </SectionLayout>
     <TestimoniList :testimoni="berandaStore.testimoniData"/>
+    <CTASection />
   </MainLayout>
 </template>

@@ -50,12 +50,17 @@ onMounted(async () => {
     <TentangHero />
     <SectionLayout>
       <div class="flex flex-col lg:flex-row md:justify-between relative">
-        <div class="lg:w-[45%] w-full h-full lg:h-full"><img :src="SejarahImg" alt="" class="w-full h-full"></div>
+        <!-- div img ini sticky -->
+        <div class="lg:w-[45%] w-full h-full lg:sticky lg:top-28">
+          <img :src="SejarahImg" alt="" class="w-full h-full lg:sticky lg:top-28 z-10">
+          <!-- Tambahkan kelas sticky dan top-0 -->
+        </div>
         <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
           <Timeline :items="historyTimeline" />
         </div>
       </div>
     </SectionLayout>
+
     <TentangSejarah :fakultas="fakultasStore.fakultas" />
     <TentangVisiMisi :fakultas="fakultasStore.fakultas" />
     <TentangStatistik :fakultas="fakultasStore.fakultas" />

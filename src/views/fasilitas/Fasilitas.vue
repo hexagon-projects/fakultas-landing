@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import MainLayout from '@/layouts/MainLayout.vue'
 import FasilitasHero from './sections/FasilitasHero.vue'
 import FasilitasList from './sections/FasilitasList.vue'
+import CTASection from '@/components/sections/CTASection.vue'
 
 const router = useRouter()
 
@@ -20,5 +21,6 @@ onMounted(async () => {
   <MainLayout>
     <FasilitasHero />
     <FasilitasList :fasilitas="berandaStore.fasilitasData"/>
+    <CTASection />
   </MainLayout>
 </template>

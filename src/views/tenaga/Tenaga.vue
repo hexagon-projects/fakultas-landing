@@ -5,6 +5,7 @@ import ProdiDetailDosen from '../prodiDetail/sections/ProdiDetailDosen.vue';
 import { useTeamStore } from '@/stores/team';
 import { onMounted } from 'vue';
 import TenagaAlasan from './sections/TenagaAlasan.vue';
+import CTASection from '@/components/sections/CTASection.vue';
 
 const teamStore = useTeamStore();
 
@@ -20,5 +21,6 @@ onMounted(async () => {
     <TenagaHero />
     <TenagaAlasan />
     <ProdiDetailDosen :team="teamStore.teams"/>
+    <CTASection />
   </MainLayout>
 </template>
