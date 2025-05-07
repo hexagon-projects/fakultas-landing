@@ -4,13 +4,13 @@ import FakultasService from "@/core/services/FakultasService";
 import { hexToCssHsl, hexToRgb } from "@/core/helpers/helper";
 
 interface FakultasState {
-  fakultas: Faculty[];
+  fakultas: Faculty | null;
   currentFacultyColor: string | null;
 }
 
 export const useFakultasStore = defineStore("fakultas", {
   state: (): FakultasState => ({
-    fakultas: [],
+    fakultas: null,
     currentFacultyColor: null,
   }),
 

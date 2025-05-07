@@ -11,7 +11,7 @@ import LocationIcon from '@/assets/icons/location.png';
 import type { Identity } from '@/core/types/identity';
 
 defineProps<{
-  identity: Identity;
+  identity: Identity | null;
   isLoading?: boolean;
 }>();
 </script>
@@ -34,9 +34,9 @@ defineProps<{
         <div v-for="i in 3" :key="i" class="h-32 bg-gray-300 animate-pulse rounded-lg"></div>
       </template>
       <template v-else>
-        <KontakCard type="email" :value="identity.email" :icon="EmailIcon" />
-        <KontakCard type="phone" :value="identity.phone" :icon="PhoneIcon" />
-        <KontakCard type="map" :link="identity.link_map" :icon="LocationIcon" />
+        <KontakCard type="email" :value="identity?.email" :icon="EmailIcon" />
+        <KontakCard type="phone" :value="identity?.phone" :icon="PhoneIcon" />
+        <KontakCard type="map" :link="identity?.link_map" :icon="LocationIcon" />
       </template>
     </div>
   </SectionLayout>

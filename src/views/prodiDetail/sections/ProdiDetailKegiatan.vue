@@ -9,7 +9,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper';
 import type { Organization } from '@/core/types/organisasi';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
@@ -27,8 +26,6 @@ const activeFilter = ref("semua");
 const visibleItems = ref(6);
 const itemsPerLoad = 3;
 const refreshKey = ref(0);
-
-const swiperModules = [Pagination, Navigation];
 
 const filteredOrganisasi = computed(() => {
   if (activeFilter.value === "semua") {
@@ -108,7 +105,7 @@ const showLoadMore = computed(() => {
 
     <!-- Mobile Swiper -->
     <div class="md:hidden">
-      <Swiper :modules="swiperModules" :pagination="{
+      <Swiper :pagination="{
         clickable: true,
         bulletClass: 'custom-bullet-org',
         bulletActiveClass: 'custom-bullet-org-active',

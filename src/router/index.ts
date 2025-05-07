@@ -1,11 +1,11 @@
 import Agenda from '@/views/agenda/Agenda.vue'
 import AgendaDetail from '@/views/agendaDetail/AgendaDetail.vue'
-import Berita from '@/views/berita/Berita.vue'
+import Berita from '@/views/berita/BeritaView.vue'
 import BeritaDetail from '@/views/beritaDetail/BeritaDetail.vue'
 import Faq from '@/views/Faq/Faq.vue'
 import Kegiatan from '@/views/kegiatan/Kegiatan.vue'
-import Kontak from '@/views/kontak/Kontak.vue'
-import Prodi from '@/views/prodi/Prodi.vue'
+import Kontak from '@/views/kontak/KontakView.vue'
+import Prodi from '@/views/prodi/ProdiView.vue'
 import ProdiDetail from '@/views/prodiDetail/ProdiDetail.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import ApiService from "@/core/services/ApiService";
@@ -26,7 +26,7 @@ const router = createRouter({
         {
           path: "/",
           name: "beranda",
-          component: () => import("@/views/beranda/Beranda.vue"),
+          component: () => import("@/views/beranda/BerandaView.vue"),
           meta: {
             pageTitle: "Beranda",
           },
@@ -42,7 +42,7 @@ const router = createRouter({
         {
           path: "/testimoni",
           name: "testimoni",
-          component: () => import("@/views/testimoni/Testimoni.vue"),
+          component: () => import("@/views/testimoni/TestimoniViews.vue"),
           meta: {
             pageTitle: "Testimoni",
           },
@@ -66,7 +66,7 @@ const router = createRouter({
         {
           path: "/fasilitas",
           name: "fasilitas",
-          component: () => import("@/views/fasilitas/Fasilitas.vue"),
+          component: () => import("@/views/fasilitas/FasilitasView.vue"),
           meta: {
             pageTitle: "Fasilitas",
           },
@@ -74,7 +74,7 @@ const router = createRouter({
         {
           path: "/prestasi",
           name: "prestasi",
-          component: () => import("@/views/prestasi/Prestasi.vue"),
+          component: () => import("@/views/prestasi/PrestasiView.vue"),
           meta: {
             pageTitle: "Prestasi",
           },

@@ -17,7 +17,11 @@ const selectedCategory = ref<string>('Semua');
 // Get unique categories from agenda data
 const categories = computed(() => {
   if (!agendaStore.agendas) return ['Semua'];
-  const uniqueCategories = new Set(agendaStore.agendas.map(item => item.category));
+  const uniqueCategories = new Set(
+    agendaStore.agendas
+      .map(item => item.category)
+      .filter((category): category is string => !!category) // This filters out undefined/null
+  );
   return ['Semua', ...Array.from(uniqueCategories)];
 });
 
@@ -50,20 +54,15 @@ onMounted(async () => {
 
     <div class="text-center lg:w-full w-full px-[20px] md:px-[60px] lg:px-[120px]">
       <div class="flex gap-5 justify-start flex-wrap mt-5">
-        <Button 
-          v-for="category in categories" 
-          :key="category"
-          @click="selectedCategory = category"
+        <Button v-for="category in categories" :key="category" @click="selectedCategory = category"
           :className="selectedCategory === category ? 'bg-colorPrimary text-white' : 'text-black'"
-          :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'"
-          padding="py-2 px-4"
-          class="rounded-full"
-        >
+          :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'" padding="py-2 px-4"
+          class="rounded-full">
           {{ category }}
         </Button>
       </div>
     </div>
-    
+
     <AgendaList :agenda="filteredAgenda" :is-loading="isLoading" />
     <BeritaList :posts="postStore.posts" :loading="isLoading" />
     <CTASection />
@@ -72,13 +71,17 @@ onMounted(async () => {
 
 <style scoped>
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
 }
+
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+import Footer from './components/AppFooter.vue';
 import { berandaStore } from '@/stores';
 import { onMounted } from 'vue';
 import CTASection from '@/components/sections/CTASection.vue';

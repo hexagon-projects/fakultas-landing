@@ -6,7 +6,6 @@ import SectionLayout from '@/layouts/SectionLayout.vue';
 
 defineProps<{
   fakultas: Faculty | null;
-  isLoading?: boolean;
 }>();
 </script>
 
@@ -14,8 +13,8 @@ defineProps<{
   <SectionLayout>
     <div class="flex lg:gap-20 gap-5 items-center flex-col lg:flex-row">
       <div class="lg:w-1/2 w-full">
-        <TitleMain v-if="fakultas.name"
-          :text="`Testimonial Alumni ${fakultas.name} Unpas`"></TitleMain>
+        <TitleMain v-if="fakultas?.name"
+          :text="`Testimonial Alumni ${fakultas?.name} Unpas`"></TitleMain>
       </div>
       <div class="lg:w-1/2 w-full">
         <TextSection class="text-gray-500">

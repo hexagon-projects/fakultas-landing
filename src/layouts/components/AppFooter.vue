@@ -1,29 +1,8 @@
-<script setup>
-//   import Title from "./Title.vue";
-import Text from '@/components/Text.vue'
+<script lang="ts" setup>
 import Logo from '@/assets/images/logo.webp'
 import LogoOutline from '@/assets/images/logo-outline1.png'
-import Title from '@/components/Title.vue'
-//   import FakultasService from "../fetching/fakultas";
+import { Text } from 'vue'
 
-// Lazy load icons
-//   const FaYoutube = defineAsyncComponent(() => import("react-icons/fa").then(m => m.FaYoutube));
-//   const FaFacebookSquare = defineAsyncComponent(() => import("react-icons/fa").then(m => m.FaFacebookSquare));
-//   const FaSquareXTwitter = defineAsyncComponent(() => import("react-icons/fa6").then(m => m.FaSquareXTwitter));
-//   const RiInstagramFill = defineAsyncComponent(() => import("react-icons/ri").then(m => m.RiInstagramFill));
-//   const AiFillTikTok = defineAsyncComponent(() => import("react-icons/ai").then(m => m.AiFillTikTok));
-
-// State
-// const fakultas = ref([
-//   { id: 1, name: 'Fakultas Ekonomi dan Bisnis', slug: 'feb' },
-//   { id: 2, name: 'Fakultas Hukum', slug: 'fh' },
-//   { id: 3, name: 'Fakultas Ilmu Komunikasi', slug: 'fikom' },
-//   { id: 4, name: 'Fakultas Teknik', slug: 'ft' },
-//   { id: 5, name: 'Fakultas Ilmu Sosial dan Ilmu Politik', slug: 'fisip' },
-//   { id: 6, name: 'Fakultas Kesehatan', slug: 'fk' },
-//   { id: 7, name: 'Fakultas Pertanian', slug: 'fp' },
-//   { id: 8, name: 'Fakultas Psikologi', slug: 'fpsikologi' },
-// ])
 const navigasiLinks = [
   { label: 'Beranda', href: '/' },
   { label: 'Tentang', href: '/tentang-fakultas' },
@@ -48,6 +27,7 @@ const lokasi = [
   { kampus: 'Kampus V', alamat: 'Jl. Sumatera No.41' },
 ]
 </script>
+
 <template>
   <section
     class="bg-colorPrimary text-white p-4 md:p-6 lg:p-8 m-2 md:m-6 lg:m-6 mb-20 md:mb-20 lg:mb-6 rounded-xl md:rounded-2xl lg:rounded-4xl relative overflow-hidden"
@@ -71,7 +51,7 @@ const lokasi = [
           class="w-14 h-14 md:w-16 md:h-16"
           loading="lazy"
         />
-        <Title class="text-white text-[16px] lg:text-[32px]">Terhubung Dengan Kami</Title>
+        <title class="text-white text-[16px] lg:text-[32px]">Terhubung Dengan Kami</title>
         <div class="flex justify-start gap-3 md:gap-5">
           <i class="pi pi-instagram text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
           <i class="pi pi-facebook text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
@@ -95,20 +75,6 @@ const lokasi = [
             </a>
           </div>
         </div>
-
-        <!-- <div class="space-y-4 hidden lg:block">
-          <Text sizeMobile="text-sm" :text="'Fakultas'" weight="font-semibold" color="text-white" />
-          <div class="flex flex-col gap-4 items-start">
-            <a
-              v-for="item in fakultas"
-              :key="item.id"
-              :href="`/fakultas/${item.slug}`"
-              class="text-xs hover:font-medium max-w-[200px] cursor-pointer"
-            >
-              {{ item.name }}
-            </a>
-          </div>
-        </div> -->
 
         <div class="justify-around md:flex-col gap-4 flex flex-col">
           <Text sizeMobile="text-sm" :text="'Lokasi'" weight="font-semibold" color="text-white" />

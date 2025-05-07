@@ -11,7 +11,7 @@ export interface Agenda {
   register_link: string;
   contact: string;
   image: string;
-  category: string;
+  category?: string;
   created_at: string;
   updated_at: string;
 }

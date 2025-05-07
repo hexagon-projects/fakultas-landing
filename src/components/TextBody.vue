@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-defineProps<{
+withDefaults(defineProps<{
   alignText?: string
-  weightText?: {
-    type: string,
-    default: 'font-normal'
-  }
-}>();
+  weightText?: string
+}>(), {
+  weightText: 'font-normal'
+});
 </script>
 
 <template>

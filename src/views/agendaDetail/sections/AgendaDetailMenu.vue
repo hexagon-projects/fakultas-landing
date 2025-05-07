@@ -75,7 +75,7 @@ defineProps<{
       </template>
       <template v-else>
         <div class="w-full md:w-[65%]">
-          <TextBody><span v-html="sanitizeHtml(agenda?.description)"></span></TextBody>
+          <TextBody><span v-html="sanitizeHtml(agenda?.description || '')"></span></TextBody>
         </div>
 
         <div class="w-full md:w-[35%] flex flex-col gap-8 lg:gap-8">
@@ -87,7 +87,7 @@ defineProps<{
                 @click="handleAgendaClick(agendas?.[0])"
               >
                 <img
-                  :src="getImageUrl(agendas?.[0]?.image)"
+                  :src="getImageUrl(agendas?.[0]?.image || '')"
                   alt="Gambar Berita"
                   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 >
@@ -99,7 +99,7 @@ defineProps<{
                 <div class="space-y-2">
                   <p class="text-sm md:text-base lg:text-lg font-bold">{{ agendas?.[0]?.title }}</p>
                   <p class="text-xs md:text-xs lg:text-base">
-                    {{ formatDate(agendas?.[0]?.start_date) }} • {{ agendas?.[0]?.location }}
+                    {{ formatDate(agendas?.[0]?.start_date || '') }} • {{ agendas?.[0]?.location }}
                   </p>
                 </div>
               </div>

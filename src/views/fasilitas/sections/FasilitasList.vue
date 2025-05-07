@@ -3,12 +3,11 @@ import Button from '@/components/Button.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import type { Fasilitas } from '@/core/types/fasilitas';
-import SectionLayout from '@/layouts/SectionLayout.vue';
 import { ref } from 'vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
-const props = defineProps<{
+defineProps<{
   fasilitas: Fasilitas[];
   isLoading?: boolean;
 }>();
@@ -157,14 +156,14 @@ const filterFacility = (facility: Fasilitas | null) => {
           <div v-for="(item, index) in fasilitas" :key="index"
             class="w-full h-64 bg-gray-200 bg-gradient-to-t from-black/80 via-transparent flex flex-col justify-end p-5 rounded-[20px] cursor-pointer hover:scale-105 transition">
             <h6 class="text-white font-semibold">{{ item.title }}</h6>
-            <TextSection class="text-white/40">{{ item.subtitle }}</TextSection>
+            <!-- <TextSection class="text-white/40">{{ item.subtitle }}</TextSection> -->
           </div>
         </template>
         
         <template v-else>
           <div class="p-0 text-center md:text-left md:p-5 space-y-3">
             <h2 class="text-2xl font-bold">{{ selectedFacility?.title }}</h2>
-            <h3 class="text-lg text-gray-600">{{ selectedFacility?.subtitle }}</h3>
+            <!-- <h3 class="text-lg text-gray-600">{{ selectedFacility?.subtitle }}</h3> -->
             <TextSection><span class="prose mt-3" v-html="selectedFacility?.description"></span></TextSection>
           </div>
           <div class="w-full h-64 bg-gray-200 rounded-[20px] overflow-hidden relative">

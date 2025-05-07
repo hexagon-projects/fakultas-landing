@@ -7,8 +7,8 @@
     >
       <img
         class="relative w-full object-cover"
-        :src="getImageUrl(facility.image1)"
-        :alt="facility.title"
+        :src="getImageUrl(facility.image1 || '')"
+        :alt="facility.title || ''"
       />
     </div>
   </div>

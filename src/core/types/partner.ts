@@ -7,7 +7,7 @@ export interface Partner {
   detail: string;
   image: string | null;
   status: string;
-  home: string;
+  home?: string | null;
   created_at: string;
   updated_at: string;
 }

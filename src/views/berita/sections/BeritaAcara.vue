@@ -2,7 +2,6 @@
 import AcaraCard from '../components/AcaraCard.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import TextSection from '@/components/TextSection.vue';
-import ButtonSection from '@/components/ButtonSection.vue';
 import type { Agenda } from '@/core/types/agenda';
 import { useRouter } from 'vue-router';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
@@ -49,7 +48,7 @@ const goToAgendaDetail = (slug: string) => {
     <div v-if="acara?.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
       <AcaraCard v-for="item in acara" :key="item.id" :title="item.title" :description="item.description"
         :location="item.location" :image="getImageUrl(item.image)" :date="formatDate(item.start_date)"
-        @click="goToAgendaDetail(item.slug)" />
+        @click="goToAgendaDetail(item.slug || '')" />
     </div>
 
     <div v-else class="text-center py-8">
@@ -57,10 +56,6 @@ const goToAgendaDetail = (slug: string) => {
     </div>
 
     <div class="w-full flex justify-center items-center">
-      <!-- <ButtonSection @click="router.push({ name: 'agenda' })">
-        Lihat Semua Acara
-      </ButtonSection> -->
-
       <InteractiveHoverButton @click="router.push({ name: 'agenda' })" :text="'Lihat Semua Acara'">
       </InteractiveHoverButton>
     </div>

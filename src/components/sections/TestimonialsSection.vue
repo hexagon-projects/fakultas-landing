@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import CardSpotlight from '@/components/ui/card-spotlight/CardSpotlight.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import TextSection from '@/components/TextSection.vue';
-import ButtonSection from '@/components/ButtonSection.vue';
 import BorderBeam from '@/components/ui/border-beam/BorderBeam.vue';
 import { computed, ref } from 'vue';
 import type { Swiper as SwiperType } from 'swiper/types';
@@ -28,7 +26,6 @@ const getImageUrl = (imagePath: string | null) => {
   return `${baseUrl}/${imagePath}`;
 };
 
-const modules = [Autoplay];
 const activeIndex = ref(0);
 const swiperInstance = ref<SwiperType | null>(null);
 
@@ -84,7 +81,7 @@ const primaryColorWithOpacity = computed(() => {
   </SectionLayout>
 
   <div class="w-full mb-12 md:mb-16 lg:mb-20">
-    <swiper :modules="modules" :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
+    <swiper :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
       :space-between="swiperOptions.spaceBetween" :centered-slides="swiperOptions.centeredSlides"
       :breakpoints="swiperOptions.breakpoints" @swiper="handleSwiper" @slide-change="handleSlideChange"
       class="testimonial-swiper">
@@ -92,26 +89,26 @@ const primaryColorWithOpacity = computed(() => {
         <div class="relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px] mx-[30px] md:mx-0">
           <CardSpotlight
             class="w-full cursor-pointer flex flex-col justify-center items-center text-center p-5 lg:p-10 rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"
-            :gradient-color="primaryColorWithOpacity">
+            slotClass="" :gradientSize="200" :gradientColor="primaryColorWithOpacity" :gradientOpacity="0.8">
             <div class="w-full flex justify-center items-center mb-4 md:mb-6">
               <img :src="getImageUrl(testimonial.image)" :alt="testimonial.name"
                 class="w-10 h-10 lg:w-20 lg:h-20 rounded-full object-cover">
             </div>
-            <TextSection class="text-black/60 mb-4 md:mb-6 line-clamp-4 lg:line-clamp-5"><span v-html="sanitizeHtml(testimonial.description)"></span></TextSection>
+            <TextSection class="text-black/60 mb-4 md:mb-6 line-clamp-4 lg:line-clamp-5"><span
+                v-html="sanitizeHtml(testimonial.description)"></span></TextSection>
             <div class="space-y-2">
               <TextSection :weightText="'font-bold'">{{ testimonial.name }}</TextSection>
-              <!-- <TextSection class="text-black/60">{{ testimonial.role }}</TextSection> -->
             </div>
           </CardSpotlight>
           <BorderBeam v-if="activeIndex === index" :size="250" :duration="10" :delay="0" :border-width="3"
-            :size-second="250" :duration-second="6" :delay-second="0" :anchor-second="75" :enable-second-border="true" :start-position-second="50" />
+            :size-second="250" :duration-second="6" :delay-second="0" :anchor-second="75" :enable-second-border="true"
+            :start-position-second="50" />
         </div>
       </swiper-slide>
     </swiper>
   </div>
 
   <div class="w-full flex justify-center items-center">
-    <!-- <ButtonSection>Lihat Lainnya</ButtonSection> -->
     <InteractiveHoverButton @click="$router.push('/testimoni')" :text="'Lihat Lainnya'"></InteractiveHoverButton>
   </div>
 </template>

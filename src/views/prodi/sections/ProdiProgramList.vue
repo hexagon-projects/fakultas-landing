@@ -7,7 +7,7 @@ import type { Faculty } from '@/core/types/fakultas';
 
 defineProps<{
   prodiData: Departement[];
-  fakultas: Faculty;
+  fakultas: Faculty | null;
 }>();
 </script>
 

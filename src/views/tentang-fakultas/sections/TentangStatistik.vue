@@ -9,18 +9,18 @@ import { computed } from 'vue';
 const { sanitizeHtml } = useSanitize()
 
 const props = defineProps<{
-  fakultas: Faculty;
+  fakultas: Faculty | null;
 }>();
 
 const titleHTML = computed(() => {
   if (!props.fakultas?.name) return 'Statistik';
-  return `Statistik <span class="text-colorPrimary">${props.fakultas.name}</span>`;
+  return `Statistik <span class="text-colorPrimary">${props.fakultas?.name}</span>`;
 });
 
-const statistik1 = Number(props.fakultas.statistik1) || 1000;
-const statistik2 = Number(props.fakultas.statistik2) || 1000;
-const statistik3 = Number(props.fakultas.statistik3) || 1000;
-const statistik4 = Number(props.fakultas.statistik4) || 1000;
+const statistik1 = Number(props.fakultas?.statistik1) || 1000;
+const statistik2 = Number(props.fakultas?.statistik2) || 1000;
+const statistik3 = Number(props.fakultas?.statistik3) || 1000;
+const statistik4 = Number(props.fakultas?.statistik4) || 1000;
 </script>
 
 <template>
@@ -31,7 +31,7 @@ const statistik4 = Number(props.fakultas.statistik4) || 1000;
       </div>
       <div class="w-full lg:w-3/5">
         <TextSection>
-          <span v-html="sanitizeHtml(fakultas.description3 || '')"></span>
+          <span v-html="sanitizeHtml(fakultas?.description3 || '')"></span>
         </TextSection>
       </div>
     </div>

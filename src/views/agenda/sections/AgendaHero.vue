@@ -73,7 +73,7 @@ defineProps<{
         </div>
       </template>
       <template v-else>
-        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug)">
+        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug || '')">
           <img :src="getImageUrl(agenda[0]?.image)" :alt="agenda[0]?.title || 'Gambar acara'"
             class="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-105">
           <div v-if="agenda[0]?.end_date"

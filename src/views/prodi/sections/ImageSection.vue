@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { Faculty } from '@/core/types/fakultas';
 
 defineProps<{
-  fakultas: Faculty;
   isLoading?: boolean;
 }>();
 </script>

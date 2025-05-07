@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import Title from './Title.vue'
 import { berandaStore } from '@/stores'
 import { getImageUrl } from '@/core/helpers/helper'
 import { useRouter } from 'vue-router'

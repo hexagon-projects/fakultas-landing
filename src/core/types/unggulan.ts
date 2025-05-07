@@ -4,7 +4,7 @@ export interface Unggulan {
   title: string;
   description: string;
   image: string;
-  home: string | null;
+  home?: string | null;
   created_at: string;
   updated_at: string;
 }

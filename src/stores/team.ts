@@ -51,7 +51,7 @@ export const useTeamStore = defineStore("team", {
       this.error = null;
       try {
         const partner = await TeamService.getById(id);
-        this.currentTeams = partner;
+        this.currentTeams = [partner];
       } catch (error: any) {
         this.error = error.message || "Failed to fetch partner";
         console.error("Error fetching partner:", error);

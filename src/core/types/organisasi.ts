@@ -4,7 +4,7 @@ export interface Organization {
   name: string;
   category: string;
   description: string;
-  home: string | null;
+  home?: string | null;
   image: string;
   created_at: string;
   updated_at: string;

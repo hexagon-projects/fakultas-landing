@@ -54,7 +54,7 @@ const titleHTML = `Berita Seputar <span class="text-colorPrimary font-bold">Prog
         :judul="beritaItem.title"
         :tanggal="beritaItem.publish"
         :gambar="getImageUrl(beritaItem.image)"
-        :slug="beritaItem.slug"
+        :slug="beritaItem.slug || ''"
       />
     </div>
   </SectionLayout>

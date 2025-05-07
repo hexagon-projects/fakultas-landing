@@ -10,7 +10,7 @@ export interface Team {
   yt: string;
   tiktok: string;
   image: string;
-  home: string;
+  home?: string | null;
   created_at: string;
   updated_at: string;
 }

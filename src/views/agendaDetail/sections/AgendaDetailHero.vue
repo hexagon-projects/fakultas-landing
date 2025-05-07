@@ -60,13 +60,13 @@ defineProps<{
       <template v-else>
         <div
           class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[738px] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden">
-          <img :src="getImageUrl(agenda?.image)" alt="Event banner image" class="w-full h-full object-cover" />
+          <img :src="getImageUrl(agenda?.image || '')" alt="Event banner image" class="w-full h-full object-cover" />
         </div>
         <div class="flex flex-col lg:flex-row items-start gap-10 md:gap-20 self-stretch">
           <div class="md:w-[60%] column flex flex-col items-start gap-6 md:gap-8 w-full order-1">
             <div class="flex flex-col items-start gap-4 md:gap-6 self-stretch">
               <TitleMain :text="agenda?.title"></TitleMain>
-              <TextSection><span v-html="sanitizeHtml(agenda?.description)"></span></TextSection>
+              <TextSection><span v-html="sanitizeHtml(agenda?.description || '')"></span></TextSection>
             </div>
             <div class="flex flex-row items-start gap-3 md:gap-4">
               <InteractiveHoverButton :text="'Daftar'"></InteractiveHoverButton>
@@ -83,7 +83,7 @@ defineProps<{
                   Tanggal
                 </h3>
                 <TextBody>
-                  {{ formatDate(agenda?.start_date) }}
+                  {{ formatDate(agenda?.start_date || '') }}
                 </TextBody>
               </div>
               <div class="list_item flex flex-col items-start gap-1 md:gap-2">

@@ -44,8 +44,8 @@ onMounted(async () => {
 });
 
 const contactAdmin = () => {
-  const phoneNumber = identityStore.identity.phone;
-  const chatMessage = analyticStore.analytic.chat;
+  const phoneNumber = identityStore.identity?.phone;
+  const chatMessage = analyticStore.analytic?.chat;
 
   if (phoneNumber) {
     const cleanedPhone = phoneNumber.replace(/\D/g, '');

@@ -14,7 +14,7 @@ const getImageUrl = (imagePath: string | null) => {
 };
 
 defineProps<{
-  fakultas: Faculty;
+  fakultas: Faculty | null;
   isLoading?: boolean;
 }>();
 </script>
@@ -24,8 +24,8 @@ defineProps<{
     <div class="flex flex-col-reverse lg:flex-row lg:gap-10">
       <div class="lg:w-1/2 w-full">
         <div>
-          <TitleSection v-if="fakultas.title2" class="mt-7" :text="`Sejarah ${fakultas.title2}`"></TitleSection>
-          <TextSection class="text-gray-500 mt-7" ><span v-html="fakultas.description2"></span></TextSection>
+          <TitleSection v-if="fakultas?.title2" class="mt-7" :text="`Sejarah ${fakultas?.title2}`"></TitleSection>
+          <TextSection class="text-gray-500 mt-7" ><span v-html="fakultas?.description2"></span></TextSection>
           <div class="flex gap-5 lg:mt-10 mt-5">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
               <InteractiveHoverButton :text="'Daftar Sekarang'" />
@@ -38,7 +38,7 @@ defineProps<{
       <div class="lg:w-1/2 w-full">
         <div class="w-full h-80 md:h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative">
           <div class="w-full h-full sjrh-container">
-            <img :src="getImageUrl(fakultas.image2)" alt=""
+            <img :src="getImageUrl(fakultas?.image2 || '')" alt=""
               class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] sjrh-img" />
             <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
               xmlns="http://www.w3.org/2000/svg" version="1.1">

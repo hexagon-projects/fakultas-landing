@@ -4,7 +4,7 @@ export interface Testimonial {
   name: string;
   title: string;
   description: string;
-  home: string | null;
+  home?: string | null;
   yt: string;
   image: string;
   created_at: string;

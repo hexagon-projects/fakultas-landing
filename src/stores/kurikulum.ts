@@ -51,7 +51,7 @@ export const useKurikulumStore = defineStore("kurikulum", {
       this.error = null;
       try {
         const kurikulum = await KurikulumService.getById(id);
-        this.currentKurikulum = kurikulum;
+        this.currentKurikulum = [kurikulum];
       } catch (error: any) {
         this.error = error.message || "Failed to fetch kurikulum";
         console.error("Error fetching kurikulum:", error);

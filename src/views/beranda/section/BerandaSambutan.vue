@@ -16,14 +16,14 @@ const getImageUrl = (imagePath: string | null) => {
 };
 
 const props = defineProps<{
-  fakultas: Faculty;
+  fakultas: Faculty | null;
   dosen: Team[];
   isLoading?: boolean;
 }>();
 
 const titleHTML = computed(() => {
   if (!props.fakultas?.name) return 'Sambutan Dekan';
-  return `Sambutan Dekan <span class="text-colorPrimary">${props.fakultas.name}</span>`;
+  return `Sambutan Dekan <span class="text-colorPrimary">${props.fakultas?.name}</span>`;
 });
 </script>
 
@@ -34,14 +34,14 @@ const titleHTML = computed(() => {
         <div class="space-y-4">
           <div class="flex gap-5 items-center">
             <h5 class="text-xl hidden lg:block">
-              <span class="text-colorPrimary">Tentang</span> {{ fakultas.name }}
+              <span class="text-colorPrimary">Tentang</span> {{ fakultas?.name }}
             </h5>
             <hr class="w-1/5 border-t-2 border-colorPrimary hidden lg:block" />
           </div>
-          <TitleSection v-if="fakultas.title1" :text="titleHTML" :html="true">
+          <TitleSection v-if="fakultas?.title1" :text="titleHTML" :html="true">
           </TitleSection>
 
-          <p class="text-sm lg:text-base" v-html="fakultas.description1"></p>
+          <p class="text-sm lg:text-base" v-html="fakultas?.description1"></p>
         </div>
         <div class="flex gap-5 mt-10">
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">

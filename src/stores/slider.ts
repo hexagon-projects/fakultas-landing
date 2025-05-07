@@ -51,7 +51,7 @@ export const useSliderStore = defineStore("slider", {
       this.error = null;
       try {
         const partner = await SliderService.getById(id);
-        this.currentSlider = partner;
+        this.currentSlider = [partner];
       } catch (error: any) {
         this.error = error.message || "Failed to fetch partner";
         console.error("Error fetching partner:", error);

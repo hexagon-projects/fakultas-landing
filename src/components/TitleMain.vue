@@ -1,6 +1,30 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 
+// Definisikan tipe untuk karakter HTML
+interface HtmlChar {
+  char: string;
+  tags: TagInfo[];
+  style?: {
+    animationDelay: string;
+  };
+}
+
+interface TagInfo {
+  name: string;
+  attributes: {
+    name: string;
+    value: string;
+  }[];
+}
+
+interface CharItem {
+  char: string;
+  style: {
+    animationDelay: string;
+  };
+}
+
 const props = defineProps({
   text: {
     type: String,
@@ -20,20 +44,24 @@ const props = defineProps({
   }
 });
 
-const container = ref(null);
-const characters = ref([]);
-const htmlCharacters = ref([]);
-const words = ref([]);
+const container = ref<HTMLElement | null>(null);
+const characters = ref<CharItem[]>([]);
+const htmlCharacters = ref<HtmlChar[]>([]);
+const words = ref<CharItem[][]>([]);
 
-const parseHTML = (htmlString) => {
+const parseHTML = (htmlString: string): HTMLElement => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlString, 'text/html');
   return doc.body;
 };
 
-const processNodeForAnimation = (node, result = [], tagStack = []) => {
+const processNodeForAnimation = (
+  node: Node,
+  result: HtmlChar[] = [],
+  tagStack: TagInfo[] = []
+): HtmlChar[] => {
   if (node.nodeType === Node.TEXT_NODE) {
-    const text = node.textContent;
+    const text = node.textContent || '';
     if (text.trim()) {
       const chars = text.split('');
       chars.forEach(char => {
@@ -44,9 +72,10 @@ const processNodeForAnimation = (node, result = [], tagStack = []) => {
       });
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
-    const tagInfo = {
-      name: node.nodeName.toLowerCase(),
-      attributes: Array.from(node.attributes).map(attr => ({
+    const element = node as Element;
+    const tagInfo: TagInfo = {
+      name: element.nodeName.toLowerCase(),
+      attributes: Array.from(element.attributes).map(attr => ({
         name: attr.name,
         value: attr.value
       }))
@@ -93,7 +122,7 @@ onMounted(() => {
     }
   } else {
     const domBody = parseHTML(props.text);
-    const extractedChars = [];
+    const extractedChars: HtmlChar[] = [];
 
     Array.from(domBody.childNodes).forEach(node => {
       processNodeForAnimation(node, extractedChars);
@@ -115,7 +144,7 @@ onMounted(() => {
   }
 });
 
-const renderCharWithTags = (charObj) => {
+const renderCharWithTags = (charObj: HtmlChar): string => {
   let result = charObj.char;
 
   if (charObj.tags && charObj.tags.length) {
@@ -136,6 +165,7 @@ const renderCharWithTags = (charObj) => {
 };
 </script>
 
+<!-- Template dan style tetap sama seperti sebelumnya -->
 <template>
   <h1
     ref="container"

@@ -51,7 +51,7 @@ export const usePartnerStore = defineStore("partner", {
       this.error = null;
       try {
         const partner = await PartnerService.getById(id);
-        this.currentPartner = partner;
+        this.currentPartner = [partner];
       } catch (error: any) {
         this.error = error.message || "Failed to fetch partner";
         console.error("Error fetching partner:", error);

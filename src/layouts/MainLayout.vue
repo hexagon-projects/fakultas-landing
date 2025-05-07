@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+import Footer from './components/AppFooter.vue';
 import { useFakultasStore } from '@/stores/fakultas.ts'
 
 const showContent = ref(true);

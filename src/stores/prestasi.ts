@@ -51,7 +51,7 @@ export const usePrestasiStore = defineStore("prestasi", {
       this.error = null;
       try {
         const prestasi = await PrestasiService.getById(id);
-        this.currentPrestasi = prestasi;
+        this.currentPrestasi = [prestasi];
       } catch (error: any) {
         this.error = error.message || "Failed to fetch prestasi";
         console.error("Error fetching prestasi:", error);

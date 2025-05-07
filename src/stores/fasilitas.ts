@@ -51,7 +51,7 @@ export const useFasilitasStore = defineStore("fasilitas", {
       this.error = null;
       try {
         const partner = await FasilitasService.getById(id);
-        this.currentFasilitas = partner;
+        this.currentFasilitas = [partner];
       } catch (error: any) {
         this.error = error.message || "Failed to fetch partner";
         console.error("Error fetching partner:", error);

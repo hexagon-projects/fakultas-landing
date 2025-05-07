@@ -1,6 +1,35 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 
+// Definisi tipe untuk struktur data
+interface CharItem {
+  char: string;
+  style: {
+    animationDelay: string;
+  };
+}
+
+interface HtmlChar {
+  char: string;
+  tags: TagInfo[];
+  style?: {
+    animationDelay: string;
+  };
+}
+
+interface TagInfo {
+  name: string;
+  attributes: {
+    name: string;
+    value: string;
+  }[];
+}
+
+interface WordItem {
+  type: string;
+  chars: HtmlChar[];
+}
+
 const props = defineProps({
   text: {
     type: String,
@@ -20,27 +49,31 @@ const props = defineProps({
   }
 });
 
-const container = ref(null);
-const characters = ref([]);
-const htmlCharacters = ref([]);
-const words = ref([]);
-const htmlWords = ref([]);
+// Definisi ref dengan tipe yang tepat
+const container = ref<HTMLElement | null>(null);
+const characters = ref<CharItem[]>([]);
+const htmlCharacters = ref<HtmlChar[]>([]);
+const words = ref<CharItem[][]>([]);
+const htmlWords = ref<HtmlChar[][]>([]);
 const isVisible = ref(false);
 
-const parseHTML = (htmlString) => {
+const parseHTML = (htmlString: string): HTMLElement => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlString, 'text/html');
   return doc.body;
 };
 
-const processNodeForAnimation = (node, result = [], tagStack = [], isWordBased = false) => {
+const processNodeForAnimation = (
+  node: Node,
+  result: (HtmlChar | WordItem)[] = [],
+  tagStack: TagInfo[] = [],
+  isWordBased: boolean = false
+): (HtmlChar | WordItem)[] => {
   if (node.nodeType === Node.TEXT_NODE) {
-    const text = node.textContent;
+    const text = node.textContent || '';
     if (text.trim()) {
       if (isWordBased) {
-        // Split text content into words for word-based animation
         const wordArray = text.split(/(\s+)/);
-
         wordArray.forEach(word => {
           if (word) {
             const wordChars = word.split('').map(char => ({
@@ -55,7 +88,6 @@ const processNodeForAnimation = (node, result = [], tagStack = [], isWordBased =
           }
         });
       } else {
-        // Character-based animation (original approach)
         const chars = text.split('');
         chars.forEach(char => {
           result.push({
@@ -66,9 +98,10 @@ const processNodeForAnimation = (node, result = [], tagStack = [], isWordBased =
       }
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
-    const tagInfo = {
-      name: node.nodeName.toLowerCase(),
-      attributes: Array.from(node.attributes).map(attr => ({
+    const element = node as Element;
+    const tagInfo: TagInfo = {
+      name: element.nodeName.toLowerCase(),
+      attributes: Array.from(element.attributes).map(attr => ({
         name: attr.name,
         value: attr.value
       }))
@@ -88,7 +121,6 @@ const processNodeForAnimation = (node, result = [], tagStack = [], isWordBased =
 onMounted(() => {
   if (!props.html) {
     if (props.wordBased) {
-      // Split by words first, then by characters
       const wordArray = props.text.split(/(\s+)/).filter(word => word.trim().length > 0);
       let charCount = 0;
 
@@ -103,71 +135,58 @@ onMounted(() => {
         return wordChars;
       });
     } else {
-      // Original character-based splitting
-      characters.value = props.text.split('').map((char, index) => {
-        return {
-          char: char === ' ' ? '\u00A0' : char,
-          style: {
-            animationDelay: `${index * props.delay}ms`
-          }
-        };
-      });
+      characters.value = props.text.split('').map((char, index) => ({
+        char: char === ' ' ? '\u00A0' : char,
+        style: {
+          animationDelay: `${index * props.delay}ms`
+        }
+      }));
     }
   } else {
     const domBody = parseHTML(props.text);
 
     if (props.wordBased) {
-      // Process HTML in word-based mode
-      const extractedWords = [];
+      const extractedWords: WordItem[] = [];
       Array.from(domBody.childNodes).forEach(node => {
         processNodeForAnimation(node, extractedWords, [], true);
       });
 
-      let charCount = 0;
-      htmlWords.value = extractedWords.map((wordObj, wordIndex) => {
-        const wordWithDelay = wordObj.chars.map((charObj, charIndex) => {
-          return {
-            ...charObj,
-            style: {
-              animationDelay: `${(charCount + charIndex) * props.delay}ms`
-            }
-          };
-        });
-        charCount += wordObj.chars.length;
-        return wordWithDelay;
+      const charCount = 0;
+      htmlWords.value = extractedWords.map(wordObj => {
+        return wordObj.chars.map((charObj, charIndex) => ({
+          ...charObj,
+          style: {
+            animationDelay: `${(charCount + charIndex) * props.delay}ms`
+          }
+        }));
       });
     } else {
-      // Process HTML in character-based mode (original approach)
-      const extractedChars = [];
+      const extractedChars: HtmlChar[] = [];
       Array.from(domBody.childNodes).forEach(node => {
         processNodeForAnimation(node, extractedChars);
       });
 
-      htmlCharacters.value = extractedChars.map((item, index) => {
-        return {
-          ...item,
-          style: {
-            animationDelay: `${index * props.delay}ms`
-          }
-        };
-      });
+      htmlCharacters.value = extractedChars.map((item, index) => ({
+        ...item,
+        style: {
+          animationDelay: `${index * props.delay}ms`
+        }
+      }));
     }
   }
 
-  // Set up Intersection Observer to detect when the title is visible
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         isVisible.value = true;
-        observer.disconnect(); // Stop observing once animation is triggered
+        observer.disconnect();
       }
     });
   }, {
-    threshold: 0.01, // Lower threshold to detect even minimal visibility
-    rootMargin: "0px 0px -10% 0px" // Trigger slightly before the element is fully in view
+    threshold: 0.01,
+    rootMargin: "0px 0px -10% 0px"
   });
 
-  // Wait a short time to ensure the component is fully rendered
   setTimeout(() => {
     if (container.value) {
       observer.observe(container.value);
@@ -175,10 +194,10 @@ onMounted(() => {
   }, 100);
 });
 
-const renderCharWithTags = (charObj) => {
+const renderCharWithTags = (charObj: HtmlChar): string => {
   let result = charObj.char;
 
-  if (charObj.tags && charObj.tags.length) {
+  if (charObj.tags?.length) {
     charObj.tags.forEach(tag => {
       const attributesStr = tag.attributes
         .map(attr => `${attr.name}="${attr.value}"`)
@@ -196,6 +215,7 @@ const renderCharWithTags = (charObj) => {
 };
 </script>
 
+<!-- Template dan style tetap sama seperti sebelumnya -->
 <template>
   <h2
     ref="container"
@@ -253,11 +273,11 @@ const renderCharWithTags = (charObj) => {
         <span
           v-for="(item, index) in htmlCharacters"
           :key="`html-char-${index}`"
-          :style="item.style"
-          class="inline-block opacity-0 character-animation"
-          :class="{ 'animate-character': isVisible }"
-          v-html="renderCharWithTags(item)"
-        ></span>
+            :style="item.style"
+            class="inline-block opacity-0 character-animation"
+            :class="{ 'animate-character': isVisible }"
+            v-html="renderCharWithTags(item)"
+          ></span>
       </template>
     </template>
   </h2>

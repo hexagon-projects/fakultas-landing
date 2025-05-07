@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper';
 import { ref } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import type { Slider } from '@/core/types/slider';
+import type { Swiper as SwiperClass } from 'swiper';
 
 const prevEl = ref<HTMLElement | null>(null);
 const nextEl = ref<HTMLElement | null>(null);
 const paginationEl = ref<HTMLElement | null>(null);
-const swiperInstance = ref(null);
+const swiperInstance = ref<SwiperClass | null>(null);
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
 defineProps<{
-  slider: Slider[];
+  slider: Slider[] | null;
 }>();
 
 const getImageUrl = (imagePath: string | null) => {
@@ -21,7 +22,7 @@ const getImageUrl = (imagePath: string | null) => {
   return `${baseUrl}/${imagePath}`;
 };
 
-const onSwiper = (swiper) => {
+const onSwiper = (swiper: SwiperClass) => {
   swiperInstance.value = swiper;
 };
 </script>
@@ -30,7 +31,6 @@ const onSwiper = (swiper) => {
   <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
     <div class="w-full h-full relative">
       <Swiper
-        :modules="[Navigation, Pagination]"
         :navigation="{ prevEl, nextEl }"
         :pagination="{
           el: paginationEl,

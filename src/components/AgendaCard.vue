@@ -35,7 +35,7 @@ onMounted(() => {
 <template>
   <div
     class="agenda-card w-full h-full md:h-32 lg:h-48 flex flex-col md:flex-row p-3 md:p-0 gap-4 lg:gap-6 rounded-[6px] md:rounded-[12px] lg:rounded-[24px] transition-all duration-500 cursor-pointer shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)]"
-    :class="[isVisible ? 'card-visible' : 'card-hidden', `delay-${(index || 0) % 9}`]" @click="navigateToDetail(slug)">
+    :class="[isVisible ? 'card-visible' : 'card-hidden', `delay-${(index || 0) % 9}`]" @click="navigateToDetail(slug || '')">
     <div
       class="w-full md:w-[30%] lg:w-[40%] xl:w-[30%] h-40 md:h-full rounded-[4px] md:rounded-l-[8px] lg:rounded-l-[16px] overflow-hidden">
       <img :src="gambar" alt="Gambar Berita" class="w-full h-full object-cover transition-transform duration-500">
@@ -52,7 +52,7 @@ onMounted(() => {
             v-html="sanitizeHtml(deskripsi || 'Deskripsi Acara')"></span></TextBody>
       </div>
       <div class="w-fit md:w-1/2 lg:w-1/3 xl:w-1/4">
-        <InteractiveHoverButton @click="navigateToDetail(slug)" class="w-fit md:w-full" :padding="'py-3 px-6 lg:py-4 lg:px-6'" :text="'Selengkapnya'"></InteractiveHoverButton>
+        <InteractiveHoverButton @click="navigateToDetail(slug || '')" class="w-fit md:w-full" :padding="'py-3 px-6 lg:py-4 lg:px-6'" :text="'Selengkapnya'"></InteractiveHoverButton>
       </div>
     </div>
   </div>

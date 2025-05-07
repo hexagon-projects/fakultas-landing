@@ -4,7 +4,7 @@ export interface Kurikulum {
   title: string;
   description: string;
   image: string;
-  home: "0" | "1";
+  home?: string | null;
   created_at: string;
   updated_at: string;
 }

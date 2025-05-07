@@ -33,7 +33,7 @@ defineProps<{
           :gambar="getImageUrl(agenda.image)"
           :deskripsi="agenda.description"
           :index="index"
-          :slug="agenda.slug"
+          :slug="agenda.slug || ''"
         />
       </div>
     </template>

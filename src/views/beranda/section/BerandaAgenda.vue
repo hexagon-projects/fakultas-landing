@@ -16,7 +16,11 @@ const selectedCategory = ref<string>('All');
 
 // Get unique categories from agenda data
 const categories = computed(() => {
-  const uniqueCategories = new Set(props.agenda.map(item => item.category));
+  const uniqueCategories = new Set(
+    props.agenda
+      .map(item => item.category)
+      .filter((category): category is string => !!category)
+  );
   return ['All', ...Array.from(uniqueCategories)];
 });
 

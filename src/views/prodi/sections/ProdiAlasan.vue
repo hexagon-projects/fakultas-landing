@@ -20,7 +20,7 @@ const getImageUrl = (imagePath: string | null) => {
 
 const props = defineProps<{
   unggulan: Unggulan[];
-  fakultas: Faculty;
+  fakultas: Faculty | null;
 }>();
 
 const titleHTML = computed(() => {

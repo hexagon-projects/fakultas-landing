@@ -5,7 +5,7 @@ export interface Prestasi {
   name: string;
   winner_name: string;
   description: string;
-  home: string;
+  home?: string | null;
   image: string;
   created_at: string;
   updated_at: string;

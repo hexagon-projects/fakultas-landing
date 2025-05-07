@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import TextSection from '../TextSection.vue';
 import TitleSection from '../TitleSection.vue';
 import type { Partner } from '@/core/types/partner';
 import { computed, ref } from 'vue';
+import type { Swiper as SwiperType } from 'swiper/types';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 const getImageUrl = (imagePath: string | null) => {
@@ -18,9 +18,7 @@ const props = defineProps<{
   partners: Partner[]
 }>();
 
-const modules = [Pagination, Autoplay];
 const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
-const swiperInstance = ref(null);
 
 const partnerGroups = computed(() => {
   const partners = props.partners || [];
@@ -39,18 +37,20 @@ const partnerGroups = computed(() => {
   return groups;
 });
 
-const onSwiperInit = (swiper) => {
+const swiperInstance = ref<SwiperType | null>(null);
+
+const onSwiperInit = (swiper: SwiperType) => {
   swiperInstance.value = swiper;
 
   swiper.on('beforeLoopFix', () => {
-    const slides = swiper.slides;
-    slides.forEach(slide => {
+    const slides = swiper.slides as HTMLElement[];
+    slides.forEach((slide: HTMLElement) => {
       slide.style.transition = 'opacity 650ms ease, transform 650ms ease';
     });
   });
 
   swiper.on('slideChangeTransitionStart', () => {
-    const wrapper = swiper.wrapperEl;
+    const wrapper = swiper.wrapperEl as HTMLElement;
     wrapper.style.transitionTimingFunction = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
   });
 };
@@ -65,7 +65,6 @@ const onSwiperInit = (swiper) => {
     </div>
     <div class="lg:mb-10 px-4">
       <swiper
-        :modules="modules"
         :slides-per-view="1"
         :space-between="30"
         :speed="650"

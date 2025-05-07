@@ -80,7 +80,7 @@ export interface ITestimoniData {
     name: string;
     title: string;
     description: string;
-    home: string | null;
+    home?: string | null;
     yt: string;
     image: string;
     created_at: string;
@@ -93,7 +93,7 @@ export interface IOrganisasiData {
     name: string;
     category: string;
     description: string;
-    home: string;
+    home?: string | null;
     image: string;
     created_at: string;
     updated_at: string;
@@ -139,7 +139,7 @@ export interface IMitraData {
     detail: string;
     image: string;
     status: string;
-    home: string;
+    home?: string | null;
     created_at: string;
     updated_at: string;
 }
