@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ContactAdminButton from '@/components/ContactAdminButton.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleMain from '@/components/TitleMain.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
@@ -22,10 +23,15 @@ defineProps<{
             tantangan dunia kerja. Bergabunglah dengan kami dan kembangkan potensi Anda di bidang yang Anda
             cintai.</TextSection>
           <div class="w-full space-x-4 lg:space-x-6">
-            <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
+            <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            </a>
+            <ContactAdminButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
               :border-color="'border-colorPrimary'" :text="'Hubungi Admin'" :text-color="'text-colorPrimary'"
-              :text-hover="'group-hover:text-white'" />
+              :text-hover="'group-hover:text-white'"/>
+            <!-- <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
+              :border-color="'border-colorPrimary'" :text="'Hubungi Admin'" :text-color="'text-colorPrimary'"
+              :text-hover="'group-hover:text-white'" /> -->
           </div>
         </div>
       </div>

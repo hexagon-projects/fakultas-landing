@@ -35,7 +35,7 @@ const titleHTML = computed(() => {
       <div class="lg:w-1/2 w-full">
         <TextSection><span v-html="fakultas.description2"></span></TextSection>
 
-        <InteractiveHoverButton text="Selengkapnya" class="mt-10"></InteractiveHoverButton>
+        <InteractiveHoverButton @click="$router.push('/tentang-fakultas')" text="Selengkapnya" class="mt-10"></InteractiveHoverButton>
       </div>
     </div>
 

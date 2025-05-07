@@ -9,8 +9,7 @@ import TextSection from '@/components/TextSection.vue';
 
 <template>
   <div class="py-[32px] md:py-[60px] lg:py-[60px]">
-    <div
-      class="w-full md:h-[350px] lg:h-[550px] relative overflow-hidden hidden md:block"
+    <div class="w-full md:h-[350px] lg:h-[550px] relative overflow-hidden hidden md:block"
       :style="{ backgroundImage: `url(${Bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
       <div
         class="w-full h-full flex lg:gap-20 gap-5 lg:flex-row flex-col items-center relative custom-gradient px-[20px] md:px-[60px] lg:px-[120px]">
@@ -21,15 +20,16 @@ import TextSection from '@/components/TextSection.vue';
             baik di tingkat nasional maupun internasional.
           </TextSection>
           <div class="flex gap-10 mt-10 justify-center">
-            <InteractiveHoverButton text="Daftar Sekarang" />
+            <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div
-    class="w-full h-[429px] relative overflow-hidden md:hidden block py-[32px]"
+  <div class="w-full h-[429px] relative overflow-hidden md:hidden block py-[32px]"
     :style="{ backgroundImage: `url(${BgMobile})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
     <div
       class="w-full h-full flex lg:gap-20 gap-5 lg:flex-row flex-col justify-center items-center relative custom-gradient px-[20px]">
@@ -40,7 +40,9 @@ import TextSection from '@/components/TextSection.vue';
           baik di tingkat nasional maupun internasional.
         </TextSection>
         <div class="flex gap-10 mt-10 justify-center">
-          <InteractiveHoverButton text="Daftar Sekarang" />
+          <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+          </a>
         </div>
       </div>
     </div>

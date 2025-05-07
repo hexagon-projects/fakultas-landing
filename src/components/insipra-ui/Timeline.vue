@@ -1,13 +1,5 @@
 <template>
-  <div ref="timelineContainerRef" class="w-full bg-[#f3f4f4] font-sans md:px-10 dark:bg-neutral-950">
-    <!-- <div class="mx-auto max-w-7xl px-4 py-20 lg:px-10 md:px-8">
-      <h2 class="mb-4 max-w-4xl text-lg text-black md:text-4xl dark:text-white">
-        {{ title }}
-      </h2>
-      <p class="max-w-sm text-sm text-neutral-700 md:text-base dark:text-neutral-300">
-        {{ description }}
-      </p>
-    </div> -->
+  <div ref="timelineContainerRef" class="w-full bg-[#f3f4f4] md:px-10 dark:bg-neutral-950">
 
     <div ref="timelineRef" class="relative z-0 mx-auto max-w-7xl pb-20">
       <div
@@ -26,11 +18,11 @@
           </div>
           <div>
             <h3
-              class="mt-14 md:mt-0 font-bold text-xl md:block md:pl-20"
+              class="mt-14 md:mt-0 text-[18px] md:text-[20px] lg:text-[22px] font-bold md:block md:pl-20"
             >
               {{ item.label }}
             </h3>
-            <p class="md:block md:pl-20 mt-2" v-html="item.description"></p>
+            <TextSection class="md:block md:pl-20 mt-2" v-html="item.description"></TextSection>
           </div>
         </div>
         <slot :name="item.id"></slot>
@@ -60,6 +52,7 @@
 import { Motion, useScroll, useTransform } from 'motion-v'
 import type { HTMLAttributes } from 'vue'
 import { onMounted, ref, watch, nextTick } from 'vue'
+import TextSection from '../TextSection.vue'
 
 interface Props {
   containerClass?: HTMLAttributes['class']

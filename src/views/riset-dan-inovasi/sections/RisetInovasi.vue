@@ -30,18 +30,17 @@ defineProps<{
     <div class="flex flex-col justify-center items-center gap-10">
       <template v-for="(data, index) in inovasi" :key="index">
         <div
-          class="p-5 flex lg:gap-10 gap-5 w-4/5 bg-[#F0F0F0] rounded-[20px] flex-col transition-all duration-300 group cursor-pointer hoverAnimation hover:shadow-xl"
+          class="p-5 flex lg:gap-10 gap-5 w-full md:w-full rounded-[20px] flex-col transition-all duration-300 group cursor-pointer hoverAnimation hover:shadow-xl"
           :class="[index % 2 == 0 ? 'lg:flex-row-reverse' : 'lg:flex-row']">
-          <div class="rounded-[20px] bg-gray-300 lg:w-5/12 w-full h-40 overflow-hidden">
+          <div class="rounded-[20px] bg-[#F0F0F0] lg:w-5/12 w-full h-40 overflow-hidden">
             <img :src="getImageUrl(data.image1)" alt=""
               class="object-cover rounded-[20px] w-full h-full transition-transform duration-500 group-hover:scale-105" />
           </div>
           <div class="lg:w-7/12 w-full grid gap-5">
-            <h4 class="text-base md:text-lg font-bold transition-colors duration-300 ">
+            <h4 class="text-[18px] md:text-[20px] lg:text-[22px] font-bold transition-colors duration-300 ">
               {{ data.title }}
             </h4>
-            <p class="text-sm md:text-base transition-colors duration-300 group-hover:text-gray-800"
-              v-html="data.description"></p>
+            <TextSection class="transition-colors duration-300 group-hover:text-gray-800"><span v-html="data.description"></span></TextSection>
             <InteractiveHoverButton text="Selengkapnya" bg-color="bg-none" border-color="border-colorPrimary"
               text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white" padding="px-5 py-2"
               class="w-fit transition-all duration-300 group-hover:scale-[1.02]" />

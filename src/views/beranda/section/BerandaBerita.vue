@@ -32,7 +32,7 @@ defineProps<{
           :text="`Seputar Berita <span class='text-colorPrimary'>${fakultas.name}</span>`" :html="true"
           class="text-black"></TitleSection>
       </div>
-      <InteractiveHoverButton text="Selengkapnya" class="w-fit mt-5 lg:mt-0"></InteractiveHoverButton>
+      <InteractiveHoverButton @click="$router.push('/berita')" text="Selengkapnya" class="w-fit mt-5 lg:mt-0"></InteractiveHoverButton>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-16 mt-10">
       <ArticleCard v-for="(beritaItem, index) in post" :key="index" :kategori="'Berita'"

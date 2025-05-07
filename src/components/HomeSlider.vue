@@ -1,188 +1,129 @@
+<script lang="ts" setup>
+import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import type { Slider } from '@/core/types/slider';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import ContactAdminButton from './ContactAdminButton.vue';
+
+const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return '';
+  return `${baseUrl}/${imagePath}`;
+};
+
+const props = defineProps<{
+  sliders: Slider[];
+  isLoading?: boolean;
+}>();
+
+const currentSlide = ref(0);
+const isInitialLoad = ref(true);
+let interval: number;
+
+const nextSlide = () => {
+  isInitialLoad.value = false;
+  currentSlide.value = (currentSlide.value + 1) % props.sliders.length;
+};
+
+const goToSlide = (index: number) => {
+  isInitialLoad.value = false;
+  currentSlide.value = index;
+};
+
+onMounted(() => {
+  nextTick(() => {
+    setTimeout(() => {
+      isInitialLoad.value = false;
+    }, 100);
+  });
+  interval = setInterval(nextSlide, 5000);
+});
+
+onUnmounted(() => {
+  clearInterval(interval);
+});
+</script>
+
 <template>
-  <div class="mt-0 lg:mt-32 img-box" v-if="berandaStore.sliderData.length > 0">
-    <div
-      class="w-full rounded-b-[40px] lg:rounded-[32px] lg:py-40 py-60 lg:px-32 md:px-20 px-10 text-center lg:text-left bg-cover relative "
-      :style="{
-        backgroundImage: `
-          linear-gradient(270deg, rgba(0, 0, 0, 0.375) 50%, rgba(0, 0, 0, 0.75) 100%),
-          url('${images[currentImageIndex]}')
-        `,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover'
-      }"
-    >
-      <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
-        xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-          <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-              result="goo" />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-          </filter>
-        </defs>
-      </svg>
-      
-      <!-- Content -->
-      <div class="lg:w-3/4 w-full grid gap-5 justify-center items-start">
-        <TitleMain
-          v-if="berandaStore.fakultasData.name"
-          :text="`Selamat Datang di <span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span>`"
-          :html="true"
-          class="text-white text-3xl lg:text-5xl font-bold"
-        ></TitleMain>
-        <p class="text-white mt-3 md:w-full lg:w-3/4">
-          {{ berandaStore.fakultasData.tagline }}
-        </p>
-        <div class="flex mt-3 gap-5 justify-center items-center lg:justify-start">
-          <InteractiveHoverButton text="Daftar Sekarang"></InteractiveHoverButton>
-          <InteractiveHoverButton text="Hubungi Admin" bg-color="bg-none"></InteractiveHoverButton>
+  <div class="min-w-full p-0 md:p-4 lg:p-8">
+    <div class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden">
+      <div v-for="(slider, index) in sliders" :key="index"
+        class="w-full h-full absolute top-0 left-0 bg-cover bg-center rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] transition-opacity duration-1000 img-box"
+        :style="{
+          'background-image': `url('${getImageUrl(slider.image1)}')`,
+          'opacity': currentSlide === index ? 1 : 0,
+          'z-index': currentSlide === index ? 1 : 0
+        }">
+
+        <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
+          xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                result="goo" />
+              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
+
+        <div class="absolute inset-0 bg-black/50 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] z-1">
+        </div>
+
+        <!-- Tablet & Dekstop -->
+        <div
+          class="absolute top-1/2 md:left-[24%] lg:left-[22%] xl:left-[18%] 2xl:left-[14%] transform -translate-x-1/2 -translate-y-1/2 space-y-6 md:space-y-8 lg:space-y-10 z-2 hidden md:block">
+          <h1
+            class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-left p-4 transition-all duration-1000 transform"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+            {{ slider.title }}
+          </h1>
+
+          <div class="w-full space-x-4 lg:space-x-6 transition-all duration-1000 transform delay-200"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
+            <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            </a>
+            <ContactAdminButton bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
+              :border-color="'border-white'" :text-color="'text-white'"
+              :text-hover="'group-hover:text-white'" />
+            <!-- <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
+              :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'"
+              :text-hover="'group-hover:text-white'" /> -->
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="md:hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <h1
+            class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-center p-4 transition-all duration-1000 transform"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+            {{ slider.title }}
+          </h1>
+
+          <div
+            class="w-full flex justify-center items-center gap-4 lg:gap-6 transition-all duration-1000 transform delay-200"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
+            <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
+            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
+              :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'"
+              :text-hover="'group-hover:text-white'" />
+          </div>
         </div>
       </div>
-      
-      <!-- Navigation arrows -->
-      <div class="absolute inset-y-0 left-4 flex items-center">
-        <button 
-          @click="prevImage"
-          class="p-2 rounded-full bg-black bg-opacity-30 hover:bg-opacity-50 text-white transition-all duration-300"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
+
+      <!-- Dots Indicator -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10 my-2 lg:my-4">
+        <button v-for="(_, index) in sliders" :key="index" @click="goToSlide(index)"
+          class="w-8 md:w-10 lg:w-[45px] h-1 rounded-full transition-all"
+          :class="currentSlide === index ? 'bg-white w-[56px] md:w-[68px] lg:w-[98px]' : 'bg-gray-300'">
         </button>
-      </div>
-      <div class="absolute inset-y-0 right-4 flex items-center">
-        <button 
-          @click="nextImage"
-          class="p-2 rounded-full bg-black bg-opacity-30 hover:bg-opacity-50 text-white transition-all duration-300" 
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Dot indicators -->
-      <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-2">
-        <button
-          v-for="(_, index) in images"
-          :key="index"
-          @click="setCurrentImage(index)"
-          class="w-3 h-3 rounded-full transition-all duration-300"
-          :class="currentImageIndex === index ? 'bg-white scale-125' : 'bg-gray-400 bg-opacity-60'"
-        ></button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
-import { useBerandaStore } from '@/stores/beranda/beranda-store';
-import InteractiveHoverButton from './ui/interactive-hover-button/InteractiveHoverButton.vue';
-import TitleMain from './TitleMain.vue';
-import { getImageUrl } from '@/core/helpers/helper';
-
-const berandaStore = useBerandaStore();
-
-const images = computed(() => {
-  return berandaStore.sliderData.map((item) => getImageUrl(item.image1))
-})
-
-const currentImageIndex = ref(0);
-const isTransitioning = ref(false);
-let autoplayInterval = null;
-
-const nextImage = () => {
-  if (!isTransitioning.value) {
-    isTransitioning.value = true;
-    currentImageIndex.value = (currentImageIndex.value + 1) % images.value.length;
-    setTimeout(() => {
-      isTransitioning.value = false;
-    }, 500);
-  }
-};
-
-const prevImage = () => {
-  if (!isTransitioning.value) {
-    isTransitioning.value = true;
-    currentImageIndex.value = (currentImageIndex.value - 1 + images.value.length) % images.value.length;
-    setTimeout(() => {
-      isTransitioning.value = false;
-    }, 500);
-  }
-};
-
-const setCurrentImage = (index) => {
-  if (!isTransitioning.value && currentImageIndex.value !== index) {
-    isTransitioning.value = true;
-    currentImageIndex.value = index;
-    setTimeout(() => {
-      isTransitioning.value = false;
-    }, 500);
-  }
-};
-
-const startAutoplay = () => {
-  autoplayInterval = setInterval(() => {
-    nextImage();
-  }, 5000); // Change image every 5 seconds
-};
-
-const stopAutoplay = () => {
-  if (autoplayInterval) {
-    clearInterval(autoplayInterval);
-  }
-};
-
-// Touch swipe functionality
-let touchStartX = 0;
-let touchEndX = 0;
-
-const handleTouchStart = (e) => {
-  touchStartX = e.touches[0].clientX;
-};
-
-const handleTouchMove = (e) => {
-  touchEndX = e.touches[0].clientX;
-};
-
-const handleTouchEnd = () => {
-  if (touchStartX - touchEndX > 50) {
-    // Swipe left -> next image
-    nextImage();
-  } else if (touchEndX - touchStartX > 50) {
-    // Swipe right -> previous image
-    prevImage();
-  }
-};
-
-onMounted(() => {
-  startAutoplay();
-  
-  // Add touch event listeners
-  const heroElement = document.querySelector('.img-box');
-  if (heroElement) {
-    heroElement.addEventListener('touchstart', handleTouchStart, { passive: true });
-    heroElement.addEventListener('touchmove', handleTouchMove, { passive: true });
-    heroElement.addEventListener('touchend', handleTouchEnd, { passive: true });
-  }
-});
-
-onBeforeUnmount(() => {
-  stopAutoplay();
-  
-  // Remove touch event listeners
-  const heroElement = document.querySelector('.img-box');
-  if (heroElement) {
-    heroElement.removeEventListener('touchstart', handleTouchStart);
-    heroElement.removeEventListener('touchmove', handleTouchMove);
-    heroElement.removeEventListener('touchend', handleTouchEnd);
-  }
-});
-</script>
-
-<style scoped>
+<style>
 @media (min-width: 1024px) {
   .img-box {
     clip-path: polygon(55% 100%, 55% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);

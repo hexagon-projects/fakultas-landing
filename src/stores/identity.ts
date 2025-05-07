@@ -3,14 +3,14 @@ import type { Identity } from "@/core/types/identity";
 import IdentityService from "@/core/services/IdentityService";
 
 interface IdentityStore {
-  identity: Identity[];
+  identity: Identity | null;
   loading: boolean;
   error: string | null;
 }
 
 export const useIdentityStore = defineStore("indentity", {
   state: (): IdentityStore => ({
-    identity: [],
+    identity: null,
     loading: false,
     error: null,
   }),

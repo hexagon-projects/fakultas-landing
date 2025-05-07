@@ -5,6 +5,8 @@ import type { Faculty } from '@/core/types/fakultas';
 import type { Unggulan } from '@/core/types/unggulan';
 import Gedung from '@/assets/gedung.jpg'
 import DOMPurify from 'dompurify';
+import { computed } from 'vue';
+
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
 const sanitizeHtml = (html: string) => {
@@ -21,7 +23,10 @@ const props = defineProps<{
   fakultas: Faculty;
 }>();
 
-const titleHTML =  `Kenapa Harus Memilih <span class="text-colorPrimary font-bold">${props?.fakultas?.name || ''}</span> Unpas`;
+const titleHTML = computed(() => {
+  if (!props.fakultas?.name) return 'Kenapa Harus Memilih Unpas';
+  return `Kenapa Harus Memilih <span class="text-colorPrimary font-bold">${props?.fakultas?.name || ''}</span> Unpas`;
+});
 </script>
 
 <template>
@@ -47,7 +52,7 @@ const titleHTML =  `Kenapa Harus Memilih <span class="text-colorPrimary font-bol
 
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div v-for="(feature, index) in unggulan" :key="index"
-           class="w-full px-20 py-12 lg:px-24 lg:py-16"
+           class="w-full px-20 py-12 lg:px-24 lg:py-16 border-beam-container"
            :class="index % 2 === 0 ? 'bg-[#3FA889]/20' : 'bg-white'">
         <div class="flex flex-col justify-center items-center text-center gap-5 lg:gap-10">
           <div class="lg:w-[60px] lg:h-[60px]">
@@ -63,3 +68,100 @@ const titleHTML =  `Kenapa Harus Memilih <span class="text-colorPrimary font-bol
     </div>
   </div>
 </template>
+
+<style scoped>
+.border-beam-container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Grid 1 - bottom border left to right */
+.border-beam-container:nth-child(1)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -30%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  width: 80%;
+  animation: borderWalkBottom 2.5s infinite linear;
+}
+
+/* Grid 2 - left border top to bottom */
+.border-beam-container:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  height: 80%;
+  animation: borderWalkLeft 2.5s infinite linear;
+}
+
+/* Grid 3 - right border bottom to top */
+.border-beam-container:nth-child(3)::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: 0;
+  width: 4px;
+  background: linear-gradient(to top, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  height: 80%;
+  animation: borderWalkRight 2.5s infinite linear;
+}
+
+/* Grid 4 - top border right to left */
+.border-beam-container:nth-child(4)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -30%;
+  height: 4px;
+  background: linear-gradient(to left, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  width: 80%;
+  animation: borderWalkTop 2.5s infinite linear;
+}
+
+@keyframes borderWalkBottom {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(600%); }
+}
+
+@keyframes borderWalkLeft {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(600%); }
+}
+
+@keyframes borderWalkRight {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-600%); }
+}
+
+@keyframes borderWalkTop {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-600%); }
+}
+
+@media (max-width: 767px) {
+  .border-beam-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -30%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+    width: 60%;
+    animation: borderWalkBottom 2.5s infinite linear;
+  }
+
+  /* Remove other animations on mobile */
+  .border-beam-container:nth-child(2)::after,
+  .border-beam-container:nth-child(3)::after,
+  .border-beam-container:nth-child(4)::after {
+    content: none;
+    animation: none;
+  }
+}
+</style>

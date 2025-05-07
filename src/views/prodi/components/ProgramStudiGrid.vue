@@ -30,7 +30,8 @@ const navigateToDetail = (slug: string) => {
       <div v-for="item in prodiDatas" :key="item.id" class="rounded-lg md:rounded-2xl lg:rounded-4xl space-y-4">
         <div class="w-full h-[22vh] md:h-[20vh] lg:h-[278px] relative cursor-pointer"
           @click="navigateToDetail(item.slug)">
-          <div class="w-full h-full img-container group overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+          <div
+            class="w-full h-full img-container group overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
             <img :src="getImageUrl(item.image1)" alt=""
               class="w-full h-full object-cover img-box group-hover:scale-105 transition duration-500">
 
@@ -55,8 +56,12 @@ const navigateToDetail = (slug: string) => {
         </div>
         <h2 class="text-base md:text-lg lg:text-xl font-medium">{{ item.name }}</h2>
         <div class="space-x-3">
-          <InteractiveHoverButton :padding="'py-2 px-4 lg:py-3 lg:px-6'" :text="'Daftar'"></InteractiveHoverButton>
-          <InteractiveHoverButton @click="navigateToDetail(item.slug)" :padding="'py-2 px-4 lg:py-3 lg:px-6'" :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'" :text="'Selengkapnya'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'"/>
+          <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+            <InteractiveHoverButton :padding="'py-2 px-4 lg:py-3 lg:px-6'" :text="'Daftar'"></InteractiveHoverButton>
+          </a>
+          <InteractiveHoverButton @click="navigateToDetail(item.slug)" :padding="'py-2 px-4 lg:py-3 lg:px-6'"
+            :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'"
+            :text="'Selengkapnya'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'" />
         </div>
       </div>
     </div>

@@ -13,12 +13,14 @@ import Title from '@/components/Title.vue'
         >
         <div class="flex gap-4 mt-8 justify-center items-center lg:justify-start">
           <div class="w-fit">
-            <InteractiveHoverButton
-              text="Daftar Sekarang"
-              bg-color="bg-white"
-              textColor="text-colorPrimary"
-              borderHover="border-white"
-            />
+            <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+              <InteractiveHoverButton
+                text="Daftar Sekarang"
+                bg-color="bg-white"
+                textColor="text-colorPrimary"
+                borderHover="border-white"
+              />
+            </a>
           </div>
           <div class="w-fit">
             <InteractiveHoverButton

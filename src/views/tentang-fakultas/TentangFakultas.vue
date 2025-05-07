@@ -2,7 +2,6 @@
 import Timeline from '@/components/insipra-ui/Timeline.vue'
 import { berandaStore, tentangStore } from '@/stores'
 import { computed, onMounted } from 'vue'
-import ScrollTransition from '@/components/ScrollTransition.vue'
 import TitleSection from '@/components/TitleSection.vue'
 import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
 import { usePartnerStore } from '@/stores/partner'
@@ -17,6 +16,7 @@ import TentangStatistik from './sections/TentangStatistik.vue'
 import MitraSection from '@/components/sections/MitraSection.vue'
 import SectionLayout from '@/layouts/SectionLayout.vue'
 import CTASection from '@/components/sections/CTASection.vue'
+import SejarahImg from '@/assets/sejarah.png'
 
 const partnerStore = usePartnerStore();
 const teamStore = useTeamStore();
@@ -49,8 +49,8 @@ onMounted(async () => {
   <MainLayout>
     <TentangHero />
     <SectionLayout>
-      <div class="flex flex-col lg:flex-row relative">
-        <div class="lg:w-1/2 w-full h-40 bg-gray-200 lg:sticky top-40"></div>
+      <div class="flex flex-col lg:flex-row md:justify-between relative">
+        <div class="lg:w-[45%] w-full h-full lg:h-full"><img :src="SejarahImg" alt="" class="w-full h-full"></div>
         <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
           <Timeline :items="historyTimeline" />
         </div>
@@ -78,7 +78,13 @@ onMounted(async () => {
     <CTASection />
   </MainLayout>
 
-  Timeline
+  <!-- <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0 relative">
+    <div class="lg:w-1/2 w-full h-40 bg-gray-200 lg:sticky top-40"></div>
+    <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
+      <Timeline :items="historyTimeline" />
+    </div>
+  </div>
+
   <ScrollTransition>
     <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0 relative">
       <div class="lg:w-1/2 w-full h-40 bg-gray-200 lg:sticky top-40"></div>
@@ -86,5 +92,5 @@ onMounted(async () => {
         <Timeline :items="historyTimeline" />
       </div>
     </div>
-  </ScrollTransition>
+  </ScrollTransition> -->
 </template>

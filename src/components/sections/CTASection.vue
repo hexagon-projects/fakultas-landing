@@ -2,6 +2,7 @@
 import ctaBackground from '@/assets/ctaBackground.png'
 import ctaOrang from '@/assets/ctaOrang.png'
 import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHoverButton.vue';
+import ContactAdminButton from '../ContactAdminButton.vue';
 </script>
 
 <template>
@@ -20,10 +21,10 @@ import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHo
           </div>
 
           <div class="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-0">
-            <InteractiveHoverButton :bg-color="'bg-white'" :text-color="'text-colorPrimary'" :bg-hover="'bg-colorPrimary'" :text-hover="'text-white'" :border-hover="'border-white'" :text="'Daftar Sekarang'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-colorPrimary'" :bg-hover="'bg-white'"
-              :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'"
-              :text-hover="'text-colorPrimary'" :border-hover="'border-white'" />
+            <a href="https://registrasi.unpas.ac.id/login" target="_blank">
+              <InteractiveHoverButton :bg-color="'bg-white'" :text-color="'text-colorPrimary'" :bg-hover="'bg-colorPrimary'" :text-hover="'text-white'" :border-hover="'border-white'" :text="'Daftar Sekarang'"></InteractiveHoverButton>
+            </a>
+            <ContactAdminButton />
           </div>
         </div>
 

@@ -25,10 +25,12 @@ defineProps<{
       <div class="lg:w-1/2 w-full">
         <div>
           <TitleSection v-if="fakultas.title2" class="mt-7" :text="`Sejarah ${fakultas.title2}`"></TitleSection>
-          <p class="text-gray-500 mt-7 text-sm lg:text-base" v-html="fakultas.description2"></p>
+          <TextSection class="text-gray-500 mt-7" ><span v-html="fakultas.description2"></span></TextSection>
           <div class="flex gap-5 lg:mt-10 mt-5">
-            <InteractiveHoverButton text="Daftar Sekarang" />
-            <InteractiveHoverButton text="Selengkapnya" bg-color="bg-transparent" textColor="text-colorPrimary"
+            <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            </a>
+            <InteractiveHoverButton @click="$router.push('/tentang-fakultas')" text="Selengkapnya" bg-color="bg-transparent" textColor="text-colorPrimary"
               borderColor="border-colorPrimary" bgHover="bg-colorPrimary" textHover="text-white" />
           </div>
         </div>

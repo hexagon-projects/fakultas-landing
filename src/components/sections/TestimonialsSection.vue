@@ -112,7 +112,7 @@ const primaryColorWithOpacity = computed(() => {
 
   <div class="w-full flex justify-center items-center">
     <!-- <ButtonSection>Lihat Lainnya</ButtonSection> -->
-    <InteractiveHoverButton :text="'Lihat Lainnya'"></InteractiveHoverButton>
+    <InteractiveHoverButton @click="$router.push('/testimoni')" :text="'Lihat Lainnya'"></InteractiveHoverButton>
   </div>
 </template>
 

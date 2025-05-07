@@ -5,7 +5,6 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection.vue'
 import ProdiDetailKegiatan from '../prodiDetail/sections/ProdiDetailKegiatan.vue'
 import MitraSection from '@/components/sections/MitraSection.vue'
 import { usePartnerStore } from '@/stores/partner'
-import HomeSlider from '@/components/HomeSlider.vue'
 import TextSection from '@/components/TextSection.vue'
 import BerandaSambutan from './section/BerandaSambutan.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
@@ -18,6 +17,20 @@ import BerandaInovasi from './section/BerandaInovasi.vue'
 import BerandaAgenda from './section/BerandaAgenda.vue'
 import BerandaBerita from './section/BerandaBerita.vue'
 import BerandaFasilitas from './section/BerandaFasilitas.vue'
+import HomeSlider from '@/components/HomeSlider.vue'
+import ProdiDetailPrestasi from '../prodiDetail/sections/ProdiDetailPrestasi.vue'
+import SectionLayout from '@/layouts/SectionLayout.vue'
+import TitleSection from '@/components/TitleSection.vue'
+import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue'
+import PrestasiCard from '../prodiDetail/components/PrestasiCard.vue'
+import CTASection from '@/components/sections/CTASection.vue'
+
+const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return '';
+  return `${baseUrl}/${imagePath}`;
+};
 
 const partnerStore = usePartnerStore();
 const sliderStore = useSliderStore();
@@ -35,9 +48,8 @@ onMounted(async () => {
 
 <template>
   <MainLayout>
-    <!-- Hero Section -->
     <div class="img-container">
-      <HomeSlider />
+      <HomeSlider :sliders="sliderStore.sliders" />
     </div>
     <div class="relative">
       <div class="absolute bottom-6 right-6 bg-white rounded-xl p-6 shadow-lg max-w-sm hidden lg:block z-10">
@@ -59,71 +71,73 @@ onMounted(async () => {
     <ProdiAlasan :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
     <BerandaInovasi />
     <MitraSection :partners="partnerStore.partners" />
+
+    <SectionLayout>
+      <div class="w-full flex h-[60vh] md:h-[80vh]">
+        <div
+          class="w-full h-full flex flex-col lg:flex-row lg:justify-between items-start gap-4 md:gap-5 lg:gap-6 relative">
+          <div class="w-full lg:w-1/2 flex flex-col justify-center lg:h-full lg:sticky lg:top-28">
+            <div class="w-full space-y-2 lg:h-[80%]">
+              <TitleSection :text="'Prestasi'"></TitleSection>
+              <TextSection>Mahasiswa Universitas Pasundan terus mengukir prestasi
+                membanggakan di berbagai bidang baik di tingkat nasional maupun internasional.</TextSection>
+              <div class="pt-0 md:pt-6 lg:pt-8">
+                <InteractiveHoverButton @click="$router.push('/prestasi')" :text="'Selengkapnya'"></InteractiveHoverButton>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tablet & Dekstop -->
+          <div id="prestasi-scroll" class="hidden md:flex w-full lg:w-1/2 h-full overflow-y-auto cursor-pointer">
+            <div class="w-1/2">
+              <div class="w-full h-[22vh]"></div>
+              <template v-for="(item, index) in berandaStore.prestasiData" :key="item.id">
+                <template v-if="index % 2 === 0">
+                  <PrestasiCard :rounded="'rounded-l-[8px] md:rounded-l-[16px] lg:rounded-l-[32px]'"
+                    :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
+                  <div class="w-full h-[16vh]"></div>
+                </template>
+              </template>
+            </div>
+            <div class="w-1/2">
+              <template v-for="(item, index) in berandaStore.prestasiData" :key="item.id">
+                <template v-if="index % 2 !== 0">
+                  <PrestasiCard :rounded="'rounded-r-[8px] md:rounded-r-[16px] lg:rounded-r-[32px]'"
+                    :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
+                  <div class="w-full h-[16vh]"></div>
+                </template>
+              </template>
+            </div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="w-full grid grid-cols-1 overflow-y-scroll md:hidden gap-4 md:gap-5">
+            <template v-for="item in berandaStore.prestasiData" :key="item.id">
+              <PrestasiCard :rounded="'rounded-[8px] md:rounded-[16px] lg:rounded-[32px]'"
+                :image="getImageUrl(item.image)" :title="item.title" :description="item.description" />
+            </template>
+          </div>
+        </div>
+      </div>
+    </SectionLayout>
+
     <ProdiDetailKegiatan :organisasi="berandaStore.organisasiData" />
     <BerandaAgenda :agenda="berandaStore.agendaData" />
-    <BerandaFasilitas :fasilitas="berandaStore.fasilitasData"/>
+    <BerandaFasilitas :fasilitas="berandaStore.fasilitasData" />
     <TestimonialsSection :testimoni="testimoniStore.testimoni" />
-    <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData"/>
+    <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData" />
+    <CTASection />
   </MainLayout>
 </template>
 
 <style scoped>
-/* .img-box {
-  clip-path: polygon(65% 100%, 65% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-} */
-
-@media (min-width: 1024px) {
-  .img-box {
-    clip-path: polygon(55% 100%, 55% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
+#prestasi-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-@media (min-width: 1124px) {
-  .img-box {
-    clip-path: polygon(59% 100%, 59% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1224px) {
-  .img-box {
-    clip-path: polygon(62% 100%, 62% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1324px) {
-  .img-box {
-    clip-path: polygon(65% 100%, 65% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1400px) {
-  .img-box {
-    clip-path: polygon(65% 100%, 65% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1500px) {
-  .img-box {
-    clip-path: polygon(68% 100%, 68% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1600px) {
-  .img-box {
-    clip-path: polygon(70% 100%, 70% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1700px) {
-  .img-box {
-    clip-path: polygon(72% 100%, 72% 67%, 100% 67%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 768px) {
-  .img-container {
-    filter: url("#goo") drop-shadow(0px -2px 0px transparent)
-  }
+#prestasi-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .hoverAnimation:hover {

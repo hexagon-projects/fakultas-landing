@@ -33,7 +33,7 @@ import InovasiImg from '@/assets/inovasi.png'
           </div>
         </div>
 
-        <InteractiveHoverButton text="Selengkapnya"></InteractiveHoverButton>
+        <InteractiveHoverButton @click="$router.push('/riset-dan-inovasi')" text="Selengkapnya"></InteractiveHoverButton>
       </div>
     </div>
   </SectionLayout>

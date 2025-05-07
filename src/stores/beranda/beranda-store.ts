@@ -44,12 +44,12 @@ export const useBerandaStore = defineStore("beranda", {
             this.isLoading = true;
             try {
                 const response = await ApiService.get("/fakultas");
-                
+
                 if (response.status === 200) {
                     this.fakultasData = response.data;
                     const rgbColor = hexToRgb(this.fakultasData.color1);
                     const hslColor = hexToCssHsl(this.fakultasData.color1);
-                    
+
                     document.documentElement.style.setProperty('--color-primary-r', rgbColor.r.toString());
                     document.documentElement.style.setProperty('--color-primary-g', rgbColor.g.toString());
                     document.documentElement.style.setProperty('--color-primary-b', rgbColor.b.toString());

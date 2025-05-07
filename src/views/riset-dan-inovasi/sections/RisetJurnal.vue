@@ -28,7 +28,7 @@ defineProps<{
     </div>
 
     <!-- Card Berita -->
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
       <template v-for="(item, index) in jurnal" :key="index">
         <div
           class="w-full text-center grid gap-5 transition-all duration-300 group cursor-pointer p-5 rounded-[20px] hover:shadow-lg hoverAnimation">

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ContactAdminButton from '@/components/ContactAdminButton.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleMain from '@/components/TitleMain.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
@@ -20,9 +21,13 @@ import SectionLayout from '@/layouts/SectionLayout.vue';
           pendidikan dan penelitian.</TextSection>
 
         <div class="flex gap-5 mt-7 justify-center lg:justify-start flex-wrap">
-          <InteractiveHoverButton text="Daftar Sekarang" />
-          <InteractiveHoverButton text="Hubungi Admin" bg-color="bg-none" border-color="border-colorPrimary"
-            text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white" />
+          <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+          </a>
+          <ContactAdminButton text="Hubungi Admin" bg-color="bg-none" border-color="border-colorPrimary"
+          text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white"/>
+          <!-- <InteractiveHoverButton text="Hubungi Admin" bg-color="bg-none" border-color="border-colorPrimary"
+            text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white" /> -->
         </div>
       </div>
     </div>
