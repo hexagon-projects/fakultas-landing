@@ -42,7 +42,7 @@ const router = createRouter({
         {
           path: "/testimoni",
           name: "testimoni",
-          component: () => import("@/views/testimoni/TestimoniViews.vue"),
+          component: () => import("@/views/testimoni/TestimoniView.vue"),
           meta: {
             pageTitle: "Testimoni",
           },

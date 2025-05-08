@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import ButtonSection from '@/components/ButtonSection.vue';
 import TextSection from '@/components/TextSection.vue';
-import TitleMain from '@/components/TitleMain.vue';
 import type { Post } from '@/core/types/post';
 import { useSanitize } from '@/composables/useSanitize';
 import { computed } from 'vue';
@@ -122,10 +120,10 @@ const shareTo = (platform: string) => {
         <div class="w-full min-h-full md:w-1/2 flex flex-col justify-between space-y-4 lg:space-y-6">
           <div class="space-y-4 lg:space-y-6">
             <router-link to="/" class="text-base">Beranda > <span><router-link to="/berita"> Berita</router-link></span></router-link>
-            <TitleMain v-if="firstBerita" :text="sanitizeHtml(firstBerita?.title)"></TitleMain>
-            <TextSection class="hidden md:block line-clamp-4"><span v-html="sanitizeHtml(firstBerita?.content || firstBerita?.title)"></span></TextSection>
+            <h1 class="text-[16px] md:text-[24px] lg:text-[32px] font-bold" v-if="firstBerita"><span v-html="firstBerita?.title"></span></h1>
+            <TextSection class="hidden md:block"><span class="line-clamp-4" v-html="sanitizeHtml(firstBerita?.content || firstBerita?.title)"></span></TextSection>
             <p class="text-[12px] lg:text-[14px] md:hidden">{{ formatDate(firstBerita?.publish) }} • 4 Menit Baca</p>
-            <div class="w-full h-full rounded-[8px] md:rounded-[16px] lg:rounded-[32px] group overflow-hidden">
+            <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden">
               <img
                 :src="getImageUrl(firstBerita?.image)"
                 :alt="firstBerita?.title || 'Gambar berita'"
@@ -173,7 +171,7 @@ const shareTo = (platform: string) => {
           </div>
         </div>
 
-        <div class="w-full h-full md:w-1/2 rounded-[8px] md:rounded-[16px] lg:rounded-[32px] group overflow-hidden">
+        <div class="w-full h-full md:w-1/2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden">
           <img
             :src="getImageUrl(firstBerita?.image)"
             :alt="firstBerita?.title || 'Gambar berita'"

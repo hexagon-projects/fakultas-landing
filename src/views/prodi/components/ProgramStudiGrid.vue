@@ -31,7 +31,7 @@ const navigateToDetail = (slug: string) => {
         <div class="w-full h-[22vh] md:h-[20vh] lg:h-[278px] relative cursor-pointer"
           @click="navigateToDetail(item.slug)">
           <div
-            class="w-full h-full img-container group overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+            class="w-full h-full img-container group overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
             <img :src="getImageUrl(item.image1)" alt=""
               class="w-full h-full object-cover img-box group-hover:scale-105 transition duration-500">
 

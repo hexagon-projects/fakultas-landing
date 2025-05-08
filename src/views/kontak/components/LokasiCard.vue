@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <div class="space-y-4 lg:space-y-6">
-    <div class="w-full lg:h-96 group overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+    <div class="w-full lg:h-96 group overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
       <img :src="location.image" :alt="location.name"
         class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
     </div>

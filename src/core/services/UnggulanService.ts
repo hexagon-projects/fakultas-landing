@@ -1,4 +1,3 @@
-import type { Unggulan } from "../types/unggulan";
 import ApiService from "./ApiService";
 
 const UnggulanService = {
@@ -10,13 +9,8 @@ const UnggulanService = {
     return ApiService.get("unggulan-home");
   },
 
-  getById(id: number): Promise<Unggulan> {
+  getById(id: number) {
     return ApiService.get(`unggulan/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error fetching unggulan by ID:", error);
-        throw error;
-      });
   },
 };
 

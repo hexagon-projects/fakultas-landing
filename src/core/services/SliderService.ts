@@ -1,4 +1,3 @@
-import type { Slider } from "../types/slider";
 import ApiService from "./ApiService";
 
 const SliderService = {
@@ -10,13 +9,8 @@ const SliderService = {
     return ApiService.get("slider-home");
   },
 
-  getById(id: number): Promise<Slider> {
+  getById(id: number) {
     return ApiService.get(`slider/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error fetching slider by ID:", error);
-        throw error;
-      });
   },
 };
 

@@ -32,7 +32,7 @@ defineProps<{
           class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:bottom-0 md:top-auto md:left-0 md:transform-none md:p-14 p-14 flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
           <!-- Div ini Muncul dari kiri -->
           <div class="w-full md:w-1/2 lg:w-[60%] animate-fade-in-left">
-            <h1 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white">Program Studi {{
+            <h1 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-center md:text-left text-white">Program Studi {{
               prodiDetail?.name }} Unggulan untuk Masa Depan Anda</h1>
           </div>
 

@@ -37,7 +37,7 @@ const sendWhatsAppMessage = () => {
     </div>
 
     <div
-      class="p-[30px] lg:p-[60px] bg-white border border-[#DCDCDC] rounded-[6px] md:rounded-[12px] lg:rounded-[24px] w-full md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-6">
+      class="p-[30px] lg:p-[60px] bg-white border border-[#DCDCDC] rounded-[8px] md:rounded-[16px] lg:rounded-[24px] w-full md:w-2/3 lg:w-1/2 space-y-4 lg:space-y-6">
       <div class="space-y-2 lg:space-y-4">
         <TextBody class="text-black/40">Nama</TextBody>
         <input

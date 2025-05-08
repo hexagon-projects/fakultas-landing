@@ -50,11 +50,11 @@ export const useOrganisasiStore = defineStore("organisasi", {
       this.loading = true;
       this.error = null;
       try {
-        const partner = await OrganisasiService.getById(id);
-        this.currentOrganizations = [partner];
+        const organisasi = await OrganisasiService.getById(id);
+        this.currentOrganizations = organisasi.data;
       } catch (error: any) {
-        this.error = error.message || "Failed to fetch partner";
-        console.error("Error fetching partner:", error);
+        this.error = error.message || "Failed to fetch organisasi";
+        console.error("Error fetching organisasi:", error);
       } finally {
         this.loading = false;
       }

@@ -25,7 +25,7 @@
   </script>
 
   <template>
-      <div class="p-10 lg:p-12 flex flex-col justify-center items-center text-center rounded-[8px] md:rounded-[16px] lg:rounded-[32px] relative border bg-white hover:-translate-y-2 transition duration-500 shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)]">
+      <div class="p-10 lg:p-12 flex flex-col justify-center items-center text-center rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative border bg-white hover:-translate-y-2 transition duration-500 shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)]">
           <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-10 lg:mb-14">
               <img :src="icon" alt="" class="w-full h-full" v-if="icon">
           </div>

@@ -17,7 +17,7 @@ defineProps<{
 
 <template>
     <div class="space-y-4 lg:space-y-6">
-      <div class="w-full h-[40vh] md:h-[30vh] lg:h-[40vh] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden group">
+      <div class="w-full h-[40vh] md:h-[30vh] lg:h-[40vh] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden group">
         <img
           :src="image || 'https://via.placeholder.com/300'"
           :alt="name || 'Dosen'"

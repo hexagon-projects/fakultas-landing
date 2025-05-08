@@ -58,7 +58,7 @@ defineProps<{
     <div class="w-full flex flex-col md:flex-row gap-6 lg:gap-12 justify-between items-center">
       <template v-if="isLoading">
         <!-- Image Skeleton -->
-        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] bg-gray-300 animate-pulse rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"></div>
+        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] bg-gray-300 animate-pulse rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"></div>
 
         <!-- Content Skeleton -->
         <div class="w-full md:w-1/2 flex flex-col gap-4 md:gap-5 lg:gap-6">
@@ -73,7 +73,7 @@ defineProps<{
         </div>
       </template>
       <template v-else>
-        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug || '')">
+        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug || '')">
           <img :src="getImageUrl(agenda[0]?.image)" :alt="agenda[0]?.title || 'Gambar acara'"
             class="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-105">
           <div v-if="agenda[0]?.end_date"
@@ -95,7 +95,7 @@ defineProps<{
               <TextBody>{{ agenda[0]?.location }}</TextBody>
             </div>
 
-            <TextBody><span v-html="sanitizeHtml(agenda[0]?.description)"></span></TextBody>
+            <TextBody><span class="line-clamp-4" v-html="sanitizeHtml(agenda[0]?.description)"></span></TextBody>
           </div>
 
           <div class="w-fit">

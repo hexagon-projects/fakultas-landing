@@ -50,11 +50,11 @@ export const useTestimoniStore = defineStore("testimoni", {
       this.loading = true;
       this.error = null;
       try {
-        const unggulan = await TestimoniService.getById(id);
-        this.currentTestimoni = [unggulan];
+        const testimoni = await TestimoniService.getById(id);
+        this.currentTestimoni = testimoni.data;
       } catch (error: any) {
-        this.error = error.message || "Failed to fetch unggulan";
-        console.error("Error fetching unggulan:", error);
+        this.error = error.message || "Failed to fetch testimoni";
+        console.error("Error fetching testimoni:", error);
       } finally {
         this.loading = false;
       }

@@ -83,7 +83,7 @@ const selectedAnimation = animationVariants[props.animationStyle]
       <img
         :src="thumbnailSrc"
         :alt="thumbnailAlt"
-        :class="['object-cover rounded-[8px] md:rounded-[16px] lg:rounded-[32px] shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]', size]"
+        :class="['object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]', size]"
       />
       <div class="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
         <div class="flex size-28 items-center justify-center rounded-full bg-black/10 backdrop-blur-md">
@@ -118,10 +118,10 @@ const selectedAnimation = animationVariants[props.animationStyle]
           >
             <X class="size-5" />
           </button>
-          <div class="relative isolate z-[1] size-full overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px] border-2 border-white">
+          <div class="relative isolate z-[1] size-full overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px] border-2 border-white">
             <iframe
               :src="videoSrc"
-              class="size-full rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"
+              class="size-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"
               allowfullscreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             />

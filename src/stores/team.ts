@@ -50,11 +50,11 @@ export const useTeamStore = defineStore("team", {
       this.loading = true;
       this.error = null;
       try {
-        const partner = await TeamService.getById(id);
-        this.currentTeams = [partner];
+        const team = await TeamService.getById(id);
+        this.currentTeams = team.data;
       } catch (error: any) {
-        this.error = error.message || "Failed to fetch partner";
-        console.error("Error fetching partner:", error);
+        this.error = error.message || "Failed to fetch team";
+        console.error("Error fetching team:", error);
       } finally {
         this.loading = false;
       }

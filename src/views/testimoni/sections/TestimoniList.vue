@@ -20,6 +20,8 @@ const props = defineProps<{
 
 const currentPage = ref(1)
 const itemsPerPage = ref(3)
+const showModal = ref(false)
+const selectedTestimonial = ref<Testimonial | null>(null)
 
 const totalPages = computed(() => {
   return Math.ceil(props?.testimoni.length / itemsPerPage.value)
@@ -78,6 +80,15 @@ const prevPage = () => {
   }
 }
 
+const openTestimonialModal = (testimonial: Testimonial) => {
+  selectedTestimonial.value = testimonial
+  showModal.value = true
+}
+
+const closeModal = () => {
+  showModal.value = false
+}
+
 watchEffect(() => {
   if (currentPage.value > totalPages.value && totalPages.value > 0) {
     currentPage.value = totalPages.value
@@ -101,15 +112,19 @@ watchEffect(() => {
       <template v-for="data in paginatedTestimonials" :key="data.id">
         <div class="p-8 bg-[#00000005] rounded-[32px] flex-col flex">
           <div class="flex items-center gap-5">
-            <img :src="getImageUrl(data.image)" alt="" class="rounded-full w-16 h-16 bg-gray-200" />
+            <img :src="getImageUrl(data.image)" alt="" class="rounded-full object-cover w-16 h-16 bg-gray-200" />
             <div class="space-y-2 md:space-y-4">
               <h1 class="text-[10px] md:text-[12px] lg:text-[16px] font-semibold">{{ data.name }}</h1>
               <h6 class="text-[10px] md:text-[12px] lg:text-[16px] text-gray-500">{{ data.title }}</h6>
             </div>
           </div>
-          <p class="text-[10px] md:text-[12px] lg:text-[16px] mt-5 grow" v-html="data.description"></p>
+          <p class="text-[10px] md:text-[12px] lg:text-[16px] mt-5 grow line-clamp-5" v-html="data.description"></p>
           <div class="flex gap-5 mt-5">
-            <InteractiveHoverButton text="Selengkapnya" padding="px-6 py-2" />
+            <InteractiveHoverButton
+              text="Selengkapnya"
+              padding="px-6 py-2"
+              @click="openTestimonialModal(data)"
+            />
             <InteractiveHoverButton text="Play" padding="px-6 py-2" bg-color="bg-none" text-color="text-colorPrimary"
               border-color="border-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white" />
           </div>
@@ -140,6 +155,34 @@ watchEffect(() => {
         :disabled="currentPage === totalPages" @click="nextPage">
         <i class="pi pi-chevron-right"></i>
       </button>
+    </div>
+
+    <!-- Testimonial Modal -->
+    <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center gap-5">
+              <img
+                :src="getImageUrl(selectedTestimonial?.image || '')"
+                alt=""
+                class="rounded-full object-cover w-16 h-16 bg-gray-200"
+              />
+              <div class="space-y-2">
+                <h1 class="text-lg font-semibold">{{ selectedTestimonial?.name }}</h1>
+                <h6 class="text-gray-500">{{ selectedTestimonial?.title }}</h6>
+              </div>
+            </div>
+            <button @click="closeModal" class="text-gray-500 hover:text-gray-700">
+              <i class="pi pi-times text-xl"></i>
+            </button>
+          </div>
+          <div class="prose max-w-none" v-html="selectedTestimonial?.description"></div>
+          <div class="flex justify-end mt-6">
+            <InteractiveHoverButton @click="closeModal" :text="'Tutup'" />
+          </div>
+        </div>
+      </div>
     </div>
   </SectionLayout>
 </template>

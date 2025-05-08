@@ -59,7 +59,7 @@ const komunitasCount = computed(() => {
       </div>
 
       <div
-        class="w-[80%] flex justify-evenly items-center bg-[#FAFAFA] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] p-5 lg:p-10 relative z-10">
+        class="w-[80%] flex justify-evenly items-center bg-[#FAFAFA] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] p-5 lg:p-10 relative z-10">
         <div class="text-center">
           <h3 class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight">
             <NumberTicker class="text-black" :value="kegiatanCount" :duration="3000" />

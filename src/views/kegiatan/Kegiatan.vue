@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import MainLayout from '@/layouts/MainLayout.vue';
 import KegiatanHero from './sections/KegiatanHero.vue';
-import ProdiDetailKegiatan from '../prodiDetail/sections/ProdiDetailKegiatan.vue';
 import { onMounted, ref } from 'vue';
 import { useOrganisasiStore } from '@/stores/organisasi';
 import CTASection from '@/components/sections/CTASection.vue';
+import KegiatanList from './sections/KegiatanList.vue';
 
 const organisasiStore = useOrganisasiStore();
 const isLoading = ref(true);
@@ -23,7 +23,7 @@ onMounted(async () => {
 <template>
   <MainLayout>
     <KegiatanHero :organisasi="organisasiStore.organizations" :is-loading="isLoading" />
-    <ProdiDetailKegiatan :organisasi="organisasiStore.organizations" :is-loading="isLoading" />
+    <KegiatanList :organisasi="organisasiStore.organizations" :is-loading="isLoading"/>
     <CTASection />
   </MainLayout>
 </template>

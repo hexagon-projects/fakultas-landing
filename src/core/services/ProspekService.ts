@@ -1,5 +1,4 @@
 
-import type { Prospek } from "../types/prospek";
 import ApiService from "./ApiService";
 
 const ProspekService = {
@@ -11,13 +10,8 @@ const ProspekService = {
     return ApiService.get("prospek-home");
   },
 
-  getById(id: number): Promise<Prospek> {
+  getById(id: number) {
     return ApiService.get(`prospek/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error fetching prospek by ID:", error);
-        throw error;
-      });
   },
 };
 

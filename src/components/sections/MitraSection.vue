@@ -3,12 +3,14 @@ import TextSection from '../TextSection.vue';
 import TitleSection from '../TitleSection.vue';
 import type { Partner } from '@/core/types/partner';
 import { computed, ref } from 'vue';
-import type { Swiper as SwiperType } from 'swiper/types';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+
+// Pastikan modul diinisialisasi dengan benar
+const modules = ref([Autoplay, Pagination]);
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 const getImageUrl = (imagePath: string | null) => {
@@ -38,61 +40,51 @@ const partnerGroups = computed(() => {
 
   return groups;
 });
-
-const swiperInstance = ref<SwiperType | null>(null);
-
-const onSwiperInit = (swiper: SwiperType) => {
-  swiperInstance.value = swiper;
-
-  swiper.on('beforeLoopFix', () => {
-    const slides = swiper.slides as HTMLElement[];
-    slides.forEach((slide: HTMLElement) => {
-      slide.style.transition = 'opacity 650ms ease, transform 650ms ease';
-    });
-  });
-
-  swiper.on('slideChangeTransitionStart', () => {
-    const wrapper = swiper.wrapperEl as HTMLElement;
-    wrapper.style.transitionTimingFunction = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
-  });
-};
 </script>
 
 <template>
   <div>
-    <div
-      class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
+    <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
       <div class="w-full flex justify-center items-center">
         <TitleSection :text="titleHTML" :html="true" :delay="60" />
       </div>
     </div>
     <div class="lg:mb-10 px-4">
-      <swiper :modules="[Autoplay, Pagination]" :slides-per-view="1" :space-between="30" :speed="650" :loop="true"
-        :observer="true" :observe-parents="true" :observer-slide-children="true" :autoplay="{
+      <swiper
+        :modules="modules"
+        :slides-per-view="1"
+        :space-between="30"
+        :speed="650"
+        :loop="true"
+        :autoplay="{
           delay: 2800,
           disableOnInteraction: false,
           pauseOnMouseEnter: true
-        }" :pagination="{
+        }"
+        :pagination="{
           clickable: true,
           bulletClass: 'custom-bullet',
-          bulletActiveClass: 'custom-bullet-active',
-          dynamicBullets: false,
-          dynamicMainBullets: 3
-        }" @swiper="onSwiperInit">
+          bulletActiveClass: 'custom-bullet-active'
+        }"
+      >
         <swiper-slide v-for="(group, groupIndex) in partnerGroups" :key="groupIndex">
           <div class="grid grid-cols-5 gap-4 w-full">
-            <div v-for="partner in group" :key="partner?.id"
-              class="h-24 lg:h-40 flex items-center justify-center lg:mb-10">
-              <img :src="getImageUrl(partner?.image || '')" :alt="partner?.name"
-                class="w-full h-full object-contain rounded-[6px] md:rounded-[12px] lg:rounded-[24px]" loading="lazy" />
+            <div v-for="partner in group" :key="partner?.id" class="h-32 lg:h-40 flex items-center justify-center lg:mb-10">
+              <img
+                :src="getImageUrl(partner?.image || '')"
+                :alt="partner?.name"
+                class="w-full h-full object-contain rounded-[8px] md:rounded-[16px] lg:rounded-[24px]"
+                loading="lazy"
+              />
             </div>
           </div>
         </swiper-slide>
       </swiper>
     </div>
     <div class="w-full flex justify-center items-center px-[30px] md:px-[60px] lg:px-[120px] mt-6 lg:mt-0">
-      <TextSection class="mb-12 md:mb-16 lg:mb-20 lg:max-w-xl text-center">Highlighting our successful collaborations
-        with top-tier clients and their transformative projects.</TextSection>
+      <TextSection class="mb-12 md:mb-16 lg:mb-20 lg:max-w-xl text-center">
+        Highlighting our successful collaborations with top-tier clients and their transformative projects.
+      </TextSection>
     </div>
   </div>
 </template>

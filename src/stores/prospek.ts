@@ -51,7 +51,7 @@ export const useProspekStore = defineStore("prospek", {
       this.error = null;
       try {
         const unggulan = await ProspekService.getById(id);
-        this.currentProspek = [unggulan];
+        this.currentProspek = unggulan.data;
       } catch (error: any) {
         this.error = error.message || "Failed to fetch unggulan";
         console.error("Error fetching unggulan:", error);

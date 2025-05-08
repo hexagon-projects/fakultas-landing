@@ -28,7 +28,7 @@ defineProps<{
     <div class="w-full flex flex-col justify-center items-start gap-10 md:gap-20 self-stretch">
       <template v-if="isLoading">
         <!-- Banner Image Skeleton -->
-        <div class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[738px] bg-gray-300 animate-pulse rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"></div>
+        <div class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[738px] bg-gray-300 animate-pulse rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"></div>
 
         <!-- Content Skeleton -->
         <div class="flex flex-col lg:flex-row items-start gap-10 md:gap-20 self-stretch">
@@ -59,7 +59,7 @@ defineProps<{
       </template>
       <template v-else>
         <div
-          class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[738px] rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden">
+          class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[738px] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden">
           <img :src="getImageUrl(agenda?.image || '')" alt="Event banner image" class="w-full h-full object-cover" />
         </div>
         <div class="flex flex-col lg:flex-row items-start gap-10 md:gap-20 self-stretch">

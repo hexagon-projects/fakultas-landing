@@ -1,4 +1,3 @@
-import type { Fasilitas } from "../types/fasilitas";
 import ApiService from "./ApiService";
 
 const FasilitasService = {
@@ -10,13 +9,8 @@ const FasilitasService = {
     return ApiService.get("fasilitas-home");
   },
 
-  getById(id: number): Promise<Fasilitas> {
+  getById(id: number) {
     return ApiService.get(`fasilitas/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error fetching fasilitas by ID:", error);
-        throw error;
-      });
   },
 };
 

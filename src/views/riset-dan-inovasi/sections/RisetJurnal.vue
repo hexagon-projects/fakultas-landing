@@ -2,7 +2,7 @@
 import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-import type { Jurnal } from '@/stores/jurnal';
+import type { Jurnal } from '@/core/types/jurnal';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 

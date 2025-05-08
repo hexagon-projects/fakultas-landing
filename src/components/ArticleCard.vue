@@ -37,7 +37,7 @@ const navigateToDetail = () => {
 
 <template>
   <div
-    class="flex md:flex-col p-3 lg:p-6 gap-4 lg:gap-6 bg-white rounded-[6px] md:rounded-[12px] lg:rounded-[24px] cursor-pointer shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)] transition-all duration-500 hover:-translate-y-2"
+    class="flex md:flex-col p-3 lg:p-6 gap-4 lg:gap-6 bg-white rounded-[8px] md:rounded-[16px] lg:rounded-[24px] cursor-pointer shadow-gray-500/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)] transition-all duration-500 hover:-translate-y-2"
     @click="navigateToDetail"
   >
     <div class="w-[50%] md:w-full h-40 md:h-50 lg:h-60 rounded-[4px] md:rounded-[8px] lg:rounded-[16px] overflow-hidden">
@@ -49,7 +49,7 @@ const navigateToDetail = () => {
     </div>
 
     <div class="w-[60%] md:w-full space-y-4 lg:space-y-4">
-      <div class="w-fit py-2 px-5 bg-[#F5F2FF] rounded-[6px] md:rounded-[12px] lg:rounded-[24px]">
+      <div class="w-fit py-2 px-5 bg-[#F5F2FF] rounded-[8px] md:rounded-[16px] lg:rounded-[24px]">
         <p class="text-colorPrimary text-sm font-bold">{{ kategori || 'Berita' }}</p>
       </div>
       <div>

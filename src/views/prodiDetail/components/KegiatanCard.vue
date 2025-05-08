@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import TextSection from '@/components/TextSection.vue';
-import { useSanitize } from '@/composables/useSanitize';
 import { ref, onMounted } from 'vue';
-
-const { sanitizeHtml } = useSanitize()
 
 const props = defineProps<{
   title?: string;
@@ -25,20 +22,20 @@ onMounted(() => {
 
 <template>
   <div
-    class="kegiatan-card w-full h-64 md:h-[268px] lg:h-72 rounded-[8px] md:rounded-[16px] lg:rounded-[32px] relative transition-all duration-500 card-hover-effect"
+    class="kegiatan-card w-full h-64 md:h-[268px] lg:h-72 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative transition-all duration-500 card-hover-effect"
     :class="[isVisible ? 'card-visible' : 'card-hidden', `delay-${(index || 0) % 9}`]">
-    <div class="w-full h-full rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden">
+    <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden">
       <img :src="image || 'https://via.placeholder.com/300'" :alt="title || 'Kegiatan Mahasiswa'"
-        class="w-full h-full object-cover rounded-[8px] md:rounded-[16px] lg:rounded-[32px] transition-transform duration-500">
+        class="w-full h-full object-top object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] transition-transform duration-500">
     </div>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-trasparent rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+      class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
     </div>
     <div class="absolute bottom-0 p-4 space-y-2 w-full">
       <TextSection class="text-white font-bold transition-all duration-300">{{ title || 'Judul Kegiatan' }}
       </TextSection>
-      <TextSection class="text-white/40 transition-all duration-300"><span v-html="sanitizeHtml(description || 'Deskripsi Kegiatan')"></span>
-      </TextSection>
+      <!-- <TextSection class="text-white/80 transition-all duration-300"><span class="line-clamp-2" v-html="sanitizeHtml(description || 'Deskripsi Kegiatan')"></span>
+      </TextSection> -->
       <div class="text-xs text-white/70 mt-1" v-if="date">{{ date }}</div>
     </div>
   </div>
@@ -68,7 +65,7 @@ onMounted(() => {
   transform: translateY(30px);
 }
 
-/* Fixed delay classes with proper sequencing */
+/* Fixed delay classes with proper sequencing
 .delay-0 {
   transition-delay: 50ms;
 }
@@ -103,5 +100,5 @@ onMounted(() => {
 
 .delay-8 {
   transition-delay: 850ms;
-}
+} */
 </style>

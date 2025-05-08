@@ -74,7 +74,7 @@ const primaryColorWithOpacity = computed(() => {
 <template>
   <SectionLayout>
     <div class="w-full text-center flex flex-col justify-center items-center gap-4">
-      <div class="w-fit py-2 px-5 bg-colorPrimary/10 rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+      <div class="w-fit py-2 px-5 bg-colorPrimary/10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         <p class="text-colorPrimary text-sm lg:text-base">Testimonials</p>
       </div>
       <TitleSection :text="'Apa Kata Mereka'"></TitleSection>
@@ -89,9 +89,9 @@ const primaryColorWithOpacity = computed(() => {
       :breakpoints="swiperOptions.breakpoints" @swiper="handleSwiper" @slide-change="handleSlideChange"
       class="testimonial-swiper">
       <swiper-slide v-for="(testimonial, index) in testimoni" :key="testimonial.id">
-        <div class="relative overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px] mx-[30px] md:mx-0">
+        <div class="relative overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px] mx-[30px] md:mx-0">
           <CardSpotlight
-            class="w-full cursor-pointer flex flex-col justify-center items-center text-center p-5 lg:p-10 rounded-[8px] md:rounded-[16px] lg:rounded-[32px]"
+            class="w-full cursor-pointer flex flex-col justify-center items-center text-center p-5 lg:p-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"
             slotClass="" :gradientSize="200" :gradientColor="primaryColorWithOpacity" :gradientOpacity="0.8">
             <div class="w-full flex justify-center items-center mb-4 md:mb-6">
               <img :src="getImageUrl(testimonial.image)" :alt="testimonial.name"
@@ -103,9 +103,19 @@ const primaryColorWithOpacity = computed(() => {
               <TextSection :weightText="'font-bold'">{{ testimonial.name }}</TextSection>
             </div>
           </CardSpotlight>
-          <BorderBeam v-if="activeIndex === index" :size="250" :duration="10" :delay="0" :border-width="3"
-            :size-second="250" :duration-second="6" :delay-second="0" :anchor-second="75" :enable-second-border="true"
-            :start-position-second="50" />
+          <BorderBeam
+            v-if="activeIndex === index"
+            :size="300"
+            :duration="8"
+            :border-width="2"
+            :size-second="300"
+            :duration-second="8"
+            :delay-second="2"
+            :anchor-second="75"
+            :enable-second-border="true"
+            :start-position-second="50"
+            :finish-position-second="150"
+          />
         </div>
       </swiper-slide>
     </swiper>

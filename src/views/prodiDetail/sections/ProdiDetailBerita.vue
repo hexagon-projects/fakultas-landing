@@ -29,7 +29,7 @@ const titleHTML = `Berita Seputar <span class="text-colorPrimary font-bold">Prog
 <template>
   <SectionLayout>
     <div class="space-y-4">
-      <div class="w-fit py-2 px-5 border-[3px] border-colorPrimary rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+      <div class="w-fit py-2 px-5 border-[3px] border-colorPrimary rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         <p class="text-colorPrimary text-sm lg:text-base font-bold">Berita</p>
       </div>
       <div class="w-full flex flex-col md:flex-row justify-start items-start md:justify-between md:items-center gap-4">

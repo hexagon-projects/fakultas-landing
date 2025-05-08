@@ -4,7 +4,7 @@ import UnggulanService from "@/core/services/UnggulanService";
 
 interface UnggulanState {
   unggulans: Unggulan[];
-  currentUnggulan: Unggulan | null;
+  currentUnggulan: Unggulan[];
   loading: boolean;
   error: string | null;
 }
@@ -12,7 +12,7 @@ interface UnggulanState {
 export const useUnggulanStore = defineStore("unggulan", {
   state: (): UnggulanState => ({
     unggulans: [],
-    currentUnggulan: null,
+    currentUnggulan: [],
     loading: false,
     error: null,
   }),
@@ -51,7 +51,7 @@ export const useUnggulanStore = defineStore("unggulan", {
       this.error = null;
       try {
         const unggulan = await UnggulanService.getById(id);
-        this.currentUnggulan = unggulan;
+        this.currentUnggulan = unggulan.data;
       } catch (error: any) {
         this.error = error.message || "Failed to fetch unggulan";
         console.error("Error fetching unggulan:", error);

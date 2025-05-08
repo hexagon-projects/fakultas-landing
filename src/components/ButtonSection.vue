@@ -13,7 +13,7 @@ defineProps<Props>();
 <template>
   <button
     :class="[
-      'p-3 lg:p-4 text-xs lg:text-sm font-bold rounded-full cursor-pointer',
+      'py-3 px-6 lg:py-3 lg:px-6 text-xs lg:text-sm font-bold rounded-full cursor-pointer',
       bgColor || 'bg-colorPrimary',
       border || 'border-[3px]',
       borderColor || 'border-outline/50',

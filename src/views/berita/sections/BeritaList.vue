@@ -110,7 +110,7 @@ const goToDetail = (post: any) => {
       <div v-for="(post, index) in paginatedPosts" :key="index"
         class="flex flex-col md:flex-row gap-4 md:gap-5 lg:gap-6 cursor-pointer group hover:-translate-y-2 transition duration-500" @click="goToDetail(post)">
 
-        <div class="w-full md:w-1/2 h-[220px] md:h-[230px] lg:h-[250px] cursor-pointer overflow-hidden rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+        <div class="w-full md:w-1/2 h-[220px] md:h-[230px] lg:h-[250px] cursor-pointer overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
           <img :src="getImageUrl(post.image)" :alt="post.title"
             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         </div>
@@ -125,8 +125,8 @@ const goToDetail = (post: any) => {
           </div>
 
           <div class="space-y-2">
-            <h3 class="text-[18px] md:text-[20px] lg:text-[24px] font-bold">{{ post.title }}</h3>
-            <TextBody><span v-html="sanitizeHtml(post.resume)"></span></TextBody>
+            <h3 class="text-[18px] md:text-[20px] lg:text-[22px] font-bold">{{ post.title }}</h3>
+            <TextBody><span class="line-clamp-2" v-html="sanitizeHtml(post.resume)"></span></TextBody>
           </div>
 
           <button @click="goToDetail(post)" class="text-left">

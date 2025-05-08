@@ -12,7 +12,7 @@ const props = defineProps<{
   isLoading?: boolean;
 }>();
 
-const selectedCategory = ref<string>('All');
+const selectedCategory = ref<string>('Semua');
 
 // Get unique categories from agenda data
 const categories = computed(() => {
@@ -21,12 +21,12 @@ const categories = computed(() => {
       .map(item => item.category)
       .filter((category): category is string => !!category)
   );
-  return ['All', ...Array.from(uniqueCategories)];
+  return ['Semua', ...Array.from(uniqueCategories)];
 });
 
 // Filter agenda based on selected category
 const filteredAgenda = computed(() => {
-  if (selectedCategory.value === 'All') {
+  if (selectedCategory.value === 'Semua') {
     return props.agenda;
   }
   return props.agenda.filter(item => item.category === selectedCategory.value);
@@ -39,14 +39,14 @@ const filteredAgenda = computed(() => {
       <TitleSection text="Agenda" class="text-center"></TitleSection>
       <TextSection class="text-gray-500 mt-5">Dapatkan informasi lebih lanjut tentang acara kami.</TextSection>
       <div class="flex gap-5 justify-center flex-wrap mt-5">
-        <Button 
-          v-for="category in categories" 
+        <Button
+          v-for="category in categories"
           :key="category"
           @click="selectedCategory = category"
           :className="selectedCategory === category ? 'bg-colorPrimary text-white' : 'text-black'"
           :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'"
           padding="py-2 px-4"
-          class="rounded-full"
+          class="rounded-full text-[12px] md:text-[14px] lg:text-[18px]"
         >
           {{ category }}
         </Button>

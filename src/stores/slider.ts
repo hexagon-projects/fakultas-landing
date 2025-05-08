@@ -4,7 +4,7 @@ import SliderService from "@/core/services/SliderService";
 
 interface SliderStore {
   sliders: Slider[];
-  currentSlider: Slider[] | null;
+  currentSlider: Slider[];
   loading: boolean;
   error: string | null;
 }
@@ -50,11 +50,11 @@ export const useSliderStore = defineStore("slider", {
       this.loading = true;
       this.error = null;
       try {
-        const partner = await SliderService.getById(id);
-        this.currentSlider = [partner];
+        const slider = await SliderService.getById(id);
+        this.currentSlider = slider.data;
       } catch (error: any) {
-        this.error = error.message || "Failed to fetch partner";
-        console.error("Error fetching partner:", error);
+        this.error = error.message || "Failed to fetch slider";
+        console.error("Error fetching slider:", error);
       } finally {
         this.loading = false;
       }

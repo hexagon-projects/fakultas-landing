@@ -1,4 +1,3 @@
-import type { Team } from "../types/team";
 import ApiService from "./ApiService";
 
 const TeamService = {
@@ -10,13 +9,8 @@ const TeamService = {
     return ApiService.get("team-home");
   },
 
-  getById(id: number): Promise<Team> {
+  getById(id: number) {
     return ApiService.get(`team/${id}`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error("Error fetching team by ID:", error);
-        throw error;
-      });
   },
 };
 

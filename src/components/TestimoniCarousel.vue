@@ -50,7 +50,7 @@ const prev = () => {
             </div>
           </div>
           <div class="w-full md:w-1/2 flex flex-col gap-5 justify-center">
-            <p class="text-[14px] md:text-[18px] lg:text-[22px]" v-html="currentTestimoni.description" />
+            <p class="text-[14px] md:text-[18px] lg:text-[22px] line-clamp-4 lg:line-clamp-6" v-html="currentTestimoni.description" />
             <div class="space-y-2 md:space-y-4">
               <TextBody :weightText="'font-semibold'">{{ currentTestimoni.name }}</TextBody>
               <TextBody>{{ currentTestimoni.title }}</TextBody>

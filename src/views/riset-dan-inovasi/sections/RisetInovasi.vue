@@ -3,7 +3,7 @@ import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-import type { Portofolio } from '@/stores/portofolio';
+import type { Portofolio } from '@/core/types/portofolio';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 

@@ -54,14 +54,14 @@ const titleHTML = computed(() => {
 
       <div class="w-full lg:w-1/3" v-if="dosen && dosen.length > 0">
         <div
-          class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[600px] bg-no-repeat bg-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
+          class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[420px] xl:h-[600px] bg-no-repeat bg-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
           :style="{ backgroundImage: `url(${getImageUrl(dosen[0].image)})` }">
           <div
-            class="absolute bottom-0 left-0 w-full h-1/3 md:h-1/3 bg-gradient-to-t from-black/70 to-transparent backdrop-blur-sm z-10">
+            class="absolute bottom-0 left-0 w-full h-1/3 md:h-1/3 lg:h-2/5 bg-gradient-to-t from-black/70 to-transparent backdrop-blur-sm z-10">
           </div>
 
           <div
-            class="relative z-20 flex flex-col gap-2 md:gap-4 justify-end h-full text-white py-6 px-6 lg:py-10 lg:px-10">
+            class="relative z-20 flex flex-col gap-2 md:gap-4 justify-end h-full text-white py-4 px-4 lg:py-6 lg:px-6">
             <TextBody class="text-white">{{ dosen[0].title }}</TextBody>
             <TextSection class="text-white font-bold">{{ dosen[0].name }}</TextSection>
           </div>

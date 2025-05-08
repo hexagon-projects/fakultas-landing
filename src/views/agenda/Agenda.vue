@@ -14,18 +14,16 @@ const agendaStore = useAgendaStore();
 const isLoading = ref(true);
 const selectedCategory = ref<string>('Semua');
 
-// Get unique categories from agenda data
 const categories = computed(() => {
   if (!agendaStore.agendas) return ['Semua'];
   const uniqueCategories = new Set(
     agendaStore.agendas
       .map(item => item.category)
-      .filter((category): category is string => !!category) // This filters out undefined/null
+      .filter((category): category is string => !!category)
   );
   return ['Semua', ...Array.from(uniqueCategories)];
 });
 
-// Filter agenda based on selected category
 const filteredAgenda = computed(() => {
   if (!agendaStore.agendas) return [];
   if (selectedCategory.value === 'Semua') {
@@ -57,7 +55,7 @@ onMounted(async () => {
         <Button v-for="category in categories" :key="category" @click="selectedCategory = category"
           :className="selectedCategory === category ? 'bg-colorPrimary text-white' : 'text-black'"
           :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'" padding="py-2 px-4"
-          class="rounded-full">
+          class="rounded-full text-[12px] md:text-[14px] lg:text-[18px]">
           {{ category }}
         </Button>
       </div>

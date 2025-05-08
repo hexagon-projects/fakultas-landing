@@ -24,7 +24,7 @@ defineEmits(['click']);
 <template>
   <div class="space-y-4 lg:space-y-6 cursor-pointer group hover:-translate-y-2 transition duration-500" @click="$emit('click')">
     <div class="w-full h-56 md:h-64 lg:h-72 relative">
-      <div class="w-full h-full rounded-[8px] md:rounded-[16px] lg:rounded-[32px] overflow-hidden">
+      <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden">
         <img
           :src="image || 'https://placehold.co/600x400'"
           :alt="title || 'Gambar acara'"
@@ -50,7 +50,7 @@ defineEmits(['click']);
         </div>
 
         <TextBody v-if="description">
-          <span v-html="sanitizeHtml(description)"></span>
+          <span class="line-clamp-4" v-html="sanitizeHtml(description)"></span>
         </TextBody>
       </div>
       <TextBody class="hover:text-Color-FH transition-colors cursor-pointer">Lihat Acara ></TextBody>

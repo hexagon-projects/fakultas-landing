@@ -50,11 +50,11 @@ export const useFasilitasStore = defineStore("fasilitas", {
       this.loading = true;
       this.error = null;
       try {
-        const partner = await FasilitasService.getById(id);
-        this.currentFasilitas = [partner];
+        const fasilitas = await FasilitasService.getById(id);
+        this.currentFasilitas = fasilitas.data;
       } catch (error: any) {
-        this.error = error.message || "Failed to fetch partner";
-        console.error("Error fetching partner:", error);
+        this.error = error.message || "Failed to fetch fasilitas";
+        console.error("Error fetching fasilitas:", error);
       } finally {
         this.loading = false;
       }

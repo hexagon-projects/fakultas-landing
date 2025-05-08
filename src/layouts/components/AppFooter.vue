@@ -1,102 +1,158 @@
-<script lang="ts" setup>
-import Logo from '@/assets/images/logo.webp'
-import LogoOutline from '@/assets/images/logo-outline1.png'
-import { Text } from 'vue'
+<template>
+  <div class="p-4 md:p-6 lg:p-6 w-full">
+    <footer
+      :class="[
+        'w-full text-white p-6 mx-auto rounded-[16px] shadow-lg relative overflow-hidden bg-colorPrimary'
+      ]"
+    >
+      <!-- Background Logo - Always on right -->
+      <div class="absolute top-0 right-0 h-full opacity-50 pointer-events-none">
+        <img
+          :src="LogoOutline"
+          alt="Logo Outline Unpas"
+          loading="lazy"
+          class="h-full w-auto object-contain object-right"
+        />
+      </div>
 
-const navigasiLinks = [
-  { label: 'Beranda', href: '/' },
-  { label: 'Tentang', href: '/tentang-fakultas' },
-  { label: 'Prodi', href: '/prodi' },
-  { label: 'Prestasi', href: '/prestasi' },
-  { label: 'Kegiatan', href: '/kegiatan' },
-  { label: 'Fasilitas', href: '/fasilitas' },
-  { label: 'Tenaga Pengajar', href: '/tenaga-pengajar' },
-  { label: 'Penelitian & Inovasi', href: '/riset-dan-inovasi' },
-  { label: 'Testimoni', href: '/testimoni' },
-  { label: 'Kerjasama & Mitra', href: '/kerjasama' },
-  { label: 'Berita', href: '/berita' },
-  { label: 'Agenda', href: '/agenda' },
-  { label: 'FAQ & Bantuan', href: '/faq' },
-  { label: 'Kontak', href: '/kontak' },
+      <div class="max-w-full mx-auto flex flex-col gap-6 relative z-10">
+        <!-- Main Content -->
+        <div class="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-16">
+          <!-- Social Media Section -->
+          <div class="flex flex-col gap-4 w-full md:w-auto lg:w-[60%]">
+            <img :src="Logo" alt="Logo Universitas Pasundan" class="w-16 h-16" loading="lazy" />
+            <h3 class="text-white text-2xl md:text-3xl font-bold">Terhubung Dengan Kami</h3>
+            <div class="flex gap-4">
+              <a
+                v-for="social in socialMedia"
+                :key="social.name"
+                :href="social.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white hover:text-[#FEF251] transition-colors duration-200 text-lg"
+              >
+                <i :class="social.icon" />
+              </a>
+            </div>
+          </div>
+
+          <!-- Navigation Links -->
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 w-full">
+            <!-- Navigation -->
+            <div class="flex flex-col gap-3">
+              <p class="text-zinc-300 text-lg font-bold">Navigasi</p>
+              <nav class="flex flex-col gap-2">
+                <a
+                  v-for="link in navigationLinks.slice(0, 8)"
+                  :key="link.path"
+                  :href="link.path"
+                  class="text-zinc-300 text-sm hover:text-white transition-colors duration-200"
+                >
+                  {{ link.label }}
+                </a>
+              </nav>
+            </div>
+
+            <!-- Legal -->
+            <div class="flex flex-col gap-3">
+              <!-- <p class="text-zinc-300 text-lg font-bold">Legal</p> -->
+              <div class="mt-[23px]"></div>
+              <nav class="flex flex-col gap-2">
+                <a
+                  v-for="link in navigationLinks.slice(6)"
+                  :key="link.path"
+                  :href="link.path"
+                  class="text-zinc-300 text-sm hover:text-white transition-colors duration-200"
+                >
+                  {{ link.label }}
+                </a>
+              </nav>
+            </div>
+
+            <!-- Location -->
+            <div class="flex flex-col gap-3">
+              <p class="text-zinc-300 text-lg font-bold">Lokasi</p>
+              <div class="flex flex-col gap-2">
+                <div
+                  v-for="campus in campuses.slice(0, 1)"
+                  :key="campus.name"
+                  class="flex flex-col"
+                >
+                  <p class="text-zinc-300 text-sm">{{ campus.address }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="w-full p-3 bg-[#FEF251] rounded-2xl text-center mt-4">
+          <p class="text-[#1A1A1A] text-sm md:text-md font-medium">
+            © {{ new Date().getFullYear() }} Unpas Copyright and rights reserved
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</template>
+
+<script setup lang="ts">
+import Logo from '@/assets/logo.webp'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import LogoOutline from '@/assets/logo-outline1.png'
+
+// Social media data
+const socialMedia = [
+  { name: 'Twitter', icon: 'fab fa-twitter', url: 'https://x.com/univ_pasundan' },
+  {
+    name: 'Instagram',
+    icon: 'fab fa-instagram',
+    url: 'https://www.instagram.com/pmbunpas',
+  },
+  {
+    name: 'Facebook',
+    icon: 'fab fa-facebook',
+    url: 'https://www.facebook.com/universitaspasundan',
+  },
+  { name: 'TikTok', icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@univ_pasundan' },
+  {
+    name: 'YouTube',
+    icon: 'fab fa-youtube',
+    url: 'https://www.youtube.com/@UniversitasPasundanOfficial',
+  },
 ]
 
-const lokasi = [
-  { kampus: 'Kampus I', alamat: 'Jl. Lengkong Besar No.68' },
-  { kampus: 'Kampus II', alamat: 'Jl. Tamansari No.6-8' },
-  { kampus: 'Kampus IV', alamat: 'Jl. Dr. Setiabudhi No.193' },
-  { kampus: 'Kampus V', alamat: 'Jl. Sumatera No.41' },
+const navigationLinks = [
+  { path: '/', label: 'Beranda' },
+  { path: '/tentang-fakultas', label: 'Tentang' },
+  { path: '/prodi', label: 'Prodi' },
+  { path: '/prestasi', label: 'Prestasi' },
+  { path: '/kegiatan', label: 'Kegiatan' },
+  { path: '/fasilitas', label: 'Fasilitas' },
+  { path: '/tenaga', label: 'Tenaga Pengajar' },
+  { path: '/riset-dan-inovasi', label: 'Penelitian & Inovasi' },
+  { path: '/testimoni', label: 'Testimoni' },
+  { path: '/kerjasama', label: 'Kerjasama & Mitra' },
+  { path: '/berita', label: 'Berita' },
+  { path: '/agenda', label: 'Agenda' },
+  { path: '/Faq', label: 'Faq & Bantuan' },
+  { path: '/kontak', label: 'Kontak' },
+]
+
+const campuses = [
+  { name: 'Kampus I', address: 'Jl. Lengkong Besar No.68' },
+  { name: 'Kampus II', address: 'Jl. Tamansari No.6-8' },
+  { name: 'Kampus IV', address: 'Jl. Dr. Setiabudhi No.193' },
+  { name: 'Kampus V', address: 'Jl. Sumatera No.41' },
 ]
 </script>
 
-<template>
-  <section
-    class="bg-colorPrimary text-white p-4 md:p-6 lg:p-8 m-2 md:m-6 lg:m-6 mb-20 md:mb-20 lg:mb-6 rounded-xl md:rounded-2xl lg:rounded-4xl relative overflow-hidden"
-  >
-    <div class="absolute -top-0 left-25 md:left-[70%] w-full h-full opacity-50 object-cover">
-      <img
-        :src="LogoOutline"
-        alt="Logo Outline Unpas"
-        loading="lazy"
-        class="h-[60vh] lg:h-[65vh] object-cover object-left"
-      />
-    </div>
-
-    <div
-      class="w-full flex flex-col md:flex-row justify-start items-start gap-4 md:gap-6 lg:gap-8 bg-cover bg-no-repeat overflow-hidden"
-    >
-      <div class="w-full md:w-fit space-y-4 md:space-y-6 text-white mb-4 md:mb-0">
-        <img
-          :src="Logo"
-          alt="Logo Universitas Pasundan"
-          class="w-14 h-14 md:w-16 md:h-16"
-          loading="lazy"
-        />
-        <title class="text-white text-[16px] lg:text-[32px]">Terhubung Dengan Kami</title>
-        <div class="flex justify-start gap-3 md:gap-5">
-          <i class="pi pi-instagram text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
-          <i class="pi pi-facebook text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
-          <i class="pi pi-twitter text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
-          <i class="pi pi-tiktok text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
-          <i class="pi pi-youtube text-[16px] md:text-[20px] lg:text-[24px]" style="color: white;"></i>
-        </div>
-      </div>
-
-      <div class="w-8/12 flex justify-between md:justify-around items-start gap-10">
-        <div class="space-y-4">
-          <Text sizeMobile="text-sm" :text="'Navigasi'" weight="font-semibold" color="text-white" />
-          <div class="flex flex-col gap-4 items-start">
-            <a
-              v-for="(nav, idx) in navigasiLinks"
-              :key="idx"
-              :href="nav.href"
-              class="text-xs hover:font-medium cursor-pointer"
-            >
-              {{ nav.label }}
-            </a>
-          </div>
-        </div>
-
-        <div class="justify-around md:flex-col gap-4 flex flex-col">
-          <Text sizeMobile="text-sm" :text="'Lokasi'" weight="font-semibold" color="text-white" />
-          <div
-            v-for="(location, idx) in lokasi"
-            :key="idx"
-            class="flex flex-col justify-center items-start gap-2"
-          >
-            <a href="" class="text-xs hover:font-bold cursor-pointer">{{ location.kampus }}</a>
-            <a href="" class="text-xs hover:font-bold cursor-pointer">{{ location.alamat }}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="text-black mt-8 w-full text-center py-4 bg-primary rounded-lg md:rounded-2xl lg:rounded-4xl"
-    >
-      <Text
-        sizeMobile="text-xs md:text-xs lg:text-xs"
-        :text="`© ${new Date().getFullYear()} Unpas Copyright and rights reserved`"
-      />
-    </div>
-  </section>
-</template>
+<style scoped>
+/* Ensure the logo doesn't overlap content on small screens */
+@media (max-width: 640px) {
+  .absolute {
+    width: 60%;
+    opacity: 0.3;
+  }
+}
+</style>

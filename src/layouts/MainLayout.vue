@@ -14,7 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="bg-[#f3f4f43]">
+  <div class="bg-[#f3f4f4]">
     <Header />
     <Transition name="fade-up" appear>
       <div v-show="showContent" class="slot-container lg:mt-28">

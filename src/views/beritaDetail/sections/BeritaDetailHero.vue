@@ -91,7 +91,7 @@ const shareTo = (platform: string) => {
       <div class="space-y-4 lg:space-y-6">
         <div class="w-full h-full lg:h-[70vh]">
           <img :src="getImageUrl(post.image)" alt="Thumbnail"
-            class="w-full h-full object-cover rounded-[8px] md:rounded-[16px] lg:rounded-[32px]">
+            class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         </div>
         <div class="flex justify-between items-center">
           <div class="flex gap-4 md:gap-5 lg:gap-6">
