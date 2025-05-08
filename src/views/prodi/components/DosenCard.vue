@@ -25,7 +25,9 @@ defineProps<{
         >
       </div>
       <div class="space-y-2">
+        <div class="h-fit md:h-14 lg:h-16">
           <h4 class="text-sm md:text-base lg:text-lg font-bold leading-tight">{{ name || 'Dr. Andi' }}</h4>
+        </div>
           <h4 class="text-sm md:text-base lg:text-lg font-light">{{ title || 'Dosen Senior' }}</h4>
       </div>
       <div class="flex gap-4 md:gap-6" v-if="facebook || instagram || youtube || tiktok">

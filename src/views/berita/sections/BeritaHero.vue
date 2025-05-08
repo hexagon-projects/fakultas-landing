@@ -123,11 +123,11 @@ const shareTo = (platform: string) => {
             <h1 class="text-[16px] md:text-[24px] lg:text-[32px] font-bold" v-if="firstBerita"><span v-html="firstBerita?.title"></span></h1>
             <TextSection class="hidden md:block"><span class="line-clamp-4" v-html="sanitizeHtml(firstBerita?.content || firstBerita?.title)"></span></TextSection>
             <p class="text-[12px] lg:text-[14px] md:hidden">{{ formatDate(firstBerita?.publish) }} • 4 Menit Baca</p>
-            <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden">
+            <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden" @click="goToDetail">
               <img
                 :src="getImageUrl(firstBerita?.image)"
                 :alt="firstBerita?.title || 'Gambar berita'"
-                class="w-full h-full group-hover:scale-105 transition duration-500 md:hidden"
+                class="w-full h-full group-hover:scale-105 transition duration-500 md:hidden cursor-pointer"
               >
             </div>
           </div>
@@ -171,11 +171,11 @@ const shareTo = (platform: string) => {
           </div>
         </div>
 
-        <div class="w-full h-full md:w-1/2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden">
+        <div class="w-full h-full md:w-1/2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden" @click="goToDetail">
           <img
             :src="getImageUrl(firstBerita?.image)"
             :alt="firstBerita?.title || 'Gambar berita'"
-            class="w-full h-full group-hover:scale-105 transition duration-500 hidden md:block"
+            class="w-full h-full group-hover:scale-105 transition duration-500 hidden md:block cursor-pointer"
           >
         </div>
       </template>

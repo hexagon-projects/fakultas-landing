@@ -8,9 +8,11 @@ import BodySection from '@/views/beritaDetail/sections/BeritaDetailBody.vue';
 import HeroSection from '@/views/beritaDetail/sections/BeritaDetailHero.vue';
 import CTASection from '@/components/sections/CTASection.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
+import { useSideBannerStore } from '@/stores/sidebanner';
 
 const route = useRoute();
 const postStore = usePostStore();
+const sidebannerStore = useSideBannerStore();
 const { currentPost: post, loading, error } = storeToRefs(postStore);
 
 const updateTitle = () => {
@@ -22,6 +24,7 @@ const updateTitle = () => {
 onMounted(() => {
   const slug = route.params.slug as string;
   postStore.fetchPostBySlug(slug);
+  sidebannerStore.fetchSidebanner();
   updateTitle();
 });
 
@@ -47,7 +50,7 @@ watch(() => postStore.currentPost, updateTitle);
 
     <template v-else-if="post">
       <HeroSection :post="post" />
-      <BodySection :post="post" />
+      <BodySection :post="post" :sidebanner="sidebannerStore.sidebanner"/>
       <CTASection />
     </template>
 

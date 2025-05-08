@@ -43,7 +43,7 @@
               <p class="text-zinc-300 text-lg font-bold">Navigasi</p>
               <nav class="flex flex-col gap-2">
                 <a
-                  v-for="link in navigationLinks.slice(0, 8)"
+                  v-for="link in navigationLinks.slice(0, 7)"
                   :key="link.path"
                   :href="link.path"
                   class="text-zinc-300 text-sm hover:text-white transition-colors duration-200"
@@ -59,7 +59,7 @@
               <div class="mt-[23px]"></div>
               <nav class="flex flex-col gap-2">
                 <a
-                  v-for="link in navigationLinks.slice(6)"
+                  v-for="link in navigationLinks.slice(7, 15)"
                   :key="link.path"
                   :href="link.path"
                   class="text-zinc-300 text-sm hover:text-white transition-colors duration-200"
@@ -129,7 +129,7 @@ const navigationLinks = [
   { path: '/prestasi', label: 'Prestasi' },
   { path: '/kegiatan', label: 'Kegiatan' },
   { path: '/fasilitas', label: 'Fasilitas' },
-  { path: '/tenaga', label: 'Tenaga Pengajar' },
+  { path: '/tenaga-pengajar', label: 'Tenaga Pengajar' },
   { path: '/riset-dan-inovasi', label: 'Penelitian & Inovasi' },
   { path: '/testimoni', label: 'Testimoni' },
   { path: '/kerjasama', label: 'Kerjasama & Mitra' },

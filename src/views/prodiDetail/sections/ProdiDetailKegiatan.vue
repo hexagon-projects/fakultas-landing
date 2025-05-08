@@ -2,7 +2,7 @@
 import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-import KegiatanCard from '../components/KegiatanCard.vue';
+import ButtonSection from '@/components/ButtonSection.vue';
 import { ref, computed, nextTick } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from 'swiper/modules';
@@ -11,7 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import type { Organization } from '@/core/types/organisasi';
-import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import KegiatanCard from '@/views/prodiDetail/components/KegiatanCard.vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -26,6 +26,7 @@ const props = defineProps<{
 
 const activeFilter = ref("semua");
 const visibleItems = ref(6);
+const itemsPerLoad = 3;
 const refreshKey = ref(0);
 
 const filteredOrganisasi = computed(() => {
@@ -48,6 +49,18 @@ const setFilter = async (filter: string) => {
 
   refreshKey.value++;
 };
+
+const loadMore = async () => {
+  const previousCount = visibleItems.value;
+  visibleItems.value += itemsPerLoad;
+
+  await nextTick();
+  refreshKey.value++;
+};
+
+const showLoadMore = computed(() => {
+  return visibleItems.value < filteredOrganisasi.value.length;
+});
 </script>
 
 <template>
@@ -62,19 +75,19 @@ const setFilter = async (filter: string) => {
         <div class="w-fit flex gap-2 lg:gap-4">
           <div @click="setFilter('semua')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <TextSection class="text-white">Semua</TextSection>
+            <p class="text-xs lg:text-sm text-white">Semua</p>
           </div>
           <div @click="setFilter('kegiatan')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'kegiatan' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <TextSection class="text-white">Kegiatan</TextSection>
+            <p class="text-xs lg:text-sm text-white">Kegiatan</p>
           </div>
           <div @click="setFilter('organisasi')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <TextSection class="text-white">Organisasi</TextSection>
+            <p class="text-xs lg:text-sm text-white">Organisasi</p>
           </div>
           <div @click="setFilter('komunitas')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <TextSection class="text-white">Komunitas</TextSection>
+            <p class="text-xs lg:text-sm text-white">Komunitas</p>
           </div>
         </div>
       </div>
@@ -112,8 +125,8 @@ const setFilter = async (filter: string) => {
       </Swiper>
     </div>
 
-    <div class="w-full flex justify-center items-center">
-      <InteractiveHoverButton @click="$router.push('/kegiatan')" text="Selengkapnya" class="w-fit mt-5 lg:mt-0"></InteractiveHoverButton>
+    <div v-if="showLoadMore" class="w-full flex justify-center items-center mt-8">
+      <ButtonSection @click="loadMore" class="hover:scale-105 transition-transform duration-300">Load More</ButtonSection>
     </div>
   </SectionLayout>
 </template>

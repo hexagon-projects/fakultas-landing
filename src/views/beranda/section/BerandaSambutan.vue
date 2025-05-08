@@ -41,7 +41,7 @@ const titleHTML = computed(() => {
           <TitleSection v-if="fakultas?.title1" :text="titleHTML" :html="true">
           </TitleSection>
 
-          <p class="text-sm lg:text-base" v-html="fakultas?.description1"></p>
+          <TextSection><span v-html="fakultas?.description1"></span></TextSection>
         </div>
         <div class="flex gap-5 mt-10">
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">

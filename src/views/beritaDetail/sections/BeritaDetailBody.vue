@@ -2,11 +2,20 @@
 import TextBody from '@/components/TextBody.vue';
 import { useSanitize } from '@/composables/useSanitize';
 import type { Post } from '@/core/types/post';
+import type SideBanner from '@/core/types/sidebanner';
 import SectionLayout from '@/layouts/SectionLayout.vue';
 
 const { sanitizeHtml } = useSanitize();
 
+const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return '';
+  return `${baseUrl}/${imagePath}`;
+};
+
 defineProps<{
+  sidebanner?: SideBanner | null,
   post?: Post,
   loading?: boolean
 }>()
@@ -49,8 +58,8 @@ defineProps<{
           <TextBody><span v-html="sanitizeHtml(post.content)"></span></TextBody>
         </div>
 
-        <div class="w-full md:w-[30%] h-[50vh] bg-gray-500">
-          <!-- Sidebar content -->
+        <div class="w-full md:w-[30%] h-[50vh]" v-if="sidebanner?.image1">
+          <img :src="getImageUrl(sidebanner?.image1)" :alt="sidebanner.title" class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         </div>
       </div>
     </template>
