@@ -3,8 +3,8 @@ import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import type { Partner } from '@/core/types/partner';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-import KegiatanCard from '@/views/prodiDetail/components/KegiatanCard.vue';
 import { computed, ref, watchEffect } from 'vue';
+import MitraCard from '../components/MitraCard.vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -99,7 +99,7 @@ watchEffect(() => {
 
     <div class="w-full mt-10 md:mt-14 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 ">
       <template v-for="data in paginatedPartners" :key="data.id">
-        <KegiatanCard :title="data.name" :description="data.description" :image="getImageUrl(data.image)" />
+        <MitraCard :title="data.name" :description="data.description" :image="getImageUrl(data.image)" />
       </template>
     </div>
 

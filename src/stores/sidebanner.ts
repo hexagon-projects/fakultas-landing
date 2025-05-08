@@ -22,7 +22,6 @@ export const useSideBannerStore = defineStore("side-baner", {
       try {
         const response = await SideBannerService.getOne();
         this.sidebanner = response.data;
-        console.log(response.data)
       } catch (error: any) {
         this.error = error.message || "Failed to fetch sidebanner";
         console.error("Error fetching sidebanner:", error);
