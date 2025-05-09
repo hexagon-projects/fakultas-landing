@@ -92,11 +92,11 @@ defineProps<{
 
       <div class="w-full h-[60%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
         <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-        <img :src="getImageUrl(fasilitas[0]?.image1 || '')" :alt="fasilitas[0]?.title || ''"
+        <img :src="getImageUrl(fasilitas[6]?.image1 || '')" :alt="fasilitas[6]?.title || ''"
           class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         <div
           class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[0]?.title || '' }}</TextSection>
+          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[6]?.title || '' }}</TextSection>
         </div>
       </div>
     </div>

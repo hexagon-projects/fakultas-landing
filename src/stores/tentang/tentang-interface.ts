@@ -15,6 +15,7 @@ export interface ITimelineData {
     id_departement: number;
     title: string;
     slug: string;
+    date: string;
     description: string;
     image: string;
     no_urut: number;

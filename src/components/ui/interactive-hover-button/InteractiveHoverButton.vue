@@ -1,6 +1,6 @@
 <template>
   <button ref="buttonRef" :class="cn(
-    'group relative w-auto cursor-pointer overflow-hidden rounded-full border text-[10px] md:text-[12px] lg:text-[16px] font-bold text-center transition-all duration-300',
+    'group relative w-auto cursor-pointer overflow-hidden rounded-full border text-[10px] md:text-[12px] lg:text-[14px] font-bold text-center transition-all duration-300',
     props.bgColor || 'bg-colorPrimary',
     props.border || 'border-[3px]',
     props.borderColor || 'border-outline/50',

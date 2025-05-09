@@ -38,7 +38,7 @@ defineProps<{
 
 <template>
   <div
-    class="w-full px-[20px] py-[64px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[30px] space-y-12 md:space-y-16 lg:space-y-20">
+    class="w-full px-[20px] md:px-[60px] lg:px-[120px] space-y-12 md:space-y-16 lg:space-y-20">
     <div class="w-full flex flex-col md:flex-row justify-between gap-4 md:gap-6 lg:gap-8">
       <template v-if="isLoading">
         <!-- Left Column Skeleton -->

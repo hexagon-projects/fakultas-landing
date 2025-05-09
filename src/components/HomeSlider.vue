@@ -60,7 +60,7 @@ onUnmounted(() => {
 
     <div v-else class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden img-container">
       <div v-for="(slider, index) in sliders" :key="index"
-        class="w-full h-full absolute top-0 left-0 bg-cover bg-center rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] transition-opacity duration-1000 img-box"
+        class="w-full h-full absolute top-0 left-0 bg-cover bg-top rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] transition-opacity duration-1000 img-box"
         :style="{
           'background-image': `url('${getImageUrl(slider.image1)}')`,
           'opacity': currentSlide === index ? 1 : 0,
@@ -189,19 +189,19 @@ onUnmounted(() => {
 
 @media (min-width: 1500px) {
   .img-box {
-    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1600px) {
   .img-box {
-    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1700px) {
   .img-box {
-    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 

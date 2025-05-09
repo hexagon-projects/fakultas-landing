@@ -55,7 +55,7 @@ onMounted(async () => {
         <Button v-for="category in categories" :key="category" @click="selectedCategory = category"
           :className="selectedCategory === category ? 'bg-colorPrimary text-white' : 'text-black'"
           :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'" padding="py-3 px-6"
-          class="rounded-full text-[10px] md:text-[12px] lg:text-[16px]">
+          class="rounded-full text-[10px] md:text-[12px] lg:text-[14px]">
           {{ category }}
         </Button>
       </div>

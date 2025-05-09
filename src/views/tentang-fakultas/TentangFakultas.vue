@@ -34,6 +34,7 @@ const historyTimeline = computed(() => {
     id: String(item.id),
     label: item.title,
     description: item.description,
+    date: item.date,
   }));
 });
 

@@ -97,13 +97,13 @@ defineProps<{
             <div class="grid grid-cols-2 gap-4 md:gap-8 w-full">
               <div class="list_item flex flex-col items-start gap-1 md:gap-2">
                 <h3 class="self-stretch text-black text-lg md:text-xl font-bold leading-[140%]">
-                  Speaker
+                  Narahubung
                 </h3>
                 <TextBody>{{ agenda?.contact }}</TextBody>
               </div>
               <div class="list_item flex flex-col items-start gap-1 md:gap-2">
                 <h3 class="self-stretch text-black text-lg md:text-xl font-bold leading-[140%]">
-                  Type
+                  Event
                 </h3>
                 <TextBody>{{ agenda?.event }}</TextBody>
               </div>

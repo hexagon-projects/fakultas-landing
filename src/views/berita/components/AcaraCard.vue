@@ -50,7 +50,7 @@ defineEmits(['click']);
         </div>
 
         <TextBody v-if="description">
-          <span class="line-clamp-4" v-html="sanitizeHtml(description)"></span>
+          <span class="line-clamp-3" v-html="sanitizeHtml(description)"></span>
         </TextBody>
       </div>
       <TextBody class="hover:text-Color-FH transition-colors cursor-pointer">Lihat Acara ></TextBody>
