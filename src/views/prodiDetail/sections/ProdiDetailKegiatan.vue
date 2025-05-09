@@ -55,14 +55,14 @@ const setFilter = async (filter: string) => {
     <div class="w-full flex flex-col gap-5 lg:gap-10">
       <div class="w-full flex flex-col gap-4 md:gap-5 lg:gap-6 justify-center items-center">
         <TitleSection :text="'Kegiatan Mahasiswa'"></TitleSection>
-        <TextSection class="text-black/40">Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.
+        <TextSection class="text-center md:text-left text-black/40">Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.
         </TextSection>
       </div>
 
       <div class="w-full flex justify-center items-center overflow-x-auto pb-2">
         <div class="w-fit flex gap-2 lg:gap-4">
           <div @click="setFilter('semua')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-6 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <p class="text-[10px] md:text-[12px] lg:text-[14px] text-white">Semua</p>
           </div>
           <div @click="setFilter('kegiatan')"
@@ -102,10 +102,9 @@ const setFilter = async (filter: string) => {
             :index="index" />
         </SwiperSlide>
       </Swiper>
-    </div>
-
-    <div class="flex justify-center items-center">
-      <InteractiveHoverButton @click="$router.push('/kegiatan')" :text="'Selengkapnya'"></InteractiveHoverButton>
+      <div class="flex justify-center items-center">
+        <InteractiveHoverButton @click="$router.push('/kegiatan')" :text="'Selengkapnya'"></InteractiveHoverButton>
+      </div>
     </div>
   </SectionLayout>
 </template>

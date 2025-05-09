@@ -74,19 +74,19 @@ const showLoadMore = computed(() => {
       <div class="w-full flex justify-center items-center overflow-x-auto pb-2">
         <div class="w-fit flex gap-2 lg:gap-4">
           <div @click="setFilter('semua')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-6 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <p class="text-[10px] md:text-[12px] lg:text-[14px] text-white">Semua</p>
           </div>
           <div @click="setFilter('kegiatan')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'kegiatan' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-6 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'kegiatan' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <p class="text-[10px] md:text-[12px] lg:text-[14px] text-white">Kegiatan</p>
           </div>
           <div @click="setFilter('organisasi')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-6 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <p class="text-[10px] md:text-[12px] lg:text-[14px] text-white">Organisasi</p>
           </div>
           <div @click="setFilter('komunitas')"
-            :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
+            :class="['rounded-full px-6 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
             <p class="text-[10px] md:text-[12px] lg:text-[14px] text-white">Komunitas</p>
           </div>
         </div>

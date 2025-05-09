@@ -101,7 +101,7 @@ defineProps<{
       </div>
     </div>
 
-    <div class="w-full flex justify-center items-center">
+    <div class="w-full hidden md:flex justify-center items-center">
       <InteractiveHoverButton @click="$router.push('/fasilitas')" text="Selengkapnya" class="w-fit mt-5 lg:mt-0">
       </InteractiveHoverButton>
     </div>

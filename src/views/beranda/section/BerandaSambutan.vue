@@ -47,8 +47,9 @@ const titleHTML = computed(() => {
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">
             <InteractiveHoverButton :text="'Daftar Sekarang'" />
           </a>
-          <InteractiveHoverButton @click="$router.push('/tentang-fakultas')" text="Selengkapnya" bg-color="bg-none" border-color="border-colorPrimary"
-            text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white"></InteractiveHoverButton>
+          <InteractiveHoverButton @click="$router.push('/tentang-fakultas')" text="Selengkapnya" bg-color="bg-none"
+            border-color="border-colorPrimary" text-color="text-colorPrimary" bg-hover="bg-colorPrimary"
+            text-hover="text-white"></InteractiveHoverButton>
         </div>
       </div>
 
@@ -56,8 +57,10 @@ const titleHTML = computed(() => {
         <div
           class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[420px] xl:h-[500px] bg-no-repeat bg-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
           :style="{ backgroundImage: `url(${getImageUrl(dosen[0].image)})` }">
+
           <div
-            class="absolute bottom-0 left-0 w-full h-1/3 md:h-1/3 lg:h-2/5 xl:h-1/3 bg-gradient-to-t from-black/70 to-transparent backdrop-blur-sm z-10">
+            class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black/70 via-black/40 to-black/0 backdrop-blur-sm z-10"
+            style="mask-image: linear-gradient(to top, black, transparent); -webkit-mask-image: linear-gradient(to top, black, transparent);">
           </div>
 
           <div
