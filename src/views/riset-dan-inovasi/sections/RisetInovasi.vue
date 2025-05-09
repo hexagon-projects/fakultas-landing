@@ -30,7 +30,7 @@ defineProps<{
     <div class="flex flex-col justify-center items-center gap-10">
       <template v-for="(data, index) in inovasi" :key="index">
         <div
-          class="p-5 flex lg:gap-10 gap-5 w-full md:w-full rounded-[20px] flex-col transition-all duration-300 group cursor-pointer hoverAnimation hover:shadow-xl"
+          class="p-5 flex lg:gap-10 gap-5 w-full md:w-full rounded-[20px] flex-col transition-all duration-300 group cursor-pointer hoverAnimation shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)]"
           :class="[index % 2 == 0 ? 'lg:flex-row-reverse' : 'lg:flex-row']">
           <div class="rounded-[20px] bg-[#F0F0F0] lg:w-5/12 w-full h-40 overflow-hidden">
             <img :src="getImageUrl(data.image1)" alt=""
@@ -41,16 +41,16 @@ defineProps<{
               {{ data.title }}
             </h4>
             <TextSection class="transition-colors duration-300 group-hover:text-gray-800"><span v-html="data.description"></span></TextSection>
-            <InteractiveHoverButton text="Selengkapnya" bg-color="bg-none" border-color="border-colorPrimary"
-              text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white" padding="px-5 py-2"
-              class="w-fit transition-all duration-300 group-hover:scale-[1.02]" />
+            <div class="w-fit">
+              <InteractiveHoverButton text="Selengkapnya" :bg-color="'bg-transparent'" :border-color="'border-colorPrimary'" :text-color="'text-colorPrimary'" :bg-hover="'bg-colorPrimary'" :text-hover="'text-white'"/>
+            </div>
           </div>
         </div>
       </template>
     </div>
 
-    <div class="text-center">
+    <!-- <div class="text-center">
       <InteractiveHoverButton text="Selengkapnya" />
-    </div>
+    </div> -->
   </SectionLayout>
 </template>

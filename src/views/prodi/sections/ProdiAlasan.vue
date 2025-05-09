@@ -48,13 +48,11 @@ const titleHTML = computed(() => {
 
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div v-for="(feature, index) in unggulan" :key="index"
-        class="w-full px-20 py-12 lg:px-24 lg:py-16 border-beam-container bg-white md:[&:nth-child(1)]:bg-[#3FA889]/20 md:[&:nth-child(4)]:bg-[#3FA889]/20">
+        class="w-full px-20 py-12 lg:px-24 lg:py-16 border-beam-container bg-white md:[&:nth-child(1)]:bg-colorPrimary/15 md:[&:nth-child(4)]:bg-colorPrimary/15">
         <div class="flex flex-col justify-center items-center text-center gap-5 lg:gap-10">
           <div class="w-12 h-12 lg:w-[60px] lg:h-[60px]">
-            <img :src="getImageUrl(feature.image)" alt=""
-              :class="`w-full h-full object-cover rounded-[2px] md:rounded-[5px] lg:rounded-[10px]`">
+            <img :src="getImageUrl(feature.image)" alt="" class="w-full h-full object-cover svg-primary">
           </div>
-
           <div class="space-y-2">
             <h5 class="text-[18px] md:text-[22px] lg:text-[26px] font-bold">{{ feature.title }}</h5>
             <TextSection class="text-text"><span v-html="sanitizeHtml(feature.description)"></span></TextSection>
@@ -66,6 +64,10 @@ const titleHTML = computed(() => {
 </template>
 
 <style scoped>
+.svg-primary {
+  filter: brightness(0) saturate(100%) invert(22%) sepia(65%) saturate(2915%) hue-rotate(338deg) brightness(91%) contrast(88%);
+}
+
 .border-beam-container {
   position: relative;
   overflow: hidden;
@@ -160,6 +162,7 @@ const titleHTML = computed(() => {
 }
 
 @media (max-width: 767px) {
+
   /* Pertahankan animasi untuk semua child */
   .border-beam-container:nth-child(n)::after {
     content: '';

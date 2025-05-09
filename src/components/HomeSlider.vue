@@ -3,6 +3,7 @@ import InteractiveHoverButton from '@/components/ui/interactive-hover-button/Int
 import type { Slider } from '@/core/types/slider';
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import ContactAdminButton from './ContactAdminButton.vue';
+import TextSection from './TextSection.vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -46,10 +47,13 @@ onUnmounted(() => {
 
 <template>
   <div class="min-w-full p-0 md:p-4 lg:p-8">
-    <div v-if="isLoading" class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden bg-gray-200 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] animate-pulse">
+    <div v-if="isLoading"
+      class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden bg-gray-200 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] animate-pulse">
       <div class="absolute inset-0 flex items-center justify-center">
         <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+          </path>
         </svg>
       </div>
     </div>
@@ -79,12 +83,19 @@ onUnmounted(() => {
         </div>
 
         <!-- Tablet & Dekstop -->
-        <div class="absolute top-1/2 left-1/2 transform -translate-y-1/2 md:left-[4%] space-y-6 md:space-y-8 lg:space-y-10 z-2 hidden md:block">
-          <h1
-            class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-left p-4 transition-all duration-1000 transform"
-            :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
-            {{ slider.title }}
-          </h1>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-y-1/2 md:left-[4%] space-y-6 md:space-y-8 lg:space-y-10 z-2 hidden md:block">
+          <div class="space-y-4 md:space-y-6 lg:max-w-[60%]">
+            <h1
+              class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-left transition-all duration-1000 transform"
+              :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+              {{ slider.title }}
+            </h1>
+            <div class="transition-all duration-1000 transform"
+              :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+              <TextSection><span class="text-white" v-html="slider.description"></span></TextSection>
+            </div>
+          </div>
 
           <div class="w-full space-x-4 lg:space-x-6 transition-all duration-1000 transform delay-200"
             :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
@@ -103,6 +114,10 @@ onUnmounted(() => {
             :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
             {{ slider.title }}
           </h1>
+          <div class="transition-all duration-1000 transform mb-4"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+            <TextSection><span class="text-center text-white" v-html="slider.description"></span></TextSection>
+          </div>
 
           <div
             class="w-full flex justify-center items-center gap-4 lg:gap-6 transition-all duration-1000 transform delay-200"
@@ -144,49 +159,49 @@ onUnmounted(() => {
 <style>
 @media (min-width: 1024px) {
   .img-box {
-    clip-path: polygon(58% 100%, 58% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(58% 100%, 58% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1124px) {
   .img-box {
-    clip-path: polygon(62% 100%, 62% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(62% 100%, 62% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1224px) {
   .img-box {
-    clip-path: polygon(65% 100%, 65% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(65% 100%, 65% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1324px) {
   .img-box {
-    clip-path: polygon(68% 100%, 68% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(68% 100%, 68% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1400px) {
   .img-box {
-    clip-path: polygon(68% 100%, 68% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(68% 100%, 68% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1500px) {
   .img-box {
-    clip-path: polygon(72% 100%, 72% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1600px) {
   .img-box {
-    clip-path: polygon(75% 100%, 75% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1700px) {
   .img-box {
-    clip-path: polygon(75% 100%, 75% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 

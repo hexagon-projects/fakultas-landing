@@ -24,7 +24,7 @@ defineProps<{
 
 <template>
   <div
-    class="w-full px-[20px] py-[64px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
+    class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
     <div class="w-full flex flex-col justify-center items-start gap-10 md:gap-20 self-stretch">
       <template v-if="isLoading">
         <!-- Banner Image Skeleton -->
@@ -66,7 +66,7 @@ defineProps<{
           <div class="md:w-[60%] column flex flex-col items-start gap-6 md:gap-8 w-full order-1">
             <div class="flex flex-col items-start gap-4 md:gap-6 self-stretch">
               <TitleMain :text="agenda?.title"></TitleMain>
-              <TextSection><span v-html="sanitizeHtml(agenda?.description || '')"></span></TextSection>
+              <!-- <TextSection><span v-html="sanitizeHtml(agenda?.description || '')"></span></TextSection> -->
             </div>
             <div class="flex flex-row items-start gap-3 md:gap-4">
               <InteractiveHoverButton :text="'Daftar'"></InteractiveHoverButton>

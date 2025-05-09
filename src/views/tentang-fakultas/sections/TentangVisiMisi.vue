@@ -6,6 +6,13 @@ import type { Faculty } from '@/core/types/fakultas';
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import TextSection from '@/components/TextSection.vue';
 
+const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return 'https://placehold.co/600x400';
+  return `${baseUrl}/${imagePath}`;
+};
+
 defineProps<{
   fakultas: Faculty | null;
   isLoading?: boolean;
@@ -13,9 +20,9 @@ defineProps<{
 </script>
 
 <template>
-  <SectionLayout class="flex flex-col lg:flex-row justify-center items-center" v-if="fakultas?.title4 && fakultas?.description4">
+  <SectionLayout class="flex flex-col lg:flex-row justify-center items-center gap-6 md:gap-12 lg:gap-16" v-if="fakultas?.title4 && fakultas?.description4">
     <div class="lg:w-1/2 w-full">
-      <div class="w-full h-full"><img :src="Visi" alt=""></div>
+      <div class="w-full h-full"><img :src="getImageUrl(fakultas.image4 || Visi)" :alt="fakultas?.title4" class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"></div>
     </div>
     <div class="lg:w-1/2 w-full">
       <div>

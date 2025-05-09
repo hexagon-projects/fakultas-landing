@@ -54,10 +54,10 @@ const titleHTML = computed(() => {
 
       <div class="w-full lg:w-1/3" v-if="dosen && dosen.length > 0">
         <div
-          class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[420px] xl:h-[600px] bg-no-repeat bg-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
+          class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[420px] xl:h-[500px] bg-no-repeat bg-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
           :style="{ backgroundImage: `url(${getImageUrl(dosen[0].image)})` }">
           <div
-            class="absolute bottom-0 left-0 w-full h-1/3 md:h-1/3 lg:h-2/5 bg-gradient-to-t from-black/70 to-transparent backdrop-blur-sm z-10">
+            class="absolute bottom-0 left-0 w-full h-1/3 md:h-1/3 lg:h-2/5 xl:h-1/3 bg-gradient-to-t from-black/70 to-transparent backdrop-blur-sm z-10">
           </div>
 
           <div

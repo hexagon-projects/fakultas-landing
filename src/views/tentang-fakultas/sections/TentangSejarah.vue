@@ -21,7 +21,7 @@ defineProps<{
 
 <template>
   <SectionLayout>
-    <div class="flex flex-col-reverse lg:flex-row lg:gap-10">
+    <div class="flex flex-col-reverse lg:flex-row gap-6 md:gap-12 lg:gap-16">
       <div class="lg:w-1/2 w-full">
         <div>
           <TitleSection v-if="fakultas?.title2" class="mt-7" :text="`Sejarah ${fakultas?.title2}`"></TitleSection>
@@ -38,7 +38,7 @@ defineProps<{
       <div class="lg:w-1/2 w-full">
         <div class="w-full h-80 md:h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative">
           <div class="w-full h-full sjrh-container">
-            <img :src="getImageUrl(fakultas?.image2 || '')" alt=""
+            <img :src="getImageUrl(fakultas?.image2 || '')" :alt="fakultas?.title2 || ''"
               class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] sjrh-img" />
             <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
               xmlns="http://www.w3.org/2000/svg" version="1.1">

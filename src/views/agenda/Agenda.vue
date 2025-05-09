@@ -54,8 +54,8 @@ onMounted(async () => {
       <div class="flex gap-5 justify-start flex-wrap mt-5">
         <Button v-for="category in categories" :key="category" @click="selectedCategory = category"
           :className="selectedCategory === category ? 'bg-colorPrimary text-white' : 'text-black'"
-          :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'" padding="py-2 px-4"
-          class="rounded-full text-[12px] md:text-[14px] lg:text-[18px]">
+          :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'" padding="py-3 px-6"
+          class="rounded-full text-[10px] md:text-[12px] lg:text-[16px]">
           {{ category }}
         </Button>
       </div>

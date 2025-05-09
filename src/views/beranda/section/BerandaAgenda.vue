@@ -45,7 +45,7 @@ const filteredAgenda = computed(() => {
           @click="selectedCategory = category"
           :className="selectedCategory === category ? 'bg-colorPrimary text-white' : 'text-black'"
           :borderName="selectedCategory === category ? '' : 'border border-colorPrimary'"
-          padding="py-2 px-4"
+          padding="py-3 px-6"
           class="rounded-full text-[12px] md:text-[14px] lg:text-[18px]"
         >
           {{ category }}

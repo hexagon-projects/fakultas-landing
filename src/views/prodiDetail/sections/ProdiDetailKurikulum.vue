@@ -22,6 +22,7 @@ defineProps<{
             :number="index + 1"
             :title="item.title"
             :description="item.description"
+            :image="item.image"
           />
       </div>
   </SectionLayout>

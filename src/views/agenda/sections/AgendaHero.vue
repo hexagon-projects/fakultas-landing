@@ -84,7 +84,7 @@ defineProps<{
               formatDate(agenda[0]?.end_date).year }}</p>
           </div>
         </div>
-        <div class="w-full md:w-1/2 flex flex-col md:justify-start md:items-start gap-4 md:gap-5 lg:gap-6">
+        <div class="w-full md:w-1/2 flex flex-col md:justify-start md:items-start gap-4 md:gap-5 lg:gap-6 cursor-pointer" @click="navigateToDetail(agenda[0]?.slug || '')">
           <div class="px-2 py-1 bg-[#EEEEEE] w-fit">
             <TextBody :weighText="'font-bold'">Agenda</TextBody>
           </div>

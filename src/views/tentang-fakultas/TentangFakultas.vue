@@ -47,12 +47,12 @@ onMounted(async () => {
 </script>
 <template>
   <MainLayout>
-    <TentangHero />
+    <TentangHero :fakultas="fakultasStore.fakultas"/>
     <SectionLayout>
       <div class="flex flex-col lg:flex-row md:justify-between relative">
         <!-- div img ini sticky -->
-        <div class="lg:w-[45%] w-full h-full lg:sticky lg:top-28">
-          <img :src="SejarahImg" alt="" class="w-full h-full lg:sticky lg:top-28 z-10">
+        <div class="lg:w-[45%] w-full h-full lg:sticky lg:top-40">
+          <img :src="getImageUrl(fakultasStore.fakultas?.image3 || SejarahImg)" alt="" class="w-full h-full lg:sticky lg:top-28 z-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
           <!-- Tambahkan kelas sticky dan top-0 -->
         </div>
         <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
@@ -68,8 +68,8 @@ onMounted(async () => {
     <SectionLayout>
       <div class="grid gap-5">
         <h6 class="font-bold text-2xl">Tim</h6>
-        <TitleSection v-if="berandaStore.fakultasData.name"
-          :text="`<span class='text-colorPrimary'>${berandaStore.fakultasData.name}</span> Unpas`" :html="true">
+        <TitleSection v-if="fakultasStore?.fakultas?.name"
+          :text="`<span class='text-colorPrimary'>${fakultasStore?.fakultas?.name}</span> Unpas`" :html="true">
         </TitleSection>
       </div>
 

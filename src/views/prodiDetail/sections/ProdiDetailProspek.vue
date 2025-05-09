@@ -13,8 +13,9 @@ const props = defineProps<{
 
 const titleHTML = `Prospek Karir Program Studi <span class="text-colorPrimary font-bold">${props?.prodiDetail?.name}</span>`;
 
-const leftCards = props?.prospek?.slice(0, 1)
-const rightCards = props?.prospek?.slice(1, 2)
+const halfLength = Math.ceil(props?.prospek?.length / 2);
+const leftCards = props?.prospek?.slice(0, halfLength);
+const rightCards = props?.prospek?.slice(halfLength);
 </script>
 
 <template>
@@ -26,16 +27,16 @@ const rightCards = props?.prospek?.slice(1, 2)
 
     <div
       class="w-full h-full lg:h-[80vh] md:flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 lg:gap-6 hidden">
-      <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4">
+      <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
         <ProspekCard v-for="(card, index) in leftCards" :key="'left-' + index" :align-text="'text-right'"
-          :title="card.title" :description="card.description" />
+          :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
       <div class="w-full md:w-[40%]">
         <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
       </div>
-      <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4">
+      <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
         <ProspekCard v-for="(card, index) in rightCards" :key="'right-' + index" :align-text="'text-left'"
-          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" />
+          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
     </div>
 
@@ -44,8 +45,8 @@ const rightCards = props?.prospek?.slice(1, 2)
         <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
       </div>
       <div class="w-full space-y-4">
-        <ProspekCard v-for="(card, index) in rightCards" :key="'right-' + index" :align-text="'text-left'"
-          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" />
+        <ProspekCard v-for="(card, index) in prospek" :key="'right-' + index" :align-text="'text-left'"
+          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
     </div>
   </SectionLayout>

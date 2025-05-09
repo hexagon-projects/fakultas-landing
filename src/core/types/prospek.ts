@@ -4,6 +4,7 @@ export interface Prospek {
   title: string;
   description: string;
   image: string;
+  icon: string;
   home?: string | null;
   created_at: string;
   updated_at: string;

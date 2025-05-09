@@ -2,8 +2,7 @@
 import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-import ButtonSection from '@/components/ButtonSection.vue';
-import { ref, computed, nextTick } from 'vue';
+import { ref, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
@@ -12,6 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import type { Organization } from '@/core/types/organisasi';
 import KegiatanCard from '@/views/prodiDetail/components/KegiatanCard.vue';
+import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -26,7 +26,6 @@ const props = defineProps<{
 
 const activeFilter = ref("semua");
 const visibleItems = ref(6);
-const itemsPerLoad = 3;
 const refreshKey = ref(0);
 
 const filteredOrganisasi = computed(() => {
@@ -49,18 +48,6 @@ const setFilter = async (filter: string) => {
 
   refreshKey.value++;
 };
-
-const loadMore = async () => {
-  const previousCount = visibleItems.value;
-  visibleItems.value += itemsPerLoad;
-
-  await nextTick();
-  refreshKey.value++;
-};
-
-const showLoadMore = computed(() => {
-  return visibleItems.value < filteredOrganisasi.value.length;
-});
 </script>
 
 <template>
@@ -68,26 +55,27 @@ const showLoadMore = computed(() => {
     <div class="w-full flex flex-col gap-5 lg:gap-10">
       <div class="w-full flex flex-col gap-4 md:gap-5 lg:gap-6 justify-center items-center">
         <TitleSection :text="'Kegiatan Mahasiswa'"></TitleSection>
-        <TextSection class="text-black/40">Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.</TextSection>
+        <TextSection class="text-black/40">Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.
+        </TextSection>
       </div>
 
       <div class="w-full flex justify-center items-center overflow-x-auto pb-2">
         <div class="w-fit flex gap-2 lg:gap-4">
           <div @click="setFilter('semua')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'semua' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <p class="text-xs lg:text-sm text-white">Semua</p>
+            <p class="text-[12px] md:text-[14px] lg:text-[18px] text-white">Semua</p>
           </div>
           <div @click="setFilter('kegiatan')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'kegiatan' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <p class="text-xs lg:text-sm text-white">Kegiatan</p>
+            <p class="text-[12px] md:text-[14px] lg:text-[18px] text-white">Kegiatan</p>
           </div>
           <div @click="setFilter('organisasi')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'organisasi' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <p class="text-xs lg:text-sm text-white">Organisasi</p>
+            <p class="text-[12px] md:text-[14px] lg:text-[18px] text-white">Organisasi</p>
           </div>
           <div @click="setFilter('komunitas')"
             :class="['rounded-full px-3 py-3 lg:px-6 lg:py-3 cursor-pointer transition-all duration-300', activeFilter === 'komunitas' ? 'bg-colorPrimary' : 'bg-text/50 hover:bg-text/70']">
-            <p class="text-xs lg:text-sm text-white">Komunitas</p>
+            <p class="text-[12px] md:text-[14px] lg:text-[18px] text-white">Komunitas</p>
           </div>
         </div>
       </div>
@@ -95,14 +83,9 @@ const showLoadMore = computed(() => {
 
     <!-- Tablet & Desktop -->
     <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
-      <KegiatanCard
-        v-for="(kegiatan, index) in visibleFilteredOrganisasi"
-        :key="`${kegiatan.id}-${refreshKey}`"
-        :title="kegiatan.name"
-        :description="kegiatan.description"
-        :image="getImageUrl(kegiatan.image)"
-        :index="index"
-      />
+      <KegiatanCard v-for="(kegiatan, index) in visibleFilteredOrganisasi" :key="`${kegiatan.id}-${refreshKey}`"
+        :title="kegiatan.name" :description="kegiatan.description" :image="getImageUrl(kegiatan.image)"
+        :index="index" />
     </div>
 
     <!-- Mobile Swiper -->
@@ -115,18 +98,14 @@ const showLoadMore = computed(() => {
         dynamicMainBullets: 3
       }" :space-between="20" :slides-per-view="1.2" class="kegiatan-swiper">
         <SwiperSlide v-for="(kegiatan, index) in filteredOrganisasi" :key="`${kegiatan.id}-${refreshKey}`">
-          <KegiatanCard
-            :title="kegiatan.name"
-            :description="kegiatan.description"
-            :image="getImageUrl(kegiatan.image)"
-            :index="index"
-          />
+          <KegiatanCard :title="kegiatan.name" :description="kegiatan.description" :image="getImageUrl(kegiatan.image)"
+            :index="index" />
         </SwiperSlide>
       </Swiper>
     </div>
 
-    <div v-if="showLoadMore" class="w-full flex justify-center items-center mt-8">
-      <ButtonSection @click="loadMore" class="hover:scale-105 transition-transform duration-300">Load More</ButtonSection>
+    <div class="flex justify-center items-center">
+      <InteractiveHoverButton @click="$router.push('/kegiatan')" :text="'Selengkapnya'"></InteractiveHoverButton>
     </div>
   </SectionLayout>
 </template>
@@ -158,5 +137,11 @@ const showLoadMore = computed(() => {
   background: rgb(var(--color-primary-r), var(--color-primary-g), var(--color-primary-b));
   width: 40px;
   height: 6px;
+}
+
+@media (max-width: 768px) {
+  .custom-bullet-org {
+    display: none;
+  }
 }
 </style>

@@ -46,15 +46,17 @@ onMounted(() => {
       <TitleSection text="Fasilitas"></TitleSection>
       <TextSection>Scenes that unfold like a movie, with each image telling a cinematic story.</TextSection>
       <!-- List Nama Fasilitas -->
-      <div class="flex gap-2 lg:gap-4 justify-center flex-wrap font-bold">
-        <Button className="btn-primary" padding="px-4 py-2" @click="filterFacility(null)">
-          Semua Fasilitas
-        </Button>
-        <Button v-for="item in fasilitas" :key="item.id"
-          :className="selectedFacility?.id === item.id ? 'btn-primary' : 'btn-white'" padding="px-4 py-2"
-          @click="filterFacility(item)">
-          {{ item.title }}
-        </Button>
+      <div id="fasilitas-scroll" class="relative overflow-x-scroll scroll-hidden mx-[10px] lg:-mx-[60px]">
+        <div class="flex pb-3 gap-3 whitespace-nowrap">
+          <Button className="btn-primary" padding="px-4 py-2" @click="filterFacility(null)">
+            Semua Fasilitas
+          </Button>
+          <Button v-for="item in fasilitas" :key="item.id"
+            :className="selectedFacility?.id === item.id ? 'btn-primary' : 'btn-neutral'" padding="px-4 py-2"
+            @click="filterFacility(item)">
+            {{ item.title }}
+          </Button>
+        </div>
       </div>
     </div>
     <div class="mt-10">
@@ -136,7 +138,8 @@ onMounted(() => {
           <!-- Text Content Cell -->
           <div class="w-full h-40 md:h-52 lg:h-60 flex flex-col justify-center gap-3">
             <h2 class="text-2xl font-bold">{{ selectedFacility.title }}</h2>
-            <TextSection><span v-html="selectedFacility.description" class="line-clamp-4 font-light"></span></TextSection>
+            <TextSection><span v-html="selectedFacility.description" class="line-clamp-4 font-light"></span>
+            </TextSection>
           </div>
 
           <!-- Small Image Cell -->
@@ -177,7 +180,8 @@ onMounted(() => {
             <img v-if="item.image1" :src="getImageUrl(item.image1)"
               class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
               :alt="item.title || ''" />
-            <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10">
+            </div>
 
             <!-- Content
             <div class="relative z-20 p-5 h-full flex flex-col justify-end">
@@ -213,6 +217,16 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+#fasilitas-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#fasilitas-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
