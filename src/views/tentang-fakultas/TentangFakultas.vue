@@ -51,10 +51,8 @@ onMounted(async () => {
     <TentangHero :fakultas="fakultasStore.fakultas"/>
     <SectionLayout>
       <div class="flex flex-col lg:flex-row md:justify-between relative">
-        <!-- div img ini sticky -->
         <div class="lg:w-[45%] w-full h-full lg:sticky lg:top-40">
           <img :src="getImageUrl(fakultasStore.fakultas?.image3 || SejarahImg)" alt="" class="w-full h-full lg:sticky lg:top-28 z-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
-          <!-- Tambahkan kelas sticky dan top-0 -->
         </div>
         <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
           <Timeline :items="historyTimeline" />
@@ -75,7 +73,7 @@ onMounted(async () => {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 mt-12 md:mt-16 lg:mt-20">
-        <DosenCard v-for="dosen in teamStore.teams" :key="dosen.id" :name="dosen.name" :title="dosen.title"
+        <DosenCard v-for="dosen in teamStore.teams.slice(0,12)" :key="dosen.id" :name="dosen.name" :title="dosen.title"
           :image="getImageUrl(dosen.image)" :facebook="dosen.fb" :instagram="dosen.ig" :youtube="dosen.yt"
           :tiktok="dosen.tiktok" />
       </div>
@@ -83,20 +81,4 @@ onMounted(async () => {
     <TestimonialsSection :testimoni="berandaStore.testimoniData" :is-loading="false" />
     <CTASection />
   </MainLayout>
-
-  <!-- <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0 relative">
-    <div class="lg:w-1/2 w-full h-40 bg-gray-200 lg:sticky top-40"></div>
-    <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
-      <Timeline :items="historyTimeline" />
-    </div>
-  </div>
-
-  <ScrollTransition>
-    <div class="lg:mt-48 mt-32 flex flex-col lg:flex-row px-[5%] lg:px-0 relative">
-      <div class="lg:w-1/2 w-full h-40 bg-gray-200 lg:sticky top-40"></div>
-      <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
-        <Timeline :items="historyTimeline" />
-      </div>
-    </div>
-  </ScrollTransition> -->
 </template>
