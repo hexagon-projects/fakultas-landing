@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 md:p-6 lg:p-6 w-full mb-20">
+  <div class="p-4 md:p-6 lg:p-6 w-full mb-20 md:mb-0">
     <footer
       :class="[
         'w-full text-white p-6 mx-auto rounded-[16px] shadow-lg relative overflow-hidden bg-colorPrimary'

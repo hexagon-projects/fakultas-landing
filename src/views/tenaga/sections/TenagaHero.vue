@@ -3,6 +3,7 @@ import TextSection from '@/components/TextSection.vue';
 import TitleMain from '@/components/TitleMain.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import People from '@/assets/People.png'
+import banner from '@/assets/banner-dosen.jpg'
 
 </script>
 
@@ -11,7 +12,7 @@ import People from '@/assets/People.png'
     <div class="w-full flex flex-col md:flex-row-reverse jsutify-center items-center md:justify-center gap-4">
       <div
         class="w-full md:w-1/2 h-[310px] md:[h-450px] lg:h-[630px] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden">
-        <img src="" alt="" class="w-full h-full bg-red-500 object-cover group-hover:scale-105 transition duration-500">
+        <img :src="banner" alt="Banner Dosen" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
       </div>
       <div class="w-full md:w-1/2 space-y-12 md:space-y-16 lg:space-y-20">
         <div class="space-y-2 lg:space-y-4">
