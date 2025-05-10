@@ -58,28 +58,28 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div v-else class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden img-container">
+    <div v-else class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden">
       <div v-for="(slider, index) in sliders" :key="index"
-        class="w-full h-full absolute top-0 left-0 bg-cover bg-top rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] transition-opacity duration-1000 img-box"
+        class="w-full h-full absolute top-0 left-0 bg-cover bg-top rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] transition-opacity duration-1000"
         :style="{
-          'background-image': `url('${getImageUrl(slider.image1)}')`,
           'opacity': currentSlide === index ? 1 : 0,
           'z-index': currentSlide === index ? 1 : 0
         }">
-
-        <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
-          xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                result="goo" />
-              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-            </filter>
-          </defs>
-        </svg>
-
-        <div class="absolute inset-0 bg-black/50 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] z-1">
+        <div class="w-full h-full z-10 img-container">
+          <img :src="getImageUrl(slider.image1)" alt="" class="w-full h-full object-cover object-top img-box">
+          <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
+            xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                  result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+              </filter>
+            </defs>
+          </svg>
+          <div class="absolute inset-0 bg-black/50 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] z-1 img-box">
+          </div>
         </div>
 
         <!-- Tablet & Dekstop -->
@@ -183,19 +183,19 @@ onUnmounted(() => {
 
 @media (min-width: 1400px) {
   .img-box {
-    clip-path: polygon(68% 100%, 68% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(70% 100%, 70% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1500px) {
   .img-box {
-    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(72% 100%, 72% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1600px) {
   .img-box {
-    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 

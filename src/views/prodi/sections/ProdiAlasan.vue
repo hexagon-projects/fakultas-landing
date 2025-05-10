@@ -48,7 +48,7 @@ const titleHTML = computed(() => {
 
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div v-for="(feature, index) in unggulan" :key="index"
-        class="w-full px-20 py-12 lg:px-24 lg:py-16 border-beam-container bg-white md:[&:nth-child(1)]:bg-colorPrimary/15 md:[&:nth-child(4)]:bg-colorPrimary/15">
+        class="w-full px-10 py-10 lg:px-24 lg:py-16 border-beam-container bg-white md:[&:nth-child(1)]:bg-colorPrimary/15 md:[&:nth-child(4)]:bg-colorPrimary/15">
         <div class="flex flex-col justify-center items-center text-center gap-5 lg:gap-10">
           <div class="w-12 h-12 lg:w-[60px] lg:h-[60px]">
             <img :src="getImageUrl(feature.image)" alt="" class="w-full h-full object-cover svg-primary">

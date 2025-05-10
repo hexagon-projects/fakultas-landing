@@ -59,7 +59,7 @@ const titleHTML = computed(() => {
           :style="{ backgroundImage: `url(${getImageUrl(dosen[0].image)})` }">
 
           <div
-            class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black/70 via-black/40 to-black/0 backdrop-blur-sm z-10"
+            class="absolute bottom-0 left-0 w-full h-1/3 md:h-full bg-gradient-to-t from-black/70 via-black/40 to-black/0 backdrop-blur-sm z-10"
             style="mask-image: linear-gradient(to top, black, transparent); -webkit-mask-image: linear-gradient(to top, black, transparent);">
           </div>
 

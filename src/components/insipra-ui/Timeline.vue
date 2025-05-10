@@ -10,7 +10,7 @@
             <img src="/src/assets/images/logo.webp" alt="" class="w-1/2">
           </div>
           <div>
-            <p class=" mt-14 md:mt-0 text-[12px] md:text-[10px] lg:text-[14px] font-bold md:pl-20 pb-2">{{ item.date }}
+            <p class=" mt-14 md:mt-0 text-[12px] md:text-[10px] lg:text-[14px] font-bold md:pl-20 pb-2">{{ formatDate(item.date) }}
             </p>
             <h3 class="mt-0 text-[18px] md:text-[20px] lg:text-[22px] font-bold md:block md:pl-20">
               {{ item.label }}
@@ -45,7 +45,7 @@
           <img src="/src/assets/images/logo.webp" alt="" class="w-1/2">
         </div>
         <div>
-          <p class="text-[12px] font-bold pb-1">{{ item.date }}</p>
+          <p class="text-[12px] font-bold pb-1">{{ formatDate(item.date) }}</p>
           <h3 class="text-[18px] font-bold">{{ item.label }}</h3>
         </div>
       </div>
@@ -77,6 +77,20 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   items: () => [],
 })
+
+const formatDate = (dateString: string) => {
+  if (!dateString) return ''
+
+  const months = [
+    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+  ]
+
+  const [year, month, day] = dateString.split('-')
+  const monthIndex = parseInt(month, 10) - 1
+
+  return `${parseInt(day, 10)} ${months[monthIndex]} ${year}`
+}
 
 const timelineContainerRef = ref<HTMLElement | null>(null)
 const timelineRef = ref<HTMLElement | null>(null)

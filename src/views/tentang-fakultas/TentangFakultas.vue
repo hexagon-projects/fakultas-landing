@@ -67,7 +67,7 @@ onMounted(async () => {
     <TentangStatistik :fakultas="fakultasStore.fakultas" />
     <MitraSection :partners="partnerStore.partners" />
     <SectionLayout>
-      <div class="grid gap-5">
+      <div class="grid gap-2 lg:gap-5">
         <h6 class="font-bold text-2xl">Tim</h6>
         <TitleSection v-if="fakultasStore?.fakultas?.name"
           :text="`<span class='text-colorPrimary'>${fakultasStore?.fakultas?.name}</span> Unpas`" :html="true">

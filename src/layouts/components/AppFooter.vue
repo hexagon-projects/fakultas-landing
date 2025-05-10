@@ -1,12 +1,12 @@
 <template>
-  <div class="p-4 md:p-6 lg:p-6 w-full">
+  <div class="p-4 md:p-6 lg:p-6 w-full mb-20">
     <footer
       :class="[
         'w-full text-white p-6 mx-auto rounded-[16px] shadow-lg relative overflow-hidden bg-colorPrimary'
       ]"
     >
       <!-- Background Logo - Always on right -->
-      <div class="absolute top-0 right-0 h-full opacity-50 pointer-events-none">
+      <div class="absolute top-0 -right-20 h-full opacity-50 pointer-events-none">
         <img
           :src="LogoOutline"
           alt="Logo Outline Unpas"

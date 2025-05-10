@@ -130,31 +130,31 @@ defineProps<{
 
 @media (min-width: 1024px) {
   .sjrh-img {
-    clip-path: polygon(40% 100%, 40% 80%, 100% 80%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(40% 100%, 40% 82%, 100% 82%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1124px) {
   .sjrh-img {
-    clip-path: polygon(50% 100%, 50% 80%, 100% 80%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(50% 100%, 50% 78%, 100% 78%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1224px) {
   .sjrh-img {
-    clip-path: polygon(55% 100%, 55% 80%, 100% 80%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(55% 100%, 55% 76%, 100% 76%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1324px) {
   .sjrh-img {
-    clip-path: polygon(57% 100%, 57% 80%, 100% 80%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(62% 100%, 62% 76%, 100% 76%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 
 @media (min-width: 1400px) {
   .sjrh-img {
-    clip-path: polygon(70% 100%, 70% 80%, 100% 80%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(66% 100%, 66% 75%, 100% 75%, 100% 0%, 0% 0%, 0% 100%);
   }
 }
 </style>

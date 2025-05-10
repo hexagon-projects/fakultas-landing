@@ -29,7 +29,7 @@ import ContactAdminButton from '../ContactAdminButton.vue';
         </div>
 
         <!-- Image Section - Optimized for mobile -->
-        <div class="order-1 md:order-2 w-full h-full relative -mt-3 md:mt-0 lg:mt-0">
+        <div class="order-1 md:order-2 w-full h-full relative -mt-12 md:mt-0 lg:mt-0">
           <!-- Mobile version (centered and larger) -->
           <div class="md:hidden absolute inset-0 flex items-center justify-center">
             <div class="h-[200px] w-full flex items-center justify-center overflow-visible">
