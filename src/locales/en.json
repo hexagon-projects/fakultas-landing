@@ -1,0 +1,15 @@
+{
+  "global": {
+      "register_now": "Register Now",
+      "contact_admin": "Contact Admin",
+      "all": "More"
+  },
+  "beranda": {
+    "welcome": "Welcome",
+    "accreditation_message": "Our faculty has achieved A Accreditation from BAN-PT, reflecting high education standards and the best teaching quality.",
+    "about_title": "About"
+  },
+  "agenda": {
+    "welcome": "Schedule"
+  }
+}

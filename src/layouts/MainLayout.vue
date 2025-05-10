@@ -17,7 +17,7 @@ onMounted(async () => {
   <div class="bg-[#f3f4f4]">
     <Header />
     <Transition name="fade-up" appear>
-      <div v-show="showContent" class="slot-container lg:mt-28">
+      <div id="google_translate_element" v-show="showContent" class="slot-container lg:mt-28">
         <slot></slot>
       </div>
     </Transition>

@@ -7,6 +7,10 @@ import TextSection from './TextSection.vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const getImageUrl = (imagePath: string | null) => {
   if (!imagePath) return '';
   return `${baseUrl}/${imagePath}`;
@@ -100,7 +104,7 @@ onUnmounted(() => {
           <div class="w-full space-x-4 lg:space-x-6 transition-all duration-1000 transform delay-200"
             :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+              <InteractiveHoverButton :text="t('global.register_now')" />
             </a>
             <ContactAdminButton bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-white'"
               :text-color="'text-white'" :text-hover="'group-hover:text-white'" />
@@ -122,9 +126,9 @@ onUnmounted(() => {
           <div
             class="w-full flex justify-center items-center gap-4 lg:gap-6 transition-all duration-1000 transform delay-200"
             :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
-            <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
+            <InteractiveHoverButton :text="t('global.register_now')"></InteractiveHoverButton>
             <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
-              :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'"
+              :border-color="'border-white'" :text="t('global.contact_admin')" :text-color="'text-white'"
               :text-hover="'group-hover:text-white'" />
           </div>
         </div>
@@ -149,8 +153,7 @@ onUnmounted(() => {
           </svg>
         </div>
 
-        <TextSection>Fakultas kami telah meraih Akreditasi A BAN-PT, mencerminkan standar pendidikan tinggi dan
-          kualitas pengajaran terbaik.</TextSection>
+        <TextSection>{{ t('beranda.accreditation_message') }}</TextSection>
       </div>
     </div>
   </div>

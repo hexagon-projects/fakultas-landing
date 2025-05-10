@@ -4,6 +4,9 @@ import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 </script>
 
@@ -17,12 +20,10 @@ import SectionLayout from '@/layouts/SectionLayout.vue';
           masyarakat.</TextSection>
         <div class="flex lg:gap-10 gap-5 justify-center">
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            <InteractiveHoverButton :text="t('global.register_now')" />
           </a>
-          <ContactAdminButton text="Hubungi Admin" bg-color="bg-none" border-color="border-colorPrimary"
+          <ContactAdminButton bg-color="bg-none" border-color="border-colorPrimary"
           text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white"/>
-          <!-- <InteractiveHoverButton text="Hubungi Admin" bg-color="bg-none" border-color="border-colorPrimary"
-            text-color="text-colorPrimary" bg-hover="bg-colorPrimary" text-hover="text-white" /> -->
         </div>
       </div>
     </div>

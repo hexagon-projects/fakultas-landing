@@ -14,6 +14,10 @@ import FacebookIcon from '@/assets/icons/fb.png';
 import TwitterIcon from '@/assets/icons/x.png';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 const router = useRouter();
 
@@ -133,7 +137,7 @@ const shareTo = (platform: string) => {
           </div>
 
           <div class="space-y-4 lg:space-y-6">
-            <InteractiveHoverButton @click="goToDetail" :text="'Selengkapnya'" class="hidden md:block"></InteractiveHoverButton>
+            <InteractiveHoverButton @click="goToDetail" :text="t('global.all')" class="hidden md:block"></InteractiveHoverButton>
             <div class="space-y-4 lg:space-y-4">
               <p class="text-[12px] lg:text-[14px] hidden md:block">{{ formatDate(firstBerita?.publish) }} • 4 Menit Baca</p>
               <p class="text-base font-bold">Bagikan artikel ini</p>

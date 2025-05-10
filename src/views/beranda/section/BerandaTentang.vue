@@ -7,6 +7,10 @@ import type { Faculty } from '@/core/types/fakultas';
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import { computed } from 'vue';
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
 const getImageUrl = (imagePath: string | null) => {
@@ -21,7 +25,7 @@ const props = defineProps<{
 
 const titleHTML = computed(() => {
   if (!props.fakultas?.name) return 'Tentang';
-  return `Tentang <span class="text-colorPrimary">${props.fakultas?.name}</span>`;
+  return `${t('beranda.about_title')} <span class="text-colorPrimary">${props.fakultas?.name}</span>`;
 });
 </script>
 

@@ -9,6 +9,10 @@ import NumberTicker from '@/components/ui/number-ticker/NumberTicker.vue';
 import type { Organization } from '@/core/types/organisasi';
 import { computed } from 'vue';
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const props = defineProps<{
   organisasi: Organization[]
 }>();
@@ -52,7 +56,7 @@ const komunitasCount = computed(() => {
           <TextSection class="text-black/40">Dari organisasi kemahasiswaan, acara seni dan budaya, hingga kegiatan
             sosial—kampus kami penuh dengan peluang untuk berkembang di luar kelas.</TextSection>
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            <InteractiveHoverButton :text="t('global.register_now')" />
           </a>
         </div>
         <div class="relative -bottom-28"><img :src="Piala" alt=""></div>
@@ -82,7 +86,7 @@ const komunitasCount = computed(() => {
         </div>
       </div>
       <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-        <InteractiveHoverButton :text="'Daftar Sekarang'" class="mt-4 md:hidden"></InteractiveHoverButton>
+        <InteractiveHoverButton :text="t('global.register_now')" class="mt-4 md:hidden"></InteractiveHoverButton>
       </a>
     </div>
   </div>

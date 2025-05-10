@@ -6,6 +6,9 @@ import type { Post } from '@/core/types/post';
 import router from '@/router';
 import type { Departement } from '@/core/types/departement';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   berita: Post[];
@@ -41,7 +44,7 @@ const titleHTML = `Berita Seputar <span class="text-colorPrimary font-bold">Prog
           />
         </div>
         <div class="w-fit">
-          <InteractiveHoverButton @click="goToBerita" :text="'Selengkapnya'"></InteractiveHoverButton>
+          <InteractiveHoverButton @click="goToBerita" :text="t('global.all')"></InteractiveHoverButton>
         </div>
       </div>
     </div>

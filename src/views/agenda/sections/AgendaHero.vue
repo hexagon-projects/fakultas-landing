@@ -7,6 +7,9 @@ import { useSanitize } from '@/composables/useSanitize';
 import type { Agenda } from '@/core/types/agenda';
 import SectionLayout from '@/layouts/SectionLayout.vue'
 import router from '@/router';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const { sanitizeHtml } = useSanitize()
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
@@ -100,7 +103,7 @@ defineProps<{
 
           <div class="w-fit">
             <a :href="agenda[0]?.register_link" class="your-button-styles">
-              <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
+              <InteractiveHoverButton :text="t(`global.register_now`)"></InteractiveHoverButton>
             </a>
           </div>
         </div>

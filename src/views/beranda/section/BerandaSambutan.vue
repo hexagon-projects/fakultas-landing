@@ -7,6 +7,9 @@ import type { Faculty } from '@/core/types/fakultas';
 import type { Team } from '@/core/types/team';
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -45,7 +48,7 @@ const titleHTML = computed(() => {
         </div>
         <div class="flex gap-5 mt-10">
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            <InteractiveHoverButton :text="t('global.register_now')" />
           </a>
           <InteractiveHoverButton @click="$router.push('/tentang-fakultas')" text="Selengkapnya" bg-color="bg-none"
             border-color="border-colorPrimary" text-color="text-colorPrimary" bg-hover="bg-colorPrimary"

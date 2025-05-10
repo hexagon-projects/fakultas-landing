@@ -3,6 +3,9 @@ import ContactAdminButton from '@/components/ContactAdminButton.vue';
 import TextSection from '@/components/TextSection.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import type { Departement } from '@/core/types/departement';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -44,12 +47,10 @@ defineProps<{
             </TextSection>
             <div class="w-full flex gap-4 md:gap-5 lg:gap-6 justify-center items-center md:justify-end md:items-end">
               <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-                <InteractiveHoverButton :text="'Daftar Sekarang'" />
+                <InteractiveHoverButton :text="t('global.register_now')" />
               </a>
               <ContactAdminButton :bg-color="'bg-transparent'" :bg-hover="'bg-white'" :border-color="'border-white'"
-              :text="'Hubungi Admin'" :text-color="'text-white'" :text-hover="'group-hover:text-colorPrimary'"/>
-              <!-- <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-white'" :border-color="'border-white'"
-                :text="'Hubungi Admin'" :text-color="'text-white'" :text-hover="'group-hover:text-colorPrimary'" /> -->
+               :text-color="'text-white'" :text-hover="'group-hover:text-colorPrimary'"/>
             </div>
           </div>
         </div>

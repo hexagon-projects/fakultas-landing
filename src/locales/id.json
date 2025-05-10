@@ -1,0 +1,15 @@
+{
+  "global": {
+    "register_now": "Daftar Sekarang",
+    "contact_admin": "Hubungi Admin",
+    "all": "Selengkapnya"
+  },
+  "beranda": {
+    "welcome": "Selamat Datang",
+    "accreditation_message": "Fakultas kami telah meraih Akreditasi A BAN-PT, mencerminkan standar pendidikan tinggi dan kualitas pengajaran terbaik.",
+    "about_title": "Tentang"
+  },
+  "agenda": {
+    "welcome": "Agenda"
+  }
+}

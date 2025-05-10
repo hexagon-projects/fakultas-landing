@@ -3,6 +3,9 @@ import ContactAdminButton from '@/components/ContactAdminButton.vue';
 import TextSection from '@/components/TextSection.vue';
 import TitleMain from '@/components/TitleMain.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 defineProps<{
   isLoading?: boolean;
@@ -49,7 +52,7 @@ const backgroundImageUrl = 'https://images.unsplash.com/photo-1635424239131-32dc
 
           <div class="flex flex-wrap justify-center gap-4 md:gap-6 lg:-mt-10">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+              <InteractiveHoverButton :text="t('global.register_now')" />
             </a>
             <ContactAdminButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'"
             :text="'Hubungi Kami'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'"/>

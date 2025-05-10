@@ -12,6 +12,9 @@ import 'swiper/css/autoplay';
 import type { Organization } from '@/core/types/organisasi';
 import KegiatanCard from '@/views/prodiDetail/components/KegiatanCard.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -103,7 +106,7 @@ const setFilter = async (filter: string) => {
         </SwiperSlide>
       </Swiper>
       <div class="flex justify-center items-center">
-        <InteractiveHoverButton @click="$router.push('/kegiatan')" :text="'Selengkapnya'"></InteractiveHoverButton>
+        <InteractiveHoverButton @click="$router.push('/kegiatan')" :text="t('global.all')"></InteractiveHoverButton>
       </div>
     </div>
   </SectionLayout>

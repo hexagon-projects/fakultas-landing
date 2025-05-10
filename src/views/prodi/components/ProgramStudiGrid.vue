@@ -5,6 +5,9 @@ import Star from '@/assets/icons/star.png'
 import Gedung from '@/assets/gedung.jpg'
 import router from '@/router';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 defineProps<{
   prodiDatas?: Departement[];
@@ -61,7 +64,7 @@ const navigateToDetail = (slug: string) => {
           </a>
           <InteractiveHoverButton @click="navigateToDetail(item.slug)" :padding="'py-2 px-4 lg:py-3 lg:px-6'"
             :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'"
-            :text="'Selengkapnya'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'" />
+            :text="t('global.all')" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'" />
         </div>
       </div>
     </div>

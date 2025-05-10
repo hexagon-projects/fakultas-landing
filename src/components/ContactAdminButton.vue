@@ -4,6 +4,10 @@ import { useAnalyticStore } from '@/stores/analytic';
 import { useIdentityStore } from '@/stores/identity';
 import { onMounted } from 'vue';
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const identityStore = useIdentityStore();
 const analyticStore = useAnalyticStore();
 
@@ -67,7 +71,7 @@ const contactAdmin = () => {
     :text-hover="textHover"
     :border-color="borderColor"
     :border-hover="borderHover"
-    :text="buttonText"
+    :text="t('global.contact_admin')"
     @click="contactAdmin"
   />
 </template>

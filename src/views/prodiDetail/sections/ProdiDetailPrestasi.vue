@@ -5,6 +5,9 @@ import TitleSection from '@/components/TitleSection.vue';
 import TextSection from '@/components/TextSection.vue';
 import type { Prestasi } from '@/core/types/Prestasi';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -30,7 +33,7 @@ defineProps<{
                 <TextSection>Mahasiswa Universitas Pasundan terus mengukir prestasi
                   membanggakan di berbagai bidang baik di tingkat nasional maupun internasional.</TextSection>
                 <div class="pt-0 md:pt-6 lg:pt-8">
-                  <InteractiveHoverButton @click="$router.push('/prestasi')" :text="'Selengkapnya'"></InteractiveHoverButton>
+                  <InteractiveHoverButton @click="$router.push('/prestasi')" :text="t('global.all')"></InteractiveHoverButton>
                 </div>
               </div>
             </div>

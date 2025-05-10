@@ -5,6 +5,9 @@ import InteractiveHoverButton from '@/components/ui/interactive-hover-button/Int
 import SectionLayout from '@/layouts/SectionLayout.vue';
 import Calendar from '@/assets/icons/calendar.png'
 import type { Faculty } from '@/core/types/fakultas';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -28,7 +31,7 @@ defineProps<{
           <TextSection class="text-gray-500 mt-7" ><span v-html="fakultas?.description2"></span></TextSection>
           <div class="flex gap-5 lg:mt-10 mt-5">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+              <InteractiveHoverButton :text="t('global.register_now')" />
             </a>
             <InteractiveHoverButton @click="$router.push('/tentang-fakultas')" text="Selengkapnya" bg-color="bg-transparent" textColor="text-colorPrimary"
               borderColor="border-colorPrimary" bgHover="bg-colorPrimary" textHover="text-white" />

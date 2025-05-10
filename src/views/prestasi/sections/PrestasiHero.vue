@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import TitleMain from '@/components/TitleMain.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
-import SectionLayout from '@/layouts/SectionLayout.vue';
 import Bg from '@/assets/prestasi.png'
 import BgMobile from '@/assets/prestasi2.png'
 import TextSection from '@/components/TextSection.vue';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -21,7 +23,7 @@ import TextSection from '@/components/TextSection.vue';
           </TextSection>
           <div class="flex gap-10 mt-10 justify-center">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-              <InteractiveHoverButton :text="'Daftar Sekarang'" />
+              <InteractiveHoverButton :text="t('global.register_now')" />
             </a>
           </div>
         </div>
@@ -41,7 +43,7 @@ import TextSection from '@/components/TextSection.vue';
         </TextSection>
         <div class="flex gap-10 mt-10 justify-center">
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+            <InteractiveHoverButton :text="t('global.register_now')" />
           </a>
         </div>
       </div>

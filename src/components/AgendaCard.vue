@@ -52,7 +52,7 @@ onMounted(() => {
             v-html="sanitizeHtml(deskripsi || 'Deskripsi Acara')"></span></TextBody>
       </div>
       <div class="w-fit md:w-1/2 lg:w-1/3 xl:w-1/4">
-        <InteractiveHoverButton @click="navigateToDetail(slug || '')" class="w-fit md:w-full" :padding="'py-3 px-6 lg:py-4 lg:px-6'" :text="'Selengkapnya'"></InteractiveHoverButton>
+        <InteractiveHoverButton @click="navigateToDetail(slug || '')" class="w-fit md:w-full" :padding="'py-3 px-6 lg:py-4 lg:px-6'" :text="t('global.all')"></InteractiveHoverButton>
       </div>
     </div>
   </div>

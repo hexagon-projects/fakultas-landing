@@ -8,6 +8,10 @@ import type { Post } from '@/core/types/post';
 import { useRouter } from 'vue-router';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const { sanitizeHtml } = useSanitize()
 const { formatDate } = useDateFormat()
 const router = useRouter()
@@ -103,7 +107,7 @@ defineProps<{
                   </p>
                 </div>
               </div>
-              <InteractiveHoverButton @click="handleAgendaClick(agendas?.[0])" class="w-fit" :text="'Selengkapnya'"></InteractiveHoverButton>
+              <InteractiveHoverButton @click="handleAgendaClick(agendas?.[0])" class="w-fit" :text="t('global.all')"></InteractiveHoverButton>
             </div>
           </div>
 

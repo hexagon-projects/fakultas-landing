@@ -3,6 +3,10 @@ import ctaBackground from '@/assets/ctaBackground.png'
 import ctaOrang from '@/assets/ctaOrang.png'
 import InteractiveHoverButton from '../ui/interactive-hover-button/InteractiveHoverButton.vue';
 import ContactAdminButton from '../ContactAdminButton.vue';
+
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -22,7 +26,7 @@ import ContactAdminButton from '../ContactAdminButton.vue';
 
           <div class="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-0">
             <a href="https://registrasi.unpas.ac.id/login" target="_blank">
-              <InteractiveHoverButton :bg-color="'bg-white'" :text-color="'text-colorPrimary'" :bg-hover="'bg-colorPrimary'" :text-hover="'text-white'" :border-hover="'border-white'" :text="'Daftar Sekarang'"></InteractiveHoverButton>
+              <InteractiveHoverButton :bg-color="'bg-white'" :text-color="'text-colorPrimary'" :bg-hover="'bg-colorPrimary'" :text-hover="'text-white'" :border-hover="'border-white'" :text="t('global.register_now')"></InteractiveHoverButton>
             </a>
             <ContactAdminButton />
           </div>
