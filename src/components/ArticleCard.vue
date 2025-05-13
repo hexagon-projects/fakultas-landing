@@ -49,11 +49,11 @@ const navigateToDetail = () => {
     </div>
 
     <div class="w-[60%] md:w-full space-y-4 lg:space-y-4">
-      <div class="w-fit py-2 px-5 bg-[#F5F2FF] rounded-[8px] md:rounded-[16px] lg:rounded-[24px]">
-        <p class="text-colorPrimary text-sm font-bold">{{ kategori || 'Berita' }}</p>
+      <div class="w-fit py-1 lg:py-2 px-2 lg:px-5 bg-[#F5F2FF] rounded-[8px] md:rounded-[16px] lg:rounded-[24px]">
+        <p class="text-colorPrimary text-[8px] lg:text-sm font-bold">{{ kategori || 'Berita' }}</p>
       </div>
       <div>
-        <p class="text-sm md:text-base lg:text-lg font-bold">{{ judul }}</p>
+        <p class="text-sm md:text-base lg:text-lg font-bold line-clamp-3">{{ judul }}</p>
       </div>
       <p class="text-xs md:text-sm lg:text-base">{{ formatTanggal }} | {{ waktuBaca || '4 menit baca' }}</p>
     </div>
