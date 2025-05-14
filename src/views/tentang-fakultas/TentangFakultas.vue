@@ -55,7 +55,7 @@ onMounted(async () => {
           <img :src="getImageUrl(fakultasStore.fakultas?.image3 || SejarahImg)" alt="" class="w-full h-full lg:sticky lg:top-28 z-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         </div>
         <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
-          <Timeline :items="historyTimeline" />
+          <Timeline v-if="tentangStore.timelineData.length > 0" :items="historyTimeline" />
         </div>
       </div>
     </SectionLayout>

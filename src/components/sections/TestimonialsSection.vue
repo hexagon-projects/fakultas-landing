@@ -84,7 +84,7 @@ const primaryColorWithOpacity = computed(() => {
   </SectionLayout>
 
   <div class="w-full mb-12 md:mb-16 lg:mb-20">
-    <swiper :modules="[Autoplay, Pagination]" :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
+    <swiper v-if="testimoni.length > 0" :modules="[Autoplay, Pagination]" :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
       :space-between="swiperOptions.spaceBetween" :centered-slides="swiperOptions.centeredSlides"
       :breakpoints="swiperOptions.breakpoints" @swiper="handleSwiper" @slide-change="handleSlideChange"
       class="testimonial-swiper">

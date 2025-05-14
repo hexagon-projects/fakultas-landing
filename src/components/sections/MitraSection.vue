@@ -50,7 +50,7 @@ const partnerGroups = computed(() => {
       </div>
     </div>
     <div class="lg:mb-10 px-4">
-      <swiper
+      <swiper v-if="partners.length > 0"
         :modules="modules"
         :slides-per-view="1"
         :space-between="30"
