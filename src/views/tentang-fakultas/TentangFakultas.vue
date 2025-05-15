@@ -55,14 +55,14 @@ onMounted(async () => {
           <img :src="getImageUrl(fakultasStore.fakultas?.image3 || SejarahImg)" alt="" class="w-full h-full lg:sticky lg:top-28 z-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         </div>
         <div class="lg:w-1/2 w-full mt-10 md:mt-20 lg:mt-0">
-          <Timeline :items="historyTimeline" />
+          <Timeline v-if="tentangStore.timelineData.length > 0" :items="historyTimeline" />
         </div>
       </div>
     </SectionLayout>
 
     <TentangSejarah :fakultas="fakultasStore.fakultas" />
     <TentangVisiMisi :fakultas="fakultasStore.fakultas" />
-    <TentangStatistik :fakultas="fakultasStore.fakultas" />
+    <TentangStatistik v-if="fakultasStore?.fakultas" :fakultas="fakultasStore.fakultas" />
     <MitraSection :partners="partnerStore.partners" />
     <SectionLayout>
       <div class="grid gap-2 lg:gap-5">
@@ -72,7 +72,7 @@ onMounted(async () => {
         </TitleSection>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 mt-12 md:mt-16 lg:mt-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 md:gap-5 lg:gap-6 mt-12 md:mt-16 lg:mt-20">
         <DosenCard v-for="dosen in teamStore.teams.slice(0,12)" :key="dosen.id" :name="dosen.name" :title="dosen.title"
           :image="getImageUrl(dosen.image)" :facebook="dosen.fb" :instagram="dosen.ig" :youtube="dosen.yt"
           :tiktok="dosen.tiktok" />

@@ -43,9 +43,9 @@ const testimoni = computed(() => testimoniStore.testimoni);
 <template>
   <MainLayout>
     <ProdiHero />
-    <ImageSection :fakultas="fakultas" :is-loading="isLoading" />
-    <ProdiAlasan :unggulan="usp" :fakultas="fakultas" :is-loading="isLoading" />
-    <ProdiProgramList :prodiData="prodi" :fakultas="fakultas" :is-loading="isLoading" />
+    <ImageSection v-if="fakultasStore.fakultas" :fakultas="fakultas" :is-loading="isLoading" />
+    <ProdiAlasan v-if="fakultasStore.fakultas" :unggulan="usp" :fakultas="fakultas" :is-loading="isLoading" />
+    <ProdiProgramList v-if="prodi" :prodiData="prodi" :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiTestimonials :fakultas="fakultas" :testimoni="testimoni" :is-loading="isLoading" />
     <CTASection />
   </MainLayout>

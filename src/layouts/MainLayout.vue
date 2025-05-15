@@ -22,7 +22,7 @@ onMounted(async () => {
         <slot></slot>
       </div>
     </Transition>
-    <GoogleTranslate />
+    <!-- <GoogleTranslate /> -->
     <Footer />
   </div>
 </template>

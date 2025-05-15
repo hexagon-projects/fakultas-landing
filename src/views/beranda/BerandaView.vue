@@ -19,11 +19,15 @@ import BerandaFasilitas from './section/BerandaFasilitas.vue'
 import HomeSlider from '@/components/HomeSlider.vue'
 import ProdiDetailPrestasi from '../prodiDetail/sections/ProdiDetailPrestasi.vue'
 import CTASection from '@/components/sections/CTASection.vue'
+import { useTeamStore } from '@/stores/team'
+import { usePrestasiStore } from '@/stores/prestasi'
 
 const partnerStore = usePartnerStore();
 const sliderStore = useSliderStore();
 const fakultasStore = useFakultasStore();
 const testimoniStore = useTestimoniStore();
+const teamStore = useTeamStore();
+const prestasiStore = usePrestasiStore();
 
 const isLoading = ref(true);
 
@@ -34,7 +38,9 @@ onMounted(async () => {
       partnerStore.fetchPartnersHome(),
       sliderStore.fetchSlider(),
       fakultasStore.fetchFakultas(),
-      testimoniStore.fetchTestimoni()
+      testimoniStore.fetchTestimoniHome(),
+      teamStore.fetchTeam(),
+      prestasiStore.fetchPrestasis()
     ]);
   } finally {
     isLoading.value = false;
@@ -44,18 +50,18 @@ onMounted(async () => {
 
 <template>
   <MainLayout>
-    <HomeSlider :sliders="sliderStore.sliders" :is-loading="isLoading" />
-    <BerandaSambutan :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
-    <BerandaTentang :fakultas="fakultasStore.fakultas" />
-    <ProdiAlasan :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
+    <HomeSlider v-if="sliderStore.sliders" :sliders="sliderStore.sliders" :prestasi="prestasiStore.prestasis" :dosen="teamStore.teams" :is-loading="isLoading" />
+    <BerandaSambutan v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
+    <BerandaTentang v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" />
+    <ProdiAlasan v-if="fakultasStore.fakultas" :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
     <BerandaInovasi />
-    <MitraSection :partners="partnerStore.partners" />
-    <ProdiDetailPrestasi :prestasi="berandaStore.prestasiData" />
-    <ProdiDetailKegiatan :organisasi="berandaStore.organisasiData" />
-    <BerandaAgenda :agenda="berandaStore.agendaData" />
-    <BerandaFasilitas :fasilitas="berandaStore.fasilitasData" />
-    <TestimonialsSection :testimoni="testimoniStore.testimoni" />
-    <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0,3)" />
+    <MitraSection v-if="partnerStore.partners" :partners="partnerStore.partners" />
+    <ProdiDetailPrestasi v-if="berandaStore.prestasiData" :prestasi="berandaStore.prestasiData" />
+    <ProdiDetailKegiatan v-if="berandaStore.organisasiData" :organisasi="berandaStore.organisasiData" />
+    <BerandaAgenda v-if="berandaStore.agendaData" :agenda="berandaStore.agendaData" />
+    <BerandaFasilitas v-if="berandaStore.fasilitasData" :fasilitas="berandaStore.fasilitasData" />
+    <TestimonialsSection v-if="testimoniStore.testimoni" :testimoni="testimoniStore.testimoni" />
+    <BerandaBerita v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0,3)" />
     <CTASection />
   </MainLayout>
 </template>

@@ -4,6 +4,8 @@ import type { Slider } from '@/core/types/slider';
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import ContactAdminButton from './ContactAdminButton.vue';
 import TextSection from './TextSection.vue';
+import type { Prestasi } from '@/core/types/Prestasi';
+import type { Team } from '@/core/types/team';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -14,6 +16,8 @@ const getImageUrl = (imagePath: string | null) => {
 
 const props = defineProps<{
   sliders: Slider[];
+  prestasi: Prestasi [];
+  dosen: Team[];
   isLoading?: boolean;
 }>();
 
@@ -65,46 +69,45 @@ onUnmounted(() => {
           'opacity': currentSlide === index ? 1 : 0,
           'z-index': currentSlide === index ? 1 : 0
         }">
-        <div class="w-full h-full z-10 img-container">
-          <img :src="getImageUrl(slider.image1)" alt="" class="w-full h-full object-cover object-top img-box">
-          <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
-            xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-              <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                  result="goo" />
-                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-              </filter>
-            </defs>
-          </svg>
-          <div class="absolute inset-0 bg-black/50 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] z-1 img-box">
+        <div class="w-full h-full z-10">
+          <img :src="getImageUrl(slider.image1)" alt=""
+            class="w-full h-full object-cover object-top rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px]">
           </div>
-        </div>
+          <div class="absolute inset-0 bg-black/40"></div>
 
         <!-- Tablet & Dekstop -->
         <div
-          class="absolute top-1/2 left-1/2 transform -translate-y-1/2 md:left-[4%] space-y-6 md:space-y-8 lg:space-y-10 z-2 hidden md:block">
-          <div class="space-y-4 md:space-y-6 lg:max-w-[60%]">
+          class="w-1/2 absolute top-[20%] left-1/2 transform -translate-x-1/2 space-y-6 md:space-y-8 lg:space-y-10 z-2 hidden md:block">
+          <div class="space-y-4 md:space-y-6">
             <h1
-              class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-left transition-all duration-1000 transform"
-              :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+              class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-center transition-all duration-1000 transform"
+              :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0'">
               {{ slider.title }}
             </h1>
-            <div class="transition-all duration-1000 transform"
-              :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
-              <TextSection><span class="text-white" v-html="slider.description"></span></TextSection>
-            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute bottom-8 left-8 space-y-4 md:space-y-5 lg:space-y-6 transition-all duration-1000 transform delay-200 hidden md:block"
+          :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
+          <div class="text-white">
+            <h6 class="text-[16px] md:text-[24px] lg:text-[32px]">{{ prestasi.length }}+</h6>
+            <TextSection>Prestasi</TextSection>
           </div>
 
-          <div class="w-full space-x-4 lg:space-x-6 transition-all duration-1000 transform delay-200"
-            :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
-            <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-              <InteractiveHoverButton :text="'Daftar Sekarang'" />
-            </a>
-            <ContactAdminButton bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-white'"
-              :text-color="'text-white'" :text-hover="'group-hover:text-white'" />
+          <div class="text-white">
+            <h6 class="text-[16px] md:text-[24px] lg:text-[32px]">{{ dosen.length }}+</h6>
+            <TextSection>Dosen Berpengalaman</TextSection>
           </div>
+        </div>
+
+        <div class="absolute bottom-8 right-8 space-x-4 lg:space-x-6 transition-all duration-1000 transform delay-200 hidden md:block"
+          :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+          <a href="https://registrasi.unpas.ac.id/register" target="_blank">
+            <InteractiveHoverButton :text="'Daftar Sekarang'" />
+          </a>
+          <ContactAdminButton bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-white'"
+            :text-color="'text-white'" :text-hover="'group-hover:text-white'" />
         </div>
 
         <!-- Mobile -->
@@ -138,76 +141,7 @@ onUnmounted(() => {
         </button>
       </div>
     </div>
-
-    <div class="relative">
-      <div class="absolute bottom-0 right-0 bg-white rounded-xl p-6 shadow-lg max-w-sm hidden lg:block z-10">
-        <div class="flex text-amber-400 mb-2 gap-2">
-          <svg v-for="star in 5" :key="star" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-            fill="currentColor">
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        </div>
-
-        <TextSection>Fakultas kami telah meraih Akreditasi A BAN-PT, mencerminkan standar pendidikan tinggi dan
-          kualitas pengajaran terbaik.</TextSection>
-      </div>
-    </div>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .img-box {
-    clip-path: polygon(58% 100%, 58% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1124px) {
-  .img-box {
-    clip-path: polygon(62% 100%, 62% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1224px) {
-  .img-box {
-    clip-path: polygon(65% 100%, 65% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1324px) {
-  .img-box {
-    clip-path: polygon(68% 100%, 68% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1400px) {
-  .img-box {
-    clip-path: polygon(70% 100%, 70% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1500px) {
-  .img-box {
-    clip-path: polygon(72% 100%, 72% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1600px) {
-  .img-box {
-    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 1700px) {
-  .img-box {
-    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
-  }
-}
-
-@media (min-width: 768px) {
-  .img-container {
-    filter: url("#goo") drop-shadow(0px -2px 0px transparent)
-  }
-}
-</style>
+<style></style>
