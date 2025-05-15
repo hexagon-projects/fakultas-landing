@@ -100,7 +100,7 @@ watch(() => departementStore.currentDepartement, updateTitle);
       <HeroSection :prodi-detail="departementStore.currentDepartement" :is-loading="false" />
       <AboutSection :prodi-detail="departementStore.currentDepartement" :is-loading="false" />
       <ProdiDetailPoster :slider="sliderStore.currentSlider" :is-loading="false" />
-      <StatistikSection :prodi-data="departementStore.currentDepartement" :is-loading="false" />
+      <StatistikSection :prodi="departementStore.currentDepartement" :is-loading="false" />
       <ProdiDetailProspek
         :prodi-detail="departementStore.currentDepartement"
         :prospek="prospekStore.currentProspek"

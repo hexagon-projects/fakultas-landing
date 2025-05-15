@@ -38,7 +38,7 @@ const filteredAgenda = computed(() => {
     <div class="text-center lg:w-1/2 w-full mx-auto">
       <TitleSection text="Agenda" class="text-center"></TitleSection>
       <TextSection class="text-gray-500 mt-5">Dapatkan informasi lebih lanjut tentang acara kami.</TextSection>
-      <div class="flex gap-5 justify-center flex-wrap mt-5">
+      <div id="prestasi-scroll" class="flex gap-2 justify-start md:justify-center whitespace-nowrap mt-5 overflow-x-scroll">
         <Button
           v-for="category in categories"
           :key="category"

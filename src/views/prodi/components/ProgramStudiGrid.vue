@@ -26,42 +26,32 @@ const navigateToDetail = (slug: string) => {
 
 <template>
   <div class="w-full">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div v-for="item in prodiDatas" :key="item.id" class="rounded-lg md:rounded-2xl lg:rounded-4xl space-y-4">
         <div class="w-full h-[22vh] md:h-[20vh] lg:h-[278px] relative cursor-pointer"
           @click="navigateToDetail(item.slug)">
           <div
-            class="w-full h-full img-container group overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
+            class="w-full h-full group overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative">
             <img :src="getImageUrl(item.image1)" alt=""
-              class="w-full h-full object-cover img-box group-hover:scale-105 transition duration-500">
-
-            <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
-              xmlns="http://www.w3.org/2000/svg" version="1.1">
-              <defs>
-                <filter id="goo">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                    result="goo" />
-                  <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                </filter>
-              </defs>
-            </svg>
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           </div>
 
           <div
-            class="absolute bottom-0 right-0 flex justify-center items-center gap-2 p-4 rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
+            class="absolute top-4 left-4 flex justify-center items-center gap-2 p-4 rounded-full bg-white">
             <div class="w-6 h-6"><img :src="Star" alt="" class="w-full h-full object-cover"></div>
             <TextBody>{{ item.akreditasi || 'akreditasi' }}</TextBody>
           </div>
         </div>
         <h2 class="text-base md:text-lg lg:text-xl font-medium">{{ item.name }}</h2>
-        <div class="space-x-3">
-          <a href="https://registrasi.unpas.ac.id/register" target="_blank">
-            <InteractiveHoverButton :padding="'py-2 px-4 lg:py-3 lg:px-6'" :text="'Daftar'"></InteractiveHoverButton>
+        <div class="w-full flex justify-between items-center gap-4 md:gap-6 lg:gap-8">
+          <a href="https://registrasi.unpas.ac.id/register" target="_blank" class="w-full">
+            <InteractiveHoverButton class="w-full" :padding="'py-2 lg:py-3'" :text="'Daftar'"></InteractiveHoverButton>
           </a>
-          <InteractiveHoverButton @click="navigateToDetail(item.slug)" :padding="'py-2 px-4 lg:py-3 lg:px-6'"
-            :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'"
-            :text="'Selengkapnya'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'" />
+          <div class="w-full">
+            <InteractiveHoverButton class="w-full" :padding="'py-2 lg:py-3'" @click="navigateToDetail(item.slug)"
+              :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-colorPrimary'"
+              :text="'Selengkapnya'" :text-color="'text-colorPrimary'" :text-hover="'group-hover:text-white'" />
+          </div>
         </div>
       </div>
     </div>

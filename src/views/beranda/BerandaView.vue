@@ -11,11 +11,12 @@ import { useSliderStore } from '@/stores/slider'
 import { useFakultasStore } from '@/stores/fakultas'
 import { useTestimoniStore } from '@/stores/testimoni'
 import BerandaTentang from './section/BerandaTentang.vue'
-import ProdiAlasan from '../prodi/sections/ProdiAlasan.vue'
+// import ProdiAlasan from '../prodi/sections/ProdiAlasan.vue'
 import BerandaInovasi from './section/BerandaInovasi.vue'
 import BerandaAgenda from './section/BerandaAgenda.vue'
 import BerandaBerita from './section/BerandaBerita.vue'
 import BerandaFasilitas from './section/BerandaFasilitas.vue'
+import BerandaAlasan from './section/BerandaAlasan.vue'
 import HomeSlider from '@/components/HomeSlider.vue'
 import ProdiDetailPrestasi from '../prodiDetail/sections/ProdiDetailPrestasi.vue'
 import CTASection from '@/components/sections/CTASection.vue'
@@ -47,7 +48,7 @@ onMounted(async () => {
     <HomeSlider :sliders="sliderStore.sliders" :is-loading="isLoading" />
     <BerandaSambutan :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
     <BerandaTentang :fakultas="fakultasStore.fakultas" />
-    <ProdiAlasan :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
+    <BerandaAlasan :usp="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
     <BerandaInovasi />
     <MitraSection :partners="partnerStore.partners" />
     <ProdiDetailPrestasi :prestasi="berandaStore.prestasiData" />

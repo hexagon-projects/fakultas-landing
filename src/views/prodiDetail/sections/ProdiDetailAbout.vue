@@ -22,7 +22,7 @@ defineProps<{
 
 <template>
   <SectionLayout>
-    <div class="flex flex-col-reverse lg:flex-row-reverse gap-6 lg:gap-20 lg:justify-center lg:items-center">
+    <div class="flex flex-col-reverse lg:flex-row gap-6 lg:gap-20 lg:justify-center lg:items-center">
       <!-- Video Section -->
       <div class="w-full lg:w-[40%]">
         <template v-if="isLoading">

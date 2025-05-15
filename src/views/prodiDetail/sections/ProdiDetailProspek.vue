@@ -12,31 +12,25 @@ const props = defineProps<{
 }>();
 
 const titleHTML = `Prospek Karir Program Studi <span class="text-colorPrimary font-bold">${props?.prodiDetail?.name}</span>`;
-
-const halfLength = Math.ceil(props?.prospek?.length / 2);
-const leftCards = props?.prospek?.slice(0, halfLength);
-const rightCards = props?.prospek?.slice(halfLength);
 </script>
 
 <template>
   <SectionLayout>
     <div class="w-full h-full flex flex-col justify-center items-center gap-2 lg:gap-4 text-center">
-      <p class="text-base font-medium">Peluang dan Jalur Professional</p>
+      <div class="py-2 px-4 rounded-full border border-colorPrimary">
+        <p class="text-[10px] md:text-[12px] lg: font-medium text-colorPrimary">Peluang dan Jalur Professional</p>
+      </div>
       <TitleSection :text="titleHTML" :html="true" :delay="60" class="lg:max-w-[680px]" />
     </div>
 
     <div
-      class="w-full h-full lg:h-[80vh] md:flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 lg:gap-6 hidden">
-      <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
-        <ProspekCard v-for="(card, index) in leftCards" :key="'left-' + index" :align-text="'text-right'"
-          :title="card.title" :description="card.description" :icon="card.icon" />
-      </div>
-      <div class="w-full md:w-[40%]">
+      class="w-full md:w-[80%] lg:w-[75%] mx-auto h-full lg:h-[80vh] md:flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 lg:gap-14 hidden">
+      <div class="w-full md:w-[45%]">
         <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
       </div>
-      <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
-        <ProspekCard v-for="(card, index) in rightCards" :key="'right-' + index" :align-text="'text-left'"
-          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" :icon="card.icon" />
+      <div class="w-full md:w-[55%] grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-10">
+        <ProspekCard v-for="(card, index) in prospek" :key="index" :align-text="'text-left'"
+          :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
     </div>
 
@@ -46,7 +40,7 @@ const rightCards = props?.prospek?.slice(halfLength);
       </div>
       <div class="w-full space-y-4">
         <ProspekCard v-for="(card, index) in prospek" :key="'right-' + index" :align-text="'text-left'"
-          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" :icon="card.icon" />
+          :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
     </div>
   </SectionLayout>
