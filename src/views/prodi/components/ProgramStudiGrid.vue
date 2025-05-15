@@ -26,7 +26,7 @@ const navigateToDetail = (slug: string) => {
 
 <template>
   <div class="w-full">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6">
       <div v-for="item in prodiDatas" :key="item.id" class="rounded-lg md:rounded-2xl lg:rounded-4xl space-y-4">
         <div class="w-full h-[22vh] md:h-[20vh] lg:h-[278px] relative cursor-pointer"
           @click="navigateToDetail(item.slug)">

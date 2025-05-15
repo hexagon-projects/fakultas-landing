@@ -66,7 +66,7 @@ onUnmounted(() => {
           'z-index': currentSlide === index ? 1 : 0
         }">
         <div class="w-full h-full z-10 img-container">
-          <img :src="getImageUrl(slider.image1)" alt="" class="w-full h-full object-cover object-top img-box">
+          <img :src="getImageUrl(slider.image1)" alt="" class="w-full h-full object-cover object-top img-box rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px]">
           <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
             xmlns="http://www.w3.org/2000/svg" version="1.1">
             <defs>

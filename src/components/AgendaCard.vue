@@ -45,10 +45,10 @@ onMounted(() => {
       class="w-full flex flex-col md:flex-row md:justify-between md:items-center md:gap-4 lg:gap-5 md:w-full space-y-4 lg:space-y-4 p-0 md:p-3 lg:p-6">
       <div class="w-full space-y-4 lg:space-y-4">
         <div class="space-y-2">
-          <p class="text-sm md:text-base lg:text-lg font-bold">{{ judul }}</p>
+          <p class="text-sm md:text-base lg:text-lg font-bold line-clamp-2">{{ judul }}</p>
           <p class="text-xs md:text-xs lg:text-base">{{ tanggal }} • {{ lokasi }}</p>
         </div>
-        <TextBody class="line-clamp-2 md:line-clamp-3 lg:line-clamp-4"><span
+        <TextBody class="line-clamp-1"><span
             v-html="sanitizeHtml(deskripsi || 'Deskripsi Acara')"></span></TextBody>
       </div>
       <div class="w-fit md:w-1/2 lg:w-1/3 xl:w-1/4">

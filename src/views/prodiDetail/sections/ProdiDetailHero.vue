@@ -21,12 +21,12 @@ defineProps<{
   <div class="w-full p-0 md:px-[24px] md:py-[24px] lg:px-[32px] lg:py-[32px]">
     <div class="w-full h-[80vh] lg:h-[80vh] relative">
       <template v-if="isLoading">
-        <div class="w-full h-full bg-gray-300 animate-pulse rounded-b-[8px] md:rounded-[16px] lg:rounded-[32px]"></div>
+        <div class="w-full h-full bg-gray-300 animate-pulse rounded-b-[32px] md:rounded-[16px] lg:rounded-[32px]"></div>
       </template>
       <template v-else-if="prodiDetail">
         <img :src="getImageUrl(prodiDetail.image1)" alt=""
-          class="w-full h-full object-cover rounded-b-[8px] md:rounded-[16px] lg:rounded-[32px]">
-        <div class="absolute inset-0 bg-black/50 rounded-b-[8px] md:rounded-[16px] lg:rounded-[32px]"></div>
+          class="w-full h-full object-cover rounded-b-[32px] md:rounded-[16px] lg:rounded-[32px]">
+        <div class="absolute inset-0 bg-black/50 rounded-b-[32px] md:rounded-[16px] lg:rounded-[32px]"></div>
 
         <div
           class="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:bottom-0 md:top-auto md:left-0 md:transform-none md:p-14 p-14 flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">

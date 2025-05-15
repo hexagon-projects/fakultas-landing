@@ -32,7 +32,7 @@ defineProps<{
           <HeroVideoDialog
             :size="'w-full h-full lg:h-[60vh]'"
             :video-src="`https://www.youtube.com/embed/${prodiDetail.yt_id}`"
-            :thumbnail-src="getImageUrl(prodiDetail.image1)"
+            :thumbnail-src="getImageUrl(prodiDetail.image2)"
             thumbnail-alt="Video tentang program studi"
             animation-style="from-center"
           />

@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn('flex flex-col w-full h-96 gap-2', props.class)">
+  <div :class="cn('flex flex-col w-full h-[500px] gap-2', props.class)">
     <h2 v-if="title" class="text-2xl font-bold text-center mb-4">{{ title }}</h2>
     <div
       v-for="(facility) in facilities"

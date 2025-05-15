@@ -45,9 +45,9 @@ onMounted(async () => {
 <template>
   <MainLayout>
     <HomeSlider :sliders="sliderStore.sliders" :is-loading="isLoading" />
-    <BerandaSambutan :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
-    <BerandaTentang :fakultas="fakultasStore.fakultas" />
-    <ProdiAlasan :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
+    <BerandaSambutan v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
+    <BerandaTentang v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" />
+    <ProdiAlasan v-if="fakultasStore.fakultas" :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
     <BerandaInovasi />
     <MitraSection :partners="partnerStore.partners" />
     <ProdiDetailPrestasi :prestasi="berandaStore.prestasiData" />
@@ -55,7 +55,7 @@ onMounted(async () => {
     <BerandaAgenda :agenda="berandaStore.agendaData" />
     <BerandaFasilitas :fasilitas="berandaStore.fasilitasData" />
     <TestimonialsSection :testimoni="testimoniStore.testimoni" />
-    <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0,3)" />
+    <BerandaBerita v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0,3)" />
     <CTASection />
   </MainLayout>
 </template>
