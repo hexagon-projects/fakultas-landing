@@ -18,7 +18,7 @@ defineProps<{
 
 <template>
   <div
-    class="w-full px-[30px] py-[15px] md:px-[60px] md:py-[30px] lg:px-[120px] lg:py-[120px] space-y-12 md:space-y-16 lg:space-y-20">
+    class="w-full px-[30px] py-[15px] md:px-[60px] md:py-[30px] lg:px-[120px] lg:py-[120px] space-y-12 md:space-y-16 lg:space-y-20 bg-[#EFF0F0]">
     <div class="w-full flex flex-col gap-4 md:gap-5 lg:gap-6 justify-center items-center">
       <TitleSection :text="'Fasilitas Unggulan'"></TitleSection>
       <TextSection>Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.</TextSection>
