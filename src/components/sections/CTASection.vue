@@ -16,7 +16,7 @@ import ContactAdminButton from '../ContactAdminButton.vue';
         <div
           class="order-2 md:order-1 flex flex-col items-center md:items-start gap-3 sm:gap-4 w-full text-center md:text-left">
           <div
-            class="text-[#f3f4f4] font-['Sora'] text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-bold leading-tight sm:leading-snug md:leading-[1.3] max-w-full md:max-w-[90%]">
+            class="text-black font-['Sora'] text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-bold leading-tight sm:leading-snug md:leading-[1.3] max-w-full md:max-w-[90%]">
             Wujudkan Masa Depan Cemerlangmu Bersama Kami!
           </div>
 
