@@ -2,8 +2,6 @@
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import type { Slider } from '@/core/types/slider';
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
-import ContactAdminButton from './ContactAdminButton.vue';
-import TextSection from './TextSection.vue';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -78,130 +76,159 @@ onUnmounted(() => {
               </filter>
             </defs>
           </svg>
-          <div class="absolute inset-0 bg-black/50 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] z-1 img-box">
-          </div>
         </div>
 
         <!-- Tablet & Dekstop -->
-        <div
-          class="absolute top-1/2 left-1/2 transform -translate-y-1/2 md:left-[4%] space-y-6 md:space-y-8 lg:space-y-10 z-2 hidden md:block">
-          <div class="space-y-4 md:space-y-6 lg:max-w-[60%]">
-            <h1
-              class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-left transition-all duration-1000 transform"
-              :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
-              {{ slider.title }}
-            </h1>
-            <div class="transition-all duration-1000 transform"
-              :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
-              <TextSection><span class="text-white" v-html="slider.description"></span></TextSection>
-            </div>
-          </div>
+        <div class="md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] absolute bottom-0 right-0 md:flex items-center hidden">
+          <h1
+            class="w-full text-[20px] md:text-[26px] lg:text-[32px] font-bold leading-tight text-[#444444] text-left transition-all duration-1000 transform"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
+            {{ slider.title }}
+          </h1>
 
-          <div class="w-full space-x-4 lg:space-x-6 transition-all duration-1000 transform delay-200"
+          <div class="transition-all duration-1000 transform delay-200"
             :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
               <InteractiveHoverButton :text="'Daftar Sekarang'" />
             </a>
-            <ContactAdminButton bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'" :border-color="'border-white'"
-              :text-color="'text-white'" :text-hover="'group-hover:text-white'" />
+          </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 hidden md:block">
+          <div class="scrolldown">
+            <div class="chevrons">
+              <div class="chevrondown"></div>
+              <div class="chevrondown"></div>
+            </div>
           </div>
         </div>
 
         <!-- Mobile -->
         <div class="md:hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <h1
-            class="text-[22px] md:text-[34px] lg:text-[46px] font-bold leading-tight text-white text-center p-4 transition-all duration-1000 transform"
-            :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
+            class="text-[20px] md:text-[26px] lg:text-[32px] font-bold leading-tight text-white text-center p-4 transition-all duration-1000 transform"
+            :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
             {{ slider.title }}
           </h1>
-          <div class="transition-all duration-1000 transform mb-4"
-            :class="(currentSlide === index && !isInitialLoad) ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'">
-            <TextSection><span class="text-center text-white" v-html="slider.description"></span></TextSection>
-          </div>
-
-          <div
-            class="w-full flex justify-center items-center gap-4 lg:gap-6 transition-all duration-1000 transform delay-200"
-            :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
-            <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
-            <InteractiveHoverButton :bg-color="'bg-transparent'" :bg-hover="'bg-colorPrimary'"
-              :border-color="'border-white'" :text="'Hubungi Admin'" :text-color="'text-white'"
-              :text-hover="'group-hover:text-white'" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Dots Indicator -->
-      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10 my-2 lg:my-4">
-        <button v-for="(_, index) in sliders" :key="index" @click="goToSlide(index)"
-          class="w-8 md:w-10 lg:w-[45px] h-1 rounded-full transition-all"
-          :class="currentSlide === index ? 'bg-white w-[56px] md:w-[68px] lg:w-[98px]' : 'bg-gray-300'">
-        </button>
-      </div>
-    </div>
-
-    <div class="relative">
-      <div class="absolute bottom-0 right-0 bg-white rounded-xl p-6 shadow-lg max-w-sm hidden lg:block z-10">
-        <div class="flex text-amber-400 mb-2 gap-2">
-          <svg v-for="star in 5" :key="star" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-            fill="currentColor">
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
         </div>
 
-        <TextSection>Fakultas kami telah meraih Akreditasi A BAN-PT, mencerminkan standar pendidikan tinggi dan
-          kualitas pengajaran terbaik.</TextSection>
+        <div class="absolute bottom-0 right-0 transition-all duration-1000 transform delay-200 md:hidden"
+          :class="(currentSlide === index && !isInitialLoad) ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'">
+          <InteractiveHoverButton :text="'Daftar Sekarang'"></InteractiveHoverButton>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
+<style scopeds>
+.img-container {
+  filter: url("#goo") drop-shadow(0px -2px 0px transparent)
+}
+
+.img-box {
+  clip-path: polygon(100% 92%, 70% 92%, 60% 100%, 10% 100%, 0% 92%, 0% 0%, 100% 0%);
+}
+
+@media (min-width: 320px) {
+  .img-box {
+    clip-path: polygon(100% 92%, 60% 92%, 50% 100%, 10% 100%, 0% 90%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 360px) {
+  .img-box {
+    clip-path: polygon(100% 90%, 65% 90%, 60% 100%, 10% 100%, 0% 92%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 440px) {
+  .img-box {
+    clip-path: polygon(100% 92%, 70% 92%, 60% 100%, 10% 100%, 0% 92%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 460px) {
+  .img-box {
+    clip-path: polygon(100% 92%, 75% 92%, 65% 100%, 10% 100%, 0% 92%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 560px) {
+  .img-box {
+    clip-path: polygon(100% 92%, 78% 92%, 68% 100%, 10% 100%, 0% 92%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 680px) {
+  .img-box {
+    clip-path: polygon(100% 92%, 80% 92%, 70% 100%, 10% 100%, 0% 92%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 768px) {
+  .img-box {
+    clip-path: polygon(100% 80%, 20% 80%, 15% 100%, 10% 100%, 0% 75%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 868px) {
+  .img-box {
+    clip-path: polygon(100% 80%, 20% 80%, 15% 100%, 10% 100%, 0% 75%, 0% 0%, 100% 0%);
+  }
+}
+
+@media (min-width: 968px) {
+  .img-box {
+    clip-path: polygon(100% 80%, 20% 80%, 15% 100%, 10% 100%, 0% 70%, 0% 0%, 100% 0%);
+  }
+}
+
 @media (min-width: 1024px) {
   .img-box {
-    clip-path: polygon(58% 100%, 58% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 30% 85%, 25% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
 @media (min-width: 1124px) {
   .img-box {
-    clip-path: polygon(62% 100%, 62% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 30% 85%, 25% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
 @media (min-width: 1224px) {
   .img-box {
-    clip-path: polygon(65% 100%, 65% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 30% 85%, 25% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
-@media (min-width: 1324px) {
+@media (min-width: 1280px) {
   .img-box {
-    clip-path: polygon(68% 100%, 68% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 40% 85%, 35% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
 @media (min-width: 1400px) {
   .img-box {
-    clip-path: polygon(70% 100%, 70% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 40% 85%, 35% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
 @media (min-width: 1500px) {
   .img-box {
-    clip-path: polygon(72% 100%, 72% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 50% 85%, 45% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
 @media (min-width: 1600px) {
   .img-box {
-    clip-path: polygon(74% 100%, 74% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 50% 85%, 45% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 
 @media (min-width: 1700px) {
   .img-box {
-    clip-path: polygon(75% 100%, 75% 68%, 100% 68%, 100% 0%, 0% 0%, 0% 100%);
+    clip-path: polygon(100% 85%, 50% 85%, 45% 100%, 8% 100%, 0% 80%, 0% 0%, 100% 0%);
   }
 }
 

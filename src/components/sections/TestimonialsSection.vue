@@ -72,57 +72,59 @@ const primaryColorWithOpacity = computed(() => {
 </script>
 
 <template>
-  <SectionLayout>
-    <div class="w-full text-center flex flex-col justify-center items-center gap-4">
-      <div class="w-fit py-2 px-5 bg-colorPrimary/10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
-        <p class="text-colorPrimary text-sm lg:text-base">Testimonials</p>
-      </div>
-      <TitleSection :text="'Apa Kata Mereka'"></TitleSection>
-      <TextSection class="lg:max-w-2xl">Customers trust Chainex for secure automation and smart analytics. See
-        how AI enhances their blockchain experience</TextSection>
-    </div>
-  </SectionLayout>
-
-  <div class="w-full mb-12 md:mb-16 lg:mb-20">
-    <swiper v-if="testimoni.length > 0" :modules="[Autoplay, Pagination]" :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
-      :space-between="swiperOptions.spaceBetween" :centered-slides="swiperOptions.centeredSlides"
-      :breakpoints="swiperOptions.breakpoints" @swiper="handleSwiper" @slide-change="handleSlideChange"
-      class="testimonial-swiper">
-      <swiper-slide v-for="(testimonial, index) in testimoni" :key="testimonial.id">
-        <div class="relative overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px] mx-[30px] md:mx-0">
-          <CardSpotlight
-            class="w-full cursor-pointer flex flex-col justify-center items-center text-center p-5 lg:p-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"
-            slotClass="" :gradientSize="200" :gradientColor="primaryColorWithOpacity" :gradientOpacity="0.8">
-            <div class="w-full flex justify-center items-center mb-4 md:mb-6">
-              <img :src="getImageUrl(testimonial.image)" :alt="testimonial.name"
-                class="w-10 h-10 lg:w-20 lg:h-20 rounded-full object-cover">
-            </div>
-            <TextSection class="text-black/60 mb-4 md:mb-6 line-clamp-4 lg:line-clamp-5"><span
-                v-html="sanitizeHtml(testimonial.description)"></span></TextSection>
-            <div class="space-y-2">
-              <TextSection :weightText="'font-bold'">{{ testimonial.name }}</TextSection>
-            </div>
-          </CardSpotlight>
-          <BorderBeam
-            v-if="activeIndex === index"
-            :size="300"
-            :duration="8"
-            :border-width="2"
-            :size-second="300"
-            :duration-second="8"
-            :delay-second="2"
-            :anchor-second="75"
-            :enable-second-border="true"
-            :start-position-second="50"
-            :finish-position-second="150"
-          />
+  <div class="bg-[#EFF0F0]">
+    <SectionLayout>
+      <div class="w-full text-center flex flex-col justify-center items-center gap-4">
+        <div class="w-fit py-2 px-5 bg-colorPrimary/10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
+          <p class="text-colorPrimary text-sm lg:text-base">Testimonials</p>
         </div>
-      </swiper-slide>
-    </swiper>
-  </div>
+        <TitleSection :text="'Apa Kata Mereka'"></TitleSection>
+        <TextSection class="lg:max-w-2xl">Customers trust Chainex for secure automation and smart analytics. See
+          how AI enhances their blockchain experience</TextSection>
+      </div>
+    </SectionLayout>
 
-  <div class="w-full flex justify-center items-center">
-    <InteractiveHoverButton @click="$router.push('/testimoni')" :text="'Lihat Lainnya'"></InteractiveHoverButton>
+    <div class="w-full mb-12 md:mb-16 lg:mb-20">
+      <swiper v-if="testimoni.length > 0" :modules="[Autoplay, Pagination]" :autoplay="swiperOptions.autoplay" :loop="swiperOptions.loop"
+        :space-between="swiperOptions.spaceBetween" :centered-slides="swiperOptions.centeredSlides"
+        :breakpoints="swiperOptions.breakpoints" @swiper="handleSwiper" @slide-change="handleSlideChange"
+        class="testimonial-swiper">
+        <swiper-slide v-for="(testimonial, index) in testimoni" :key="testimonial.id">
+          <div class="relative overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px] mx-[30px] md:mx-0">
+            <CardSpotlight
+              class="w-full cursor-pointer flex flex-col justify-center items-center text-center p-5 lg:p-10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]"
+              slotClass="" :gradientSize="200" :gradientColor="primaryColorWithOpacity" :gradientOpacity="0.8">
+              <div class="w-full flex justify-center items-center mb-4 md:mb-6">
+                <img :src="getImageUrl(testimonial.image)" :alt="testimonial.name"
+                  class="w-10 h-10 lg:w-20 lg:h-20 rounded-full object-cover">
+              </div>
+              <TextSection class="text-black/60 mb-4 md:mb-6 line-clamp-4 lg:line-clamp-5"><span
+                  v-html="sanitizeHtml(testimonial.description)"></span></TextSection>
+              <div class="space-y-2">
+                <TextSection :weightText="'font-bold'">{{ testimonial.name }}</TextSection>
+              </div>
+            </CardSpotlight>
+            <BorderBeam
+              v-if="activeIndex === index"
+              :size="300"
+              :duration="8"
+              :border-width="2"
+              :size-second="300"
+              :duration-second="8"
+              :delay-second="2"
+              :anchor-second="75"
+              :enable-second-border="true"
+              :start-position-second="50"
+              :finish-position-second="150"
+            />
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
+
+    <div class="w-full flex justify-center items-center py-[32px] md:py-[32px] lg:py-[60px]">
+      <InteractiveHoverButton @click="$router.push('/testimoni')" :text="'Lihat Lainnya'"></InteractiveHoverButton>
+    </div>
   </div>
 </template>
 

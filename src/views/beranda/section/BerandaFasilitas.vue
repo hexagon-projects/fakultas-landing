@@ -19,7 +19,7 @@ defineProps<{
 
 <template>
   <div
-    class="w-full px-[30px] py-[15px] md:px-[60px] md:py-[30px] lg:px-[120px] lg:py-[120px] space-y-12 md:space-y-16 lg:space-y-20">
+    class="w-full px-[30px] py-[15px] md:px-[60px] md:py-[30px] lg:px-[160px] lg:py-[120px] space-y-12 md:space-y-16 lg:space-y-20 bg-[#EFF0F0]">
     <div class="w-full flex flex-col gap-4 md:gap-5 lg:gap-6 justify-center items-center">
       <TitleSection :text="'Fasilitas Unggulan'"></TitleSection>
       <TextSection>Fasilitas unggulan kami mendukung pengalaman belajar yang optimal.</TextSection>
@@ -27,8 +27,9 @@ defineProps<{
 
     <!-- Tablet & Desktop -->
     <div v-if="fasilitas.length > 0"
-      class="hidden md:flex w-full h-[40vh] lg:h-[60vh] justify-center items-center gap-4 md:gap-5 lg:gap-6">
-      <div class="w-full h-[60%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
+      class="hidden md:grid grid-flow-row grid-cols-3 w-full h-[40vh] lg:h-[80vh] justify-center items-center gap-4 md:gap-10 lg:gap-14">
+      <div
+        class="w-full h-full row-span-2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
         <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
         <img :src="getImageUrl(fasilitas[0]?.image1 || '')" :alt="fasilitas[0]?.title || ''"
           class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -38,67 +39,49 @@ defineProps<{
         </div>
       </div>
 
-      <div class="w-full flex flex-col justify-between gap-4 md:gap-5 lg:gap-6 h-[90%]">
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[1]?.image1 || '')" :alt="fasilitas[1]?.title || ''"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div
-            class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[1]?.title || '' }}</TextSection>
-          </div>
-        </div>
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[2]?.image1 || '')" :alt="fasilitas[2]?.title || ''"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div
-            class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[2]?.title || '' }}</TextSection>
-          </div>
+      <div
+        class="w-full h-full col-span-2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
+        <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
+        <img :src="getImageUrl(fasilitas[1]?.image1 || '')" :alt="fasilitas[1]?.title || ''"
+          class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div
+          class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[1]?.title || '' }}</TextSection>
         </div>
       </div>
 
       <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
         <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-        <img :src="getImageUrl(fasilitas[3]?.image1 || '')" :alt="fasilitas[3]?.title || ''"
+        <img :src="getImageUrl(fasilitas[2]?.image1 || '')" :alt="fasilitas[1]?.title || ''"
           class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         <div
           class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[3]?.title || '' }}</TextSection>
+          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[1]?.title || '' }}</TextSection>
         </div>
       </div>
 
-      <div class="w-full flex flex-col justify-between gap-4 md:gap-5 lg:gap-6 h-[90%]">
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[4]?.image1 || '')" :alt="fasilitas[4]?.title || ''"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div
-            class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[4]?.title || '' }}</TextSection>
-          </div>
-        </div>
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[5]?.image1 || '')" :alt="fasilitas[5]?.title || ''"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div
-            class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[5]?.title || '' }}</TextSection>
-          </div>
-        </div>
-      </div>
-
-      <div class="w-full h-[60%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
+      <div
+        class="w-full h-full row-span-2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
         <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-        <img :src="getImageUrl(fasilitas[6]?.image1 || '')" :alt="fasilitas[6]?.title || ''"
+        <img :src="getImageUrl(fasilitas[4]?.image1 || '')" :alt="fasilitas[1]?.title || ''"
           class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         <div
           class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[6]?.title || '' }}</TextSection>
+          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[1]?.title || '' }}</TextSection>
         </div>
       </div>
+
+      <div
+        class="w-full h-full col-span-2 rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
+        <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
+        <img :src="getImageUrl(fasilitas[3]?.image1 || '')" :alt="fasilitas[1]?.title || ''"
+          class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div
+          class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[1]?.title || '' }}</TextSection>
+        </div>
+      </div>
+
     </div>
 
     <div class="w-full hidden md:flex justify-center items-center">

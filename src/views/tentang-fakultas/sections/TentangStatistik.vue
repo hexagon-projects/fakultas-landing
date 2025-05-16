@@ -2,11 +2,8 @@
 import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import NumberTicker from '@/components/ui/number-ticker/NumberTicker.vue';
-import { useSanitize } from '@/composables/useSanitize';
 import type { Faculty } from '@/core/types/fakultas';
 import { computed } from 'vue';
-
-const { sanitizeHtml } = useSanitize()
 
 const props = defineProps<{
   fakultas: Faculty | null;
@@ -31,7 +28,7 @@ const statistik4 = Number(props.fakultas?.statistik4) || 1000;
       </div>
       <div class="w-full lg:w-3/5">
         <TextSection>
-          <span v-html="sanitizeHtml(fakultas?.description3 || '')"></span>
+          Fakultas kami memiliki lebih dari 1.000 mahasiswa aktif yang terdaftar. Dengan dukungan 100 dosen berpengalaman, kami menawarkan 10 program studi yang berkualitas. Kami berkomitmen untuk memberikan pendidikan terbaik dan mendukung pengembangan karir mahasiswa.
         </TextSection>
       </div>
     </div>

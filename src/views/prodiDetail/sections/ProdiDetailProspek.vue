@@ -26,27 +26,24 @@ const rightCards = props?.prospek?.slice(halfLength);
     </div>
 
     <div
-      class="w-full h-full lg:h-[80vh] md:flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 lg:gap-6 hidden">
+      class="w-full h-full lg:h-[80vh] lg:flex flex-col md:flex-row justify-center items-center gap-4 md:gap-5 lg:gap-6 hidden">
       <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
-        <ProspekCard v-for="(card, index) in leftCards" :key="'left-' + index" :align-text="'text-right'"
-          :title="card.title" :description="card.description" :icon="card.icon" />
+        <ProspekCard v-for="(card, index) in leftCards" :key="'left-' + index" :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
       <div class="w-full md:w-[40%]">
         <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
       </div>
       <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
-        <ProspekCard v-for="(card, index) in rightCards" :key="'right-' + index" :align-text="'text-left'"
-          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" :icon="card.icon" />
+        <ProspekCard v-for="(card, index) in rightCards" :key="index" :direction="'left-0'" :rounded-align="'rounded-r-[8px]'" :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
     </div>
 
-    <div class="flex md:hidden flex-col gap-8">
-      <div class="w-full md:w-[40%]">
+    <div class="flex lg:hidden flex-col gap-8">
+      <div class="w-full md:w-[40%] mx-auto">
         <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
       </div>
       <div class="w-full space-y-4">
-        <ProspekCard v-for="(card, index) in prospek" :key="'right-' + index" :align-text="'text-left'"
-          :flex-direction="'flex-row-reverse'" :title="card.title" :description="card.description" :icon="card.icon" />
+        <ProspekCard v-for="(card, index) in prospek" :key="index" :direction="'left-0'" :rounded-align="'rounded-r-[8px]'" :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
     </div>
   </SectionLayout>

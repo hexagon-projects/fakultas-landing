@@ -24,58 +24,51 @@ const props = defineProps<{
 
 const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
 
-const partnerGroups = computed(() => {
-  const partners = props.partners || [];
-  const totalPartners = partners.length;
-  const groupSize = Math.ceil(totalPartners / 3);
+const groupedPartners = computed(() => {
+  const partnersToShow = props.partners?.slice(0, 15) || [];
+
+  const desiredGroupCount = Math.min(
+    Math.max(1, Math.ceil(partnersToShow.length / 5)),
+    3
+  );
+
+  const partnersPerGroup = Math.ceil(partnersToShow.length / desiredGroupCount);
 
   const groups = [];
-  for (let i = 0; i < 3; i++) {
-    const start = i * groupSize;
-    const end = Math.min(start + groupSize, totalPartners);
-    if (start < totalPartners) {
-      groups.push(partners.slice(start, end));
-    }
+  for (let i = 0; i < partnersToShow.length; i += partnersPerGroup) {
+    groups.push(partnersToShow.slice(i, i + partnersPerGroup));
   }
 
   return groups;
 });
+
 </script>
 
 <template>
   <div>
-    <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
+    <div
+      class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
       <div class="w-full flex justify-center items-center">
         <TitleSection :text="titleHTML" :html="true" :delay="60" />
       </div>
     </div>
     <div class="lg:mb-10 px-4">
-      <swiper v-if="partners.length > 0"
-        :modules="modules"
-        :slides-per-view="1"
-        :space-between="30"
-        :speed="650"
-        :loop="true"
-        :autoplay="{
+      <swiper v-if="groupedPartners.length > 0" :modules="modules" :slides-per-view="1" :space-between="30" :speed="650"
+        :loop="true" :autoplay="{
           delay: 2800,
           disableOnInteraction: false,
           pauseOnMouseEnter: true
-        }"
-        :pagination="{
+        }" :pagination="{
           clickable: true,
           bulletClass: 'custom-bullet',
           bulletActiveClass: 'custom-bullet-active'
-        }"
-      >
-        <swiper-slide v-for="(group, groupIndex) in partnerGroups" :key="groupIndex">
+        }">
+        <swiper-slide v-for="(group, groupIndex) in groupedPartners" :key="groupIndex">
           <div class="grid grid-cols-5 gap-4 w-full">
-            <div v-for="partner in group" :key="partner?.id" class="h-32 lg:h-40 flex items-center justify-center lg:mb-10">
-              <img
-                :src="getImageUrl(partner?.image || '')"
-                :alt="partner?.name"
-                class="w-full h-full object-contain rounded-[8px] md:rounded-[16px] lg:rounded-[24px]"
-                loading="lazy"
-              />
+            <div v-for="(partner, index) in group" :key="index"
+              class="h-32 lg:h-40 flex items-center justify-center lg:mb-10">
+              <img :src="getImageUrl(partner?.image || '')" :alt="partner?.name"
+                class="w-full h-full object-contain rounded-[8px] md:rounded-[16px] lg:rounded-[24px]" loading="lazy" />
             </div>
           </div>
         </swiper-slide>

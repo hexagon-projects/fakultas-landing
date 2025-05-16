@@ -25,7 +25,7 @@ defineProps<{
       <div class="lg:w-1/2 w-full">
         <div>
           <TitleSection v-if="fakultas?.title2" class="mt-7" :text="`Sejarah ${fakultas?.title2}`"></TitleSection>
-          <TextSection class="text-gray-500 mt-7" ><span v-html="fakultas?.description2"></span></TextSection>
+          <TextSection class="mt-7" ><span v-html="fakultas?.description2"></span></TextSection>
           <div class="flex gap-5 lg:mt-10 mt-5">
             <a href="https://registrasi.unpas.ac.id/register" target="_blank">
               <InteractiveHoverButton :text="'Daftar Sekarang'" />

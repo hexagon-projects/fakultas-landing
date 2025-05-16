@@ -1,23 +1,10 @@
 <script setup lang="ts">
 import { useSanitize } from '@/composables/useSanitize';
-const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+import TextSection from '@/components/TextSection.vue';
 
-const getImageUrl = (imagePath: string | null) => {
-  if (!imagePath) return 'https://placehold.co/600x400';
-  return `${baseUrl}/${imagePath}`;
-};
-
-const {sanitizeHtml} = useSanitize()
+const { sanitizeHtml } = useSanitize()
 
 defineProps({
-  alignText: {
-    type: String,
-    default: 'text-right'
-  },
-  flexDirection: {
-    type: String,
-    default: 'flex-row'
-  },
   title: {
     type: String,
     required: true
@@ -29,19 +16,28 @@ defineProps({
   icon: {
     type: String,
     default: ''
+  },
+  roundedAlign: {
+    type: String,
+    default: 'rounded-l-[8px]'
+  },
+  direction: {
+    type: String,
+    default: 'right-0'
   }
 });
 </script>
 
 <template>
-  <div :class="['bg-white md:bg-transparent p-4 rounded-[8px] md:rounded-[16px] lg:rounded-[24px] flex gap-4 md:gap-5 lg:gap-6 justify-end md:justify-center items-center', flexDirection]">
-    <div :class="['space-y-2 w-[90%]', alignText]">
-      <p class="text-sm lg:text-base font-medium">{{ title }}</p>
-      <p class="text-xs lg:text-sm"><span v-html="sanitizeHtml(description)"></span></p>
+  <div
+    :class="['bg-colorPrimary/10 md:bg-colorPrimary/10 py-5 px-[33px] rounded-[8px] md:rounded-[16px] lg:rounded-[24px] flex gap-4 md:gap-5 lg:gap-6 relative']">
+    <div :class="['space-y-2 w-fit text-left']">
+      <h6 class="text-[14px] md:text-[18px] lg:text-[22px] font-bold">{{ title }}</h6>
+      <TextSection><span v-html="sanitizeHtml(description)"></span></TextSection>
     </div>
 
-    <div class="w-[10%] rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
-      <img :src="getImageUrl(icon)" :alt="title" class="w-full h-full object-cover svg-primary" v-if="icon">
+    <div
+      :class="['w-[5px] h-8 bg-colorPrimary absolute bottom-1/2 translate-y-1/2', roundedAlign, direction]">
     </div>
   </div>
 </template>

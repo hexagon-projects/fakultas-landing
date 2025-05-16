@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <div>
     <div class="flex justify-between items-center gap-2 lg:gap-4 px-3">
-      <p class="text-sm md:text-base lg:text-base line-clamp-2">{{ title || 'Prestasi' }}</p>
+      <p class="text-xs md:text-base lg:text-base line-clamp-2">{{ title || 'Prestasi' }}</p>
       <h3 class="text-[40px] lg:text-[46px] font-bold leading-tight ">{{ number || '01' }}</h3>
     </div>
     <div class="w-full h-48 md:h-52">

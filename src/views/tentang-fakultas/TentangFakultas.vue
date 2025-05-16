@@ -60,10 +60,10 @@ onMounted(async () => {
       </div>
     </SectionLayout>
 
-    <TentangSejarah :fakultas="fakultasStore.fakultas" />
-    <TentangVisiMisi :fakultas="fakultasStore.fakultas" />
-    <TentangStatistik :fakultas="fakultasStore.fakultas" />
-    <MitraSection :partners="partnerStore.partners" />
+    <TentangSejarah v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" />
+    <TentangVisiMisi v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" />
+    <TentangStatistik v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" />
+    <MitraSection v-if="partnerStore.partners" :partners="partnerStore.partners" />
     <SectionLayout>
       <div class="grid gap-2 lg:gap-5">
         <h6 class="font-bold text-2xl">Tim</h6>
@@ -78,7 +78,7 @@ onMounted(async () => {
           :tiktok="dosen.tiktok" />
       </div>
     </SectionLayout>
-    <TestimonialsSection :testimoni="berandaStore.testimoniData" :is-loading="false" />
+    <TestimonialsSection v-if="berandaStore.testimoniData" :testimoni="berandaStore.testimoniData" :is-loading="false" />
     <CTASection />
   </MainLayout>
 </template>

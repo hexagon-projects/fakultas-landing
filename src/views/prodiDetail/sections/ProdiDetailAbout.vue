@@ -22,9 +22,9 @@ defineProps<{
 
 <template>
   <SectionLayout>
-    <div class="flex flex-col-reverse lg:flex-row-reverse gap-6 lg:gap-20 lg:justify-center lg:items-center">
+    <div class="flex flex-col-reverse lg:flex-row-reverse gap-6 lg:gap-16 xl:gap-20 lg:justify-center lg:items-center">
       <!-- Video Section -->
-      <div class="w-full lg:w-[40%]">
+      <div class="w-full lg:w-[35%] xl:w-[40%]">
         <template v-if="isLoading">
           <div class="w-full h-[60vh] bg-gray-300 animate-pulse rounded-[16px]"></div>
         </template>
@@ -40,7 +40,7 @@ defineProps<{
       </div>
 
       <!-- Content Section -->
-      <div class="w-full lg:w-[70%] space-y-4 lg:space-y-6">
+      <div class="w-full lg:w-[60%] space-y-4 lg:space-y-6">
         <template v-if="isLoading">
           <div class="w-3/4 h-8 bg-gray-300 animate-pulse rounded"></div>
           <div class="space-y-2">
