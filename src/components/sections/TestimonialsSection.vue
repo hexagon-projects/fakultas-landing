@@ -72,7 +72,7 @@ const primaryColorWithOpacity = computed(() => {
 </script>
 
 <template>
-  <div class="bg-[#EFF0F0] py-[32px] md:py-[60px] lg:py-[60px]">
+  <div class="bg-[#EFF0F0]">
     <SectionLayout>
       <div class="w-full text-center flex flex-col justify-center items-center gap-4">
         <div class="w-fit py-2 px-5 bg-colorPrimary/10 rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
@@ -112,7 +112,7 @@ const primaryColorWithOpacity = computed(() => {
       </swiper>
     </div>
 
-    <div class="w-full flex justify-center items-center">
+    <div class="w-full flex justify-center items-center py-[32px] md:py-[60px] lg:py-[60px]">
       <InteractiveHoverButton @click="$router.push('/testimoni')" :text="'Lihat Lainnya'"></InteractiveHoverButton>
     </div>
   </div>
