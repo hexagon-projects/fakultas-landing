@@ -3,6 +3,8 @@ import DosenCard from '@/views/prodi/components/DosenCard.vue'
 import TextSection from '@/components/TextSection.vue'
 import TitleSection from '@/components/TitleSection.vue'
 import type { Team } from '@/core/types/team'
+import Button from '@/components/Button.vue'
+import ButtonSection from '@/components/ButtonSection.vue'
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL
 

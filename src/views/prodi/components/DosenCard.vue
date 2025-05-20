@@ -3,6 +3,7 @@ import FacebookIcon from '@/assets/icons/fb.png'
 import InstagramIcon from '@/assets/icons/instagram.png'
 import TiktokIcon from '@/assets/icons/tik-tok.png'
 import YoutubeIcon from '@/assets/icons/youtube.png'
+import ButtonSection from '@/components/ButtonSection.vue'
 
 defineProps<{
   name?: string

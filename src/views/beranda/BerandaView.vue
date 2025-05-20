@@ -57,7 +57,7 @@ onMounted(async () => {
     <ProdiDetailPrestasi :prestasi="berandaStore.prestasiData" />
     <ProdiDetailKegiatan :organisasi="berandaStore.organisasiData" />
     <BerandaAgenda :agenda="berandaStore.agendaData" />
-    <BerandaFasilitas :fasilitas="berandaStore.fasilitasData" />
+    <BerandaFasilitas :fasilitas="berandaStore.fasilitasData.slice(0, 5)" />
     <TestimonialsSection v-if="testimoniStore.testimoni" :testimoni="testimoniStore.testimoni" />
 
     <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0, 3)" />

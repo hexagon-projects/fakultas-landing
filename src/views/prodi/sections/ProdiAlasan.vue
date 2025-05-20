@@ -7,6 +7,7 @@ import Gedung from '@/assets/gedung.jpg'
 import DOMPurify from 'dompurify'
 import { computed } from 'vue'
 import SectionLayout from '@/layouts/SectionLayout.vue'
+import TextBody from '@/components/TextBody.vue'
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL
 
@@ -26,7 +27,7 @@ const props = defineProps<{
 
 const titleHTML = computed(() => {
   if (!props.fakultas?.name) return 'Kenapa Harus Memilih Unpas'
-  return `Kenapa Harus Memilih <span class="text-colorPrimary font-bold">${props.fakultas.name || ''}</span> Unpas`
+  return `Kenapa Harus Memilih <span class="text-colorPrimary font-bold">${props.fakultas.name || ''}</span> `
 })
 </script>
 
@@ -69,11 +70,11 @@ const titleHTML = computed(() => {
 
           <!-- Title & Description -->
           <div class="self-stretch flex flex-col justify-start items-center gap-4 text-center">
-            <!-- Title -->
-            <h3 class="text-xl font-medium w-full">{{ item.title }}</h3>
-
-            <!-- Description -->
-            <p class="text-base w-full" v-html="sanitizeHtml(item.description)" />
+            <h3 class="text-md font-medium w-full">{{ item.title }}</h3>
+            <p
+              class="text-[10px] md:text-[12px] lg:text-[16px] font-normal line-clamp-6"
+              v-html="sanitizeHtml(item.description)"
+            />
           </div>
         </div>
       </div>
@@ -99,21 +100,24 @@ const titleHTML = computed(() => {
           <!-- Number + Title -->
           <div class="flex flex-col h-40 justify-start items-start pt-10">
             <div class="mb-4">{{ index + 1 }}</div>
-            <h3 class="text-xl font-medium w-full">{{ item.title }}</h3>
+            <h3 class="text-xl font-medium w-full line-clamp-2">{{ item.title }}</h3>
           </div>
 
           <!-- Icon -->
-          <div class="w-12 h-12 lg:w-[80px] lg:h-[80px]">
+          <div class="w-12 h-12 lg:w-[80px] lg:h-[80px] bg-colorPrimary p-3 rounded-xl">
             <img
               :src="getImageUrl(item.image)"
               :alt="item.title"
-              class="w-full h-full object-cover svg-primary"
+              class="w-full h-full object-cover"
             />
           </div>
 
           <!-- Description -->
           <div class="flex flex-col justify-start items-start">
-            <p class="text-base" v-html="sanitizeHtml(item.description)" />
+            <p
+              class="text-[10px] md:text-[12px] lg:text-[16px] font-normal line-clamp-6"
+              v-html="sanitizeHtml(item.description)"
+            />
           </div>
         </div>
       </div>

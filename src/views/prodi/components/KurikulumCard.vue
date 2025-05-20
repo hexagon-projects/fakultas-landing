@@ -63,22 +63,14 @@ defineProps({
   <!-- Versi Desktop -->
   <div
     :class="[
-      // sembunyikan di mobile, tampil di tablet dan desktop
       'hidden md:block',
 
-      // padding horizontal di tablet dan desktop
       'md:px-6 lg:px-8',
 
-      // border warna abu-abu di semua desktop/tablet
       'border-[#4C4C4C]/10',
 
-      // border untuk tablet: nomor 1 dapat border kiri dan kanan, sisanya border kanan saja
-      // gunakan media query spesifik untuk tablet (md: dan lg:)
-      number === 1
-        ? 'md:border-l md:border-r' // tablet border kiri & kanan
-        : 'md:border-r',
+      number === 1 ? 'md:border-l md:border-r' : 'md:border-r',
 
-      // desktop (lg:) juga sama tapi bisa beda jika perlu
       number === 1 ? 'lg:border-l lg:border-r' : 'lg:border-r',
     ]"
   >
@@ -94,10 +86,10 @@ defineProps({
         </div>
       </div>
       <div class="flex flex-col gap-8">
-        <div class="text-netral-text text-xl font-medium leading-7 md:h-15 lg:h-15">
+        <div class="text-netral-text text-xl font-medium leading-7 md:h-15 lg:h-15 line-clamp-2">
           {{ title }}
         </div>
-        <div class="text-netral-text text-base leading-normal">
+        <div class="text-netral-text text-base leading-normal line-clamp-6">
           <span v-html="sanitizeHtml(description)"></span>
         </div>
       </div>
