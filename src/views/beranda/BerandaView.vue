@@ -20,12 +20,12 @@ import HomeSlider from '@/components/HomeSlider.vue'
 import ProdiDetailPrestasi from '../prodiDetail/sections/ProdiDetailPrestasi.vue'
 import CTASection from '@/components/sections/CTASection.vue'
 
-const partnerStore = usePartnerStore();
-const sliderStore = useSliderStore();
-const fakultasStore = useFakultasStore();
-const testimoniStore = useTestimoniStore();
+const partnerStore = usePartnerStore()
+const sliderStore = useSliderStore()
+const fakultasStore = useFakultasStore()
+const testimoniStore = useTestimoniStore()
 
-const isLoading = ref(true);
+const isLoading = ref(true)
 
 onMounted(async () => {
   try {
@@ -34,10 +34,10 @@ onMounted(async () => {
       partnerStore.fetchPartnersHome(),
       sliderStore.fetchSlider(),
       fakultasStore.fetchFakultas(),
-      testimoniStore.fetchTestimoni()
-    ]);
+      testimoniStore.fetchTestimoni(),
+    ])
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
 })
 </script>
@@ -47,15 +47,20 @@ onMounted(async () => {
     <HomeSlider :sliders="sliderStore.sliders" :is-loading="isLoading" />
     <BerandaSambutan :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
     <BerandaTentang :fakultas="fakultasStore.fakultas" />
-    <ProdiAlasan :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />
+    <ProdiAlasan
+      v-if="fakultasStore.fakultas"
+      :unggulan="berandaStore.ungulanData"
+      :fakultas="fakultasStore.fakultas"
+    />
     <BerandaInovasi />
     <MitraSection :partners="partnerStore.partners" />
     <ProdiDetailPrestasi :prestasi="berandaStore.prestasiData" />
     <ProdiDetailKegiatan :organisasi="berandaStore.organisasiData" />
     <BerandaAgenda :agenda="berandaStore.agendaData" />
     <BerandaFasilitas :fasilitas="berandaStore.fasilitasData" />
-    <TestimonialsSection :testimoni="testimoniStore.testimoni" />
-    <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0,3)" />
+    <TestimonialsSection v-if="testimoniStore.testimoni" :testimoni="testimoniStore.testimoni" />
+
+    <BerandaBerita :fakultas="fakultasStore.fakultas" :post="berandaStore.beritaData.slice(0, 3)" />
     <CTASection />
   </MainLayout>
 </template>

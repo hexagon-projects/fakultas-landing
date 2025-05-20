@@ -1,52 +1,106 @@
-  <script setup lang="ts">
-  import TextBody from '@/components/TextBody.vue';
-  import { useSanitize } from '@/composables/useSanitize';
+<script setup lang="ts">
+import { useSanitize } from '@/composables/useSanitize'
 
-  const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+const baseUrl = import.meta.env.VITE_APP_IMG_URL
 
-  const getImageUrl = (imagePath: string | null) => {
-    if (!imagePath) return '';
-    return `${baseUrl}/${imagePath}`;
-  };
+const getImageUrl = (imagePath: string | null) => {
+  if (!imagePath) return ''
+  return `${baseUrl}/${imagePath}`
+}
 
-  const { sanitizeHtml } = useSanitize()
+const { sanitizeHtml } = useSanitize()
 
-  defineProps({
-    number: {
-      type: Number,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    description: {
-      type: String,
-      required: true
-    },
-    icon: {
-      type: String,
-      default: ""
-    },
-    image: {
-      type: String,
-      default: ''
-    }
-  });
+defineProps({
+  number: {
+    type: Number,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    default: '',
+  },
+})
 </script>
+<template>
+  <!-- Versi Mobile -->
+  <div class="md:hidden relative bg-white rounded-2xl outline outline-1 outline-zinc-300 mb-6 mx-4">
+    <div class="text-left justify-center text-neutral-700 text-2xl mx-[21px] mt-[14px]">
+      {{ number < 10 ? `0${number}` : number }}
+    </div>
 
-  <template>
-    <div
-      class="p-10 lg:p-12 flex flex-col justify-center items-center text-center rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative border bg-white hover:-translate-y-2 transition duration-500 shadow-gray-300/5 hover:shadow-black/5 shadow-xl hover:shadow-xl drop-shadow-[0px_20px_40px_rgba(254, 242, 81, 0.5)]">
-      <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 mb-10 lg:mb-14">
-        <img :src="getImageUrl(image)" alt="" class="w-full h-full svg-primary" v-if="image">
-      </div>
-      <div class="space-y-2 lg:space-y-4">
-        <h3 class="text-lg md:text-xl lg:text-2xl font-semibold">{{ title }}</h3>
-        <TextBody><span v-html="sanitizeHtml(description)"></span></TextBody>
-      </div>
-      <div class="p-3 lg:p-4 absolute top-0 left-4">
-        <p class="text-lg md:text-xl lg:text-2xl">{{ number.toString().padStart(2, '0') }}</p>
+    <div class="pb-10">
+      <div class="flex flex-col gap-4 px-10">
+        <div class="h-10 rounded-2xl">
+          <img
+            v-if="image"
+            :src="getImageUrl(image)"
+            alt=""
+            class="w-full h-full object-contain rounded-2xl"
+          />
+        </div>
+        <div class="self-stretch flex flex-col gap-4">
+          <div
+            class="self-stretch text-center text-neutral-700 text-lg font-medium leading-relaxed"
+          >
+            {{ title }}
+          </div>
+          <div class="self-stretch text-center text-neutral-400 text-xs leading-none">
+            <span v-html="sanitizeHtml(description)"></span>
+          </div>
+        </div>
       </div>
     </div>
-  </template>
+  </div>
+
+  <!-- Versi Desktop -->
+  <div
+    :class="[
+      // sembunyikan di mobile, tampil di tablet dan desktop
+      'hidden md:block',
+
+      // padding horizontal di tablet dan desktop
+      'md:px-6 lg:px-8',
+
+      // border warna abu-abu di semua desktop/tablet
+      'border-[#4C4C4C]/10',
+
+      // border untuk tablet: nomor 1 dapat border kiri dan kanan, sisanya border kanan saja
+      // gunakan media query spesifik untuk tablet (md: dan lg:)
+      number === 1
+        ? 'md:border-l md:border-r' // tablet border kiri & kanan
+        : 'md:border-r',
+
+      // desktop (lg:) juga sama tapi bisa beda jika perlu
+      number === 1 ? 'lg:border-l lg:border-r' : 'lg:border-r',
+    ]"
+  >
+    <div
+      data-button="False"
+      data-icon="True"
+      data-type="Icon Top Left"
+      class="py-10 rounded-3xl flex flex-col gap-8"
+    >
+      <div class="flex items-center gap-2.5">
+        <div class="w-11 h-11 relative overflow-hidden">
+          <img v-if="image" :src="getImageUrl(image)" alt="" class="w-full h-full svg-primary" />
+        </div>
+      </div>
+      <div class="flex flex-col gap-8">
+        <div class="text-netral-text text-xl font-medium leading-7 md:h-15 lg:h-15">
+          {{ title }}
+        </div>
+        <div class="text-netral-text text-base leading-normal">
+          <span v-html="sanitizeHtml(description)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

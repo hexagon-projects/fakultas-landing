@@ -1,24 +1,25 @@
 <script setup lang="ts">
-import DosenCard from '@/views/prodi/components/DosenCard.vue';
-import TextSection from '@/components/TextSection.vue';
-import TitleSection from '@/components/TitleSection.vue';
-import type { Team } from '@/core/types/team';
+import DosenCard from '@/views/prodi/components/DosenCard.vue'
+import TextSection from '@/components/TextSection.vue'
+import TitleSection from '@/components/TitleSection.vue'
+import type { Team } from '@/core/types/team'
 
-const baseUrl = import.meta.env.VITE_APP_IMG_URL;
+const baseUrl = import.meta.env.VITE_APP_IMG_URL
 
 const getImageUrl = (imagePath: string | null) => {
-  if (!imagePath) return 'https://placehold.co/600x400';
-  return `${baseUrl}/${imagePath}`;
-};
+  if (!imagePath) return 'https://placehold.co/600x400'
+  return `${baseUrl}/${imagePath}`
+}
 
 defineProps<{
   team: Team[]
-}>();
-
+}>()
 </script>
 
 <template>
-  <div class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20">
+  <div
+    class="w-full px-[20px] py-[32px] md:px-[60px] md:py-[60px] lg:px-[120px] lg:py-[60px] space-y-12 md:space-y-16 lg:space-y-20"
+  >
     <div class="flex flex-col gap-4 md:gap-5 lg:gap-6">
       <TextSection>Tim</TextSection>
       <TitleSection :text="'Dosen Akademi'"></TitleSection>
