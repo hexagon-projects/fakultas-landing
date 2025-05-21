@@ -60,6 +60,6 @@ defineEmits(['click']);
 
 <style scoped>
 .hover\:text-Color-FH:hover {
-  color: #aa2132;
+  color: #52005C;
 }
 </style>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Gedung from '@/assets/gedung.jpg'
 
 defineProps<{
   isLoading?: boolean;
@@ -12,7 +13,7 @@ defineProps<{
     </template>
     <template v-else>
       <div class="w-full h-[40vh] md:h-[50vh] lg:h-[60vh] group overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
-        <img src="https://images.unsplash.com/photo-1505533321630-975218a5f66f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img :src="Gedung"
           alt="Universitas"
           class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
       </div>

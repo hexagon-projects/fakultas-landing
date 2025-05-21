@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import TextBody from '@/components/TextBody.vue';
-import { useSanitize } from '@/composables/useSanitize';
 import type { Post } from '@/core/types/post';
 import type SideBanner from '@/core/types/sidebanner';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-
-const { sanitizeHtml } = useSanitize();
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
@@ -55,7 +52,7 @@ defineProps<{
     <template v-else-if="post">
       <div class="w-full flex flex-col md:flex-row gap-4 md:gap-5 lg:gap-6">
         <div class="w-full md:w-[70%]">
-          <TextBody><span v-html="sanitizeHtml(post.content)"></span></TextBody>
+          <TextBody><span class="mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6" v-html="post.content"></span></TextBody>
         </div>
 
         <div class="w-full md:w-[30%] h-[50vh]" v-if="sidebanner?.image1">

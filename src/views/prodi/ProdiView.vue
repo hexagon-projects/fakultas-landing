@@ -44,7 +44,7 @@ const testimoni = computed(() => testimoniStore.testimoni);
   <MainLayout>
     <ProdiHero />
     <ImageSection :fakultas="fakultas" :is-loading="isLoading" />
-    <ProdiAlasan :unggulan="usp" :fakultas="fakultas" :is-loading="isLoading" />
+    <ProdiAlasan :unggulan="usp.slice(0,4)" :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiProgramList :prodiData="prodi" :fakultas="fakultas" :is-loading="isLoading" />
     <ProdiTestimonials :fakultas="fakultas" :testimoni="testimoni" :is-loading="isLoading" />
     <CTASection />

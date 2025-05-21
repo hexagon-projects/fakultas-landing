@@ -77,7 +77,7 @@ const navigateToHome = () => {
         <!-- Desktop Navbar -->
         <nav
             :class="[
-                'w-[90%] lg:w-[93%] xl:w-[94%] mt-3 xl:mt-4',
+                'w-[90%] lg:w-[96%] xl:w-[97%] mt-3 xl:mt-4',
                 position,
                 'z-50 p-4 justify-between items-center hidden lg:flex rounded-lg md:rounded-[32px] transition-all duration-500 ease-in-out',
                 shadow,

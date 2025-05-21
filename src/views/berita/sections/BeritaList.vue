@@ -126,7 +126,7 @@ const goToDetail = (post: any) => {
 
           <div class="space-y-2">
             <h3 class="text-[18px] md:text-[20px] lg:text-[22px] font-bold">{{ post.title }}</h3>
-            <TextBody><span class="line-clamp-2" v-html="sanitizeHtml(post.resume)"></span></TextBody>
+            <TextBody><span class="line-clamp-2 mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6" v-html="sanitizeHtml(post.resume)"></span></TextBody>
           </div>
 
           <button @click="goToDetail(post)" class="text-left">
@@ -167,11 +167,11 @@ const goToDetail = (post: any) => {
 
 <style scoped>
 .outline-Color-FH {
-  --tw-outline-color: #aa2132;
+  --tw-outline-color: #52005C;
   outline-color: var(--tw-outline-color);
 }
 
 .text-Color-FH {
-  color: #aa2132;
+  color: #52005C;
 }
 </style>

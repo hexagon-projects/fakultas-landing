@@ -15,7 +15,7 @@ export default {
       },
       colors: {
         netral: '#F3F4F4',
-        fakultas: '#AA2132',
+        fakultas: '#52005C',
         outline: '#FAFAFA80',
         desc: '#A9A9A9',
         text: {

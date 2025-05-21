@@ -27,7 +27,7 @@ defineProps<{
     <div class="lg:w-1/2 w-full">
       <div>
         <TitleSection class="mt-7" :text="fakultas?.title4"></TitleSection>
-        <TextSection class="mt-5"><span v-html="fakultas?.description4"></span></TextSection>
+        <TextSection class="mt-5"><span class="mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6" v-html="fakultas?.description4"></span></TextSection>
         <div class="flex gap-5 lg:mt-10 mt-5">
           <a href="https://registrasi.unpas.ac.id/register" target="_blank">
             <InteractiveHoverButton :text="'Daftar Sekarang'" />

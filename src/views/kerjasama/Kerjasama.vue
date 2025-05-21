@@ -20,7 +20,7 @@ onMounted(() => {
 <template>
   <MainLayout>
     <KerjasamaHero />
-    <KerjasamaProyek />
+    <!-- <KerjasamaProyek /> -->
     <KerjasamaMitra :partner="partnerStore.partners"/>
     <MitraSection :partners="partnerStore.partners"/>
     <CTASection />

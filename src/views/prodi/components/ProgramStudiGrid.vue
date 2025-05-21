@@ -50,7 +50,7 @@ const navigateToDetail = (slug: string) => {
 
           <div
             class="absolute bottom-0 right-0 flex justify-center items-center gap-2 p-4 rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
-            <div class="w-6 h-6"><img :src="Star" alt="" class="w-full h-full object-cover"></div>
+            <div class="w-6 h-6"><img :src="Star" alt="" class="w-full h-full object-cover svg-primary"></div>
             <TextBody>{{ item.akreditasi || 'akreditasi' }}</TextBody>
           </div>
         </div>

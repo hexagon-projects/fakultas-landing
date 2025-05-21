@@ -19,11 +19,15 @@ import BerandaFasilitas from './section/BerandaFasilitas.vue'
 import HomeSlider from '@/components/HomeSlider.vue'
 import ProdiDetailPrestasi from '../prodiDetail/sections/ProdiDetailPrestasi.vue'
 import CTASection from '@/components/sections/CTASection.vue'
+import { useDepartementStore } from '@/stores/departement'
+import { useTeamStore } from '@/stores/team'
 
 const partnerStore = usePartnerStore();
 const sliderStore = useSliderStore();
 const fakultasStore = useFakultasStore();
 const testimoniStore = useTestimoniStore();
+const departementStore = useDepartementStore();
+const teamStore = useTeamStore();
 
 const isLoading = ref(true);
 
@@ -34,7 +38,9 @@ onMounted(async () => {
       partnerStore.fetchPartnersHome(),
       sliderStore.fetchSlider(),
       fakultasStore.fetchFakultas(),
-      testimoniStore.fetchTestimoni()
+      testimoniStore.fetchTestimoni(),
+      departementStore.fetchDepartements(),
+      teamStore.fetchTeam()
     ]);
   } finally {
     isLoading.value = false;
@@ -44,7 +50,7 @@ onMounted(async () => {
 
 <template>
   <MainLayout>
-    <HomeSlider :sliders="sliderStore.sliders" :is-loading="isLoading" />
+    <HomeSlider :departement="departementStore.departements" :team="teamStore.teams" :sliders="sliderStore.sliders" :is-loading="isLoading" />
     <BerandaSambutan v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" :dosen="berandaStore.dosenData" />
     <BerandaTentang v-if="fakultasStore.fakultas" :fakultas="fakultasStore.fakultas" />
     <ProdiAlasan v-if="fakultasStore.fakultas" :unggulan="berandaStore.ungulanData" :fakultas="fakultasStore.fakultas" />

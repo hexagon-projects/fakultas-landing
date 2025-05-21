@@ -56,7 +56,7 @@ defineProps<{
           <div
             class="w-fit flex justify-center items-center gap-4 absolute bottom-0 right-0 bg-colorPrimary p-2 lg:p-4 rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
             <div class="w-fit bg-white h-12 p-2 rounded-[2px] md:rounded-[4px] lg:rounded-[8px]">
-              <img :src="Calendar" alt="" class="w-full h-full object-contain">
+              <img :src="Calendar" alt="" class="w-full h-full object-contain svg-primary">
             </div>
 
             <div class="w-fit">

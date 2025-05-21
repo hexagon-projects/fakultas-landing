@@ -30,7 +30,7 @@ defineProps<{
       </div>
       <div
         class="absolute bottom-0 right-0 p-4 bg-white rounded-[4px] md:rounded-[8px] lg:rounded-[16px] cursor-pointer">
-        <img :src=Arrow alt="Icon" class="w-4 h-4 md:w-4 md:h-4 lg:w-4 lg:h-4">
+        <img :src=Arrow alt="Icon" class="w-4 h-4 md:w-4 md:h-4 lg:w-4 lg:h-4 svg-primary">
       </div>
     </div>
     <h3 class="text-[12px] md:text-[16px] lg:text-[22px] font-bold">{{ title || 'Informasi Beasiswa dan Bantuan Keuangan' }}</h3>

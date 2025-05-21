@@ -41,9 +41,6 @@ defineProps<{
               {{ data.title }}
             </h4>
             <TextSection class="transition-colors duration-300 group-hover:text-gray-800"><span v-html="data.description"></span></TextSection>
-            <div class="w-fit">
-              <InteractiveHoverButton text="Selengkapnya" :bg-color="'bg-transparent'" :border-color="'border-colorPrimary'" :text-color="'text-colorPrimary'" :bg-hover="'bg-colorPrimary'" :text-hover="'text-white'"/>
-            </div>
           </div>
         </div>
       </template>

@@ -25,62 +25,67 @@ defineProps<{
     </div>
 
     <!-- Tablet & Desktop -->
-    <div v-if="fasilitas.length > 0" class="hidden md:flex w-full h-[40vh] lg:h-[60vh] justify-center items-center gap-4 md:gap-5 lg:gap-6">
-      <div class="w-full h-[60%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-        <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-        <img :src="getImageUrl(fasilitas[0]?.image1 || '')" :alt="fasilitas[0]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[0]?.title || '' }}</TextSection>
+    <div
+      v-if="fasilitas.length >= 3"
+      class="w-full px-4 py-6 hidden md:flex justify-center items-end gap-4 lg:hidden"
+    >
+      <div
+        v-for="(item, index) in [0, 1, 2]"
+        :key="index"
+        class="relative group overflow-hidden rounded-3xl"
+      >
+        <img
+          :class="[
+            'rounded-3xl object-cover group-hover:scale-105 transition-transform duration-500',
+            index === 1 ? 'w-[180px] h-56' : 'w-[222px] h-72',
+          ]"
+          :src="getImageUrl(fasilitas[index]?.image1 || '')"
+          :alt="fasilitas[index]?.title || ''"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-0 rounded-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10"
+        >
+          <TextSection class="text-white font-bold">{{
+            fasilitas[index]?.title || ''
+          }}</TextSection>
         </div>
       </div>
+    </div>
 
-      <div class="w-full flex flex-col justify-between gap-4 md:gap-5 lg:gap-6 h-[90%]">
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[1]?.image1 || '')" :alt="fasilitas[1]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[1]?.title || '' }}</TextSection>
-          </div>
-        </div>
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[2]?.image1 || '')" :alt="fasilitas[2]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[2]?.title || '' }}</TextSection>
-          </div>
-        </div>
-      </div>
-
-      <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-        <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-        <img :src="getImageUrl(fasilitas[3]?.image1 || '')" :alt="fasilitas[3]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[3]?.title || '' }}</TextSection>
-        </div>
-      </div>
-
-      <div class="w-full flex flex-col justify-between gap-4 md:gap-5 lg:gap-6 h-[90%]">
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[4]?.image1 || '')" :alt="fasilitas[4]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[4]?.title || '' }}</TextSection>
-          </div>
-        </div>
-        <div class="w-full h-[50%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-          <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-          <img :src="getImageUrl(fasilitas[5]?.image1 || '')" :alt="fasilitas[5]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-          <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[5]?.title || '' }}</TextSection>
-          </div>
-        </div>
-      </div>
-
-      <div class="w-full h-[60%] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden relative group">
-        <div class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-10"></div>
-        <img :src="getImageUrl(fasilitas[0]?.image1 || '')" :alt="fasilitas[0]?.title || ''" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute bottom-0 left-0 z-20 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-          <TextSection class="text-white" :weight-text="'font-bold'">{{ fasilitas[0]?.title || '' }}</TextSection>
+    <!-- Desktop View -->
+    <div
+      v-if="fasilitas.length > 0"
+      class="w-full px-4 py-6 justify-center items-end gap-4 hidden lg:flex"
+    >
+      <div
+        v-for="(item, index) in fasilitas.slice(0,5)"
+        :key="index"
+        class="relative group overflow-hidden rounded-3xl"
+      >
+        <img
+          :class="[
+            'rounded-3xl object-cover group-hover:scale-105 transition-transform duration-500',
+            {
+              0: 'h-96 w-[200px]', // Custom untuk index 1
+              1: 'h-80 w-[222px]', // Custom untuk index 2
+              2: 'h-64 w-56', // Custom untuk index 3
+              3: 'h-80 w-[222px]', // Custom untuk index 4
+              4: 'h-96 w-[200px]', // Custom untuk index 5
+            }[index] || 'h-80 w-[222px]', // Fallback default jika index di luar 1-5
+          ]"
+          :src="getImageUrl(item?.image1 || '')"
+          :alt="item?.title || ''"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-colorPrimary/90 via-transparent to-transparent z-0 rounded-"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10"
+        >
+          <TextSection class="text-white font-bold">{{ item?.title || '' }}</TextSection>
         </div>
       </div>
     </div>
