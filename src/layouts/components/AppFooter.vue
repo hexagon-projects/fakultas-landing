@@ -40,13 +40,13 @@
           <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 w-full">
             <!-- Navigation -->
             <div class="flex flex-col gap-3">
-              <p class="text-zinc-300 text-lg font-bold">Navigasi</p>
+              <p class="text-white/70 text-lg font-bold">Navigasi</p>
               <nav class="flex flex-col gap-2">
                 <a
                   v-for="link in navigationLinks.slice(0, 7)"
                   :key="link.path"
                   :href="link.path"
-                  class="text-zinc-300 text-sm hover:text-white transition-colors duration-200"
+                  class="text-white/70 text-sm hover:text-white transition-colors duration-200"
                 >
                   {{ link.label }}
                 </a>
@@ -55,14 +55,14 @@
 
             <!-- Legal -->
             <div class="flex flex-col gap-3">
-              <!-- <p class="text-zinc-300 text-lg font-bold">Legal</p> -->
+              <!-- <p class="text-white/70 text-lg font-bold">Legal</p> -->
               <div class="mt-[23px]"></div>
               <nav class="flex flex-col gap-2">
                 <a
                   v-for="link in navigationLinks.slice(7, 15)"
                   :key="link.path"
                   :href="link.path"
-                  class="text-zinc-300 text-sm hover:text-white transition-colors duration-200"
+                  class="text-white/70 text-sm hover:text-white transition-colors duration-200"
                 >
                   {{ link.label }}
                 </a>
@@ -71,14 +71,14 @@
 
             <!-- Location -->
             <div class="flex flex-col gap-3">
-              <p class="text-zinc-300 text-lg font-bold">Lokasi</p>
+              <p class="text-white/70 text-lg font-bold">Lokasi</p>
               <div class="flex flex-col gap-2">
                 <div
                   v-for="campus in campuses.slice(0, 1)"
                   :key="campus.name"
                   class="flex flex-col"
                 >
-                  <p class="text-zinc-300 text-sm">{{ campus.address }}</p>
+                  <p class="text-white/70 text-sm">{{ campus.address }}</p>
                 </div>
               </div>
             </div>

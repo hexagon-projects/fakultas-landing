@@ -4,9 +4,7 @@ import TitleSection from '@/components/TitleSection.vue'
 import SectionLayout from '@/layouts/SectionLayout.vue'
 import HeroVideoDialog from '@/components/HeroVideoDialog.vue'
 import type { Departement } from '@/core/types/departement';
-import { useSanitize } from '@/composables/useSanitize';
 
-const { sanitizeHtml } = useSanitize()
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
 
 const getImageUrl = (imagePath: string | null) => {
@@ -53,7 +51,7 @@ defineProps<{
           <div class="w-full">
             <TitleSection :text="prodiDetail?.title1 || ''" />
           </div>
-          <TextSection><span v-html="sanitizeHtml(prodiDetail?.description1 || '')"></span></TextSection>
+          <TextSection><span class="mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6" v-html="prodiDetail?.description1"></span></TextSection>
         </template>
       </div>
     </div>

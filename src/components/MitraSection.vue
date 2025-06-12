@@ -25,11 +25,11 @@ let interval: any = null
 
 onMounted(async() => {
   if(router.currentRoute.value.name == 'beranda') {
-    await berandaStore.getDataMitra(true) 
+    await berandaStore.getDataMitra(true)
   }
   else{
-    await berandaStore.getDataMitra() 
-  } 
+    await berandaStore.getDataMitra()
+  }
   updateItemsPerPage()
   window.addEventListener('resize', updateItemsPerPage)
 
@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="lg:mt-48 mt-32">
-    <TitleSection :text="`Lebih Dari <span class='text-colorPrimary'>1000+</span> Mitra Kerjasama`" :html="true" class="text-center px-[5%]"></TitleSection>
+    <TitleSection :text="`Lebih Dari <span class='text-colorPrimary'>1000+</span> Mitra Kerja Sama`" :html="true" class="text-center px-[5%]"></TitleSection>
     <!-- <Title class="text-center px-[5%]">
       Lebih Dari <span class="text-colorPrimary">1000+</span> Mitra Kerjasama
     </Title> -->

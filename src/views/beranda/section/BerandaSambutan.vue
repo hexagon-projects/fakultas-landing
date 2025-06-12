@@ -55,7 +55,7 @@ const titleHTML = computed(() => {
 
       <div class="w-full lg:w-1/3" v-if="dosen && dosen.length > 0">
         <div
-          class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[420px] xl:h-[500px] bg-no-repeat bg-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
+          class="relative mx-auto w-full lg:w-full h-[348px] lg:h-[420px] xl:h-[500px] bg-no-repeat bg-cover bg-center rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden"
           :style="{ backgroundImage: `url(${getImageUrl(dosen[0].image)})` }">
 
           <div

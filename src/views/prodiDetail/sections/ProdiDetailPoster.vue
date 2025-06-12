@@ -55,12 +55,12 @@ const onSwiper = (swiper: SwiperClass) => {
 
         <div class="w-full flex justify-between items-center absolute top-1/2 -translate-y-1/2 z-10 pointer-events-none">
           <div ref="prevEl" class="w-6 md:w-8 lg:w-10 h-20 bg-netral flex items-center justify-center cursor-pointer rounded-r pointer-events-auto transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AA2132" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0096FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M15 18l-6-6 6-6"/>
             </svg>
           </div>
           <div ref="nextEl" class="w-6 md:w-8 lg:w-10 h-20 bg-netral flex items-center justify-center cursor-pointer rounded-l pointer-events-auto transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AA2132" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0096FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 18l6-6-6-6"/>
             </svg>
           </div>
@@ -79,7 +79,7 @@ const onSwiper = (swiper: SwiperClass) => {
 .swiper-pagination-custom {
   display: flex;
   gap: 0.25rem;
-  border: 1px solid #AA2132;
+  border: 1px solid #0096FF;
   padding: 0.25rem;
   border-radius: 9999px;
   background-color: rgba(0, 0, 0, 0.2);
@@ -97,7 +97,7 @@ const onSwiper = (swiper: SwiperClass) => {
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #AA2132;
+  background-color: #0096FF;
   opacity: 1;
   width: 24px;
 }

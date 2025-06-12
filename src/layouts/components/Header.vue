@@ -77,7 +77,7 @@ const navigateToHome = () => {
         <!-- Desktop Navbar -->
         <nav
             :class="[
-                'w-[90%] lg:w-[93%] xl:w-[94%] mt-3 xl:mt-4',
+                'w-[90%] lg:w-[96%] xl:w-[97%] mt-3 xl:mt-4',
                 position,
                 'z-50 p-4 justify-between items-center hidden lg:flex rounded-lg md:rounded-[32px] transition-all duration-500 ease-in-out',
                 shadow,
@@ -158,10 +158,10 @@ const navigateToHome = () => {
                 :to="item.path"
                 :aria-label="item.name"
                 class="w-full relative flex flex-col items-center py-2 justify-between rounded-full transition-colors duration-500 ease-in-out"
-                :class="route.path === item.path ? 'text-[#C73929]' : 'text-[#484C52]'"
+                :class="route.path === item.path ? 'text-colorPrimary' : 'text-[#484C52]'"
             >
                 <i :class="item.icon"></i>
-                <span :class="['text-xs mt-2', route.path === item.path ? 'text-[#C73929] font-bold' : '']">
+                <span :class="['text-xs mt-2', route.path === item.path ? 'text-colorPrimary font-bold' : '']">
                     {{ item.name }}
                 </span>
             </RouterLink>

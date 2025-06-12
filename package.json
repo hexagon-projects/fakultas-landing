@@ -23,7 +23,7 @@
     "dompurify": "^3.2.5",
     "gsap": "^3.12.7",
     "lucide-vue-next": "^0.503.0",
-    "motion-v": "^1.0.0-beta.2",
+    "motion-v": "^1.2.0",
     "pinia": "^3.0.1",
     "primeicons": "^7.0.0",
     "sweetalert2": "^11.19.1",

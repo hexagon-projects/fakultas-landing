@@ -16,7 +16,7 @@ import SectionLayout from '@/layouts/SectionLayout.vue';
         <TitleMain text="Mitra Strategis Kami" class="mt-5"></TitleMain>
       </div>
       <div class="lg:w-1/2 w-full">
-        <TextSection>Kami menjalin kerjasama dengan berbagai institusi dan industri untuk memberikan pengalaman
+        <TextSection>Kami menjalin kerja sama dengan berbagai institusi dan industri untuk memberikan pengalaman
           terbaik bagi mahasiswa. Bersama mitra kami, kami menciptakan peluang yang memperkaya
           pendidikan dan penelitian.</TextSection>
 

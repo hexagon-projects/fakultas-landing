@@ -64,9 +64,6 @@ const titleHTML = computed(() => {
 </template>
 
 <style scoped>
-.svg-primary {
-  filter: brightness(0) saturate(100%) invert(22%) sepia(65%) saturate(2915%) hue-rotate(338deg) brightness(91%) contrast(88%);
-}
 
 .border-beam-container {
   position: relative;
@@ -80,7 +77,7 @@ const titleHTML = computed(() => {
   bottom: 0;
   left: -30%;
   height: 2px;
-  background: linear-gradient(to right, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  background: linear-gradient(to right, transparent, transparent 25%, #0096FF 50%, transparent 75%, transparent);
   width: 80%;
   animation: borderWalkBottom 2.5s infinite linear;
 }
@@ -92,7 +89,7 @@ const titleHTML = computed(() => {
   top: -30%;
   left: 0;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  background: linear-gradient(to bottom, transparent, transparent 25%, #0096FF 50%, transparent 75%, transparent);
   height: 80%;
   animation: borderWalkLeft 2.5s infinite linear;
 }
@@ -104,7 +101,7 @@ const titleHTML = computed(() => {
   bottom: -30%;
   right: 0;
   width: 2px;
-  background: linear-gradient(to top, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  background: linear-gradient(to top, transparent, transparent 25%, #0096FF 50%, transparent 75%, transparent);
   height: 80%;
   animation: borderWalkRight 2.5s infinite linear;
 }
@@ -116,7 +113,7 @@ const titleHTML = computed(() => {
   top: 0;
   right: -30%;
   height: 2px;
-  background: linear-gradient(to left, transparent, transparent 25%, #C22332 50%, transparent 75%, transparent);
+  background: linear-gradient(to left, transparent, transparent 25%, #0096FF 50%, transparent 75%, transparent);
   width: 80%;
   animation: borderWalkTop 2.5s infinite linear;
 }

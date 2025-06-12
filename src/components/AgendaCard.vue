@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { useSanitize } from '@/composables/useSanitize';
 import TextBody from './TextBody.vue';
 import { ref, onMounted } from 'vue';
 import router from '@/router';
 import InteractiveHoverButton from './ui/interactive-hover-button/InteractiveHoverButton.vue';
-
-const { sanitizeHtml } = useSanitize()
 
 const props = defineProps<{
   kategori?: string,
@@ -48,8 +45,8 @@ onMounted(() => {
           <p class="text-sm md:text-base lg:text-lg font-bold line-clamp-2">{{ judul }}</p>
           <p class="text-xs md:text-xs lg:text-base">{{ tanggal }} • {{ lokasi }}</p>
         </div>
-        <TextBody class="line-clamp-1"><span
-            v-html="sanitizeHtml(deskripsi || 'Deskripsi Acara')"></span></TextBody>
+        <TextBody class="line-clamp-1"><span class="mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6"
+            v-html="deskripsi"></span></TextBody>
       </div>
       <div class="w-fit md:w-1/2 lg:w-1/3 xl:w-1/4">
         <InteractiveHoverButton @click="navigateToDetail(slug || '')" class="w-fit md:w-full" :padding="'py-3 px-6 lg:py-4 lg:px-6'" :text="'Selengkapnya'"></InteractiveHoverButton>

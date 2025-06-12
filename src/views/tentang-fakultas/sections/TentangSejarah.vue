@@ -3,7 +3,6 @@ import TextSection from '@/components/TextSection.vue';
 import TitleSection from '@/components/TitleSection.vue';
 import InteractiveHoverButton from '@/components/ui/interactive-hover-button/InteractiveHoverButton.vue';
 import SectionLayout from '@/layouts/SectionLayout.vue';
-import Calendar from '@/assets/icons/calendar.png'
 import type { Faculty } from '@/core/types/fakultas';
 
 const baseUrl = import.meta.env.VITE_APP_IMG_URL;
@@ -37,9 +36,9 @@ defineProps<{
       </div>
       <div class="lg:w-1/2 w-full">
         <div class="w-full h-80 md:h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] relative">
-          <div class="w-full h-full sjrh-container">
+          <div class="w-full h-full">
             <img :src="getImageUrl(fakultas?.image2 || '')" :alt="fakultas?.title2 || ''"
-              class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px] sjrh-img" />
+              class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px]" />
             <svg :style="{ visibility: 'hidden', position: 'absolute' }" width="0" height="0"
               xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs>
@@ -53,7 +52,7 @@ defineProps<{
             </svg>
           </div>
 
-          <div
+          <!-- <div
             class="w-fit flex justify-center items-center gap-4 absolute bottom-0 right-0 bg-colorPrimary p-2 lg:p-4 rounded-[4px] md:rounded-[8px] lg:rounded-[16px]">
             <div class="w-fit bg-white h-12 p-2 rounded-[2px] md:rounded-[4px] lg:rounded-[8px]">
               <img :src="Calendar" alt="" class="w-full h-full object-contain">
@@ -62,7 +61,7 @@ defineProps<{
             <div class="w-fit">
               <TextSection class="text-white">Berdiri Sejak <br> Tahun 1960</TextSection>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

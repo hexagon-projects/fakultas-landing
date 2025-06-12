@@ -59,7 +59,7 @@ defineProps<{
       </template>
       <template v-else>
         <div
-          class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[738px] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden">
+          class="self-stretch h-[200px] sm:h-[400px] md:h-[600px] lg:h-[60vh] rounded-[16px] md:rounded-[24px] lg:rounded-[32px] overflow-hidden">
           <img :src="getImageUrl(agenda?.image || '')" alt="Event banner image" class="w-full h-full object-cover" />
         </div>
         <div class="flex flex-col lg:flex-row items-start gap-10 md:gap-20 self-stretch">

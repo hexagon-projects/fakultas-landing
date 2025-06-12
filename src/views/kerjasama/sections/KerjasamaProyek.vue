@@ -8,7 +8,7 @@ import KerjasamaCard from '../components/KerjasamaCard.vue';
 <template>
   <SectionLayout>
     <div class="w-full lg:w-[60%] text-center mx-auto">
-      <TitleSection :text="'Program dan Proyek Kerjasama Fakultas yang Sedang Berjalan'"></TitleSection>
+      <TitleSection :text="'Program dan Proyek Kerja Sama Fakultas yang Sedang Berjalan'"></TitleSection>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">

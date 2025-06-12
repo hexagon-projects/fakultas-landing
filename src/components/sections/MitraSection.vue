@@ -22,7 +22,7 @@ const props = defineProps<{
   partners: Partner[]
 }>();
 
-const titleHTML = 'Mitra <span class="text-colorPrimary">Kerjasama</span>';
+const titleHTML = 'Mitra <span class="text-colorPrimary">Kerja Sama</span>';
 
 const groupedPartners = computed(() => {
   const partnersToShow = props.partners?.slice(0, 15) || [];
@@ -124,7 +124,7 @@ const groupedPartners = computed(() => {
 }
 
 .custom-bullet {
-  width: 40px;
+  width: 20px;
   height: 6px;
   display: inline-block;
   border-radius: 3px;
@@ -142,7 +142,7 @@ const groupedPartners = computed(() => {
 
 @media (min-width: 640px) {
   .custom-bullet {
-    width: 50px;
+    width: 25px;
     height: 8px;
   }
 
@@ -166,7 +166,7 @@ const groupedPartners = computed(() => {
   }
 
   .custom-bullet {
-    width: 70px;
+    width: 35px;
     height: 10px;
   }
 

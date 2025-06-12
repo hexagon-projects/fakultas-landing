@@ -58,13 +58,13 @@ const limitedPrestasi = computed(() => {
         <!-- Tablet & Dekstop -->
         <div id="prestasi-scroll" class="hidden md:flex w-full lg:w-[60%] h-full overflow-y-auto cursor-pointer">
           <div class="w-1/2">
-            <div class="w-full h-[22vh]"></div>
+            <div class="w-full h-[26vh] xl:h-[22vh]"></div>
             <template v-for="(item, index) in limitedPrestasi" :key="item.id">
               <template v-if="index % 2 !== 0">
                 <PrestasiCard :rounded="'rounded-l-[8px] md:rounded-l-[16px] lg:rounded-l-[32px]'"
                   :image="getImageUrl(item.image)" :title="item.title" :description="item.description"
                   :number="String(index + 1).padStart(2, '0')" />
-                <div class="w-full h-[16vh]"></div>
+                <div class="w-full h-[20vh] xl:h-[16vh]"></div>
               </template>
             </template>
           </div>
@@ -74,7 +74,7 @@ const limitedPrestasi = computed(() => {
                 <PrestasiCard :rounded="'rounded-r-[8px] md:rounded-r-[16px] lg:rounded-r-[32px]'"
                   :image="getImageUrl(item.image)" :title="item.title" :description="item.description"
                   :number="String(index + 1).padStart(2, '0')" />
-                <div class="w-full h-[16vh]"></div>
+                <div class="w-full h-[20vh] xl:h-[16vh]"></div>
               </template>
             </template>
           </div>

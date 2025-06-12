@@ -11,7 +11,7 @@ const props = defineProps<{
   prodiDetail: Departement
 }>();
 
-const titleHTML = `Prospek Karir Program Studi <span class="text-colorPrimary font-bold">${props?.prodiDetail?.name}</span>`;
+const titleHTML = `Prospek Karier Program Studi <span class="text-colorPrimary font-bold">${props?.prodiDetail?.name}</span>`;
 
 const halfLength = Math.ceil(props?.prospek?.length / 2);
 const leftCards = props?.prospek?.slice(0, halfLength);
@@ -31,8 +31,9 @@ const rightCards = props?.prospek?.slice(halfLength);
         <ProspekCard v-for="(card, index) in leftCards" :key="'left-' + index" :align-text="'text-right'"
           :title="card.title" :description="card.description" :icon="card.icon" />
       </div>
-      <div class="w-full md:w-[40%]">
-        <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
+      <div class="w-full md:w-[40%] relative">
+        <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-contain">
+        <div class="absolute w-full h-1/3 bottom-0 bg-gradient-to-t from-[#f3f4f4] via-[#f3f4f4]/95 to-transparent"></div>
       </div>
       <div class="w-full md:w-[30%] h-full flex flex-col justify-around gap-4 ">
         <ProspekCard v-for="(card, index) in rightCards" :key="'right-' + index" :align-text="'text-left'"
@@ -41,8 +42,9 @@ const rightCards = props?.prospek?.slice(halfLength);
     </div>
 
     <div class="flex md:hidden flex-col gap-8">
-      <div class="w-full md:w-[40%]">
-        <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-cover">
+      <div class="w-full md:w-[40%] relative">
+        <img :src=Org alt="" class="w-full h-full lg:h-[80vh] object-contain">
+        <div class="absolute w-full h-1/3 bottom-0 bg-gradient-to-t from-[#f3f4f4] via-[#f3f4f4]/95 to-transparent"></div>
       </div>
       <div class="w-full space-y-4">
         <ProspekCard v-for="(card, index) in prospek" :key="'right-' + index" :align-text="'text-left'"

@@ -80,7 +80,7 @@ const shareTo = (platform: string) => {
     <template v-else-if="post">
       <div class="space-y-4 lg:space-y-6">
         <div class="text-base font-bold flex items-center gap-4">
-          <div class="p-2 bg-gray-300">
+          <div class="p-2 bg-gray-300 rounded-full">
             <p class="text-sm">Kategori</p>
           </div>
           <p class="text-sm">5 Menit Baca</p>
@@ -89,7 +89,7 @@ const shareTo = (platform: string) => {
       </div>
 
       <div class="space-y-4 lg:space-y-6">
-        <div class="w-full h-full lg:h-[70vh]">
+        <div class="w-full h-full lg:h-[60vh]">
           <img :src="getImageUrl(post.image)" alt="Thumbnail"
             class="w-full h-full object-cover rounded-[16px] md:rounded-[24px] lg:rounded-[32px]">
         </div>

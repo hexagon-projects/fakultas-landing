@@ -121,7 +121,7 @@ const shareTo = (platform: string) => {
           <div class="space-y-4 lg:space-y-6">
             <router-link to="/" class="text-base">Beranda > <span><router-link to="/berita"> Berita</router-link></span></router-link>
             <h1 class="text-[16px] md:text-[24px] lg:text-[32px] font-bold" v-if="firstBerita"><span v-html="firstBerita?.title"></span></h1>
-            <TextSection class="hidden md:block"><span class="line-clamp-4" v-html="sanitizeHtml(firstBerita?.content || firstBerita?.title)"></span></TextSection>
+            <TextSection class="hidden md:block"><span class="line-clamp-4 mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6" v-html="sanitizeHtml(firstBerita?.content || firstBerita?.title)"></span></TextSection>
             <p class="text-[12px] lg:text-[14px] md:hidden">{{ formatDate(firstBerita?.publish) }} • 4 Menit Baca</p>
             <div class="w-full h-full rounded-[16px] md:rounded-[24px] lg:rounded-[32px] group overflow-hidden" @click="goToDetail">
               <img

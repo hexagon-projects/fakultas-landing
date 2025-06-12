@@ -47,7 +47,4 @@ defineProps({
 </template>
 
 <style>
-.svg-primary {
-  filter: brightness(0) saturate(100%) invert(22%) sepia(65%) saturate(2915%) hue-rotate(338deg) brightness(91%) contrast(88%);
-}
 </style>

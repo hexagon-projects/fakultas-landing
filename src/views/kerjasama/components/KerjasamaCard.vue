@@ -11,7 +11,7 @@ import TextBody from '@/components/TextBody.vue';
     <div class="space-y-4 md:space-y-5 lg:space-y-8">
       <div class="space-y-2 lg:space-y-4">
         <h6 class="text-[18px] md:text-[20px] lg:text-[22px] font-bold">Inisiatif Kolaborasi untuk Meningkatkan Kualitas Pendidikan dan Penelitian</h6>
-        <TextBody>Fakultas kami aktif menjalin kerjasama dengan berbagai institusi untuk meningkatkan pengalaman belajar.</TextBody>
+        <TextBody>Fakultas kami aktif menjalin kerja sama dengan berbagai institusi untuk meningkatkan pengalaman belajar.</TextBody>
       </div>
       <div class="cursor-pointer">
         <TextBody>Selengkapnya ></TextBody>

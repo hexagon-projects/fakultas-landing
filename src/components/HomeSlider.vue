@@ -48,7 +48,7 @@ onUnmounted(() => {
 <template>
   <div class="min-w-full p-0 md:p-4 lg:p-8">
     <div v-if="isLoading"
-      class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden bg-gray-200 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] animate-pulse">
+      class="relative w-full h-[80vh] md:h-[426px] lg:h-[78vh] overflow-hidden bg-gray-200 rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] animate-pulse">
       <div class="absolute inset-0 flex items-center justify-center">
         <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,7 +58,7 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div v-else class="relative w-full h-[80vh] md:h-[426px] lg:h-[656px] overflow-hidden">
+    <div v-else class="relative w-full h-[80vh] md:h-[426px] lg:h-[74vh] overflow-hidden">
       <div v-for="(slider, index) in sliders" :key="index"
         class="w-full h-full absolute top-0 left-0 bg-cover bg-top rounded-b-[32px] md:rounded-[24px] lg:rounded-[32px] transition-opacity duration-1000"
         :style="{

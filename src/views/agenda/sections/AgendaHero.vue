@@ -73,7 +73,7 @@ defineProps<{
         </div>
       </template>
       <template v-else>
-        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[420px] relative overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug || '')">
+        <div class="w-full md:w-1/2 h-[225px] md:h-[320px] lg:h-[380px] relative overflow-hidden rounded-[16px] md:rounded-[24px] lg:rounded-[32px]" @click="navigateToDetail(agenda[0]?.slug || '')">
           <img :src="getImageUrl(agenda[0]?.image)" :alt="agenda[0]?.title || 'Gambar acara'"
             class="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-105">
           <div v-if="agenda[0]?.end_date"
@@ -95,7 +95,7 @@ defineProps<{
               <TextBody>{{ agenda[0]?.location }}</TextBody>
             </div>
 
-            <TextBody><span class="line-clamp-4" v-html="sanitizeHtml(agenda[0]?.description)"></span></TextBody>
+            <TextBody><span class="line-clamp-4 mt-5 [&_ol]:list-decimal [&_ul]:list-disc [&_li]:ml-6" v-html="sanitizeHtml(agenda[0]?.description)"></span></TextBody>
           </div>
 
           <div class="w-fit">
